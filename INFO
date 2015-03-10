@@ -1,0 +1,19 @@
+Project: IPv6-enabled OPNFV (ipv6)
+Creation Date: November 25, 2014
+Category: Integration & Testing
+Lifecycle State: Incubation
+Primary Contact: Bin Hu (bh526r@att.com)
+Project Lead: Bin Hu (bh526r@att.com)
+Jira Project Name: IPv6-enabled OPNFV Project
+Jira Project Prefix: [IPVSIX]
+Mailing list tag: [ipv6]
+IRC: Server:freenode.net Channel: #opnfv-ipv6
+Repository: ipv6
+
+Committers:
+bh526r@att.com
+tnadeau@brocade.com
+plee@clearpathnet.com
+
+Link to TSC approval of the project: http://meetbot.opnfv.org/meetings/opnfv-meeting/
+Link(s) to approval of additional submitters:
