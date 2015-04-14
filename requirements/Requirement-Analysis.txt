@@ -1,12 +1,14 @@
 ===== Top Down Use Case and Gap Analysis =====
 
-Here are some top down use cases of VIM-agnostic IPv6 functionality, including infrastructure layer and
-VNF (VM) layer, and its gap analysis with Juno Neutron:
+Here are some top down use cases of VIM-agnostic IPv6 functionality, including
+infrastructure layer and VNF (VM) layer, and its gap analysis with Neutron
+in Juno release:
 
 (1) Use Case / Requirement 1: All topologies work in a multi-tenant environment
 Supported in Neutron, Juno Release: Yes
-Notes: The tenant's subnets are based on Neutron, with ML2 plugin and Single Flat Network topology,
-dual-stacked. See “DHCPv6” BP (https://review.openstack.org/#/c/102411) and “IPv6 SLAAC” BP
+Notes: The tenant's subnets are based on Neutron, with ML2 plugin and Single
+Flat Network topology, dual-stacked. See "DHCPv6" BP
+(https://review.openstack.org/#/c/102411) and "IPv6 SLAAC" BP
 (http://specs.openstack.org/openstack/neutron-specs/specs/juno/ipv6-radvd-ra.html)
 
 (2) Use Case / Requirement 2: IPv6 VM to VM only
@@ -15,101 +17,127 @@ Notes: Configuration and IPv6 address assignment
 
 (3) Use Case / Requirement 3: IPv6 external L2 VLAN directly attached to a VM
 Supported in Neutron, Juno Release: Yes
-Notes: Via Neutron and external router / border gateway. See “UPStream Provider Network” BP
+Notes: Via Neutron and external router / border gateway. See "UPStream Provider
+Network" BP
 (http://specs.openstack.org/openstack/neutron-specs/specs/juno/ipv6-provider-nets-slaac.html)
 To-Do: Verify
 
-(4) Use Case / Requirement 4: IPv6 subnet routed via L3 agent to an external IPv6 network
+(4) Use Case / Requirement 4: IPv6 subnet routed via L3 agent to an external
+IPv6 network
 (a) Both VLAN and overlay (e.g. GRE, VXLAN) subnet attached to VMs;
-(b) Must be able to support multiple L3 agents for a given external network to support scaling (neutron
-scheduler to assign vRouters to the L3 agents)
+(b) Must be able to support multiple L3 agents for a given external network to
+support scaling (neutron scheduler to assign vRouters to the L3 agents)
 Supported in Neutron, Juno Release: (a) Roadmap (b) Yes
 Notes: The IPv6 support in Neutron L3 router isn't ready yet. Watch Kilo BPs
-“IPv6 Router BP” (https://review.openstack.org/#/c/142224/) and
-“Multiple Ipv6 Prefixes BP” (https://review.openstack.org/#/c/98217).
+"IPv6 Router BP" (https://review.openstack.org/#/c/142224/) and
+"Multiple Ipv6 Prefixes BP" (https://review.openstack.org/#/c/98217).
 (b) is supported for scalability. Patches for HA are under review.
 
-(5) Use Case / Requirement 5: Ability for a VM to support a mix of multiple IPv4 and IPv6 networks,
-i.e. across the mix of all the above topologies including multiples of the same type
-Supported in Neutron, Juno Release: Yes for dual-stack and Roadmap for multiple IPv4 and IPv6 subnets
-Notes: Dual-stack is supported via Single Flat Network topology. Refer to Kilo Blueprint
-“Multiple IPv6 Prefixes” (https://blueprints.launchpad.net/neutron/+spec/multiple-ipv6-prefixes)
+(5) Use Case / Requirement 5: Ability for a VM to support a mix of multiple
+IPv4 and IPv6 networks, i.e. across the mix of all the above topologies
+including multiples of the same type.
+Supported in Neutron, Juno Release: Yes for dual-stack and Roadmap for multiple
+IPv4 and IPv6 subnets
+Notes: Dual-stack is supported via Single Flat Network topology. Refer to Kilo
+Blueprint "Multiple IPv6 Prefixes"
+(https://blueprints.launchpad.net/neutron/+spec/multiple-ipv6-prefixes)
 for support of multiple IPv4 and IPv6 networks
 To-Do: Verify
 
 (6) Use Case / Requirement 6: Support DHCPv6 stateful
-(a) Including the ability for a user to create a port on an IPv6 subnet and assign a specific IPv6 address to
-the port and have it taken out of the DHCP address pool;
+(a) Including the ability for a user to create a port on an IPv6 subnet and
+assign a specific IPv6 address to the port and have it taken out of the DHCP
+address pool;
 (b) Support the ability to assign multiple IPv6 address to an interface
 Supported in Neutron, Juno Release: (a) Yes and (b) Work-in-Progress
-Notes: Work-in-progress and expected in Juno release. All the IPv6 configuration modes such as SLAAC,
-DHCPv6 Stateless and DHCPv6 Stateful are expected in Juno release. For (a), see
+Notes: Work-in-progress and expected in Juno release. All the IPv6
+configuration modes such as SLAAC, DHCPv6 Stateless and DHCPv6 Stateful are
+expected in Juno release. For (a), see
 Patch 1 (https://bugs.launchpad.net/neutron/+bug/1367500) and
 Patch 2 (https://bugs.launchpad.net/neutron/juno/+bug/1377843).
-This is verified by Sridhar. For (b), see BP in Kilo (https://review.openstack.org/#/c/98217/14).
+This is verified by Sridhar. For (b), see BP in Kilo
+(https://review.openstack.org/#/c/98217/14).
 
-(7) Use Case / Requirement 7: Should not prevent the ability to support non-DHCP statically assigned
-IPv6 addresses in the same fashion as is supported for IPv4
+(7) Use Case / Requirement 7: Should not prevent the ability to support
+non-DHCP statically assigned IPv6 addresses in the same fashion as is supported
+for IPv4
 Supported in Neutron, Juno Release: No
 Notes: The following patch disables this operation: (https://review.openstack.org/#/c/129144/)
 
-(8) Use Case / Requirement 8: Support for private IPv6 to external IPv6 Floating IP
+(8) Use Case / Requirement 8: Support for private IPv6 to external IPv6
+Floating IP
 Supported in Neutron, Juno Release: Rejected (No)
 Notes: See https://review.openstack.org/#/c/139731/ for discussion
 
-(9) Use Case / Requirement 9: Provide IPv6/IPv4 feature parity in support for pass-through capabilities
-(e.g. SR-IOV support in OpenStack) as these features are provided in OpenStack
+(9) Use Case / Requirement 9: Provide IPv6/IPv4 feature parity in support for
+pass-through capabilities (e.g. SR-IOV support in OpenStack) as these features
+are provided in OpenStack
 Supported in Neutron, Juno Release: Roadmap
 Notes:
-(a) Blueprint “Managing InfiniBand SR-IOV”
-(https://blueprints.launchpad.net/neutron/+spec/manage-sriov-ib-net-config) is pending approval,
-(b) Blueprint “Traffic Rate Support for SR-IOV NIC” 
-(https://blueprints.launchpad.net/neutron/+spec/ml2-sriov-rate-limit-extension) is being drafted,
-(c) Blueprint “HA SR-IOV Ports”
-(https://blueprints.launchpad.net/neutron/+spec/high-availability-sriov-ports) has not started yet.
+(a) Blueprint "Managing InfiniBand SR-IOV"
+(https://blueprints.launchpad.net/neutron/+spec/manage-sriov-ib-net-config) is
+pending approval,
+(b) Blueprint "Traffic Rate Support for SR-IOV NIC"
+(https://blueprints.launchpad.net/neutron/+spec/ml2-sriov-rate-limit-extension)
+is being drafted,
+(c) Blueprint "HA SR-IOV Ports"
+(https://blueprints.launchpad.net/neutron/+spec/high-availability-sriov-ports)
+has not started yet.
 
-(10) Use Case / Requirement 10: Additional IPv6 extensions, for example: IPSEC, IPv6 Anycast, Multicast
+(10) Use Case / Requirement 10: Additional IPv6 extensions, for example: IPSEC,
+IPv6 Anycast, Multicast
 Supported in Neutron, Juno Release: No
-Notes: It doesn’t appear to be considered yet
+Notes: It doesn't appear to be considered yet
 
-(11) Use Case / Requirement 11: Access to the meta-data server to obtain user data and ssh keys etc
+(11) Use Case / Requirement 11: Access to the meta-data server to obtain user
+data and ssh keys etc
 Supported in Neutron, Juno Release: No
-Notes: Metadata (and GRE / VXLAN subnet) still requires IPv4. An alternate mechanism is to
-use config-drive. See email thread
+Notes: Metadata (and GRE / VXLAN subnet) still requires IPv4. An alternate
+mechanism is to use config-drive. See email thread
 (http://openstack.10931.n7.nabble.com/Neutron-cloud-init-IPv6-support-td45386.html)
 
-(12) Use Case / Requirement 12: Full support for IPv6 tcp/udp/icmp IPv6 security groups
-(same as we see for IPv4)
+(12) Use Case / Requirement 12: Full support for IPv6 tcp/udp/icmp IPv6
+security groups (same as we see for IPv4)
 Supported in Neutron, Juno Release: Yes
 Notes:
-(a) Blueprint “Support ICMP type filter by security group”
+(a) Blueprint "Support ICMP type filter by security group"
 (https://blueprints.launchpad.net/neutron/+spec/security-group-icmp-type-filter)
 has not started yet.
-(b) Blueprint “Security group rule for IPv6 RA guard and IPv6 Snooping”
-(https://blueprints.launchpad.net/neutron/+spec/security-group-ipv6-ra-guard) has not started.
-Whiteboard responses to BP (a) indicates that it is already supported.
-To-Do: for BP(b), the author was looking at the “IPv6 First-Hop Security” feature
+(b) Blueprint "Security group rule for IPv6 RA guard and IPv6 Snooping"
+(https://blueprints.launchpad.net/neutron/+spec/security-group-ipv6-ra-guard)
+has not started. Whiteboard responses to BP (a) indicates that it is already
+supported.
+To-Do: for BP(b), the author was looking at the "IPv6 First-Hop Security"
+feature
 
-(13) Use Case / Requirement 13: During network/subnet/router create, there should be an option to allow user to specify the type of address management they would like. (a) this includes all options including those low priority if implemented (e.g. toggle on/off router and address prefix advertisements);  (b) It must be supported via Neutron API (restful and CLI) as well as via Horizon
-Supported in Neutron, Juno Release: Yes for various types of IPv6 subnet
-and Roadmap for multiple subnets
-Notes: The ability to create various types of IPv6 subnets (i.e., SLAAC / DHCPv6 Stateless / Stateful)
-is supported both using Neutron router and external router. Refer to “various combinations and
-how to configure Neutron subnets”
+(13) Use Case / Requirement 13: During network/subnet/router create, there
+should be an option to allow user to specify the type of address management
+they would like. (a) this includes all options including those low priority if
+implemented (e.g. toggle on/off router and address prefix advertisements);
+(b) It must be supported via Neutron API (restful and CLI) as well as via
+Horizon
+Supported in Neutron, Juno Release: Yes for various types of IPv6 subnet and
+Roadmap for multiple subnets
+Notes: The ability to create various types of IPv6 subnets (i.e., SLAAC / DHCPv6
+Stateless / Stateful) is supported both using Neutron router and external
+router. Refer to "various combinations and how to configure Neutron subnets"
 (http://specs.openstack.org/openstack/neutron-specs/specs/juno/ipv6-radvd-ra.html#rest-api-impact).
-Refer to Blueprints “IPv6 Prefix Delegation”
+Refer to Blueprints "IPv6 Prefix Delegation"
 (https://blueprints.launchpad.net/neutron/+spec/ipv6-prefix-delegation) and
-“Multiple IPv6 Prefixes”
-(https://blueprints.launchpad.net/neutron/+spec/multiple-ipv6-prefixes) for support of multiple IPv4
-and IPv6 networks
+"Multiple IPv6 Prefixes"
+(https://blueprints.launchpad.net/neutron/+spec/multiple-ipv6-prefixes) for
+support of multiple IPv4 and IPv6 networks
 
-(14) Use Case / Requirement 14: Ability to specify Floating IPs via Neutron API (restful and CLI) as well as via Horizon, including combination of IPv6/IPv4 and IPv4/IPv6 Floating IPs if implemented
+(14) Use Case / Requirement 14: Ability to specify Floating IPs via Neutron API
+(restful and CLI) as well as via Horizon, including combination of IPv6/IPv4
+and IPv4/IPv6 Floating IPs if implemented
 Supported in Neutron, Juno Release: No
 Notes: IPv6 Floating IPs will not be supported in Kilo. See BP
-(https://review.openstack.org/#/c/139731/). Refer to previous item of floating IPv6 functionality being
-rejected.
+(https://review.openstack.org/#/c/139731/). Refer to previous item of floating
+IPv6 functionality being rejected.
 
-(15) Use Case / Requirement 15: Ability to control and manage all IPv6 security group capabilities via Neutron/Nova API (restful and CLI) as well as via Horizon
+(15) Use Case / Requirement 15: Ability to control and manage all IPv6 security
+group capabilities via Neutron/Nova API (restful and CLI) as well as via Horizon
 Supported in Neutron, Juno Release: Yes
 Notes: Refer to previous item of IPv6 security group
 
