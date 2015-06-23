@@ -1,0 +1,25 @@
+Project: IPv6-enabled OPNFV Project (ipv6)
+Project Creation Date: November 25, 2014
+Project Category: Integration & Testing
+Lifecycle State: Incubation
+Primary Contact: Bin Hu
+Project Lead: Bin Hu
+Gerrit Repository: ipv6
+Jira Project Name: IPv6-enabled OPNFV Project
+Jira Project Prefix: IPVSIX
+Mailing list tag: [ipv6]
+IRC: Server:freenode.net Channel:#opnfv-ipv6
+Etherpad: http://etherpad.opnfv.org/p/ipv6
+
+Committers:
+bh526r@att.com
+tnadeau@brocade.com
+plee@clearpathnet.com
+mmedina@clearpathnet.com
+jonne.soininen@nsn.com
+gessau@cisco.com
+prakash.ramchandran@huawei.com
+sgaddam@redhat.com
+sridhar.gaddam@redhat.com
+
+

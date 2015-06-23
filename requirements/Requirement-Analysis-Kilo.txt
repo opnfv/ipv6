@@ -1,0 +1,141 @@
+===== Top Down Use Case and Gap Analysis =====
+
+Here are some top down use cases of VIM-agnostic IPv6 functionality, including
+infrastructure layer and VNF (VM) layer, and its gap analysis with Neutron
+in Juno release:
+
+(1) Use Case / Requirement 1: All topologies work in a multi-tenant environment
+Supported in Neutron, Kilo Release: Yes
+Notes: The IPv6 design is following the Neutron tenant networks model; dnsmasq
+is being used inside DHCP network namespaces, while radvd is being used inside
+Neutron routers namespaces to provide full isolation between tenants.
+Tenant isolation can be based on VLANs, GRE, or VXLAN encapsulation. In case of
+overlays, the transport network (and VTEPs) must be IPv4 based as of today.
+
+(2) Use Case / Requirement 2: IPv6 VM to VM only
+Supported in Neutron, Kilo Release: Yes
+Notes: It is possible to assign IPv6-only addresses to VMs. Both switching
+(within VMs on the same tenant network) as well as east/west routing (between
+different networks of the same tenant) are supported. 
+
+(3) Use Case / Requirement 3: IPv6 external L2 VLAN directly attached to a VM
+Supported in Neutron, Kilo Release: Yes
+Notes: IPv6 provider network model; RA messages from upstream (external) router
+are forwarded into the VMs.
+
+(4) Use Case / Requirement 4: IPv6 subnet routed via L3 agent to an external
+IPv6 network
+(a) Both VLAN and overlay (e.g. GRE, VXLAN) subnet attached to VMs;
+(b) Must be able to support multiple L3 agents for a given external network to
+support scaling (neutron scheduler to assign vRouters to the L3 agents)
+Supported in Neutron, Kilo Release: (a) Yes (b) Yes
+Notes: Configuration is enhanced in Kilo to allow easier setup of the upstream
+gateway, without the user forced to create an IPv6 subnet for the external network.
+
+(5) Use Case / Requirement 5: Ability for a NIC to support both IPv4 and IPv6
+(dual stack) address;
+(a) VM with a single interface associated with a network, which is then
+associated with two subnets.
+(b) VM with two different interfaces associated with two different networks
+and two different subnets.
+Supported in Neutron, Kilo Release: (a) Yes (b) Yes
+Notes: Dual-stack is supported in Neutron with the addition of "Multiple IPv6
+Prefixes" Blueprint
+(https://blueprints.launchpad.net/neutron/+spec/multiple-ipv6-prefixes)
+
+(6) Use Case / Requirement 6: Support IPv6 Address assignment modes.
+(a) SLAAC
+(b) DHCPv6 Stateless
+(c) DHCPv6 Stateful 
+Supported in Neutron, Kilo Release: (a) Yes (b) Yes (c) Yes
+
+(7) Use Case / Requirement 7: Ability to create a port on an IPv6 DHCPv6
+Stateful subnet and assign a specific IPv6 address to the port and have it
+taken out of the DHCP address pool. 
+Supported in Neutron, Kilo Release: Yes
+
+(8) Use Case / Requirement 8: Ability to create a port with fixed_ip for a
+SLAAC/DHCPv6-Stateless Subnet. 
+Supported in Neutron, Kilo Release: No
+Notes: The following patch disables this operation:
+https://review.openstack.org/#/c/129144/
+
+(9) Use Case / Requirement 9: Support for private IPv6 to external IPv6
+floating IP; Ability to specify floating IPs via Neutron API (REST and CLI)
+as well as via Horizon, including combination of IPv6/IPv4 and IPv4/IPv6
+floating IPs if implemented. 
+Supported in Neutron, Kilo Release: Rejected
+Notes: Blueprint proposed in upstream and got rejected. General expectation is
+to avoid NAT with IPv6 by assigning GUA to tenant VMs. See
+https://review.openstack.org/#/c/139731/ for discussion
+
+(10) Use Case / Requirement 10: Provide IPv6/IPv4 feature parity in support for
+pass-through capabilities (e.g., SR-IOV). 
+Supported in Neutron, Kilo Release: Roadmap
+Notes: The L3 configuration should be transparent for the SR-IOV implementation.
+SR-IOV networking support introduced in Juno based on the sriovnicswitch ML2
+driver is expected to work with IPv4 and IPv6 enabled VMs.
+
+(11) Use Case / Requirement 11: Additional IPv6 extensions, for example: IPSEC,
+IPv6 Anycast, Multicast
+Supported in Neutron, Kilo Release: No
+Notes: It doesn't appear to be considered yet (lack of clear requirements)
+
+(12) Use Case / Requirement 12: VM access to the meta-data server to obtain
+user data, SSH keys, etc. using cloud-init with IPv6 only interfaces. 
+Supported in Neutron, Kilo Release: No
+Notes: This is currently not supported. Config-drive or dual-stack IPv4/IPv6
+can be used as a workaround (so that the IPv4 network is used to obtain
+connectivity with the metadata service). See email discussion thread
+(http://openstack.10931.n7.nabble.com/Neutron-cloud-init-IPv6-support-td45386.html)
+
+(13) Use Case / Requirement 13: Full support for IPv6 matching (i.e. IPv6,
+ICMPv6, TCP, UDP) in security groups. Ability to control and manage all IPv6
+security group capabilities via Neutron/Nova API (REST and CLI) as well as via
+Horizon.
+Supported in Neutron, Kilo Release: Yes
+
+(14) Use Case / Requirement 14: During network/subnet/router create, there
+should be an option to allow user to specify the type of address management
+they would like. This includes all options including those low priority if
+implemented (e.g., toggle on/off router and address prefix advertisements);
+It must be supported via Neutron API (REST and CLI) as well as via Horizon.
+Supported in Neutron, Kilo Release: Yes
+Notes: Two new Subnet attributes were introduced to control IPv6 address
+assignment options:
+(a) "ipv6-ra-mode" - to determine who sends Router Advertisements, and
+(b) "ipv6-address-mode" - to determine how VM obtains IPv6 address, default
+gateway, and/or optional information.
+
+(15) Use Case / Requirement 15: Security groups anti-spoofing: Prevent VM from
+using a source IPv6/MAC address which is not assigned to the VM.
+Supported in Neutron, Kilo Release: Yes
+
+(16) Use Case / Requirement 16: Protect tenant and provider network from rough RAs
+Supported in Neutron, Kilo Release: Yes
+Notes: When using a tenant network, Neutron is going to automatically handle the
+filter rules to allow connectivity of RAs to the VMs only from the Neutron
+router port; with provider networks, users are required to specify the LLA of
+the upstream router during the subnet creation, or otherwise manually edit the
+security-groups rules to allow incoming traffic from this specific address.
+
+(17) Use Case / Requirement 17: Support the ability to assign multiple IPv6
+addresses to an interface; both for Neutron router interfaces and VM interfaces.
+Supported in Neutron, Kilo Release: Yes
+
+(18) Use Case / Requirement 18: Ability for a VM to support a mix of multiple
+IPv4 and IPv6 networks, including multiples of the same type.
+Supported in Neutron, Kilo Release: Yes
+
+(19) Use Case / Requirement 19: Support for IPv6 Prefix Delegation.
+Supported in Neutron, Kilo Release: Roadmap
+Notes: Planned for Liberty
+
+(20) Use Case / Requirement 20: Distributed Virtual Routing (DVR) support for IPv6
+Supported in Neutron, Kilo Release: No
+Notes: Blueprint proposed upstream, pending discussion. 
+
+(21) Use Case / Requirement 21: IPv6 First-Hop Security, IPv6 ND spoofing.
+Supported in Neutron, Kilo Release: Roadmap
+Notes: Blueprint proposed upstream. Some patches are under review.
+
