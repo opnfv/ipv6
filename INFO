@@ -12,14 +12,11 @@ IRC: Server:freenode.net Channel:#opnfv-ipv6
 Etherpad: http://etherpad.opnfv.org/p/ipv6
 
 Committers:
-bh526r@att.com
-tnadeau@brocade.com
-plee@clearpathnet.com
-mmedina@clearpathnet.com
-jonne.soininen@nsn.com
-gessau@cisco.com
-prakash.ramchandran@huawei.com
-sgaddam@redhat.com
-sridhar.gaddam@redhat.com
-
+Bin Hu (AT&T), <bh526r@att.com>
+Tom Nadeau (Brocade), <tnadeau@brocade.com>
+Peter Lee (ClearPath), <plee@clearpathnet.com>
+Mark Medina (ClearPath), <mmedina@clearpathnet.com>
+Jonne Soininen (Nokia), <jonne.soininen@nsn.com>
+Prakash Ramchandran (Huawei), <prakash.ramchandran@huawei.com>
+Sridhar Gaddam (RedHat), <sgaddam@redhat.com> or <sridhar.gaddam@redhat.com>
 
