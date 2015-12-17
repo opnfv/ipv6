@@ -124,9 +124,9 @@ Release base platform in prior chapters.
    This is your host ip: 198.59.156.113
    Horizon is now available at http://198.59.156.113/
    Keystone is serving at http://198.59.156.113:5000/
-   The default users are: admin and demo 
+   The default users are: admin and demo
    The password: password
- 
+
 OS-N-6: Assuming that all goes well, you can set ''OFFLINE=True'' and ''RECLONE=no'' in ''local.conf'' to lock the
 codebase. Devstack uses these configuration parameters to determine if it has to run with the existing codebase or
 update to the latest copy.
