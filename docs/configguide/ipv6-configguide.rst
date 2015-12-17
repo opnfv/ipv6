@@ -34,7 +34,7 @@ _`Disable odl-l3 and Enable neutron-l3-agent`
 This step is optional, and only needed if you didn't choose to enable neutron-l3-agent during previous installation of
 OPNFV Brahmaputra Release.
 
-If you have chosen to enable neutron-l3-agent through previous chapters, please skip this step and directly go to Step 1.
+If you have chosen to enable neutron-l3-agent during installation, please skip this step and directly go to Step 1.
 
 # Place holder for instructions of how to disable odl-l3 and enable neutron-l3-agent
 
@@ -98,6 +98,6 @@ _`Next Steps`
 *************
 
 Congratulations, you have completed the setup of using a service VM to act as an IPv6 vRouter. This setup allows further
-open innovation by any 3rd-party. Please refer to relevant sections in User's Guide for further value-added services on this
-IPv6 vRouter.
+open innovation by any 3rd-party. Please refer to relevant sections in User's Guide for further value-added services on
+this IPv6 vRouter.
 
