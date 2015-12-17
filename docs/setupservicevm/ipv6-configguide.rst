@@ -44,9 +44,11 @@ If you have chosen to enable neutron-l3-agent during installation, please skip t
 _`Start Open Daylight`
 **********************
 
-ODL-1: Login to Open Daylight Controller Node. For the purpose of example, we use ''opnfv'' as username of login, and ''opnfv-odl-controller'' as hostname of the Open Daylight Controller Node.
+ODL-1: Login to Open Daylight Controller Node. For the purpose of example, we use ''opnfv'' as username of login, and
+''opnfv-odl-controller'' as hostname of the Open Daylight Controller Node.
 
-ODL-2: Start a new terminal session, and change directory to where Open Daylight is installed. Here we use ''odl'' directory name and ''Lithium SR2'' installation as an example.
+ODL-2: Start a new terminal session, and change directory to where Open Daylight is installed. Here we use ''odl''
+directory name and ''Lithium SR2'' installation as an example.
 
    cd ~/odl/distribution-karaf-0.3.2-Lithium-SR2/bin
 
@@ -56,18 +58,18 @@ ODL-3: Run the ''karaf'' shell:
 
 ODL-4: You are now in the Karaf shell of Open Daylight. To explore the list of available features you can execute
 ''feature:list''. In order to enable Open Daylight with Open Stack, you have to load the ''odl-ovsdb-openstack''
-feature. 
+feature.
 
-   opendaylight-user@opnfv>feature:install odl-ovsdb-openstack  
+   opendaylight-user@opnfv>feature:install odl-ovsdb-openstack
 
 ODL-5: Verify that OVSDB feature is installed successfully.
 
     opendaylight-user@opnfv>feature:list -i | grep ovsdb
     odl-ovsdb-openstack | 1.1.1-Lithium-SR1       | x  | ovsdb-1.1.1-Lithium-SR1 | OpenDaylight :: OVSDB :: OpenStack Network Virtual
-    odl-ovsdb-southbound-api  | 1.1.1-Lithium-SR1 | x  | odl-ovsdb-southbound-1.1.1-Lithium-SR1 | OpenDaylight :: southbound :: api                 
-    odl-ovsdb-southbound-impl | 1.1.1-Lithium-SR1 | x  | odl-ovsdb-southbound-1.1.1-Lithium-SR1 | OpenDaylight :: southbound :: impl                
-    odl-ovsdb-southbound-impl-rest|1.1.1-Lithium-SR1 | x | odl-ovsdb-southbound-1.1.1-Lithium-SR1| OpenDaylight :: southbound :: impl :: REST        
-    odl-ovsdb-southbound-impl-ui  | 1.1.1-Lithium-SR1| x | odl-ovsdb-southbound-1.1.1-Lithium-SR1| OpenDaylight :: southbound :: impl :: UI          
+    odl-ovsdb-southbound-api  | 1.1.1-Lithium-SR1 | x  | odl-ovsdb-southbound-1.1.1-Lithium-SR1 | OpenDaylight :: southbound :: api
+    odl-ovsdb-southbound-impl | 1.1.1-Lithium-SR1 | x  | odl-ovsdb-southbound-1.1.1-Lithium-SR1 | OpenDaylight :: southbound :: impl
+    odl-ovsdb-southbound-impl-rest|1.1.1-Lithium-SR1 | x | odl-ovsdb-southbound-1.1.1-Lithium-SR1| OpenDaylight :: southbound :: impl :: REST
+    odl-ovsdb-southbound-impl-ui  | 1.1.1-Lithium-SR1| x | odl-ovsdb-southbound-1.1.1-Lithium-SR1| OpenDaylight :: southbound :: impl :: UI
     opendaylight-user@opnfv>
 
 ODL-6: To view the logs, you can use the following commands (or alternately the file data/log/karaf.log).
@@ -86,9 +88,9 @@ ODL-8: To exit out of screen session, please use the command ''CTRL+a'' followed
 
 At this moment, Open Daylight has been started successfully.
 
-********************************
+**************************************
 _`Start Open Stack on Controller Node`
-********************************
+**************************************
 
 OS-N-1: Login to Open Stack Controller Node. For the purpose of example, we use ''opnfv'' as username of login, and
 ''opnfv-os-controller'' as hostname of the Open Stack Controller Node.
@@ -105,7 +107,8 @@ OS-N-3: Create a ''local.conf'' file with the contents from the following URL.
 Note 1: You need to change the value of ''BRANCH'', and all appearance of ''stable/kilo'' and related URL to point to
 the actual branch of your upstream repository.
 
-Note 2: you need to change the IP address of ''ODL_MGR_IP'' to point to your actual IP address of Open Daylight Controller.
+Note 2: you need to change the IP address of ''ODL_MGR_IP'' to point to your actual IP address of Open Daylight
+Controller.
 
 Note 3: You may have to change the value of ''ODL_PROVIDER_MAPPINGS'' and ''PUBLIC_INTERFACE'' to match your actual
 network interfaces.
@@ -114,9 +117,9 @@ OS-N-4: Initiate Openstack setup by invoking ''stack.sh''
 
    ./stack.sh
 
-OS-N-5: If the setup is successful you would see the following logs on the console. Please note that the IP addresses are
-all for the purpose of example. Your IP addresses will match the ones assigned during the installation of OPNFV B Release
-base platform in prior chapters.
+OS-N-5: If the setup is successful you would see the following logs on the console. Please note that the IP addresses
+are all for the purpose of example. Your IP addresses will match the ones assigned during the installation of OPNFV B
+Release base platform in prior chapters.
 
    This is your host ip: 198.59.156.113
    Horizon is now available at http://198.59.156.113/
@@ -124,8 +127,9 @@ base platform in prior chapters.
    The default users are: admin and demo 
    The password: password
  
-OS-N-6: Assuming that all goes well, you can set ''OFFLINE=True'' and ''RECLONE=no'' in ''local.conf'' to lock the codebase.
-Devstack uses these configuration parameters to determine if it has to run with the existing codebase or update to the latest copy.
+OS-N-6: Assuming that all goes well, you can set ''OFFLINE=True'' and ''RECLONE=no'' in ''local.conf'' to lock the
+codebase. Devstack uses these configuration parameters to determine if it has to run with the existing codebase or
+update to the latest copy.
 
 OS-N-7: Source the credentials.
 
@@ -146,9 +150,9 @@ OS-N-8: Verify some commands to check if setup is working fine.
 
 Now you can start the Compute node setup.
 
-*******************************
+***********************************
 _`Start Open Stack on Compute Node`
-*******************************
+***********************************
 
 OS-M-1: Login to Open Stack Compute Node. For the purpose of example, we use ''opnfv'' as username of login, and
 ''opnfv-os-compute'' as hostname of the Open Stack Compute Node.
@@ -165,9 +169,11 @@ OS-M-3: Create a ''local.conf'' file with the contents from the following URL.
 Note 1: You need to change the value of ''BRANCH'', and all appearance of ''stable/kilo'' and related URL to point to
 the actual branch of your upstream repository.
 
-Note 2: you need to change the IP address of ''SERVICE_HOST'' to point to your actual IP address of Open Stack Controller.
+Note 2: you need to change the IP address of ''SERVICE_HOST'' to point to your actual IP address of Open Stack
+Controller.
 
-Note 3: you need to change the IP address of ''ODL_MGR_IP'' to point to your actual IP address of Open Daylight Controller.
+Note 3: you need to change the IP address of ''ODL_MGR_IP'' to point to your actual IP address of Open Daylight
+Controller.
 
 Note 4: You may have to change the value of ''ODL_PROVIDER_MAPPINGS'' and ''PUBLIC_INTERFACE'' to match your actual
 network interface.
@@ -176,8 +182,9 @@ OS-M-4: Initiate Openstack setup by invoking ''stack.sh''
 
    ./stack.sh
 
-OS-M-5: Assuming that all goes well, you can set ''OFFLINE=True'' and ''RECLONE=no'' in ''local.conf'' to lock the codebase.
-Devstack uses these configuration parameters to determine if it has to run with the existing codebase or update to the latest copy.
+OS-M-5: Assuming that all goes well, you can set ''OFFLINE=True'' and ''RECLONE=no'' in ''local.conf'' to lock the
+codebase. Devstack uses these configuration parameters to determine if it has to run with the existing codebase or
+update to the latest copy.
 
 OS-M-6: Source the credentials.
 
