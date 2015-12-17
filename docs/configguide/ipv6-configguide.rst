@@ -23,7 +23,7 @@ steps to set up a service VM as an IPv6 vRouter:
 
 - Step 8: `Spawn RADVD in vRouter`_
 
-- Step 9: `Testing to Verify Setup Complete`#_
+- Step 9: `Testing to Verify Setup Complete`_
 
 Once the setup is complete, you can go to `Next Steps`_.
 
@@ -39,7 +39,7 @@ If you have chosen to enable neutron-l3-agent through previous chapters, please 
 # Place holder for instructions of how to disable odl-l3 and enable neutron-l3-agent
 
 **********************
-_`Start Open Daylight` 
+_`Start Open Daylight`
 **********************
 
 # Place holder for instructions of how to start Open Daylight
@@ -60,13 +60,13 @@ _`Create External Network Connectivity ext-net`
 _`Create IPv4 Subnet and Router with External Connectivity`
 ***********************************************************
 
-# Place holder for instructions of how to create IPv4 subnet and router associated with
+# Place holder for instructions of how to create IPv4 subnet and router associated with ext-net
 
 ***********************************************************
 _`Create IPv6 Subnet and Router with External Connectivity`
 ***********************************************************
 
-# Place holder for instructions of how to create IPv6 subnet and router associated with
+# Place holder for instructions of how to create IPv6 subnet and router associated with ext-net
 
 *****************************************************
 _`Prepare Image, Metadata and Keypair for Service VM`
