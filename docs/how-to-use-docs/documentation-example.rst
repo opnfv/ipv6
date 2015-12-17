@@ -5,9 +5,8 @@
   :alt: OPNFV
   :align: left
 .. these two pipes are to seperate the logo from the first title
-|
-
-|
+  |
+  |
 
 How to create documentation for your OPNFV project
 ==================================================
