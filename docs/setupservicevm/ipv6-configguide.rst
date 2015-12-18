@@ -36,7 +36,8 @@ _`Step 1: Disable odl-l3 and Enable neutron-l3-agent`
 This step is optional, and only needed if you didn't choose to enable neutron-l3-agent during previous installation of
 OPNFV Brahmaputra Release.
 
-If you have chosen to enable neutron-l3-agent during installation, please skip this step and directly go to `Step 2: Start Open Daylight`_.
+If you have chosen to enable neutron-l3-agent during installation, please skip this step and directly go to
+`Step 2: Start Open Daylight`_.
 
 # Place holder for instructions of how to disable odl-l3 and enable neutron-l3-agent
 
@@ -44,7 +45,7 @@ If you have chosen to enable neutron-l3-agent during installation, please skip t
 _`Step 2: Start Open Daylight`
 ******************************
 
-**Note: we assume that you have installed Open Daylight through OPNFV Installer in prior chapters. However, if Open Daylight is not installed, please go to ``http://www.opendaylight.org/downloads`` to download and install Open Daylight**
+**Note: we assume that you have installed Open Daylight through OPNFV Installer in prior chapters. However, if Open Daylight is not installed, please go to \`\`http://www.opendaylight.org/downloads\`\` to download and install Open Daylight**
 
 ODL-1: Login to Open Daylight Controller Node. For the purpose of example, we use ``opnfv`` as username of login, and
 ``opnfv-odl-controller`` as hostname of the Open Daylight Controller Node.
@@ -81,7 +82,7 @@ ODL-6: To view the logs, you can use the following commands (or alternately the 
 |    ``opendaylight-user@opnfv>log:tail``
 
 ODL-7: To enable ODL DLUX UI, install the following features. Then you can navigate to
-``http://<opnfv-odl-controller IP address>:8181/index.html``for DLUX UI.
+``http://<opnfv-odl-controller IP address>:8181/index.html`` for DLUX UI.
 The default user-name and password is admin/admin.
 
     ``opendaylight-user@opnfv>feature:install odl-restconf odl-l2switch-switch odl-mdsal-apidocs odl-dlux-core``
@@ -137,7 +138,7 @@ update to the latest copy.
 
 OS-N-7: Source the credentials.
 
-|   ``opnfv@opnfv-os-controller:~/devstack$ source openrc admin demo``
+   ``opnfv@opnfv-os-controller:~/devstack$ source openrc admin demo``
 
 OS-N-8: Verify some commands to check if setup is working fine.
 
@@ -192,7 +193,7 @@ update to the latest copy.
 
 OS-M-6: Source the credentials.
 
-|   ``opnfv@opnfv-os-compute:~/devstack$ source openrc admin demo``
+   ``opnfv@opnfv-os-compute:~/devstack$ source openrc admin demo``
 
 OS-M-7:Verify some commands to check if setup is working fine.
 
