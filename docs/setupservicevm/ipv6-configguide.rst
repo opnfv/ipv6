@@ -5,44 +5,46 @@ Setting Up a Service VM as an IPv6 vRouter
 After OPNFV Brahmaputra Release base platform has been successfully installed through previous chapters, there are 11
 steps to set up a service VM as an IPv6 vRouter:
 
-- Step 0: `Disable odl-l3 and Enable neutron-l3-agent`_
+- `Step 1: Disable odl-l3 and Enable neutron-l3-agent`_
 
-- Step 1: `Start Open Daylight`_
+- `Step 2: Start Open Daylight`_
 
-- Step 2: `Start Open Stack on Controller Node`_
+- `Step 3: Start Open Stack on Controller Node`_
 
-- Step 3: `Start Open Stack on Compute Node`_
+- `Step 4: Start Open Stack on Compute Node`_
 
-- Step 4: `Create External Network Connectivity ext-net`_
+- `Step 5: Create External Network Connectivity ext-net`_
 
-- Step 5: `Create IPv4 Subnet and Router with External Connectivity`_
+- `Step 6: Create IPv4 Subnet and Router with External Connectivity`_
 
-- Step 6: `Create IPv6 Subnet and Router with External Connectivity`_
+- `Step 7: Create IPv6 Subnet and Router with External Connectivity`_
 
-- Step 7: `Prepare Image, Metadata and Keypair for Service VM`_
+- `Step 8: Prepare Image, Metadata and Keypair for Service VM`_
 
-- Step 8: `Boot Service VM (vRouter) and other VMs in IPv6 Subnet`_
+- `Step 9: Boot Service VM (vRouter) and other VMs in IPv6 Subnet`_
 
-- Step 9: `Spawn RADVD in vRouter`_
+- `Step 10: Spawn RADVD in vRouter`_
 
-- Step 10: `Testing to Verify Setup Complete`_
+- `Step 11: Testing to Verify Setup Complete`_
 
 Once the setup is complete, you can go to `Next Steps`_.
 
-*********************************************
-_`Disable odl-l3 and Enable neutron-l3-agent`
-*********************************************
+*****************************************************
+_`Step 1: Disable odl-l3 and Enable neutron-l3-agent`
+*****************************************************
 
 This step is optional, and only needed if you didn't choose to enable neutron-l3-agent during previous installation of
 OPNFV Brahmaputra Release.
 
-If you have chosen to enable neutron-l3-agent during installation, please skip this step and directly go to Step 1.
+If you have chosen to enable neutron-l3-agent during installation, please skip this step and directly go to `Step 2: Start Open Daylight`_.
 
 # Place holder for instructions of how to disable odl-l3 and enable neutron-l3-agent
 
-**********************
-_`Start Open Daylight`
-**********************
+******************************
+_`Step 2: Start Open Daylight`
+******************************
+
+**Note: we assume that you have installed Open Daylight through OPNFV Installer in prior chapters. However, if Open Daylight is not installed, please go to ``http://www.opendaylight.org/downloads`` to download and install Open Daylight**
 
 ODL-1: Login to Open Daylight Controller Node. For the purpose of example, we use ``opnfv`` as username of login, and
 ``opnfv-odl-controller`` as hostname of the Open Daylight Controller Node.
@@ -50,11 +52,12 @@ ODL-1: Login to Open Daylight Controller Node. For the purpose of example, we us
 ODL-2: Start a new terminal session, and change directory to where Open Daylight is installed. Here we use ``odl``
 directory name and ``Lithium SR2`` installation as an example.
 
-   cd ~/odl/distribution-karaf-0.3.2-Lithium-SR2/bin
+   ``cd ~/odl/distribution-karaf-0.3.2-Lithium-SR2/bin``
 
-ODL-3: Run the ``karaf`` shell:
+ODL-3: Run the ``karaf`` shell. Please note that it is recommended to run the command in a "screen" session.
 
-   ``./karaf``
+|   ``screen -S ODL_Controller``
+|   ``./karaf``
 
 ODL-4: You are now in the Karaf shell of Open Daylight. To explore the list of available features you can execute
 ``feature:list``. In order to enable Open Daylight with Open Stack, you have to load the ``odl-ovsdb-openstack``
@@ -77,8 +80,9 @@ ODL-6: To view the logs, you can use the following commands (or alternately the 
 |    ``opendaylight-user@opnfv>log:display``
 |    ``opendaylight-user@opnfv>log:tail``
 
-ODL-7: To enable ODL DLUX UI, install the following features. Then you can navigate to http://localhost:8181/index.html
-for DLUX UI. The default user-name and password is admin/admin.
+ODL-7: To enable ODL DLUX UI, install the following features. Then you can navigate to
+``http://<opnfv-odl-controller IP address>:8181/index.html``for DLUX UI.
+The default user-name and password is admin/admin.
 
     ``opendaylight-user@opnfv>feature:install odl-restconf odl-l2switch-switch odl-mdsal-apidocs odl-dlux-core``
 
@@ -88,9 +92,9 @@ ODL-8: To exit out of screen session, please use the command ``CTRL+a`` followed
 
 At this moment, Open Daylight has been started successfully.
 
-**************************************
-_`Start Open Stack on Controller Node`
-**************************************
+**********************************************
+_`Step 3: Start Open Stack on Controller Node`
+**********************************************
 
 OS-N-1: Login to Open Stack Controller Node. For the purpose of example, we use ``opnfv`` as username of login, and
 ``opnfv-os-controller`` as hostname of the Open Stack Controller Node.
@@ -121,9 +125,9 @@ OS-N-5: If the setup is successful you would see the following logs on the conso
 are all for the purpose of example. Your IP addresses will match the ones assigned during the installation of OPNFV B
 Release base platform in prior chapters.
 
-|   ``This is your host ip: 198.59.156.113``
-|   ``Horizon is now available at http://198.59.156.113/``
-|   ``Keystone is serving at http://198.59.156.113:5000/``
+|   ``This is your host ip: <opnfv-os-controller IP address>``
+|   ``Horizon is now available at http://<opnfv-os-controller IP address>/``
+|   ``Keystone is serving at <opnfv-os-controller IP address>/``
 |   ``The default users are: admin and demo``
 |   ``The password: password``
 
@@ -150,9 +154,9 @@ OS-N-8: Verify some commands to check if setup is working fine.
 
 Now you can start the Compute node setup.
 
-***********************************
-_`Start Open Stack on Compute Node`
-***********************************
+*******************************************
+_`Step 4: Start Open Stack on Compute Node`
+*******************************************
 
 OS-M-1: Login to Open Stack Compute Node. For the purpose of example, we use ``opnfv`` as username of login, and
 ``opnfv-os-compute`` as hostname of the Open Stack Compute Node.
@@ -205,46 +209,46 @@ OS-M-7:Verify some commands to check if setup is working fine.
 
 Now you can start to set up the service VM as an Ipv6 vRouter in the environment of Open Stack and Open Daylight.
 
-***********************************************
-_`Create External Network Connectivity ext-net`
-***********************************************
+*******************************************************
+_`Step 5: Create External Network Connectivity ext-net`
+*******************************************************
 
 # Place holder for instructions of how to create ext-net
 
-***********************************************************
-_`Create IPv4 Subnet and Router with External Connectivity`
-***********************************************************
+*******************************************************************
+_`Step 6: Create IPv4 Subnet and Router with External Connectivity`
+*******************************************************************
 
 # Place holder for instructions of how to create IPv4 subnet and router associated with ext-net
 
-***********************************************************
-_`Create IPv6 Subnet and Router with External Connectivity`
-***********************************************************
+*******************************************************************
+_`Step 7: Create IPv6 Subnet and Router with External Connectivity`
+*******************************************************************
 
 # Place holder for instructions of how to create IPv6 subnet and router associated with ext-net
 
-*****************************************************
-_`Prepare Image, Metadata and Keypair for Service VM`
-*****************************************************
+*************************************************************
+_`Step 8: Prepare Image, Metadata and Keypair for Service VM`
+*************************************************************
 
 # Place holder for instructions of how to get the image and prepare the metadata for service VM, and how to add keypairs
 
-*********************************************************
-_`Boot Service VM (vRouter) and other VMs in IPv6 Subnet`
-*********************************************************
+*****************************************************************
+_`Step 9: Boot Service VM (vRouter) and other VMs in IPv6 Subnet`
+*****************************************************************
 
 # Place holder for instructions of how to boot the service VM named vRouter, and a couple of others in the same Ipv6
 subnet for testing purpose
 
-*************************
-_`Spawn RADVD in vRouter`
-*************************
+**********************************
+_`Step 10: Spawn RADVD in vRouter`
+**********************************
 
 # Place holder for instructions of how to spawn the RADVD daemon in vRouter
 
-***********************************
-_`Testing to Verify Setup Complete`
-***********************************
+********************************************
+_`Step 11: Testing to Verify Setup Complete`
+********************************************
 
 # Place holder for instructions of how to test and verify that the setup is complete
 
