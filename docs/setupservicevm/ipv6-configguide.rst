@@ -45,7 +45,7 @@ If you have chosen to enable neutron-l3-agent during installation, please skip t
 _`Step 2: Start Open Daylight`
 ******************************
 
-**Note: we assume that you have installed Open Daylight through OPNFV Installer in prior chapters. However, if Open Daylight is not installed, please go to \`\`http://www.opendaylight.org/downloads\`\` to download and install Open Daylight**
+**Note: we assume that you have installed Open Daylight through OPNFV Installer in prior chapters. However, if Open Daylight is not installed, please go to** ``http://www.opendaylight.org/downloads`` **to download and install Open Daylight**
 
 ODL-1: Login to Open Daylight Controller Node. For the purpose of example, we use ``opnfv`` as username of login, and
 ``opnfv-odl-controller`` as hostname of the Open Daylight Controller Node.
@@ -55,7 +55,7 @@ directory name and ``Lithium SR2`` installation as an example.
 
    ``cd ~/odl/distribution-karaf-0.3.2-Lithium-SR2/bin``
 
-ODL-3: Run the ``karaf`` shell. Please note that it is recommended to run the command in a "screen" session.
+ODL-3: Run the ``karaf`` shell. Please note that it is recommended to run the command in a ``screen`` session.
 
 |   ``screen -S ODL_Controller``
 |   ``./karaf``
