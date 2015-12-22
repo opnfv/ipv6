@@ -62,4 +62,4 @@ update to the latest copy.
 |    | 5  | m1.xlarge | 16384     | 160  | 0         |      | 8     | 1.0         | True      |
 |    +----+-----------+-----------+------+-----------+------+-------+-------------+-----------+
 
-Now you can start to set up the service VM as an Ipv6 vRouter in the environment of OpenStack and Open Daylight.
+Now you can start to set up the service VM as an IPv6 vRouter in the environment of OpenStack and Open Daylight.
