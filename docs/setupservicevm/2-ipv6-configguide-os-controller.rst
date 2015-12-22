@@ -39,9 +39,9 @@ actual network interfaces.
 
    ``./stack.sh``
 
-**OS-N-7**: If the setup is successful you would see the following logs on the console. Please note that the IP addresses
-are all for the purpose of example. Your IP addresses will match the ones assigned during the installation of OPNFV B
-Release base platform in prior chapters.
+**OS-N-7**: If the setup is successful you would see the following logs on the console. Please note
+that the IP addresses are all for the purpose of example. Your IP addresses will match the ones
+assigned during the installation of OPNFV B Release base platform in prior chapters.
 
 |   ``This is your host ip: <opnfv-os-controller IP address>``
 |   ``Horizon is now available at http://<opnfv-os-controller IP address>/``
