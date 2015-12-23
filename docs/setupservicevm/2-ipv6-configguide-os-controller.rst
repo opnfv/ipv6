@@ -29,9 +29,11 @@ For exemplary purpose, we assume:
 
    ``http://fpaste.org/276949/39476214/``
 
-   **Note 1**: you need to change the IP address of ``ODL_MGR_IP`` to point to your actual IP address of Open Daylight Controller.
+   **Note 1**: you need to change the IP address of ``ODL_MGR_IP`` to point to your actual IP address
+of Open Daylight Controller.
 
-   **Note 2**: You may have to change the value of ``ODL_PROVIDER_MAPPINGS`` and ``PUBLIC_INTERFACE`` to match your actual network interfaces.
+   **Note 2**: You may have to change the value of ``ODL_PROVIDER_MAPPINGS`` and ``PUBLIC_INTERFACE``
+to match your actual network interfaces.
 
 **OS-N-6**: Initiate Openstack setup by invoking ``stack.sh``
 
@@ -47,8 +49,9 @@ of your actual network interfaces.
 |   ``The default users are: admin and demo``
 |   ``The password: password``
 
-**OS-N-8**: Assuming that all goes well, you can set ``OFFLINE=True`` and ``RECLONE=no`` in ``local.conf`` to lock the codebase. Devstack uses these configuration parameters to determine if it has to run with the existing codebase or
-update to the latest copy.
+**OS-N-8**: Assuming that all goes well, you can set ``OFFLINE=True`` and ``RECLONE=no`` in ``local.conf``
+to lock the codebase. Devstack uses these configuration parameters to determine if it has to run with
+the existing codebase or update to the latest copy.
 
 **OS-N-9**: Source the credentials.
 
