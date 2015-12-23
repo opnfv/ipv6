@@ -13,9 +13,10 @@ For exemplary purpose, we assume:
 
 **OS-N-2**: Update the packages and install git
 
-   ``sudo apt-get update -y``
+.. code-block:: bash
 
-   ``sudo apt-get install -y git``
+    sudo apt-get update -y
+    sudo apt-get install -y git
 
 **OS-N-3**: Download devstack and switch to stable/kilo branch
 
@@ -29,10 +30,12 @@ For exemplary purpose, we assume:
 
    ``http://fpaste.org/276949/39476214/``
 
+Please note:
+
 * Note 1: you need to change the IP address of ``ODL_MGR_IP`` to point to your actual IP address
-of Open Daylight Controller.
+  of Open Daylight Controller.
 * Note 2: You may have to change the value of ``ODL_PROVIDER_MAPPINGS`` and ``PUBLIC_INTERFACE``
-to match your actual network interfaces.
+  to match your actual network interfaces.
 
 **OS-N-6**: Initiate Openstack setup by invoking ``stack.sh``
 
