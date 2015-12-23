@@ -38,11 +38,11 @@ For exemplary purpose, we assume:
 
 Please Note:
 
-*Note 1: you need to change the IP address of ``SERVICE_HOST`` to point to your actual IP address
+* Note 1: you need to change the IP address of ``SERVICE_HOST`` to point to your actual IP address
   of OpenStack Controller.
-*Note 2: you need to change the IP address of ``ODL_MGR_IP`` to point to your actual IP address
+* Note 2: you need to change the IP address of ``ODL_MGR_IP`` to point to your actual IP address
   of Open Daylight Controller.
-*Note 3: You may have to change the value of ``ODL_PROVIDER_MAPPINGS`` and ``PUBLIC_INTERFACE``
+* Note 3: You may have to change the value of ``ODL_PROVIDER_MAPPINGS`` and ``PUBLIC_INTERFACE``
   to match your actual network interface.
 
 **OS-M-6**: Initiate Openstack setup by invoking ``stack.sh``

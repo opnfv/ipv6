@@ -44,9 +44,12 @@ from ``eth1`` to ``br-ex``.
 
 .. code-block:: bash
 
-    sudo ip addr del <External IP address of opnfv-os-controller> dev eth1 && sudo ovs-vsctl add-port br-ex eth1 &&
-sudo ifconfig eth1 up && sudo ip addr add <External IP address of opnfv-os-controller> dev br-ex && sudo ifconfig
-br-ex up && sudo ip route add default via <Default gateway IP address of opnfv-os-controller> dev br-ex
+    sudo ip addr del <External IP address of opnfv-os-controller> dev eth1
+    sudo ovs-vsctl add-port br-ex eth1
+    sudo ifconfig eth1 up
+    sudo ip addr add <External IP address of opnfv-os-controller> dev br-ex
+    sudo ifconfig br-ex up
+    sudo ip route add default via <Default gateway IP address of opnfv-os-controller> dev br-ex
 
 Please note that **this can be automated in /etc/network/interfaces**.
 
@@ -86,8 +89,7 @@ data-center physical network setup.
 .. code-block:: bash
 
     neutron net-create --router:external ext-net
-    neutron subnet-create --disable-dhcp --allocation-pool start=198.59.156.251,end=198.59.156.254 --gateway
-198.59.156.1 ext-net 198.59.156.0/24
+    neutron subnet-create --disable-dhcp --allocation-pool start=198.59.156.251,end=198.59.156.254 --gateway 198.59.156.1 ext-net 198.59.156.0/24
 
 Please note that the IP addresses in the command above are for exemplary purpose. **Please replace the IP addresses of
 your actual network**.
@@ -110,8 +112,8 @@ your actual network**.
 
     neutron subnet-create --name ipv4-int-subnet1 --dns-nameserver 8.8.8.8 ipv4-int-network1 20.0.0.0/24
 
-Please note that the IP addresses in the command above are for exemplary purpose. **Please replace the IP
-addresses of your actual network**
+Please note that the IP addresses in the command above are for exemplary purpose. **Please replace the IP addresses of your
+actual network**
 
 **SETUP-SVM-10**: Associate the IPv4 internal subnet ``ipv4-int-subnet1`` to the Neutron router ``ipv4-router``.
 
@@ -183,17 +185,17 @@ IPv6 router functionality inside ``vRouter``
 
     http://fpaste.org/303942/50781923/
 
-Please note that this ``metadata.txt`` will enable the ``vRouter`` to automatically spawn a ``radvd`` daemon,
-which advertises its IPv6 subnet prefix ``2001:db8:0:2::/64`` in RA (Router Advertisement) message throughi
-its ``eth1`` interface to other VMs on ``ipv4-int-network1``. The ``radvd`` daemon also advertises the routingi
-information, which routes to ``2001:db8:0:2::/64`` subnet, in RA (Router Advertisement) message through its
-``eth0`` interface to ``eth1`` interface of ``ipv6-router`` on ``ipv4-int-network2``.
+Please note that this ``metadata.txt`` will enable the ``vRouter`` to automatically spawn a ``radvd`` daemon, which advertises
+its IPv6 subnet prefix ``2001:db8:0:2::/64`` in RA (Router Advertisement) message through its ``eth1`` interface to
+other VMs on ``ipv4-int-network1``. The ``radvd`` daemon also advertises the routing information, which routes to
+``2001:db8:0:2::/64`` subnet, in RA (Router Advertisement) message through its ``eth0`` interface to ``eth1``
+interface of ``ipv6-router`` on ``ipv4-int-network2``.
 
 **********************************************************************************************************
 Boot Service VM (``vRouter``) with ``eth0`` on ``ipv4-int-network2`` and ``eth1`` on ``ipv4-int-network1``
 **********************************************************************************************************
 
-Let us boot the service VM (``vRouter``) ``eth0`` interface on ``ipv4-int-network2`` connecting to ``ipv6-router``,
+Let us boot the service VM (``vRouter``) with ``eth0`` interface on ``ipv4-int-network2`` connecting to ``ipv6-router``,
 and ``eth1`` interface on ``ipv4-int-network1`` connecting to ``ipv4-router``.
 
 **SETUP-SVM-19**: Boot the ``vRouter`` using ``Fedora20`` image on the OpenStack Compute Node with hostname
@@ -201,19 +203,16 @@ and ``eth1`` interface on ``ipv4-int-network1`` connecting to ``ipv4-router``.
 
 .. code-block:: bash
 
-    nova boot --image Fedora20 --flavor m1.small --user-data ./metadata.txt --availability-zone nova:opnfv-os-compute
---nic net-id=$(neutron net-list | grep -w ipv4-int-network2 | awk '{print $2}')
---nic net-id=$(neutron net-list | grep -w ipv4-int-network1 | awk '{print $2}') --key-name vRouterKey vRouter
+    nova boot --image Fedora20 --flavor m1.small --user-data ./metadata.txt --availability-zone nova:opnfv-os-compute --nic net-id=$(neutron net-list | grep -w ipv4-int-network2 | awk '{print $2}') --nic net-id=$(neutron net-list | grep -w ipv4-int-network1 | awk '{print $2}') --key-name vRouterKey vRouter
 
-**SETUP-SVM-20**: Verify that ``Fedora20`` image boots up successfully and the ssh keys are properly injected
+**SETUP-SVM-20**: Verify that ``Fedora20`` image boots up successfully and the ``ssh`` keys are properly injected
 
 .. code-block:: bash
 
     nova list
     nova console-log vRouter
 
-Please note that **it may take a few minutes** for the necessary packages to get installed and ``ssh``
-keys to be injected.
+Please note that **it may take a few minutes** for the necessary packages to get installed and ``ssh`` keys to be injected.
 
 .. code-block:: bash
 
@@ -239,17 +238,13 @@ options or via ``meta-data``.
 
 .. code-block:: bash
 
-    nova boot --image cirros-0.3.4-x86_64-uec --flavor m1.tiny --nic net-id=$(neutron net-list |
-grep -w ipv4-int-network1 | awk '{print $2}')
---availability-zone nova:opnfv-os-controller --key-name vRouterKey VM1
+    nova boot --image cirros-0.3.4-x86_64-uec --flavor m1.tiny --nic net-id=$(neutron net-list | grep -w ipv4-int-network1 | awk '{print $2}') --availability-zone nova:opnfv-os-controller --key-name vRouterKey VM1
 
 **SETUP-SVM-22**: Create VM2 on OpenStack Compute Node with hostname ``opnfv-os-compute``
 
 .. code-block:: bash
 
-    nova boot --image cirros-0.3.4-x86_64-uec --flavor m1.tiny --nic net-id=$(neutron net-list |
-grep -w ipv4-int-network1 | awk '{print $2}')
---availability-zone nova:opnfv-os-compute --key-name vRouterKey VM2
+    nova boot --image cirros-0.3.4-x86_64-uec --flavor m1.tiny --nic net-id=$(neutron net-list | grep -w ipv4-int-network1 | awk '{print $2}') --availability-zone nova:opnfv-os-compute --key-name vRouterKey VM2
 
 **SETUP-SVM-23**: Confirm that both the VMs are successfully booted.
 
@@ -314,7 +309,7 @@ message from ``vRouter``, and automatically add a downstream route pointing to t
     sysctl -w net.ipv6.conf.$router_interface.accept_ra_rt_info_max_plen=64
 
 **SETUP-SVM-29**: Please note that after the vRouter successfully initializes and starts sending RA (Router
-Advertisement) message (**SETUP-SVM-20**), you would see an IPv6 route to the ''2001:db8:0:2::/64'' prefix
+Advertisement) message (**SETUP-SVM-20**), you would see an IPv6 route to the ``2001:db8:0:2::/64`` prefix
 (subnet) reachable via LLA (Link Local Address) of ``eth0`` interface of the ``vRouter``. You can execute the
 following command to list the IPv6 routes.
 
