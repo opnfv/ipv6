@@ -3,6 +3,7 @@ Setting Up OpenStack Compute Node
 =================================
 
 For exemplary purpose, we assume:
+
 * The hostname of OpenStack Compute Node is ``opnfv-os-compute``
 * Ubuntu 14.04 is installed
 * We use ``opnfv`` as username to login.
@@ -27,13 +28,13 @@ For exemplary purpose, we assume:
 
    ``http://fpaste.org/276958/44395955/``
 
-**Note 1**: you need to change the IP address of ``SERVICE_HOST`` to
+   **Note 1**: you need to change the IP address of ``SERVICE_HOST`` to
 point to your actual IP address of OpenStack Controller.
 
-**Note 2**: you need to change the IP address of ``ODL_MGR_IP`` to
+   **Note 2**: you need to change the IP address of ``ODL_MGR_IP`` to
 point to your actual IP address of Open Daylight Controller.
 
-**Note 3**: You may have to change the value of
+   **Note 3**: You may have to change the value of
 ``ODL_PROVIDER_MAPPINGS`` and ``PUBLIC_INTERFACE`` to match your
 actual network interface.
 

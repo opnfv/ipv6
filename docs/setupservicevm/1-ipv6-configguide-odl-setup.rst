@@ -3,11 +3,11 @@ Setting Up Open Daylight Controller
 ===================================
 
 For exemplary purpose, we assume:
-* The hostname of Open Daylight Controller Node is ``opnfv-odl-
-controller``
+
+* The hostname of Open Daylight Controller Node is ``opnfv-odl-controller``
 * CentOS 7 is installed
 * We use ``opnfv`` as username to login.
-* Java 7 is installed in directory ``=/usr/lib/jvm/java-1.7.0-openjdk-1.7.0.85-2.6.1.2.el7_1.x86_64/``
+* Java 7 is installed in directory ``/usr/lib/jvm/java-1.7.0-openjdk-1.7.0.85-2.6.1.2.el7_1.x86_64/``
 
 **ODL-1**: Login to Open Daylight Controller Node with username ``opnfv``.
 
@@ -35,9 +35,10 @@ firewalld as well. **If you intend to use firewalld, please skip this step and d
 |   ``sudo yum install -y iptables-services``
 |   ``sudo touch /etc/sysconfig/iptables``
 |   ``sudo systemctl enable iptables.service``
-|   ``sudo systemctl start iptables.service ``
+|   ``sudo systemctl start iptables.service``
 |   ``sudo iptables -I INPUT 1 -i ens160 -j ACCEPT``
-|   ``sudo iptables -I INPUT -m state --state NEW -p tcp --dport 8181 -j ACCEPT # For ODL DLUX UI``
+|   ``# For ODL DLUX UI``
+|   ``sudo iptables -I INPUT -m state --state NEW -p tcp --dport 8181 -j ACCEPT``
 |   ``sudo iptables-save > /etc/sysconfig/iptables``
 
 **ODL-6**: Open a screen session.
@@ -52,8 +53,9 @@ Daylight is installed. Here we use ``odl`` directory name and
 
 **ODL-8**: Set the JAVA environment variables.
 
-|   ``export JAVA_HOME=/usr/lib/jvm/java-1.7.0-openjdk-1.7.0.85-2.6.1.2.el7_1.x86_64/jre``
-|   ``export PATH=$PATH:/usr/lib/jvm/java-1.7.0-openjdk-1.7.0.85-2.6.1.2.el7_1.x86_64/jre/bin``
+   ``export JAVA_HOME=/usr/lib/jvm/java-1.7.0-openjdk-1.7.0.85-2.6.1.2.el7_1.x86_64/jre``
+
+   ``export PATH=$PATH:/usr/lib/jvm/java-1.7.0-openjdk-1.7.0.85-2.6.1.2.el7_1.x86_64/jre/bin``
 
 **ODL-9**: Run the ``karaf`` shell.
 
@@ -83,7 +85,7 @@ feature.
 **ODL-13**: To enable ODL DLUX UI, install the following features.
 Then you can navigate to
 ``http://<opnfv-odl-controller IP address>:8181/index.html`` for DLUX
-UI. The default user-name and password is admin/admin.
+UI. The default user-name and password is ``admin/admin``.
 
     ``opendaylight-user@opnfv>feature:install odl-restconf odl-l2switch-switch odl-mdsal-apidocs odl-dlux-core``
 

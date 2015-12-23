@@ -3,8 +3,8 @@ Setting Up OpenStack Controller
 ===============================
 
 For exemplary purpose, we assume:
-* The hostname of OpenStack Controller Node is ``opnfv-os-
-controller``
+
+* The hostname of OpenStack Controller Node is ``opnfv-os-controller``
 * Ubuntu 14.04 is installed
 * We use ``opnfv`` as username to login.
 * We use ``devstack`` to install OpenStack Kilo
@@ -28,10 +28,10 @@ controller``
 
    ``http://fpaste.org/276949/39476214/``
 
-**Note 1**: you need to change the IP address of ``ODL_MGR_IP`` to
+   **Note 1**: you need to change the IP address of ``ODL_MGR_IP`` to
 point to your actual IP address of Open Daylight Controller.
 
-**Note 2**: You may have to change the value of
+   **Note 2**: You may have to change the value of
 ``ODL_PROVIDER_MAPPINGS`` and ``PUBLIC_INTERFACE`` to match your
 actual network interfaces.
 
@@ -41,7 +41,7 @@ actual network interfaces.
 
 **OS-N-7**: If the setup is successful you would see the following logs on the console. Please note
 that the IP addresses are all for the purpose of example. Your IP addresses will match the ones
-assigned during the installation of OPNFV B Release base platform in prior chapters.
+of your actual network interfaces.
 
 |   ``This is your host ip: <opnfv-os-controller IP address>``
 |   ``Horizon is now available at http://<opnfv-os-controller IP address>/``
