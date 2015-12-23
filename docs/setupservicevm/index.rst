@@ -17,8 +17,8 @@ Setting Up a Service VM as an IPv6 vRouter
    :maxdepth: 4
 
    0-ipv6-configguide-prep-infra.rst
-      1-ipv6-configguide-odl-setup.rst
+   1-ipv6-configguide-odl-setup.rst
    2-ipv6-configguide-os-controller.rst
-      3-ipv6-configguide-os-compute.rst
+   3-ipv6-configguide-os-compute.rst
    4-ipv6-configguide-servicevm.rst
-
+   test/index.rst
