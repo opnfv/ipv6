@@ -29,10 +29,9 @@ For exemplary purpose, we assume:
 
    ``http://fpaste.org/276949/39476214/``
 
-   **Note 1**: you need to change the IP address of ``ODL_MGR_IP`` to point to your actual IP address
+* Note 1: you need to change the IP address of ``ODL_MGR_IP`` to point to your actual IP address
 of Open Daylight Controller.
-
-   **Note 2**: You may have to change the value of ``ODL_PROVIDER_MAPPINGS`` and ``PUBLIC_INTERFACE``
+* Note 2: You may have to change the value of ``ODL_PROVIDER_MAPPINGS`` and ``PUBLIC_INTERFACE``
 to match your actual network interfaces.
 
 **OS-N-6**: Initiate Openstack setup by invoking ``stack.sh``
