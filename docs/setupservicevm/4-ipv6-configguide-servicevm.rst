@@ -110,8 +110,8 @@ your actual network**.
 
     neutron subnet-create --name ipv4-int-subnet1 --dns-nameserver 8.8.8.8 ipv4-int-network1 20.0.0.0/24
 
-Please note that the IP addresses in the command above are for exemplary purpose. **Please replace the IP addresses of your
-actual network**
+Please note that the IP addresses in the command above are for exemplary purpose. **Please replace the IP
+addresses of your actual network**
 
 **SETUP-SVM-10**: Associate the IPv4 internal subnet ``ipv4-int-subnet1`` to the Neutron router ``ipv4-router``.
 
@@ -183,11 +183,11 @@ IPv6 router functionality inside ``vRouter``
 
     http://fpaste.org/303942/50781923/
 
-Please note that this ``metadata.txt`` will enable the ``vRouter`` to automatically spawn a ``radvd`` daemon, which advertises
-its IPv6 subnet prefix ``2001:db8:0:2::/64`` in RA (Router Advertisement) message through its ``eth1`` interface to
-other VMs on ``ipv4-int-network1``. The ``radvd`` daemon also advertises the routing information, which routes to
-``2001:db8:0:2::/64`` subnet, in RA (Router Advertisement) message through its ``eth0`` interface to ``eth1``
-interface of ``ipv6-router`` on ``ipv4-int-network2``.
+Please note that this ``metadata.txt`` will enable the ``vRouter`` to automatically spawn a ``radvd`` daemon,
+which advertises its IPv6 subnet prefix ``2001:db8:0:2::/64`` in RA (Router Advertisement) message throughi
+its ``eth1`` interface to other VMs on ``ipv4-int-network1``. The ``radvd`` daemon also advertises the routingi
+information, which routes to ``2001:db8:0:2::/64`` subnet, in RA (Router Advertisement) message through its
+``eth0`` interface to ``eth1`` interface of ``ipv6-router`` on ``ipv4-int-network2``.
 
 **********************************************************************************************************
 Boot Service VM (``vRouter``) with ``eth0`` on ``ipv4-int-network2`` and ``eth1`` on ``ipv4-int-network1``
@@ -212,7 +212,8 @@ and ``eth1`` interface on ``ipv4-int-network1`` connecting to ``ipv4-router``.
     nova list
     nova console-log vRouter
 
-Please note that **it may take a few minutes** for the necessary packages to get installed and ``ssh`` keys to be injected.
+Please note that **it may take a few minutes** for the necessary packages to get installed and ``ssh``
+keys to be injected.
 
 .. code-block:: bash
 
