@@ -13,8 +13,9 @@ For exemplary purpose, we assume:
 
 **OS-N-2**: Update the packages and install git
 
-|   ``sudo apt-get update -y``
-|   ``sudo apt-get install -y git``
+   ``sudo apt-get update -y``
+
+   ``sudo apt-get install -y git``
 
 **OS-N-3**: Download devstack and switch to stable/kilo branch
 
@@ -28,12 +29,9 @@ For exemplary purpose, we assume:
 
    ``http://fpaste.org/276949/39476214/``
 
-   **Note 1**: you need to change the IP address of ``ODL_MGR_IP`` to
-point to your actual IP address of Open Daylight Controller.
+   **Note 1**: you need to change the IP address of ``ODL_MGR_IP`` to point to your actual IP address of Open Daylight Controller.
 
-   **Note 2**: You may have to change the value of
-``ODL_PROVIDER_MAPPINGS`` and ``PUBLIC_INTERFACE`` to match your
-actual network interfaces.
+   **Note 2**: You may have to change the value of ``ODL_PROVIDER_MAPPINGS`` and ``PUBLIC_INTERFACE`` to match your actual network interfaces.
 
 **OS-N-6**: Initiate Openstack setup by invoking ``stack.sh``
 
@@ -43,14 +41,13 @@ actual network interfaces.
 that the IP addresses are all for the purpose of example. Your IP addresses will match the ones
 of your actual network interfaces.
 
-|   ``This is your host ip: <opnfv-os-controller IP address>``
+   ``This is your host ip: <opnfv-os-controller IP address>``
 |   ``Horizon is now available at http://<opnfv-os-controller IP address>/``
 |   ``Keystone is serving at http://<opnfv-os-controller IP address>:5000/``
 |   ``The default users are: admin and demo``
 |   ``The password: password``
 
-**OS-N-8**: Assuming that all goes well, you can set ``OFFLINE=True`` and ``RECLONE=no`` in ``local.conf`` to lock the
-codebase. Devstack uses these configuration parameters to determine if it has to run with the existing codebase or
+**OS-N-8**: Assuming that all goes well, you can set ``OFFLINE=True`` and ``RECLONE=no`` in ``local.conf`` to lock the codebase. Devstack uses these configuration parameters to determine if it has to run with the existing codebase or
 update to the latest copy.
 
 **OS-N-9**: Source the credentials.
@@ -59,7 +56,7 @@ update to the latest copy.
 
 **OS-N-10**: Verify some commands to check if setup is working fine.
 
-|    ``opnfv@opnfv-os-controller:~/devstack$ nova flavor-list``
+    ``opnfv@opnfv-os-controller:~/devstack$ nova flavor-list``
 |    +----+-----------+-----------+------+-----------+------+-------+-------------+-----------+
 |    | ID | Name      | Memory_MB | Disk | Ephemeral | Swap | VCPUs | RXTX_Factor | Is_Public |
 |    +----+-----------+-----------+------+-----------+------+-------+-------------+-----------+

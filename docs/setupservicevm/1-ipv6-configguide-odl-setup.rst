@@ -30,16 +30,25 @@ Node. The objective is to allow all connections on the internal
 private network (ens160). The same objective can be achieved using
 firewalld as well. **If you intend to use firewalld, please skip this step and directly go to next step**:
 
-|   ``sudo systemctl stop firewalld.service``
-|   ``sudo yum remove -y firewalld``
-|   ``sudo yum install -y iptables-services``
-|   ``sudo touch /etc/sysconfig/iptables``
-|   ``sudo systemctl enable iptables.service``
-|   ``sudo systemctl start iptables.service``
-|   ``sudo iptables -I INPUT 1 -i ens160 -j ACCEPT``
-|   ``# For ODL DLUX UI``
-|   ``sudo iptables -I INPUT -m state --state NEW -p tcp --dport 8181 -j ACCEPT``
-|   ``sudo iptables-save > /etc/sysconfig/iptables``
+   ``sudo systemctl stop firewalld.service``
+
+   ``sudo yum remove -y firewalld``
+
+   ``sudo yum install -y iptables-services``
+
+   ``sudo touch /etc/sysconfig/iptables``
+
+   ``sudo systemctl enable iptables.service``
+
+   ``sudo systemctl start iptables.service``
+
+   ``sudo iptables -I INPUT 1 -i ens160 -j ACCEPT``
+
+   ``# For ODL DLUX UI``
+
+   ``sudo iptables -I INPUT -m state --state NEW -p tcp --dport 8181 -j ACCEPT``
+
+   ``sudo iptables-save > /etc/sysconfig/iptables``
 
 **ODL-6**: Open a screen session.
 
@@ -69,7 +78,8 @@ feature.
 
 **ODL-11**: Verify that OVSDB feature is installed successfully.
 
-|    ``opendaylight-user@opnfv>feature:list -i | grep ovsdb``
+    ``opendaylight-user@opnfv>feature:list -i | grep ovsdb``
+
 |    odl-ovsdb-openstack | 1.1.1-Lithium-SR1       | x  | ovsdb-1.1.1-Lithium-SR1 | OpenDaylight :: OVSDB :: OpenStack Network Virtual
 |    odl-ovsdb-southbound-api  | 1.1.1-Lithium-SR1 | x  | odl-ovsdb-southbound-1.1.1-Lithium-SR1 | OpenDaylight :: southbound :: api
 |    odl-ovsdb-southbound-impl | 1.1.1-Lithium-SR1 | x  | odl-ovsdb-southbound-1.1.1-Lithium-SR1 | OpenDaylight :: southbound :: impl
@@ -79,8 +89,9 @@ feature.
 
 **ODL-12**: To view the logs, you can use the following commands (or alternately the file data/log/karaf.log).
 
-|    ``opendaylight-user@opnfv>log:display``
-|    ``opendaylight-user@opnfv>log:tail``
+    ``opendaylight-user@opnfv>log:display``
+
+    ``opendaylight-user@opnfv>log:tail``
 
 **ODL-13**: To enable ODL DLUX UI, install the following features.
 Then you can navigate to

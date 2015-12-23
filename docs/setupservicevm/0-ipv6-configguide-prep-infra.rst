@@ -35,7 +35,7 @@ The underlay network topology of those 3 hosts are shown as follows in :numref:`
 
    Underlay Network Topology
 
-**Please note that the IP address shown in** ``:numref:`figure2```
+**Please note that the IP address shown in** :numref:`figure2`
 **are for exemplary purpose. You need to configure your public IP
 address connecting to Internet according to your actual network
 infrastructure. And you need to make sure the private IP address are
