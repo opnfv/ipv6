@@ -237,7 +237,8 @@ We are adding some static routes to the ``ipv6-router``. For whatever reason, if
 or dissociate the ``ipv6-router`` from ``ipv6-int-subnet2``, ``Neutron`` will not allow this operation because
 the static route requires the ``ipv6-int-subnet2`` subnet.
 
-In order to work around this issue, and to clear the static routes associated to the ``ipv6-router``, you may execute the following:
+In order to work around this issue, and to clear the static routes associated to the ``ipv6-router``,
+you may execute the following:
 
 .. code-block:: bash
 
