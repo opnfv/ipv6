@@ -16,4 +16,5 @@ Setting Up a Service VM as an IPv6 vRouter
    :numbered:
    :maxdepth: 4
 
+   5-ipv6-configguide-scenario-1-native-os.rst
    scenario-3.rst
