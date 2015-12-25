@@ -193,7 +193,7 @@ and ``eth1`` interface on ``ipv4-int-network1`` connecting to ``ipv4-router``.
 
 .. code-block:: bash
 
-    nova boot --image Fedora22 --flavor m1.small --user-data /opt/stack/opnfv_os_ipv6_poc/metadata.txt --availability-zone nova:opnfv-os-compute --nic port-id=$(neutron port-list | grep -w eth0-vRouter | awk '{print $2}') --nic port-id=$(neutron port-list | grep -w eth1-vRouter | awk '{print $2}') --key-name vRouterKey vRouter 
+    nova boot --image Fedora22 --flavor m1.small --user-data /opt/stack/opnfv_os_ipv6_poc/metadata.txt --availability-zone nova:opnfv-os-compute --nic port-id=$(neutron port-list | grep -w eth0-vRouter | awk '{print $2}') --nic port-id=$(neutron port-list | grep -w eth1-vRouter | awk '{print $2}') --key-name vRouterKey vRouter
 
 Please **note** that ``/opt/stack/opnfv_os_ipv6_poc/metadata.txt`` is used to enable the ``vRouter`` to automatically
 spawn a ``radvd``, and:
@@ -201,7 +201,7 @@ spawn a ``radvd``, and:
 internal interface (``eth1``).
 * Advertise RA (Router Advertisements) with just route information on its eth0 interface so that ``ipv6-router`` can
 automatically add a downstream route to subnet ``2001:db8:0:2::/64`` whose next hop would be the ``eth0`` interface
-of ``vRouter``. 
+of ``vRouter``.
 
 **SETUP-SVM-20**: Verify that ``Fedora22`` image boots up successfully and vRouter has ``ssh`` keys properly injected
 

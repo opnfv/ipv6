@@ -87,7 +87,7 @@ We assume the hostname is ``opnfv-os-compute``, and the host IP address is ``192
 .. code-block:: bash
 
     git clone https://github.com/openstack-dev/devstack.git -b stable/liberty
- 
+
 **OS-NATIVE-M-2**: Copy ``local.conf.compute`` to ``devstack`` as ``local.conf``
 
 .. code-block:: bash
