@@ -7,9 +7,9 @@ OpenStack Neutron in Kilo Official Release. The following table lists the use ca
 requirements of VIM-agnostic IPv6 functionality, including infrastructure layer and VNF
 (VM) layer, and its gap analysis with OpenStack Neutron in Kilo Official Release.
 
-+------------------------------------------------------+---------+------------------------------------------------------+
-|                                                      |Supported|                                                      |
-|                Use Case / Requirement                | in Kilo |                       Comments                       |
-|                                                      | Neutron |                                                      |
-+======================================================+=========+======================================================+
++-----------------------------------------------------+---------+------------------------------------------------------+
+|                                                     |Supported|                                                      |
+|               Use Case / Requirement                | in Kilo |                       Comments                       |
+|                                                     | Neutron |                                                      |
++=====================================================+=========+======================================================+
 

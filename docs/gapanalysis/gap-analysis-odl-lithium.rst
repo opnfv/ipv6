@@ -7,9 +7,9 @@ Open Daylight Lithium Official Release. The following table lists the use cases 
 requirements of VIM-agnostic IPv6 functionality, including infrastructure layer and VNF
 (VM) layer, and its gap analysis with Open Daylight Lithium Official Release.
 
-+------------------------------------------------------+---------+------------------------------------------------------+
-|                                                      |Supported|                                                      |
-|                Use Case / Requirement                | in ODL  |                       Comments                       |
-|                                                      | Lithium |                                                      |
-+======================================================+=========+======================================================+
++-----------------------------------------------------+---------+------------------------------------------------------+
+|                                                     |Supported|                                                      |
+|               Use Case / Requirement                | in ODL  |                       Comments                       |
+|                                                     | Lithium |                                                      |
++=====================================================+=========+======================================================+
 
