@@ -27,5 +27,7 @@ environment. There are three scenarios.
    :numbered:
    :maxdepth: 4
 
+   architecture-design.rst
    5-ipv6-configguide-scenario-1-native-os.rst
    scenario-2.rst
+   topology-after-setup.rst

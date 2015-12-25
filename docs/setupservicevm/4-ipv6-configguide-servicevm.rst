@@ -372,15 +372,3 @@ Congratulations, you have completed the setup of using a service VM to act as an
 open innovation by any 3rd-party. Please refer to relevant sections in User's Guide for further value-added services on
 this IPv6 vRouter.
 
-********************************************************
-Sample Network Topology of this Setup through Horizon UI
-********************************************************
-
-The sample network topology of above setup is shown in Horizon UI as follows :numref:`s2-figure3`:
-
-.. figure:: images/ipv6-sample-in-horizon.png
-   :name: s2-figure3
-   :width: 100%
-
-   Sample Network Topology in Horizon UI
-
