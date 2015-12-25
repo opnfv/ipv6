@@ -109,7 +109,7 @@ UI. The default user-name and password is ``admin/admin``.
 
 .. code-block:: bash
 
-    opendaylight-user@opnfv>feature:install odl-restconf odl-l2switch-switch odl-mdsal-apidocs odl-dlux-core
+    opendaylight-user@opnfv>feature:install odl-dlux-core
 
 **ODL-14**: To exit out of screen session, please use the command ``CTRL+a`` followed by ``d``
 

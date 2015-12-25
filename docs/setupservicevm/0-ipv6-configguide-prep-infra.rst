@@ -7,10 +7,10 @@ Architectural Design
 ********************
 
 The architectural design of using a service VM as an IPv6 vRouter is
-shown as follows in :numref:`figure1`:
+shown as follows in :numref:`s2-figure1`:
 
 .. figure:: images/ipv6-architecture.png
-   :name: figure1
+   :name: s2-figure1
    :width: 100%
 
    Architectural Design of Using a VM as an IPv6 vRouter
@@ -27,15 +27,15 @@ OpenStack Compute Node.
 For exemplary purpose, we give them hostnames ``opnfv-odl-controller``,
 ``opnfv-os-controller``, and ``opnfv-os-compute`` respectively.
 
-The underlay network topology of those 3 hosts are shown as follows in :numref:`figure2`:
+The underlay network topology of those 3 hosts are shown as follows in :numref:`s2-figure2`:
 
-.. figure:: images/ipv6-topology.png
-   :name: figure2
+.. figure:: images/ipv6-topology-scenario-2.png
+   :name: s2-figure2
    :width: 100%
 
-   Underlay Network Topology
+   Underlay Network Topology - Scenario 2
 
-**Please note that the IP address shown in** :numref:`figure2`
+**Please note that the IP address shown in** :numref:`s2-figure2`
 **are for exemplary purpose. You need to configure your public IP
 address connecting to Internet according to your actual network
 infrastructure. And you need to make sure the private IP address are

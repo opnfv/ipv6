@@ -2,21 +2,41 @@
 Setting Up OpenStack Controller
 ===============================
 
+Please **note** that the instructions shown here are using ``devstack`` installer. If you are an experienced
+user and installs OpenStack in a different way, you can skip this step and follow the instructions of the
+method you are using to install OpenStack.
+
 For exemplary purpose, we assume:
 
-* The hostname of OpenStack Controller Node is ``opnfv-os-controller``
-* Ubuntu 14.04 is installed
+* The hostname of OpenStack Controller Node is ``opnfv-os-controller``, and the host IP address is ``192.168.0.10``
+* Ubuntu 14.04 or Fedora 21 is installed
 * We use ``opnfv`` as username to login.
-* We use ``devstack`` to install OpenStack Kilo
+* We use ``devstack`` to install OpenStack Kilo. Please note that although the instructions are based on
+OpenStack Kilo, they can be applied to Liberty in the same way. 
 
-**OS-N-1**: Login to OpenStack Controller Node with username ``opnfv``
+**OS-N-0**: Login to OpenStack Controller Node with username ``opnfv``
 
-**OS-N-2**: Update the packages and install git
+**OS-N-1**: Update the packages and install git
+
+For **Ubuntu**:
 
 .. code-block:: bash
 
     sudo apt-get update -y
     sudo apt-get install -y git
+
+For **Fedora**:
+
+.. code-block:: bash
+
+    sudo yum update -y
+    sudo yum install -y git
+
+**OS-N-2**: Clone the following GitHub repository to get the configuration and metadata files
+
+.. code-block:: bash
+
+    git clone https://github.com/sridhargaddam/opnfv_os_ipv6_poc.git /opt/stack/opnfv_os_ipv6_poc
 
 **OS-N-3**: Download devstack and switch to stable/kilo branch
 
@@ -30,18 +50,14 @@ For exemplary purpose, we assume:
 
     cd ~/devstack
 
-**OS-N-5**: Create a ``local.conf`` file with the contents from the following URL.
+**OS-N-5**: Create a ``local.conf`` file from the GitHub repo we cloned at **OS-N-2**.
 
 .. code-block:: bash
 
-    http://fpaste.org/276949/39476214/
+    cp /opt/stack/opnfv_os_ipv6_poc/scenario2/local.conf.odl.controller ~/devstack/local.conf
 
-Please note:
-
-* Note 1: you need to change the IP address of ``ODL_MGR_IP`` to point to your actual IP address
-  of Open Daylight Controller.
-* Note 2: You may have to change the value of ``ODL_PROVIDER_MAPPINGS`` and ``PUBLIC_INTERFACE``
-  to match your actual network interfaces.
+Please **note** that you need to change the IP address of ``ODL_MGR_IP`` to point to your actual IP address
+of Open Daylight Controller.
 
 **OS-N-6**: Initiate Openstack setup by invoking ``stack.sh``
 
@@ -55,11 +71,14 @@ of your actual network interfaces.
 
 .. code-block:: bash
 
-    This is your host ip: <opnfv-os-controller IP address>
-    Horizon is now available at http://<opnfv-os-controller IP address>/
-    Keystone is serving at http://<opnfv-os-controller IP address>:5000/
+    This is your host IP address: 192.168.0.10
+    This is your host IPv6 address: ::1
+    Horizon is now available at http://192.168.0.10/
+    Keystone is serving at http://192.168.0.10:5000/
     The default users are: admin and demo
     The password: password
+
+Please **note** that The IP addresses above are exemplary purpose. It will show you the actual IP address of your host.
 
 **OS-N-8**: Assuming that all goes well, you can set ``OFFLINE=True`` and ``RECLONE=no`` in ``local.conf``
 to lock the codebase. Devstack uses these configuration parameters to determine if it has to run with

@@ -37,8 +37,8 @@ Because we need to manually create networks/subnets to achieve the IPv6 vRouter,
 ``devstack`` does not create any networks/subnets during the setup phase.
 
 In OpenStack Controller Node ``opnfv-os-controller``, ``eth1`` is configured to provide external/public connectivity
-for both IPv4 and IPv6. So let us add this interface to ``br-ex`` and move the IP address, including the default route
-from ``eth1`` to ``br-ex``.
+for both IPv4 and IPv6 (optional). So let us add this interface to ``br-ex`` and move the IP address, including the
+default route from ``eth1`` to ``br-ex``.
 
 **SETUP-SVM-3**: Add ``eth1`` to ``br-ex`` and move the IP address and the default route from ``eth1`` to ``br-ex``
 
@@ -112,9 +112,6 @@ your actual network**.
 
     neutron subnet-create --name ipv4-int-subnet1 --dns-nameserver 8.8.8.8 ipv4-int-network1 20.0.0.0/24
 
-Please note that the IP addresses in the command above are for exemplary purpose. **Please replace the
-IP addresses of your actual network**
-
 **SETUP-SVM-10**: Associate the IPv4 internal subnet ``ipv4-int-subnet1`` to the Neutron router ``ipv4-router``.
 
 .. code-block:: bash
@@ -153,9 +150,6 @@ IPv6 router.
 
     neutron subnet-create --name ipv4-int-subnet2 --dns-nameserver 8.8.8.8 ipv4-int-network2 10.0.0.0/24
 
-Please note that the IP addresses in the command above are for exemplary purpose. **Please replace the IP addresses of
-your actual network**
-
 **SETUP-SVM-15**: Associate the IPv4 internal subnet ``ipv4-int-subnet2`` to the Neutron router ``ipv6-router``.
 
 .. code-block:: bash
@@ -166,11 +160,11 @@ your actual network**
 Prepare Image, Metadata and Keypair for Service VM
 **************************************************
 
-**SETUP-SVM-16**: Download ``fedora20`` image which would be used as ``vRouter``
+**SETUP-SVM-16**: Download ``fedora22`` image which would be used as ``vRouter``
 
 .. code-block:: bash
 
-    glance image-create --name 'Fedora20' --disk-format qcow2 --container-format bare --is-public true --copy-from http://cloud.fedoraproject.org/fedora-20.x86_64.qcow2
+    glance image-create --name 'Fedora22' --disk-format qcow2 --container-format bare --is-public true --copy-from https://download.fedoraproject.org/pub/fedora/linux/releases/22/Cloud/x86_64/Images/Fedora-Cloud-Base-22-20150521.x86_64.qcow2
 
 **SETUP-SVM-17**: Create a keypair
 
@@ -178,18 +172,14 @@ Prepare Image, Metadata and Keypair for Service VM
 
     nova keypair-add vRouterKey > ~/vRouterKey
 
-**SETUP-SVM-18**: Copy the contents from the following url to ``metadata.txt``, i.e. preparing metadata which enables
-IPv6 router functionality inside ``vRouter``
+**SETUP-SVM-18**: Create ports for ``vRouter`` and both the VMs with some specific MAC addresses.
 
 .. code-block:: bash
 
-    http://fpaste.org/303942/50781923/
-
-Please note that this ``metadata.txt`` will enable the ``vRouter`` to automatically spawn a ``radvd`` daemon,
-which advertises its IPv6 subnet prefix ``2001:db8:0:2::/64`` in RA (Router Advertisement) message through
-its ``eth1`` interface to other VMs on ``ipv4-int-network1``. The ``radvd`` daemon also advertises the routing
-information, which routes to ``2001:db8:0:2::/64`` subnet, in RA (Router Advertisement) message through its
-``eth0`` interface to ``eth1`` interface of ``ipv6-router`` on ``ipv4-int-network2``.
+    neutron port-create --name eth0-vRouter --mac-address fa:16:3e:11:11:11 ipv4-int-network2
+    neutron port-create --name eth1-vRouter --mac-address fa:16:3e:22:22:22 ipv4-int-network1
+    neutron port-create --name eth0-VM1 --mac-address fa:16:3e:33:33:33 ipv4-int-network1
+    neutron port-create --name eth0-VM2 --mac-address fa:16:3e:44:44:44 ipv4-int-network1
 
 **********************************************************************************************************
 Boot Service VM (``vRouter``) with ``eth0`` on ``ipv4-int-network2`` and ``eth1`` on ``ipv4-int-network1``
@@ -198,14 +188,22 @@ Boot Service VM (``vRouter``) with ``eth0`` on ``ipv4-int-network2`` and ``eth1`
 Let us boot the service VM (``vRouter``) with ``eth0`` interface on ``ipv4-int-network2`` connecting to ``ipv6-router``,
 and ``eth1`` interface on ``ipv4-int-network1`` connecting to ``ipv4-router``.
 
-**SETUP-SVM-19**: Boot the ``vRouter`` using ``Fedora20`` image on the OpenStack Compute Node with hostname
+**SETUP-SVM-19**: Boot the ``vRouter`` using ``Fedora22`` image on the OpenStack Compute Node with hostname
 ``opnfv-os-compute``
 
 .. code-block:: bash
 
-    nova boot --image Fedora20 --flavor m1.small --user-data ./metadata.txt --availability-zone nova:opnfv-os-compute --nic net-id=$(neutron net-list | grep -w ipv4-int-network2 | awk '{print $2}') --nic net-id=$(neutron net-list | grep -w ipv4-int-network1 | awk '{print $2}') --key-name vRouterKey vRouter
+    nova boot --image Fedora22 --flavor m1.small --user-data /opt/stack/opnfv_os_ipv6_poc/metadata.txt --availability-zone nova:opnfv-os-compute --nic port-id=$(neutron port-list | grep -w eth0-vRouter | awk '{print $2}') --nic port-id=$(neutron port-list | grep -w eth1-vRouter | awk '{print $2}') --key-name vRouterKey vRouter 
 
-**SETUP-SVM-20**: Verify that ``Fedora20`` image boots up successfully and the ``ssh`` keys are properly injected
+Please **note** that ``/opt/stack/opnfv_os_ipv6_poc/metadata.txt`` is used to enable the ``vRouter`` to automatically
+spawn a ``radvd``, and:
+* Act as an IPv6 vRouter which advertises the RA (Router Advertisements) with prefix ``2001:db8:0:2::/64`` on its
+internal interface (``eth1``).
+* Advertise RA (Router Advertisements) with just route information on its eth0 interface so that ``ipv6-router`` can
+automatically add a downstream route to subnet ``2001:db8:0:2::/64`` whose next hop would be the ``eth0`` interface
+of ``vRouter``. 
+
+**SETUP-SVM-20**: Verify that ``Fedora22`` image boots up successfully and vRouter has ``ssh`` keys properly injected
 
 .. code-block:: bash
 
@@ -239,13 +237,13 @@ options or via ``meta-data``.
 
 .. code-block:: bash
 
-    nova boot --image cirros-0.3.4-x86_64-uec --flavor m1.tiny --nic net-id=$(neutron net-list | grep -w ipv4-int-network1 | awk '{print $2}') --availability-zone nova:opnfv-os-controller --key-name vRouterKey VM1
+    nova boot --image cirros-0.3.4-x86_64-uec --flavor m1.tiny --nic port-id=$(neutron port-list | grep -w eth0-VM1 | awk '{print $2}') --availability-zone nova:opnfv-os-controller --key-name vRouterKey --user-data /opt/stack/opnfv_os_ipv6_poc/set_mtu.sh VM1
 
 **SETUP-SVM-22**: Create VM2 on OpenStack Compute Node with hostname ``opnfv-os-compute``
 
 .. code-block:: bash
 
-    nova boot --image cirros-0.3.4-x86_64-uec --flavor m1.tiny --nic net-id=$(neutron net-list | grep -w ipv4-int-network1 | awk '{print $2}') --availability-zone nova:opnfv-os-compute --key-name vRouterKey VM2
+    nova boot --image cirros-0.3.4-x86_64-uec --flavor m1.tiny --nic port-id=$(neutron port-list | grep -w eth0-VM2 | awk '{print $2}') --availability-zone nova:opnfv-os-compute --key-name vRouterKey --user-data /opt/stack/opnfv_os_ipv6_poc/set_mtu.sh VM2
 
 **SETUP-SVM-23**: Confirm that both the VMs are successfully booted.
 
@@ -276,29 +274,16 @@ Now let us configure the IPv6 address on the <qr-xxx> interface.
     router_interface=$(ip a s | grep -w "global qr-*" | awk '{print $7}')
     ip -6 addr add 2001:db8:0:1::1 dev $router_interface
 
-**SETUP-SVM-26**: Copy the following contents to some file, e.g. ``/tmp/br-ex.radvd.conf``
+**SETUP-SVM-26**: Update the file ``/opt/stack/opnfv_os_ipv6_poc/scenario2/radvd.conf`` with ``$router_interface``,
+i.e. replace ``$router_interface`` with the ``qr-xxx`` interface.
+
+**SETUP-SVM-27**: Spawn a ``radvd`` daemon to simulate an external router. This ``radvd`` daemon advertises an IPv6
+subnet prefix of ``2001:db8:0:1::/64`` using RA (Router Advertisement) on its $router_interface so that ``eth0``
+interface of ``vRouter`` automatically configures an IPv6 SLAAC address.
 
 .. code-block:: bash
 
-    interface $router_interface
-      {
-         AdvSendAdvert on;
-         MinRtrAdvInterval 3;
-         MaxRtrAdvInterval 10;
-         prefix 2001:db8:0:1::/64
-           {
-              AdvOnLink on;
-              AdvAutonomous on;
-           };
-      };
-
-**SETUP-SVM-27**: Spawn a ``radvd`` daemon to simulate an external router. This ``radvd`` daemon advertises its
-IPv6 subnet prefix ``2001:db8:0:1::/64`` in RA (Router Advertisement) message through its ``eth1`` interface to
-``eth0`` interface of ``vRouter`` on ``ipv4-int-network2``.
-
-.. code-block:: bash
-
-    $radvd -C /tmp/br-ex.radvd.conf -p /tmp/br-ex.pid.radvd -m syslog
+    $radvd -C /opt/stack/opnfv_os_ipv6_poc/scenario2/radvd.conf -p /tmp/br-ex.pid.radvd -m syslog
 
 **SETUP-SVM-28**: Configure the ``$router_interface`` process entries to process the RA (Router Advertisement)
 message from ``vRouter``, and automatically add a downstream route pointing to the LLA (Link Local Address) of
@@ -311,12 +296,26 @@ message from ``vRouter``, and automatically add a downstream route pointing to t
 
 **SETUP-SVM-29**: Please note that after the vRouter successfully initializes and starts sending RA (Router
 Advertisement) message (**SETUP-SVM-20**), you would see an IPv6 route to the ``2001:db8:0:2::/64`` prefix
-(subnet) reachable via LLA (Link Local Address) of ``eth0`` interface of the ``vRouter``. You can execute the
-following command to list the IPv6 routes.
+(subnet) reachable via LLA (Link Local Address) ``fe80::f816:3eff:fe11:1111`` of ``eth0`` interface of the
+``vRouter``. You can execute the following command to list the IPv6 routes.
 
 .. code-block:: bash
 
     ip -6 route show
+    2001:db8:0:1::1 dev qr-42968b9e-62  proto kernel  metric 256
+    2001:db8:0:1::/64 dev qr-42968b9e-62  proto kernel  metric 256  expires 86384sec
+    2001:db8:0:2::/64 via fe80::f816:3eff:fe11:1111 dev qr-42968b9e-62  proto ra  metric 1024  expires 29sec
+    fe80::/64 dev qg-3736e0c7-7c  proto kernel  metric 256
+    fe80::/64 dev qr-42968b9e-62  proto kernel  metric 256
+
+**SETUP-SVM-30**: If all goes well, the IPv6 addresses assigned to the VMs would be as shown as follows:
+
+.. code-block:: bash
+
+    vRouter eth0 interface would have the following IPv6 address: 2001:db8:0:1:f816:3eff:fe11:1111/64
+    vRouter eth1 interface would have the following IPv6 address: 2001:db8:0:2::1/64
+    VM1 would have the following IPv6 address: 2001:db8:0:2:f816:3eff:fe33:3333/64
+    VM2 would have the following IPv6 address: 2001:db8:0:2:f816:3eff:fe44:4444/64
 
 ********************************
 Testing to Verify Setup Complete
@@ -327,7 +326,7 @@ using ``SLAAC`` with prefix ``2001:db8:0:2::/64`` from ``vRouter``.
 
 Please note that you need to get the IPv4 address associated to VM1. This can be inferred from ``nova list`` command.
 
-**SETUP-SVM-30**: ``ssh`` VM1
+**SETUP-SVM-31**: ``ssh`` VM1
 
 .. code-block:: bash
 
@@ -336,13 +335,13 @@ Please note that you need to get the IPv4 address associated to VM1. This can be
 If everything goes well, ``ssh`` will be successful and you will be logged into VM1. Run some commands to verify
 that IPv6 addresses are configured on ``eth0`` interface.
 
-**SETUP-SVM-31**: Show an IPv6 address with a prefix of ``2001:db8:0:2::/64``
+**SETUP-SVM-32**: Show an IPv6 address with a prefix of ``2001:db8:0:2::/64``
 
 .. code-block:: bash
 
     ip address show
 
-**SETUP-SVM-32**: ping some external IPv6 address, e.g. ``ipv6-router``
+**SETUP-SVM-33**: ping some external IPv6 address, e.g. ``ipv6-router``
 
 .. code-block:: bash
 
@@ -351,7 +350,7 @@ that IPv6 addresses are configured on ``eth0`` interface.
 If the above ping6 command succeeds, it implies that ``vRouter`` was able to successfully forward the IPv6 traffic
 to reach external ``ipv6-router``.
 
-**SETUP-SVM-33**: When all tests show that the setup works as expected, You can now exit the ``ipv6-router`` namespace.
+**SETUP-SVM-34**: When all tests show that the setup works as expected, You can now exit the ``ipv6-router`` namespace.
 
 .. code-block:: bash
 
@@ -369,10 +368,10 @@ this IPv6 vRouter.
 Sample Network Topology of this Setup through Horizon UI
 ********************************************************
 
-The sample network topology of above setup is shown in Horizon UI as follows :numref:`figure3`:
+The sample network topology of above setup is shown in Horizon UI as follows :numref:`s2-figure3`:
 
 .. figure:: images/ipv6-sample-in-horizon.png
-   :name: figure3
+   :name: s2-figure3
    :width: 100%
 
    Sample Network Topology in Horizon UI

@@ -2,21 +2,41 @@
 Setting Up OpenStack Compute Node
 =================================
 
+Please **note** that the instructions shown here are using ``devstack`` installer. If you are an experienced user
+and installs OpenStack in a different way, you can skip this step and follow the instructions of the method you
+are using to install OpenStack.
+
 For exemplary purpose, we assume:
 
-* The hostname of OpenStack Compute Node is ``opnfv-os-compute``
-* Ubuntu 14.04 is installed
+* The hostname of OpenStack Compute Node is ``opnfv-os-compute``, and the host IP address is ``192.168.0.20``
+* Ubuntu 14.04 or Fedora 21 is installed
 * We use ``opnfv`` as username to login.
-* We use ``devstack`` to install OpenStack Kilo
+* We use ``devstack`` to install OpenStack Kilo. Please note that although the instructions are based on
+OpenStack Kilo, they can be applied to Liberty in the same way.
 
-**OS-M-1**: Login to OpenStack Compute Node with username ``opnfv``
+**OS-M-0**: Login to OpenStack Compute Node with username ``opnfv``
 
-**OS-M-2**: Update the packages and install git
+**OS-M-1**: Update the packages and install git
+
+For **Ubuntu**:
 
 .. code-block:: bash
 
     sudo apt-get update -y
     sudo apt-get install -y git
+
+For **Fedora**:
+
+.. code-block:: bash
+
+    sudo yum update -y
+    sudo yum install -y git
+
+**OS-M-2**: Clone the following GitHub repository to get the configuration and metadata files
+
+.. code-block:: bash
+
+    git clone https://github.com/sridhargaddam/opnfv_os_ipv6_poc.git /opt/stack/opnfv_os_ipv6_poc
 
 **OS-M-3**: Download devstack and switch to stable/kilo branch
 
@@ -30,11 +50,11 @@ For exemplary purpose, we assume:
 
     cd ~/devstack
 
-**OS-M-5**: Create a ``local.conf`` file with the contents from the following URL.
+**OS-M-5**: Create a ``local.conf`` file from the GitHub repo we cloned at **OS-M-2**.
 
 .. code-block:: bash
 
-    http://fpaste.org/276958/44395955/
+    cp /opt/stack/opnfv_os_ipv6_poc/scenario2/local.conf.odl.compute ~/devstack/local.conf
 
 Please Note:
 
@@ -42,8 +62,6 @@ Please Note:
   of OpenStack Controller.
 * Note 2: you need to change the IP address of ``ODL_MGR_IP`` to point to your actual IP address
   of Open Daylight Controller.
-* Note 3: You may have to change the value of ``ODL_PROVIDER_MAPPINGS`` and ``PUBLIC_INTERFACE``
-  to match your actual network interface.
 
 **OS-M-6**: Initiate Openstack setup by invoking ``stack.sh``
 
@@ -51,29 +69,34 @@ Please Note:
 
     ./stack.sh
 
-**OS-M-7**: Assuming that all goes well, you can set ``OFFLINE=True`` and ``RECLONE=no`` in ``local.conf``
-to lock the codebase. Devstack uses these configuration parameters to determine if it has to run with
-the existing codebase or update to the latest copy.
+**OS-M-7**: Assuming that all goes well, you should see the following output.
+
+.. code-block:: bash
+
+    This is your host IP address: 192.168.0.20
+    This is your host IPv6 address: ::1
+
+Please **note** that The IP addresses above are exemplary purpose. It will show you the actual IP address of your host.
+
+You can set ``OFFLINE=True`` and ``RECLONE=no`` in ``local.conf`` to lock the codebase. Devstack uses these
+configuration parameters to determine if it has to run with the existing codebase or update to the latest copy.
 
 **OS-M-8**: Source the credentials.
 
 .. code-block:: bash
 
-    opnfv@opnfv-os-controller:~/devstack$ source openrc admin demo
+    opnfv@opnfv-os-compute:~/devstack$ source openrc admin demo
 
-**OS-M-9**: Verify some commands to check if setup is working fine.
+**OS-M-9**: You can verify that OpenStack is set up correctly by showing hypervisor list
 
 .. code-block:: bash
 
-    opnfv@opnfv-os-controller:~/devstack$ nova flavor-list
-    +----+-----------+-----------+------+-----------+------+-------+-------------+-----------+
-    | ID | Name      | Memory_MB | Disk | Ephemeral | Swap | VCPUs | RXTX_Factor | Is_Public |
-    +----+-----------+-----------+------+-----------+------+-------+-------------+-----------+
-    | 1  | m1.tiny   | 512       | 1    | 0         |      | 1     | 1.0         | True      |
-    | 2  | m1.small  | 2048      | 20   | 0         |      | 1     | 1.0         | True      |
-    | 3  | m1.medium | 4096      | 40   | 0         |      | 2     | 1.0         | True      |
-    | 4  | m1.large  | 8192      | 80   | 0         |      | 4     | 1.0         | True      |
-    | 5  | m1.xlarge | 16384     | 160  | 0         |      | 8     | 1.0         | True      |
-    +----+-----------+-----------+------+-----------+------+-------+-------------+-----------+
+    opnfv@opnfv-os-compute:~/devstack$ nova hypervisor-list
+    +----+------------------------------------+---------+------------+
+    | ID  | Hypervisor hostname      | State  | Status  |
+    +----+------------------------------------+---------+------------+
+    | 1   | opnfv-os-controller      | up     | enabled |
+    | 2   | opnfv-os-compute         | up     | enabled |
+    +----+------------------------------------+---------+------------+
 
 Now you can start to set up the service VM as an IPv6 vRouter in the environment of OpenStack and Open Daylight.
