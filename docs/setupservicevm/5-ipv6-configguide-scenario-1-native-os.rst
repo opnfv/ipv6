@@ -95,7 +95,7 @@ We assume the hostname is ``opnfv-os-compute``, and the host IP address is ``192
     cp /opt/stack/opnfv_os_ipv6_poc/local.conf.compute ~/devstack/local.conf
 
 Please **note** that you need to change the IP address of ``SERVICE_HOST`` to point to your actual IP
-address of OpenStack Controller 
+address of OpenStack Controller
 
 **OS-NATIVE-M-3**: If you want to modify any ``devstack`` configuration, update ``local.conf`` now.
 
@@ -226,6 +226,8 @@ below are for exemplary purpose. **Please replace them with the IP addresses of 
     192.168.0.0/24 dev eth0  proto kernel  scope link  src 192.168.0.10
     192.168.122.0/24 dev virbr0  proto kernel  scope link  src 192.168.122.1
     198.59.156.0/24 dev br-ex  proto kernel  scope link  src 198.59.156.113
+
+Please note that the IP addresses above are exemplary purpose.
 
 **OS-NATIVE-SETUP-8**: Create Neutron networks ``ipv4-int-network1`` and ``ipv6-int-network2``
 with port_security disabled

@@ -1,6 +1,6 @@
-===================================
-Setting Up Open Daylight Controller
-===================================
+========================================
+Setting Up Open Daylight Controller Node
+========================================
 
 For exemplary purpose, we assume:
 

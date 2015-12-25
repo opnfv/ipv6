@@ -4,9 +4,11 @@ Setting Up a Service VM as an IPv6 vRouter
 
 Now we can start to set up a service VM as an IPv6 vRouter. For exemplary purpose, we assume:
 
-* The hostname of  Open Daylight Controller Node is ``opnfv-odl-controller``
-* The hostname of OpenStack Controller Node is ``opnfv-os-controller``
-* The hostname of OpenStack Compute Node is ``opnfv-os-compute``
+* The hostname of  Open Daylight Controller Node is ``opnfv-odl-controller``, and the host IP address is
+  ``192.168.0.30``
+* The hostname of OpenStack Controller Node is ``opnfv-os-controller``, and the host IP address
+  is ``192.168.0.10``
+* The hostname of OpenStack Compute Node is ``opnfv-os-compute``, and the host IP address is ``192.168.0.20``
 * We use ``opnfv`` as username to login.
 * We use ``devstack`` to install OpenStack Kilo, and the directory is ``~/devstack``
 * Note: all IP addresses as shown below are for exemplary purpose.
@@ -53,9 +55,9 @@ default route from ``eth1`` to ``br-ex``.
 
 Please note that:
 
-* Please note that the IP address ``198.59.156.113`` and related subnet and gateway addressed in the command
+* The IP address ``198.59.156.113`` and related subnet and gateway addressed in the command
   below are for exemplary purpose. **Please replace them with the IP addresses of your actual network**.
-* **this can be automated in /etc/network/interfaces**.
+* **This can be automated in /etc/network/interfaces**.
 
 **SETUP-SVM-4**: Verify that ``br-ex`` now has the original external IP address, and that the default route is on
 ``br-ex``

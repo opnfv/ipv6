@@ -1,6 +1,6 @@
-===============================
-Setting Up OpenStack Controller
-===============================
+====================================
+Setting Up OpenStack Controller Node
+====================================
 
 Please **note** that the instructions shown here are using ``devstack`` installer. If you are an experienced
 user and installs OpenStack in a different way, you can skip this step and follow the instructions of the
