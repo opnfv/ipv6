@@ -13,15 +13,15 @@ an IPv6 vRouter in OPNFV environment, i.e. integrated OpenStack with Open Daylig
 environment. There are three scenarios.
 
 * Scenario 1 is pre-OPNFV environment, i.e. a native OpenStack environment
-without Open Daylight Controller.
+  without Open Daylight Controller.
 * Scenario 2 is an OPNFV environment where OpenStack is integrated with
-Open Daylight Official Lithium Release. In this setup we use ODL for "Layer 2 connectivity"
-and Neutron L3 agent for "Layer 3 routing". Because of a bug, which got fixed recently
-and is not part of ODL SR3, we will have to manually execute certain commands to simulate
-an external IPv6 Router in this setup.
+  Open Daylight Official Lithium Release. In this setup we use ODL for "Layer 2 connectivity"
+  and Neutron L3 agent for "Layer 3 routing". Because of a bug, which got fixed recently
+  and is not part of ODL SR3, we will have to manually execute certain commands to simulate
+  an external IPv6 Router in this setup.
 * Scenario 3 is similar to Scenario 2. However, we use an Open Daylight Lithium
-controller which is built from the latest stable/Lithium branch which includes the fix.
-In this scenario, we can fully automate the setup similar to Scenario 1.
+  controller which is built from the latest stable/Lithium branch which includes the fix.
+  In this scenario, we can fully automate the setup similar to Scenario 1.
 
 .. toctree::
    :numbered:

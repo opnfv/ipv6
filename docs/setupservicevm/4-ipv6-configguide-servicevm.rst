@@ -44,14 +44,18 @@ default route from ``eth1`` to ``br-ex``.
 
 .. code-block:: bash
 
-    sudo ip addr del <External IP address of opnfv-os-controller> dev eth1
+    sudo ip addr del 198.59.156.113/24 dev eth1
     sudo ovs-vsctl add-port br-ex eth1
     sudo ifconfig eth1 up
-    sudo ip addr add <External IP address of opnfv-os-controller> dev br-ex
+    sudo ip addr add 198.59.156.113/24 dev br-ex
     sudo ifconfig br-ex up
-    sudo ip route add default via <Default gateway IP address of opnfv-os-controller> dev br-ex
+    sudo ip route add default via 198.59.156.1 dev br-ex
 
-Please note that **this can be automated in /etc/network/interfaces**.
+Please note that:
+
+* Please note that the IP address ``198.59.156.113`` and related subnet and gateway addressed in the command
+  below are for exemplary purpose. **Please replace them with the IP addresses of your actual network**.
+* **this can be automated in /etc/network/interfaces**.
 
 **SETUP-SVM-4**: Verify that ``br-ex`` now has the original external IP address, and that the default route is on
 ``br-ex``
@@ -65,9 +69,10 @@ Please note that **this can be automated in /etc/network/interfaces**.
            valid_lft forever preferred_lft forever
         inet6 fe80::543e:28ff:fe70:4426/64 scope link
            valid_lft forever preferred_lft forever
+    opnfv@opnfv-os-controller:~/devstack$
     opnfv@opnfv-os-controller:~/devstack$ ip route
     default via 198.59.156.1 dev br-ex
-    10.134.156.0/24 dev eth0  proto kernel  scope link  src 10.134.156.113
+    192.168.0.0/24 dev eth0  proto kernel  scope link  src 192.168.0.10
     192.168.122.0/24 dev virbr0  proto kernel  scope link  src 192.168.122.1
     198.59.156.0/24 dev br-ex  proto kernel  scope link  src 198.59.156.113
 
@@ -197,11 +202,12 @@ and ``eth1`` interface on ``ipv4-int-network1`` connecting to ``ipv4-router``.
 
 Please **note** that ``/opt/stack/opnfv_os_ipv6_poc/metadata.txt`` is used to enable the ``vRouter`` to automatically
 spawn a ``radvd``, and:
+
 * Act as an IPv6 vRouter which advertises the RA (Router Advertisements) with prefix ``2001:db8:0:2::/64`` on its
-internal interface (``eth1``).
+  internal interface (``eth1``).
 * Advertise RA (Router Advertisements) with just route information on its eth0 interface so that ``ipv6-router`` can
-automatically add a downstream route to subnet ``2001:db8:0:2::/64`` whose next hop would be the ``eth0`` interface
-of ``vRouter``.
+  automatically add a downstream route to subnet ``2001:db8:0:2::/64`` whose next hop would be the ``eth0`` interface
+  of ``vRouter``.
 
 **SETUP-SVM-20**: Verify that ``Fedora22`` image boots up successfully and vRouter has ``ssh`` keys properly injected
 
@@ -295,7 +301,7 @@ message from ``vRouter``, and automatically add a downstream route pointing to t
     sysctl -w net.ipv6.conf.$router_interface.accept_ra_rt_info_max_plen=64
 
 **SETUP-SVM-29**: Please note that after the vRouter successfully initializes and starts sending RA (Router
-Advertisement) message (**SETUP-SVM-20**), you would see an IPv6 route to the ``2001:db8:0:2::/64`` prefix
+Advertisement) message, you would see an IPv6 route to the ``2001:db8:0:2::/64`` prefix
 (subnet) reachable via LLA (Link Local Address) ``fe80::f816:3eff:fe11:1111`` of ``eth0`` interface of the
 ``vRouter``. You can execute the following command to list the IPv6 routes.
 

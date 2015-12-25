@@ -12,7 +12,7 @@ For exemplary purpose, we assume:
 * Ubuntu 14.04 or Fedora 21 is installed
 * We use ``opnfv`` as username to login.
 * We use ``devstack`` to install OpenStack Kilo. Please note that although the instructions are based on
-OpenStack Kilo, they can be applied to Liberty in the same way.
+  OpenStack Kilo, they can be applied to Liberty in the same way.
 
 **OS-M-0**: Login to OpenStack Compute Node with username ``opnfv``
 

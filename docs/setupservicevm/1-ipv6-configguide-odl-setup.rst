@@ -4,7 +4,8 @@ Setting Up Open Daylight Controller
 
 For exemplary purpose, we assume:
 
-* The hostname of Open Daylight Controller Node is ``opnfv-odl-controller``
+* The hostname of Open Daylight Controller Node is ``opnfv-odl-controller``, and the host IP address is
+  ``192.168.0.30``
 * CentOS 7 is installed
 * We use ``opnfv`` as username to login.
 * Java 7 is installed in directory ``/usr/lib/jvm/java-1.7.0-openjdk-1.7.0.85-2.6.1.2.el7_1.x86_64/``

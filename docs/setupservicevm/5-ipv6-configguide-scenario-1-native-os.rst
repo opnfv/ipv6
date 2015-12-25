@@ -10,7 +10,7 @@ For exemplary purpose, we assume:
 
 * A two-node setup of OpenStack environment is used as shown in :numref:`s1-figure1`
 * The hostname of OpenStack Controller+Network+Compute Node is ``opnfv-os-controller``, and the host IP address
-is ``192.168.0.10``
+  is ``192.168.0.10``
 * The hostname of OpenStack Compute Node is ``opnfv-os-compute``, and the host IP address is ``192.168.0.20``
 * Ubuntu 14.04 is installed
 * We use ``opnfv`` as username to login.
@@ -54,7 +54,7 @@ We assume the hostname is ``opnfv-os-controller``, and the host IP address is ``
 
 .. code-block:: bash
 
-    cp /opt/stack/local.conf.controller ~/devstack/local.conf
+    cp /opt/stack/opnfv_os_ipv6_poc/local.conf.controller ~/devstack/local.conf
 
 **OS-NATIVE-N-3**: If you want to modify any ``devstack`` configuration, update ``local.conf`` now.
 
@@ -92,7 +92,10 @@ We assume the hostname is ``opnfv-os-compute``, and the host IP address is ``192
 
 .. code-block:: bash
 
-    cp /opt/stack/local.conf.compute ~/devstack/local.conf
+    cp /opt/stack/opnfv_os_ipv6_poc/local.conf.compute ~/devstack/local.conf
+
+Please **note** that you need to change the IP address of ``SERVICE_HOST`` to point to your actual IP
+address of OpenStack Controller 
 
 **OS-NATIVE-M-3**: If you want to modify any ``devstack`` configuration, update ``local.conf`` now.
 
@@ -151,7 +154,7 @@ instructions to verify that Security Groups are disabled, and configuration matc
     firewall_driver = nova.virt.firewall.NoopFirewallDriver
 
 *********************************
-Set Up Service VM as Ipv6 vRouter
+Set Up Service VM as IPv6 vRouter
 *********************************
 
 **OS-NATIVE-SETUP-1**: Now we assume that OpenStack multi-node setup is up and running. The following
@@ -220,7 +223,7 @@ below are for exemplary purpose. **Please replace them with the IP addresses of 
     opnfv@opnfv-os-controller:~/devstack$
     opnfv@opnfv-os-controller:~/devstack$ ip route
     default via 198.59.156.1 dev br-ex
-    10.134.156.0/24 dev eth0  proto kernel  scope link  src 10.134.156.113
+    192.168.0.0/24 dev eth0  proto kernel  scope link  src 192.168.0.10
     192.168.122.0/24 dev virbr0  proto kernel  scope link  src 192.168.122.1
     198.59.156.0/24 dev br-ex  proto kernel  scope link  src 198.59.156.113
 
