@@ -7,9 +7,8 @@ Open Daylight Lithium Official Release. The following table lists the use cases 
 requirements of VIM-agnostic IPv6 functionality, including infrastructure layer and VNF
 (VM) layer, and its gap analysis with Open Daylight Lithium Official Release.
 
-+-----------------------------------------------------+---------+------------------------------------------------------+
-|                                                     |Supported|                                                      |
-|               Use Case / Requirement                | in ODL  |                       Comments                       |
-|                                                     | Lithium |                                                      |
-+=====================================================+=========+======================================================+
-
++------------------------------------------------------+------------------------+------------------------------------------------------------------------+
+|                Use Case / Requirement                |Supported in ODL Lithium|                                Comments                                |
++======================================================+========================+========================================================================+
+| REST API support for IPv6 subnet creation in ODL     |          Yes           |Yes, it is possible to create IPv6 subnet in ODL using Neutron REST APIs|
++------------------------------------------------------+------------------------+------------------------------------------------------------------------+
