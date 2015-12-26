@@ -33,7 +33,7 @@ requirements of VIM-agnostic IPv6 functionality, including infrastructure layer 
 |   to assign vRouters to the L3 agents)                    |                         |                                                                    |
 +-----------------------------------------------------------+-------------------------+--------------------------------------------------------------------+
 |Ability for a NIC to support both IPv4 and IPv6 (dual      |                         |Dual-stack is supported in Neutron with the addition of             |
-|stack) address.                                            |                         |Multiple IPv6 Prefixes Blueprint:                                   |
+|stack) address.                                            |                         |``Multiple IPv6 Prefixes`` Blueprint                                |
 |                                                           |                         |                                                                    |
 |1. VM with a single interface associated with a network,   |1. Yes                   |                                                                    |
 |   which is then associated with two subnets.              |                         |                                                                    |
