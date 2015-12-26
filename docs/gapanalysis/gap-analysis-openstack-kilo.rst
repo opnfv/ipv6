@@ -42,9 +42,9 @@ requirements of VIM-agnostic IPv6 functionality, including infrastructure layer 
 +-----------------------------------------------------------+-------------------------+--------------------------------------------------------------------+
 |Support IPv6 Address assignment modes.                     |1. Yes                   |                                                                    |
 |                                                           |                         |                                                                    |
-|1. SLAAC                                                   |3. Yes                   |                                                                    |
+|1. SLAAC                                                   |2. Yes                   |                                                                    |
 |2. DHCPv6 Stateless                                        |                         |                                                                    |
-|3. DHCPv6 Stateful                                         |2. Yes                   |                                                                    |
+|3. DHCPv6 Stateful                                         |3. Yes                   |                                                                    |
 +-----------------------------------------------------------+-------------------------+--------------------------------------------------------------------+
 |Ability to create a port on an IPv6 DHCPv6 Stateful subnet |Yes                      |                                                                    |
 |and assign a specific IPv6 address to the port and have it |                         |                                                                    |
