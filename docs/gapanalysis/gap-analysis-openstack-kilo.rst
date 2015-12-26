@@ -33,11 +33,79 @@ requirements of VIM-agnostic IPv6 functionality, including infrastructure layer 
 |   to assign vRouters to the L3 agents)                    |                         |                                                                    |
 +-----------------------------------------------------------+-------------------------+--------------------------------------------------------------------+
 |Ability for a NIC to support both IPv4 and IPv6 (dual      |                         |Dual-stack is supported in Neutron with the addition of             |
-|stack) address.                                            |                         |`Multiple IPv6 Prefixes`_ Blueprint.                                |
+|stack) address.                                            |                         |Multiple IPv6 Prefixes Blueprint:                                   |
 |                                                           |                         |                                                                    |
-|1. VM with a single interface associated with a network,   |1. Yes                   |.. _`Multiple IPv6 Prefixes`:                                       |
-|   which is then associated with two subnets.              |                         |http://blueprints.launchpad.net/neutron/+spec/multiple-ipv6-prefixes|
+|1. VM with a single interface associated with a network,   |1. Yes                   |                                                                    |
+|   which is then associated with two subnets.              |                         |                                                                    |
 |2. VM with two different interfaces associated with two    |2. Yes                   |                                                                    |
 |   different networks and two different subnets.           |                         |                                                                    |
 +-----------------------------------------------------------+-------------------------+--------------------------------------------------------------------+
-
+|Support IPv6 Address assignment modes.                     |1. Yes                   |                                                                    |
+|                                                           |                         |                                                                    |
+|1. SLAAC                                                   |3. Yes                   |                                                                    |
+|2. DHCPv6 Stateless                                        |                         |                                                                    |
+|3. DHCPv6 Stateful                                         |2. Yes                   |                                                                    |
++-----------------------------------------------------------+-------------------------+--------------------------------------------------------------------+
+|Ability to create a port on an IPv6 DHCPv6 Stateful subnet |Yes                      |                                                                    |
+|and assign a specific IPv6 address to the port and have it |                         |                                                                    |
+|taken out of the DHCP address pool.                        |                         |                                                                    |
++-----------------------------------------------------------+-------------------------+--------------------------------------------------------------------+
+|Ability to create a port with fixed_ip for a               |**No**                   |The following patch disables this operation:                        |
+|SLAAC/DHCPv6-Stateless Subnet.                             |                         |https://review.openstack.org/#/c/129144/                            |
++-----------------------------------------------------------+-------------------------+--------------------------------------------------------------------+
+|Support for private IPv6 to external IPv6 floating IP;     |**Rejected**             |Blueprint proposed in upstream and got rejected. General expectation|
+|Ability to specify floating IPs via Neutron API (REST and  |                         |is to avoid NAT with IPv6 by assigning GUA to tenant VMs. See       |
+|CLI) as well as via Horizon, including combination of      |                         |https://review.openstack.org/#/c/139731/ for discussion.            |
+|IPv6/IPv4 and IPv4/IPv6 floating IPs if implemented.       |                         |                                                                    |
++-----------------------------------------------------------+-------------------------+--------------------------------------------------------------------+
+|Provide IPv6/IPv4 feature parity in support for            |**Roadmap**              |The L3 configuration should be transparent for the SR-IOV           |
+|pass-through capabilities (e.g., SR-IOV).                  |                         |implementation. SR-IOV networking support introduced in Juno based  |
+|                                                           |                         |on the ``sriovnicswitch`` ML2 driver is expected to work with IPv4  |
+|                                                           |                         |and IPv6 enabled VMs.                                               |
++-----------------------------------------------------------+-------------------------+--------------------------------------------------------------------+
+|Additional IPv6 extensions, for example: IPSEC, IPv6       |**No**                   |It does not appear to be considered yet (lack of clear requirements)|
+|Anycast, Multicast                                         |                         |                                                                    |
++-----------------------------------------------------------+-------------------------+--------------------------------------------------------------------+
+|VM access to the meta-data server to obtain user data, SSH |**No**                   |This is currently not supported. Config-drive or dual-stack IPv4 /  |
+|keys, etc. using cloud-init with IPv6 only interfaces.     |                         |IPv6 can be used as a workaround (so that the IPv4 network is used  |
+|                                                           |                         |to obtain connectivity with the metadata service)                   |
++-----------------------------------------------------------+-------------------------+--------------------------------------------------------------------+
+|Full support for IPv6 matching (i.e., IPv6, ICMPv6, TCP,   |Yes                      |                                                                    |
+|UDP) in security groups. Ability to control and manage all |                         |                                                                    |
+|IPv6 security group capabilities via Neutron/Nova API (REST|                         |                                                                    |
+|and CLI) as well as via Horizon.                           |                         |                                                                    |
++-----------------------------------------------------------+-------------------------+--------------------------------------------------------------------+
+|During network/subnet/router create, there should be an    |Yes                      |Two new Subnet attributes were introduced to control IPv6 address   |
+|option to allow user to specify the type of address        |                         |assignment options:                                                 |
+|management they would like. This includes all options      |                         |                                                                    |
+|including those low priority if implemented (e.g., toggle  |                         |* ``ipv6-ra-mode``: to determine who sends Router Advertisements;   |
+|on/off router and address prefix advertisements); It must  |                         |                                                                    |
+|be supported via Neutron API (REST and CLI) as well as via |                         |* ``ipv6-address-mode``: to determine how VM obtains IPv6 address,  |
+|Horizon                                                    |                         |  default gateway, and/or optional information.                     |
++-----------------------------------------------------------+-------------------------+--------------------------------------------------------------------+
+|Security groups anti-spoofing: Prevent VM from using a     |Yes                      |                                                                    |
+|source IPv6/MAC address which is not assigned to the VM    |                         |                                                                    |
++-----------------------------------------------------------+-------------------------+--------------------------------------------------------------------+
+|Protect tenant and provider network from rough RAs         |Yes                      |When using a tenant network, Neutron is going to automatically      |
+|                                                           |                         |handle the filter rules to allow connectivity of RAs to the VMs only|
+|                                                           |                         |from the Neutron router port; with provider networks, users are     |
+|                                                           |                         |required to specify the LLA of the upstream router during the subnet|
+|                                                           |                         |creation, or otherwise manually edit the security-groups rules to   |
+|                                                           |                         |allow incoming traffic from this specific address.                  |
++-----------------------------------------------------------+-------------------------+--------------------------------------------------------------------+
+|Support the ability to assign multiple IPv6 addresses to   |Yes                      |                                                                    |
+|an interface; both for Neutron router interfaces and VM    |                         |                                                                    |
+|interfaces.                                                |                         |                                                                    |
++-----------------------------------------------------------+-------------------------+--------------------------------------------------------------------+
+|Ability for a VM to support a mix of multiple IPv4 and IPv6|Yes                      |                                                                    |
+|networks, including multiples of the same type.            |                         |                                                                    |
++-----------------------------------------------------------+-------------------------+--------------------------------------------------------------------+
+|Support for IPv6 Prefix Delegation.                        |**Roadmap**              |Planned for Liberty                                                 |
++-----------------------------------------------------------+-------------------------+--------------------------------------------------------------------+
+|Distributed Virtual Routing (DVR) support for IPv6         |**No**                   |Blueprint proposed upstream, pending discussion.                    |
++-----------------------------------------------------------+-------------------------+--------------------------------------------------------------------+
+|IPv6 First-Hop Security, IPv6 ND spoofing.                 |**Roadmap**              |Blueprint proposed upstream. Some patches are under review.         |
++-----------------------------------------------------------+-------------------------+--------------------------------------------------------------------+
+|IPv6 support in Neutron Layer3 High Availability           |Yes                      |                                                                    |
+|(keepalived+VRRP).                                         |                         |                                                                    |
++-----------------------------------------------------------+-------------------------+--------------------------------------------------------------------+
