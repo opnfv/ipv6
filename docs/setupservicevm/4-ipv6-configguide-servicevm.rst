@@ -203,13 +203,11 @@ and ``eth1`` interface on ``ipv4-int-network1`` connecting to ``ipv4-router``.
     nova boot --image Fedora22 --flavor m1.small --user-data /opt/stack/opnfv_os_ipv6_poc/metadata.txt --availability-zone nova:opnfv-os-compute --nic port-id=$(neutron port-list | grep -w eth0-vRouter | awk '{print $2}') --nic port-id=$(neutron port-list | grep -w eth1-vRouter | awk '{print $2}') --key-name vRouterKey vRouter
 
 Please **note** that ``/opt/stack/opnfv_os_ipv6_poc/metadata.txt`` is used to enable the ``vRouter`` to automatically
-spawn a ``radvd``, and:
+spawn a ``radvd``, and
 
-* Act as an IPv6 vRouter which advertises the RA (Router Advertisements) with prefix ``2001:db8:0:2::/64`` on its
-  internal interface (``eth1``).
-* Advertise RA (Router Advertisements) with just route information on its eth0 interface so that ``ipv6-router`` can
-  automatically add a downstream route to subnet ``2001:db8:0:2::/64`` whose next hop would be the ``eth0`` interface
-  of ``vRouter``.
+* Act as an IPv6 vRouter which advertises the RA (Router Advertisements) with prefix
+  ``2001:db8:0:2::/64`` on its internal interface (``eth1``).
+* Forward IPv6 traffic from internal interface (``eth1``)
 
 **SETUP-SVM-20**: Verify that ``Fedora22`` image boots up successfully and vRouter has ``ssh`` keys properly injected
 
@@ -293,14 +291,11 @@ interface of ``vRouter`` automatically configures an IPv6 SLAAC address.
 
     $radvd -C /opt/stack/opnfv_os_ipv6_poc/scenario2/radvd.conf -p /tmp/br-ex.pid.radvd -m syslog
 
-**SETUP-SVM-28**: Configure the ``$router_interface`` process entries to process the RA (Router Advertisement)
-message from ``vRouter``, and automatically add a downstream route pointing to the LLA (Link Local Address) of
-``eth0`` interface of the ``vRouter``.
+**SETUP-SVM-28**: Add an IPv6 downstream route pointing to the ``eth0`` interface of vRouter.
 
 .. code-block:: bash
 
-    sysctl -w net.ipv6.conf.$router_interface.accept_ra=2
-    sysctl -w net.ipv6.conf.$router_interface.accept_ra_rt_info_max_plen=64
+    ip -6 route add 2001:db8:0:2::/64 via 2001:db8:0:1:f816:3eff:fe11:1111
 
 **SETUP-SVM-29**: Please note that after the vRouter successfully initializes and starts sending RA (Router
 Advertisement) message, you would see an IPv6 route to the ``2001:db8:0:2::/64`` prefix

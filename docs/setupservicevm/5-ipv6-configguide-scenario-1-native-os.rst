@@ -12,7 +12,7 @@ For exemplary purpose, we assume:
 * The hostname of OpenStack Controller+Network+Compute Node is ``opnfv-os-controller``, and the host IP address
   is ``192.168.0.10``
 * The hostname of OpenStack Compute Node is ``opnfv-os-compute``, and the host IP address is ``192.168.0.20``
-* Ubuntu 14.04 is installed
+* Ubuntu 14.04 or Fedora 21 is installed
 * We use ``opnfv`` as username to login.
 * We use ``devstack`` to install OpenStack Liberty. Please note that OpenStack Kilo can be used as well.
 
@@ -132,8 +132,9 @@ address of OpenStack Controller
 Please note that Security Groups feature has been disabled automatically through ``local.conf`` configuration file
 during the setup procedure of OpenStack in both Controller Node and Compute Node.
 
-If you are an experienced user that installs OpenStack in a different way, please reference the following
-instructions to verify that Security Groups are disabled, and configuration matches the note below.
+If you are an experienced user and installing OpenStack using a different installer (i.e. not with devstack),
+please make sure that Security Groups are disabled in the setup. You can verify that your setup has the following
+configuration parameters.
 
 **OS-NATIVE-SEC-1**: Change the settings in ``/etc/neutron/plugins/ml2/ml2_conf.ini`` as follows
 
