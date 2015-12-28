@@ -132,7 +132,7 @@ address of OpenStack Controller
 Please note that Security Groups feature has been disabled automatically through ``local.conf`` configuration file
 during the setup procedure of OpenStack in both Controller Node and Compute Node.
 
-If you are an experienced user and installing OpenStack using a different installer (i.e. not with devstack),
+If you are an experienced user and installing OpenStack using a different installer (i.e. not with ``devstack``),
 please make sure that Security Groups are disabled in the setup. You can verify that your setup has the following
 configuration parameters.
 
