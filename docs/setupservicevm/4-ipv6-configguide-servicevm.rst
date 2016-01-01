@@ -277,11 +277,16 @@ Now let us configure the IPv6 address on the <qr-xxx> interface.
 
 .. code-block:: bash
 
-    router_interface=$(ip a s | grep -w "global qr-*" | awk '{print $7}')
+    export router_interface=$(ip a s | grep -w "global qr-*" | awk '{print $7}')
     ip -6 addr add 2001:db8:0:1::1 dev $router_interface
 
-**SETUP-SVM-26**: Update the file ``/opt/stack/opnfv_os_ipv6_poc/scenario2/radvd.conf`` with ``$router_interface``,
-i.e. replace ``$router_interface`` with the ``qr-xxx`` interface.
+**SETUP-SVM-26**: Update the sample file ``/opt/stack/opnfv_os_ipv6_poc/scenario2/radvd.conf``
+with ``$router_interface``.
+
+.. code-block:: bash
+
+    cp /opt/stack/opnfv_os_ipv6_poc/scenario2/radvd.conf /tmp/radvd.$router_interface.conf
+    sed -i 's/$router_interface/'$router_interface'/g' /tmp/radvd.$router_interface.conf
 
 **SETUP-SVM-27**: Spawn a ``radvd`` daemon to simulate an external router. This ``radvd`` daemon advertises an IPv6
 subnet prefix of ``2001:db8:0:1::/64`` using RA (Router Advertisement) on its $router_interface so that ``eth0``
@@ -289,7 +294,7 @@ interface of ``vRouter`` automatically configures an IPv6 SLAAC address.
 
 .. code-block:: bash
 
-    $radvd -C /opt/stack/opnfv_os_ipv6_poc/scenario2/radvd.conf -p /tmp/br-ex.pid.radvd -m syslog
+    $radvd -C /tmp/radvd.$router_interface.conf -p /tmp/br-ex.pid.radvd -m syslog
 
 **SETUP-SVM-28**: Add an IPv6 downstream route pointing to the ``eth0`` interface of vRouter.
 
