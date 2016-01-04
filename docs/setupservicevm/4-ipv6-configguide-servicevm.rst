@@ -305,7 +305,8 @@ interface of ``vRouter`` automatically configures an IPv6 SLAAC address.
 **SETUP-SVM-29**: Please note that after the vRouter successfully initializes and starts sending RA (Router
 Advertisement) message, you would see an IPv6 route to the ``2001:db8:0:2::/64`` prefix
 (subnet) reachable via LLA (Link Local Address) ``fe80::f816:3eff:fe11:1111`` of ``eth0`` interface of the
-``vRouter``. You can execute the following command to list the IPv6 routes.
+``vRouter``. You can execute the following command to list the IPv6 routes. The routing table should now
+look similar to something shown below.
 
 .. code-block:: bash
 
