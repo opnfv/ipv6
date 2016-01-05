@@ -307,11 +307,11 @@ interface of ``vRouter`` automatically configures an IPv6 SLAAC address.
 .. code-block:: bash
 
     ip -6 route show
-    2001:db8:0:1::1 dev qr-42968b9e-62  proto kernel  metric 256
-    2001:db8:0:1::/64 dev qr-42968b9e-62  proto kernel  metric 256  expires 86384sec
-    2001:db8:0:2::/64 via fe80::f816:3eff:fe11:1111 dev qr-42968b9e-62  proto ra  metric 1024  expires 29sec
-    fe80::/64 dev qg-3736e0c7-7c  proto kernel  metric 256
-    fe80::/64 dev qr-42968b9e-62  proto kernel  metric 256
+    2001:db8:0:1::1 dev qr-42968b9e-62 proto kernel metric 256
+    2001:db8:0:1::/64 dev qr-42968b9e-62 proto kernel metric 256 expires 86384sec
+    2001:db8:0:2::/64 via 2001:db8:0:1:f816:3eff:fe11:1111 dev qr-42968b9e-62 proto ra metric 1024 expires 29sec
+    fe80::/64 dev qg-3736e0c7-7c proto kernel metric 256
+    fe80::/64 dev qr-42968b9e-62 proto kernel metric 256
 
 **SETUP-SVM-30**: If all goes well, the IPv6 addresses assigned to the VMs would be as shown as follows:
 
