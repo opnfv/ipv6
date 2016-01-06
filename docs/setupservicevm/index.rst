@@ -30,4 +30,5 @@ environment. There are three scenarios.
    architecture-design.rst
    5-ipv6-configguide-scenario-1-native-os.rst
    scenario-2.rst
+   scenario-3.rst
    topology-after-setup.rst

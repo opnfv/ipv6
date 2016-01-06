@@ -12,7 +12,7 @@ In this scenario, we can fully automate the setup similar to Scenario 1.
    :maxdepth: 4
 
    0-ipv6-configguide-prep-infra.rst
-   1-ipv6-configguide-odl-setup.rst
+   scenario-3-1-ipv6-configguide-odl-setup.rst
    2-ipv6-configguide-os-controller.rst
    3-ipv6-configguide-os-compute.rst
-   4-ipv6-configguide-servicevm.rst
+   scenario-3-4-ipv6-configguide-servicevm.rst
