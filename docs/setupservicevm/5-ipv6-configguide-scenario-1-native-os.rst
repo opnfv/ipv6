@@ -22,9 +22,9 @@ For exemplary purpose, we assume:
 
    Underlay Network Topology - Scenario 1
 
-**Please note that:**
+**Please NOTE that:**
 
-* **the IP address shown in** :numref:`s1-figure1` **are for exemplary purpose.
+* **The IP address shown in** :numref:`s1-figure1` **are for exemplary purpose.
   You need to configure your public IP address connecting to Internet according
   to your actual network infrastructure. And you need to make sure the private IP address are
   not conflicting with other subnets**.

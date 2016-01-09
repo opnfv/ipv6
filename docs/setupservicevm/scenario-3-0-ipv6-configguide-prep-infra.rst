@@ -7,7 +7,7 @@ each of which has minimum 8GB RAM and 40GB storage. One host is used as OpenStac
 Node. The second host is used as Open Daylight Controller Node. And the third one is used as
 OpenStack Compute Node.
 
-** Please NOTE that Although the deployment model of single controller node is assumed, in case of HA
+**Please NOTE that Although the deployment model of single controller node is assumed, in case of HA
 (High Availability) deployment model where multiple controller nodes are used, there is no impact and the
 setup procedure is the same.**
 
