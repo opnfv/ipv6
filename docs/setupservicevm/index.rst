@@ -23,6 +23,16 @@ environment. There are three scenarios.
   controller which is built from the latest stable/Lithium branch which includes the fix.
   In this scenario, we can fully automate the setup similar to Scenario 1.
 
+Please **NOTE** that the instructions in this document assume the deployment model of single
+controller node. In case of HA (High Availability) deployment model where multiple controller
+nodes are used, the setup procedure is the same. In particular:
+
+* There is **No Impact** on Scenario 1 and Scenario 3.
+* For Scenario 2, when ``ipv6-router`` is created in step **SETUP-SVM-11**, it could be
+  created in any of the controller node. Thus you need to identify in which controller node
+  ``ipv6-router`` is created in order to manually spawn ``radvd`` daemon inside the
+  ``ipv6-router`` namespace in steps **SETUP-SVM-24** through **SETUP-SVM-30**.
+
 .. toctree::
    :numbered:
    :maxdepth: 4
