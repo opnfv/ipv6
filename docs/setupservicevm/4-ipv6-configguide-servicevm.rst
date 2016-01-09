@@ -266,6 +266,12 @@ Spawn ``RADVD`` in ``ipv6-router``
 Let us manually spawn a ``radvd`` daemon inside ``ipv6-router`` namespace to simulate an external router.
 First of all, we will have to identify the ``ipv6-router`` namespace and move to the namespace.
 
+Please **NOTE** that in case of HA (High Availability) deployment model where multiple controller
+nodes are used, ``ipv6-router`` created in step **SETUP-SVM-11** could be in any of the controller
+node. Thus you need to identify in which controller node ``ipv6-router`` is created in order to manually
+spawn ``radvd`` daemon inside the ``ipv6-router`` namespace in steps **SETUP-SVM-24** through
+**SETUP-SVM-30**.
+
 **SETUP-SVM-24**: identify the ``ipv6-router`` namespace and move to the namespace
 
 .. code-block:: bash

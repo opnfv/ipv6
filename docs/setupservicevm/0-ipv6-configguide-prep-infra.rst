@@ -2,10 +2,16 @@
 Infrastructure Setup
 ====================
 
-In order to set up the service VM as an IPv6 vRouter, we need to
-prepare 3 hosts, each of which has minimum 8GB RAM and 40GB storage. One host is used as OpenStack Controller
+In order to set up the service VM as an IPv6 vRouter, we need to prepare 3 hosts,
+each of which has minimum 8GB RAM and 40GB storage. One host is used as OpenStack Controller
 Node. The second host is used as Open Daylight Controller Node. And the third one is used as
 OpenStack Compute Node.
+
+Please **NOTE** that in case of HA (High Availability) deployment model where multiple controller
+nodes are used, the setup procedure is the same. When ``ipv6-router`` is created in step **SETUP-SVM-11**,
+it could be created in any of the controller node. Thus you need to identify in which controller node
+``ipv6-router`` is created in order to manually spawn ``radvd`` daemon inside the ``ipv6-router`` namespace
+in steps **SETUP-SVM-24** through **SETUP-SVM-30**.
 
 For exemplary purpose, we assume:
 

@@ -10,26 +10,22 @@ For exemplary purpose, we assume:
 * We use ``opnfv`` as username to login.
 * Java 7 is installed in directory ``/usr/lib/jvm/java-1.7.0-openjdk-1.7.0.85-2.6.1.2.el7_1.x86_64/``
 
-**ODL-1**: Login to Open Daylight Controller Node with username ``opnfv``.
+Please **NOTE** that this Scenario 3 uses an Open Daylight Lithium controller which is built
+from the latest ``stable/Lithium`` branch that includes the fix of a bug, there is a **prerequisite**
+that you are able to build this Open Daylight Lithium Controller from the  the latest ``stable/Lithium``
+branch. Please refer to relevant documentation from Open Daylight.
 
-**ODL-2**: Download the ODL Lithium distribution from
-``http://www.opendaylight.org/software/downloads``
+**ODL-1**: **Prerequisite** - build Open Daylight Lithium Controller from the the latest
+``stable/Lithium`` branch, and make it available for step **ODL-3**.
+
+**ODL-2**: Login to Open Daylight Controller Node with username ``opnfv``.
+
+**ODL-3**: Extract the tar file of your custom build of Open Daylight Lithium Controller
+from step **ODL-1**.
 
 .. code-block:: bash
 
-    wget https://nexus.opendaylight.org/content/groups/public/org/opendaylight/integration/distribution-karaf/0.3.3-Lithium-SR3/distribution-karaf-0.3.3-Lithium-SR3.tar.gz
-
-**Note**: This **ODL-2** is a placeholder, and to be replaced with actual URL of a build from the latest
-``stable/Lithium`` branch which includes the fix.
-
-**ODL-3**: Extract the tar file
-
-.. code-block:: bash
-
-    tar -zxvf distribution-karaf-0.3.3-Lithium-SR3.tar.gz
-
-**Note**: This **ODL-3** is a placeholder, and to be replaced with actual tarball of a build from the latest
-``stable/Lithium`` branch which includes the fix.
+    tar -zxvf <filename-of-your-custom-build>.tar.gz
 
 **ODL-4**: Install Java7
 

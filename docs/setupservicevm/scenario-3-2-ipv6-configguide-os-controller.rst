@@ -56,8 +56,12 @@ For **Fedora**:
 
     cp /opt/stack/opnfv_os_ipv6_poc/scenario2/local.conf.odl.controller ~/devstack/local.conf
 
-Please **note** that you need to change the IP address of ``ODL_MGR_IP`` to point to your actual IP address
-of Open Daylight Controller.
+Please **note** that:
+
+* Note 1: Because Scenario 3 and Scenario 2 are essentially the same, and their only difference
+  is using different build of Open Daylight, they share the same ``local.conf``` file of OpenStack.
+* Note 2: You need to change the IP address of ``ODL_MGR_IP`` to point to your actual IP address
+  of Open Daylight Controller.
 
 **OS-N-6**: Initiate Openstack setup by invoking ``stack.sh``
 

@@ -11,3 +11,6 @@ shown as follows in :numref:`arch-figure1`:
 
    Architectural Design of Using a VM as an IPv6 vRouter
 
+This design applies to deployment model of single controller node as well as HA (High Availability)
+deployment model of multiple controller nodes.
+
