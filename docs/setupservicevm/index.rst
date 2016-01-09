@@ -33,6 +33,7 @@ nodes are used, the setup procedure is the same. In particular:
   ``ipv6-router`` is created in order to manually spawn ``radvd`` daemon inside the
   ``ipv6-router`` namespace in steps **SETUP-SVM-24** through **SETUP-SVM-30**.
 
+
 .. toctree::
    :numbered:
    :maxdepth: 4

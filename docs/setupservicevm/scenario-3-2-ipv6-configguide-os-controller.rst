@@ -59,7 +59,7 @@ For **Fedora**:
 Please **note** that:
 
 * Note 1: Because Scenario 3 and Scenario 2 are essentially the same, and their only difference
-  is using different build of Open Daylight, they share the same ``local.conf``` file of OpenStack.
+  is using different build of Open Daylight, they share the same ``local.conf`` file of OpenStack.
 * Note 2: You need to change the IP address of ``ODL_MGR_IP`` to point to your actual IP address
   of Open Daylight Controller.
 
