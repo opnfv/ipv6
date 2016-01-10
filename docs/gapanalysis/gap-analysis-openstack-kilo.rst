@@ -58,10 +58,10 @@ requirements of VIM-agnostic IPv6 functionality, including infrastructure layer 
 |CLI) as well as via Horizon, including combination of      |                         |https://review.openstack.org/#/c/139731/ for discussion.            |
 |IPv6/IPv4 and IPv4/IPv6 floating IPs if implemented.       |                         |                                                                    |
 +-----------------------------------------------------------+-------------------------+--------------------------------------------------------------------+
-|Provide IPv6/IPv4 feature parity in support for            |**Roadmap**              |The L3 configuration should be transparent for the SR-IOV           |
+|Provide IPv6/IPv4 feature parity in support for            |**To-Do**                |The L3 configuration should be transparent for the SR-IOV           |
 |pass-through capabilities (e.g., SR-IOV).                  |                         |implementation. SR-IOV networking support introduced in Juno based  |
 |                                                           |                         |on the ``sriovnicswitch`` ML2 driver is expected to work with IPv4  |
-|                                                           |                         |and IPv6 enabled VMs.                                               |
+|                                                           |                         |and IPv6 enabled VMs. We need to verify if it works or not          |
 +-----------------------------------------------------------+-------------------------+--------------------------------------------------------------------+
 |Additional IPv6 extensions, for example: IPSEC, IPv6       |**No**                   |It does not appear to be considered yet (lack of clear requirements)|
 |Anycast, Multicast                                         |                         |                                                                    |
@@ -100,11 +100,11 @@ requirements of VIM-agnostic IPv6 functionality, including infrastructure layer 
 |Ability for a VM to support a mix of multiple IPv4 and IPv6|Yes                      |                                                                    |
 |networks, including multiples of the same type.            |                         |                                                                    |
 +-----------------------------------------------------------+-------------------------+--------------------------------------------------------------------+
-|Support for IPv6 Prefix Delegation.                        |**Roadmap**              |Planned for Liberty                                                 |
+|Support for IPv6 Prefix Delegation.                        |**Roadmap**              |Some partial support is available in Liberty release                |
 +-----------------------------------------------------------+-------------------------+--------------------------------------------------------------------+
 |Distributed Virtual Routing (DVR) support for IPv6         |**No**                   |Blueprint proposed upstream, pending discussion.                    |
 +-----------------------------------------------------------+-------------------------+--------------------------------------------------------------------+
-|IPv6 First-Hop Security, IPv6 ND spoofing.                 |**Roadmap**              |Blueprint proposed upstream. Some patches are under review.         |
+|IPv6 First-Hop Security, IPv6 ND spoofing.                 |**Roadmap**              |Supported in Liberty release                                        |
 +-----------------------------------------------------------+-------------------------+--------------------------------------------------------------------+
 |IPv6 support in Neutron Layer3 High Availability           |Yes                      |                                                                    |
 |(keepalived+VRRP).                                         |                         |                                                                    |
