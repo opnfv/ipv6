@@ -20,9 +20,9 @@ requirements of VIM-agnostic IPv6 functionality, including infrastructure layer 
 |                                                             |                        |and would be available only in the later releases of ODL).                      |
 +-------------------------------------------------------------+------------------------+--------------------------------------------------------------------------------+
 |IPv6 Router support in ODL                                   |**No**                  |ODL net-virt provider in Lithium release only supports IPv4 Router.             |
-|                                                             |                        |Support for IPv6 Router is planned using ``Routing Manager`` as part of         |
-|1. Communication between VMs on same compute node            |                        |Beryllium Release. In the meantime, if IPv6 Routing is necessary, we can        |
-|2. Communication between VMs on different compute nodes      |                        |use ODL for L2 connectivity and Neutron L3 agent for IPv4/v6 routing.           |
+|                                                             |                        |Support for IPv6 Router is planned in later releases using ``Routing Manager``. |
+|1. Communication between VMs on same compute node            |                        |In the meantime, if IPv6 Routing is necessary, we can use ODL for L2            |
+|2. Communication between VMs on different compute nodes      |                        |connectivity and Neutron L3 agent for IPv4/v6 routing.                          |
 |   (east-west)                                               |                        |                                                                                |
 |3. External routing (north-south)                            |                        |**Note**: In Lithium SR3 release, we have the following `issue                  |
 |                                                             |                        |<http://lists.opendaylight.org/pipermail/ovsdb-dev/2015-November/002288.html>`_,|
@@ -35,7 +35,6 @@ requirements of VIM-agnostic IPv6 functionality, including infrastructure layer 
 |1. SLAAC                                                     |                        |Advertisements based on the IPv6 addressing mode. Router Advertisement          |
 |2. DHCPv6 Stateless                                          |                        |is also necessary for VMs to configure the default route.                       |
 |3. DHCPv6 Stateful                                           |                        |                                                                                |
-|                                                             |                        |This could be part of ``Routing Manager`` in ``Beryllium`` release.             |
 +-------------------------------------------------------------+------------------------+--------------------------------------------------------------------------------+
 |When using ODL for L2 forwarding/tunneling, is it compatible |Yes                     |                                                                                |
 |with IPv6.                                                   |                        |                                                                                |
