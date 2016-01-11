@@ -270,7 +270,15 @@ Please **NOTE** that in case of HA (High Availability) deployment model where mu
 nodes are used, ``ipv6-router`` created in step **SETUP-SVM-11** could be in any of the controller
 node. Thus you need to identify in which controller node ``ipv6-router`` is created in order to manually
 spawn ``radvd`` daemon inside the ``ipv6-router`` namespace in steps **SETUP-SVM-24** through
-**SETUP-SVM-30**.
+**SETUP-SVM-30**. The following command in Neutron will display the controller on which the
+``ipv6-router`` is spawned.
+
+.. code-block:: bash
+
+    neutron l3-agent-list-hosting-router ipv6-router
+
+Then you login to that controller and execute steps **SETUP-SVM-24**
+through **SETUP-SVM-30**
 
 **SETUP-SVM-24**: identify the ``ipv6-router`` namespace and move to the namespace
 
