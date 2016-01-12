@@ -1,15 +1,20 @@
-==========================================
-Setting Up a Service VM as an IPv6 vRouter
-==========================================
+===============================================================
+Setting Up a Service VM as an IPv6 vRouter with OPNFV B Release
+===============================================================
 
-In order to use the feature of setting up a service VM as an IPv6 vRouter, you need to install
-OPNFV Brahmaputra Release base platform with either pure OpenStack option
-or Open Daylight L2-only option. Please see the instructions in the following first 2 sections.
+This section provides instructions to set up a service VM as an IPv6 vRouter using OPNFV Brahmaputra Release
+installers with either pure OpenStack option or Open Daylight L2-only option.
 
-For complete instructions and documentations, please see the third section, or refer to:
+For complete instructions and documentations of setting up service VM as an IPv6 vRouter using ANY method,
+please refer to:
 
-* IPv6 Configuration Guide: http://artifacts.opnfv.org/ipv6/docs/setupservicevm/index.html
-* IPv6 User Guide: http://artifacts.opnfv.org/ipv6/docs/gapanalysis/index.html
+1. IPv6 Configuration Guide (HTML): http://artifacts.opnfv.org/ipv6/docs/setupservicevm/index.html
+2. IPv6 Configuration Guide (PDF): http://artifacts.opnfv.org/ipv6/docs/setupservicevm/setupservicevm.pdf
+3. IPv6 User Guide (HTML): http://artifacts.opnfv.org/ipv6/docs/gapanalysis/index.html
+4. IPv6 User Guide (PDF): http://artifacts.opnfv.org/ipv6/docs/gapanalysis/gapanalysis.pdf
+
+Please see the instructions in the following 2 sections for setup using OPNFV B Release installers.
+Or go to http://artifacts.opnfv.org/ipv6/docs/reldoc/reldoc.pdf to download a PDF version.
 
 .. toctree::
    :numbered:
@@ -17,4 +22,4 @@ For complete instructions and documentations, please see the third section, or r
 
    option-pure-os.rst
    option-odl-l2.rst
-   ../setupservicevm/index.rst
+
