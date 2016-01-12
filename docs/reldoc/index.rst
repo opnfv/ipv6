@@ -4,12 +4,7 @@ Setting Up a Service VM as an IPv6 vRouter
 
 In order to use the feature of setting up a service VM as an IPv6 vRouter, you need to install
 OPNFV Brahmaputra Release base platform with either pure OpenStack option
-or Open Daylight L2-only option. Please see the instructions in the following first 2 sections.
-
-For complete instructions and documentations, please see the third section, or refer to:
-
-* IPv6 Configuration Guide: http://artifacts.opnfv.org/ipv6/docs/setupservicevm/index.html
-* IPv6 User Guide: http://artifacts.opnfv.org/ipv6/docs/gapanalysis/index.html
+or Open Daylight L2-only option. Please see the instructions in the following 2 sections.
 
 .. toctree::
    :numbered:
@@ -17,4 +12,9 @@ For complete instructions and documentations, please see the third section, or r
 
    option-pure-os.rst
    option-odl-l2.rst
-   ../setupservicevm/index.rst
+
+For complete instructions and documentations, please refer to:
+
+1. IPv6 Configuration Guide: http://artifacts.opnfv.org/ipv6/docs/setupservicevm/index.html
+2. IPv6 User Guide: http://artifacts.opnfv.org/ipv6/docs/gapanalysis/index.html
+
