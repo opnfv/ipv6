@@ -214,7 +214,21 @@ would be as shown as follows:
     VM1 would have the following IPv6 address: 2001:db8:0:2:f816:3eff:fe33:3333/64
     VM2 would have the following IPv6 address: 2001:db8:0:2:f816:3eff:fe44:4444/64
 
-**OPNFV-NATIVE-SETUP-18**: To ``SSH`` to vRouter, you can execute the following command.
+**OPNFV-NATIVE-SETUP-18**: Now we can ``SSH`` to ``vRouter``.
+
+Please **NOTE** that in case of HA (High Availability) deployment model where multiple controller
+nodes are used, ``ipv6-router`` created in step **OPNFV-NATIVE-SETUP-4** could be in any of the controller
+node. Thus you need to identify in which controller node ``ipv6-router`` is created in order to
+enter the ``ipv6-router`` namespace. The following command in Neutron will display the
+controller on which the ``ipv6-router`` is spawned.
+
+.. code-block:: bash
+
+    neutron l3-agent-list-hosting-router ipv6-router
+
+Then you login to that controller.
+
+To ``SSH`` to ``vRouter``, you can execute the following command.
 
 .. code-block:: bash
 
