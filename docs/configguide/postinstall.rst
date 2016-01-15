@@ -1,26 +1,20 @@
-<Project> post installation procedures
-======================================
-Add a brief introduction to the methods of validating the installation
-according to this specific installer or feature.
+=================================
+IPv6 Post Installation Procedures
+=================================
 
+Congratulations, you have completed the setup of using a service VM to act as an IPv6 vRouter.
+You have validated the setup based on the instruction in previous sections. If you want to further
+test your setup, you can ``ping6`` among ``VM1``, ``VM2``, ``vRouter`` and ``ipv6-router``.
+
+This setup allows further open innovation by any 3rd-party. For more instructions and documentations,
+please refer to:
+
+1. IPv6 Configuration Guide (HTML): http://artifacts.opnfv.org/ipv6/docs/setupservicevm/index.html
+2. IPv6 User Guide (HTML): http://artifacts.opnfv.org/ipv6/docs/gapanalysis/index.html
+
+**************************************
 Automated post installation activities
---------------------------------------
-Describe specific post installation activities performed by the OPNFV
-deployment pipeline including testing activities and reports. Refer to
-the relevant testing guides, results, and release notes.
+**************************************
 
-note: this section should be singular and derived from the test projects
-once we have one test suite to run for all deploy tools.  This is not the
-case yet so each deploy tool will need to provide (hopefully very simillar)
-documentation of this.
+Refer to the relevant testing guides, results, and release notes of Yardstick Project.
 
-<Project> post configuration procedures
---------------------------------------
-Describe any deploy tool or feature specific scripts, tests or procedures
-that should be carried out on the deployment post install and configuration
-in this section.
-
-Platform components validation
----------------------------------
-Describe any component specific validation procedures necessary for your
-deployment tool in this section.

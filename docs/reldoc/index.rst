@@ -47,25 +47,17 @@ Install OPNFV and Preparation
 
 **OPNFV-NATIVE-INSTALL-1**: To install OpenStack-only environment of OPNFV Brahmaputra Release:
 
-**Apex Installer**:
-
-.. code-block:: bash
-
-    # HA deployment in OpenStack-only environment
-    opnfv-deploy -d /etc/opnfv/os-ha.yaml
-
-    # Non-HA deployment in OpenStack-only environment
-    opnfv-deploy -d /etc/opnfv/os-noha.yaml
-
 **Fuel** Installer:
 
 .. code-block:: bash
 
     # HA deployment in OpenStack-only environment
-    deploy.sh -s os-ha
+    sudo deploy.sh -s os-nofeature-ha
 
     # Non-HA deployment in OpenStack-only environment
-    deploy.sh -s os-noha
+    sudo deploy.sh -s os-nofeature-noha
+
+Please **NOTE** that currently only ``Fuel`` installer supports this environment.
 
 **OPNFV-NATIVE-INSTALL-2**: Clone the following GitHub repository to get the
 configuration and metadata files
@@ -303,21 +295,23 @@ of OPNFV Brahmaputra Release:
 
 .. code-block:: bash
 
-    # HA deployment in OpenStack-only environment
-    opnfv-deploy -d /etc/opnfv/os-odl_l2-ha.yaml
+    # HA deployment in OpenStack with Open Daylight L2-only environment
+    sudo opnfv-deploy -d /etc/opnfv/os-odl_l2-nofeature-ha.yaml
 
-    # Non-HA deployment in OpenStack-only environment
-    opnfv-deploy -d /etc/opnfv/os-odl_l2-noha.yaml
+    # Non-HA deployment in OpenStack with Open Daylight L2-only environment
+    # Currently it is not supported by Apex installer.
 
 **Fuel** Installer:
 
 .. code-block:: bash
 
-    # HA deployment in OpenStack-only environment
-    deploy.sh -s os-odl_l2-ha
+    # HA deployment in OpenStack with Open Daylight L2-only environment
+    sudo deploy.sh -s os-odl_l2-nofeature-ha
 
-    # Non-HA deployment in OpenStack-only environment
-    deploy.sh -s os-odl_l2-noha
+    # Non-HA deployment in OpenStack with Open Daylight L2-only environment
+    sudo deploy.sh -s os-odl_l2-nofeature-noha
+
+Please **NOTE** that currently only ``Apex`` and ``Fuel`` installer support this environment.
 
 **OPNFV-INSTALL-2**: Clone the following GitHub repository to get the
 configuration and metadata files
