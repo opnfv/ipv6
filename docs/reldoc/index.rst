@@ -89,16 +89,30 @@ Disable Security Groups in OpenStack ML2 Setup
     security_group_api = nova
     firewall_driver = nova.virt.firewall.NoopFirewallDriver
 
+**OPNFV-NATIVE-SEC-3**: After updating the settings, you will have to restart the
+``Neutron`` and ``Nova`` services.
+
 ---------------------------------
 Set Up Service VM as IPv6 vRouter
 ---------------------------------
 
-**OPNFV-NATIVE-SETUP-1**: Now we assume that OpenStack multi-node setup is up and running. The following
-commands should be executed:
+**OPNFV-NATIVE-SETUP-1**: Now we assume that OpenStack multi-node setup is up and running.
+We have to source the tenant credentials in this step. The following command should be executed:
 
 .. code-block:: bash
 
+    # source the tenant credentials in OPNFV
+    source /opt/admin-openrc.sh
+
+Please **NOTE** that the method of sourcing tenant credentials may vary depending on installers. For example,
+in ``devstack``, the following command should be used:
+
+.. code-block:: bash
+
+    # source the tenant credentials in devstack
     source openrc admin demo
+
+**Please refer to relevant documentation of installers if you encounter any issue**.
 
 **OPNFV-NATIVE-SETUP-2**: Download ``fedora22`` image which would be used for ``vRouter``
 
@@ -112,7 +126,14 @@ commands should be executed:
 
     glance image-create --name 'Fedora22' --disk-format qcow2 --container-format bare --file ./Fedora-Cloud-Base-22-20150521.x86_64.qcow2
 
-**OPNFV-NATIVE-SETUP-4**: Create Neutron routers ``ipv4-router`` and ``ipv6-router``
+**OPNFV-NATIVE-SETUP-4: This Step is Informational. OPNFV Installer has taken care of this Step
+during deployment. You may refer to this Step only if there is any issue, or if you are using other installers**.
+
+We have to move the public network from physical network interface to ``br-ex``, including moving
+the public IP address and setting up default route. Please refer to ``OS-NATIVE-SETUP-4`` and
+``OS-NATIVE-SETUP-5`` in our `more complete instruction <http://artifacts.opnfv.org/ipv6/docs/setupservicevm/5-ipv6-configguide-scenario-1-native-os.html#set-up-service-vm-as-ipv6-vrouter>`_.
+
+**OPNFV-NATIVE-SETUP-5**: Create Neutron routers ``ipv4-router`` and ``ipv6-router``
 which need to provide external connectivity.
 
 .. code-block:: bash
@@ -120,51 +141,15 @@ which need to provide external connectivity.
     neutron router-create ipv4-router
     neutron router-create ipv6-router
 
-**OPNFV-NATIVE-SETUP-5**: Create an external network/subnet ``ext-net`` using
+**OPNFV-NATIVE-SETUP-6**: Create an external network/subnet ``ext-net`` using
 the appropriate values based on the data-center physical network setup.
 
 .. code-block:: bash
 
     neutron net-create --router:external ext-net
-
-**OPNFV-NATIVE-SETUP-6**: If your OpenStack Controller node has two interfaces ``eth0`` and
-``eth1``, and ``eth1`` is used for external connectivity, move the IP address of ``eth1`` to ``br-ex``.
-
-Please note that the IP address ``198.59.156.113`` and related subnet and gateway addressed in the command
-below are for exemplary purpose. **Please replace them with the IP addresses of your actual network**.
-
-.. code-block:: bash
-
-    sudo ip addr del 198.59.156.113/24 dev eth1
-    sudo ovs-vsctl add-port br-ex eth1
-    sudo ifconfig eth1 up
-    sudo ip addr add 198.59.156.113/24 dev br-ex
-    sudo ifconfig br-ex up
-    sudo ip route add default via 198.59.156.1 dev br-ex
     neutron subnet-create --disable-dhcp --allocation-pool start=198.59.156.251,end=198.59.156.254 --gateway 198.59.156.1 ext-net 198.59.156.0/24
 
-**OPNFV-NATIVE-SETUP-7**: Verify that ``br-ex`` now has the original external IP address,
-and that the default route is on ``br-ex``
-
-.. code-block:: bash
-
-    $ ip a s br-ex
-    38: br-ex: <BROADCAST,UP,LOWER_UP> mtu 1430 qdisc noqueue state UNKNOWN group default
-        link/ether 00:50:56:82:42:d1 brd ff:ff:ff:ff:ff:ff
-        inet 198.59.156.113/24 brd 198.59.156.255 scope global br-ex
-           valid_lft forever preferred_lft forever
-        inet6 fe80::543e:28ff:fe70:4426/64 scope link
-           valid_lft forever preferred_lft forever
-    $
-    $ ip route
-    default via 198.59.156.1 dev br-ex
-    192.168.0.0/24 dev eth0  proto kernel  scope link  src 192.168.0.10
-    192.168.122.0/24 dev virbr0  proto kernel  scope link  src 192.168.122.1
-    198.59.156.0/24 dev br-ex  proto kernel  scope link  src 198.59.156.113
-
-Please note that the IP addresses above are exemplary purpose.
-
-**OPNFV-NATIVE-SETUP-8**: Create Neutron networks ``ipv4-int-network1`` and
+**OPNFV-NATIVE-SETUP-7**: Create Neutron networks ``ipv4-int-network1`` and
 ``ipv6-int-network2`` with port_security disabled
 
 .. code-block:: bash
@@ -172,7 +157,7 @@ Please note that the IP addresses above are exemplary purpose.
     neutron net-create --port_security_enabled=False ipv4-int-network1
     neutron net-create --port_security_enabled=False ipv6-int-network2
 
-**OPNFV-NATIVE-SETUP-9**: Create IPv4 subnet ``ipv4-int-subnet1`` in the internal network
+**OPNFV-NATIVE-SETUP-8**: Create IPv4 subnet ``ipv4-int-subnet1`` in the internal network
 ``ipv4-int-network1``, and associate it to ``ipv4-router``.
 
 .. code-block:: bash
@@ -180,7 +165,7 @@ Please note that the IP addresses above are exemplary purpose.
     neutron subnet-create --name ipv4-int-subnet1 --dns-nameserver 8.8.8.8 ipv4-int-network1 20.0.0.0/24
     neutron router-interface-add ipv4-router ipv4-int-subnet1
 
-**OPNFV-NATIVE-SETUP-10**: Associate the ``ext-net`` to the Neutron routers ``ipv4-router``
+**OPNFV-NATIVE-SETUP-9**: Associate the ``ext-net`` to the Neutron routers ``ipv4-router``
 and ``ipv6-router``.
 
 .. code-block:: bash
@@ -188,7 +173,7 @@ and ``ipv6-router``.
     neutron router-gateway-set ipv4-router ext-net
     neutron router-gateway-set ipv6-router ext-net
 
-**OPNFV-NATIVE-SETUP-11**: Create two subnets, one IPv4 subnet ``ipv4-int-subnet2`` and
+**OPNFV-NATIVE-SETUP-10**: Create two subnets, one IPv4 subnet ``ipv4-int-subnet2`` and
 one IPv6 subnet ``ipv6-int-subnet2`` in ``ipv6-int-network2``, and associate both subnets to
 ``ipv6-router``
 
@@ -199,13 +184,13 @@ one IPv6 subnet ``ipv6-int-subnet2`` in ``ipv6-int-network2``, and associate bot
     neutron router-interface-add ipv6-router ipv4-int-subnet2
     neutron router-interface-add ipv6-router ipv6-int-subnet2
 
-**OPNFV-NATIVE-SETUP-12**: Create a keypair
+**OPNFV-NATIVE-SETUP-11**: Create a keypair
 
 .. code-block:: bash
 
     nova keypair-add vRouterKey > ~/vRouterKey
 
-**OPNFV-NATIVE-SETUP-13**: Create ports for vRouter (with some specific MAC address
+**OPNFV-NATIVE-SETUP-12**: Create ports for vRouter (with some specific MAC address
 - basically for automation - to know the IPv6 addresses that would be assigned to the port).
 
 .. code-block:: bash
@@ -213,21 +198,21 @@ one IPv6 subnet ``ipv6-int-subnet2`` in ``ipv6-int-network2``, and associate bot
     neutron port-create --name eth0-vRouter --mac-address fa:16:3e:11:11:11 ipv6-int-network2
     neutron port-create --name eth1-vRouter --mac-address fa:16:3e:22:22:22 ipv4-int-network1
 
-**OPNFV-NATIVE-SETUP-14**: Create ports for VM1 and VM2.
+**OPNFV-NATIVE-SETUP-13**: Create ports for VM1 and VM2.
 
 .. code-block:: bash
 
     neutron port-create --name eth0-VM1 --mac-address fa:16:3e:33:33:33 ipv4-int-network1
     neutron port-create --name eth0-VM2 --mac-address fa:16:3e:44:44:44 ipv4-int-network1
 
-**OPNFV-NATIVE-SETUP-15**: Update ``ipv6-router`` with routing information to subnet
+**OPNFV-NATIVE-SETUP-14**: Update ``ipv6-router`` with routing information to subnet
 ``2001:db8:0:2::/64``
 
 .. code-block:: bash
 
     neutron router-update ipv6-router --routes type=dict list=true destination=2001:db8:0:2::/64,nexthop=2001:db8:0:1:f816:3eff:fe11:1111
 
-**OPNFV-NATIVE-SETUP-16**: Boot Service VM (``vRouter``), VM1 and VM2
+**OPNFV-NATIVE-SETUP-15**: Boot Service VM (``vRouter``), VM1 and VM2
 
 .. code-block:: bash
 
@@ -238,7 +223,7 @@ one IPv6 subnet ``ipv6-int-subnet2`` in ``ipv6-int-network2``, and associate bot
     nova boot --image cirros-0.3.4-x86_64-uec --flavor m1.tiny --nic port-id=$(neutron port-list | grep -w eth0-VM2 | awk '{print $2}') --availability-zone nova:opnfv-os-compute --key-name vRouterKey --user-data /opt/stack/opnfv_os_ipv6_poc/set_mtu.sh VM2
     nova list # Verify that all the VMs are in ACTIVE state.
 
-**OPNFV-NATIVE-SETUP-17**: If all goes well, the IPv6 addresses assigned to the VMs
+**OPNFV-NATIVE-SETUP-16**: If all goes well, the IPv6 addresses assigned to the VMs
 would be as shown as follows:
 
 .. code-block:: bash
@@ -248,7 +233,7 @@ would be as shown as follows:
     VM1 would have the following IPv6 address: 2001:db8:0:2:f816:3eff:fe33:3333/64
     VM2 would have the following IPv6 address: 2001:db8:0:2:f816:3eff:fe44:4444/64
 
-**OPNFV-NATIVE-SETUP-18**: Now we can ``SSH`` to ``vRouter``.
+**OPNFV-NATIVE-SETUP-17**: Now we can ``SSH`` to ``vRouter``.
 
 Please **NOTE** that in case of HA (High Availability) deployment model where multiple controller
 nodes are used, ``ipv6-router`` created in step **OPNFV-NATIVE-SETUP-4** could be in any of the controller
@@ -327,56 +312,34 @@ Source the Credentials in OpenStack Controller Node
 **SETUP-SVM-1**: Login in OpenStack Controller Node. Start a new terminal,
 and change directory to where OpenStack is installed.
 
-**SETUP-SVM-2**: Source the credentials.
+**SETUP-SVM-2**: We have to source the tenant credentials in this step.
+The following command should be executed:
 
 .. code-block:: bash
 
+    # source the tenant credentials in OPNFV
+    source /opt/admin-openrc.sh
+
+Please **NOTE** that the method of sourcing tenant credentials may vary depending on installers. For example,
+in ``devstack``, the following command should be used:
+
+.. code-block:: bash
+
+    # source the tenant credentials in devstack
     source openrc admin demo
 
---------------------------------------
-Add External Connectivity to ``br-ex``
---------------------------------------
+**Please refer to relevant documentation of installers if you encounter any issue**.
 
-If your OpenStack controller node has two interfaces ``eth0`` and ``eth1``, and ``eth1``
-is used for external connectivity, move the IP address of ``eth1``, including default route to ``br-ex``.
+------------------------------------------------------------------------------------
+Informational Note: Move Public Network from Physical Network Interface to ``br-ex``
+------------------------------------------------------------------------------------
 
-**SETUP-SVM-3**: Add ``eth1`` to ``br-ex`` and move the IP address and the default route from ``eth1`` to ``br-ex``
+**This Step is Informational. OPNFV Installer has taken care of this Step during deployment.
+You may refer to this Step only if there is any issue, or if you are using other installers**.
 
-.. code-block:: bash
-
-    sudo ip addr del 198.59.156.113/24 dev eth1
-    sudo ovs-vsctl add-port br-ex eth1
-    sudo ifconfig eth1 up
-    sudo ip addr add 198.59.156.113/24 dev br-ex
-    sudo ifconfig br-ex up
-    sudo ip route add default via 198.59.156.1 dev br-ex
-
-Please note that:
-
-* The IP address ``198.59.156.113`` and related subnet and gateway addressed in the command
-  below are for exemplary purpose. **Please replace them with the IP addresses of your actual network**.
-* **This can be automated in /etc/network/interfaces**.
-
-**SETUP-SVM-4**: Verify that ``br-ex`` now has the original external IP address, and that the default route is on
-``br-ex``
-
-.. code-block:: bash
-
-    $ ip a s br-ex
-    38: br-ex: <BROADCAST,UP,LOWER_UP> mtu 1430 qdisc noqueue state UNKNOWN group default
-        link/ether 00:50:56:82:42:d1 brd ff:ff:ff:ff:ff:ff
-        inet 198.59.156.113/24 brd 198.59.156.255 scope global br-ex
-           valid_lft forever preferred_lft forever
-        inet6 fe80::543e:28ff:fe70:4426/64 scope link
-           valid_lft forever preferred_lft forever
-    $
-    $ ip route
-    default via 198.59.156.1 dev br-ex
-    192.168.0.0/24 dev eth0  proto kernel  scope link  src 192.168.0.10
-    192.168.122.0/24 dev virbr0  proto kernel  scope link  src 192.168.122.1
-    198.59.156.0/24 dev br-ex  proto kernel  scope link  src 198.59.156.113
-
-Please note that The IP addresses above are exemplary purpose
+We have to move the public network from physical network interface to ``br-ex``, including moving
+the public IP address and setting up default route. Please refer to ``SETUP-SVM-3`` and
+``SETUP-SVM-4`` in our `more complete instruction <http://artifacts.opnfv.org/ipv6/docs/setupservicevm/4-ipv6-configguide-servicevm.html#add-external-connectivity-to-br-ex>`_.
 
 --------------------------------------------------------
 Create IPv4 Subnet and Router with External Connectivity

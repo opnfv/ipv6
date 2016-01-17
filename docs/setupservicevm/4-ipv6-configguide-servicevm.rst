@@ -30,6 +30,9 @@ Start a new terminal, and change directory to where OpenStack is installed.
 
     opnfv@opnfv-os-controller:~/devstack$ source openrc admin demo
 
+Please **NOTE** that the method of sourcing tenant credentials may vary depending on installers.
+**Please refer to relevant documentation of installers if you encounter any issue**.
+
 **************************************
 Add External Connectivity to ``br-ex``
 **************************************
@@ -38,6 +41,8 @@ Because we need to manually create networks/subnets to achieve the IPv6 vRouter,
 ``NEUTRON_CREATE_INITIAL_NETWORKS=False`` in ``local.conf`` file. When this flag is set to False,
 ``devstack`` does not create any networks/subnets during the setup phase.
 
+Now we have to move the public network from physical network interface to ``br-ex``,
+including moving the public IP address and setting up default route.
 In OpenStack Controller Node ``opnfv-os-controller``, ``eth1`` is configured to provide external/public connectivity
 for both IPv4 and IPv6 (optional). So let us add this interface to ``br-ex`` and move the IP address, including the
 default route from ``eth1`` to ``br-ex``.

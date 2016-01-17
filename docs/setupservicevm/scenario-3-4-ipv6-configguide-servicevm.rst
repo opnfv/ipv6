@@ -21,6 +21,9 @@ commands should be executed:
     cd ~/devstack
     source openrc admin demo
 
+Please **NOTE** that the method of sourcing tenant credentials may vary depending on installers.
+**Please refer to relevant documentation of installers if you encounter any issue**.
+
 **SCENARIO-3-SETUP-2**: Download ``fedora22`` image which would be used for ``vRouter``
 
 .. code-block:: bash
@@ -33,22 +36,10 @@ commands should be executed:
 
     glance image-create --name 'Fedora22' --disk-format qcow2 --container-format bare --file ./Fedora-Cloud-Base-22-20150521.x86_64.qcow2
 
-**SCENARIO-3-SETUP-4**: Create Neutron routers ``ipv4-router`` and ``ipv6-router`` which need to provide external
-connectivity.
+**SCENARIO-3-SETUP-4**: Now we have to move the public network from physical network
+interface to ``br-ex``, including moving the public IP address and setting up default route.
 
-.. code-block:: bash
-
-    neutron router-create ipv4-router
-    neutron router-create ipv6-router
-
-**SCENARIO-3-SETUP-5**: Create an external network/subnet ``ext-net`` using the appropriate values based on the
-data-center physical network setup.
-
-.. code-block:: bash
-
-    neutron net-create --router:external ext-net
-
-**SCENARIO-3-SETUP-6**: If your ``opnfv-os-controller`` node has two interfaces ``eth0`` and ``eth1``,
+Because our ``opnfv-os-controller`` node has two interfaces ``eth0`` and ``eth1``,
 and ``eth1`` is used for external connectivity, move the IP address of ``eth1`` to ``br-ex``.
 
 Please note that the IP address ``198.59.156.113`` and related subnet and gateway addressed in the command
@@ -62,9 +53,8 @@ below are for exemplary purpose. **Please replace them with the IP addresses of 
     sudo ip addr add 198.59.156.113/24 dev br-ex
     sudo ifconfig br-ex up
     sudo ip route add default via 198.59.156.1 dev br-ex
-    neutron subnet-create --disable-dhcp --allocation-pool start=198.59.156.251,end=198.59.156.254 --gateway 198.59.156.1 ext-net 198.59.156.0/24
 
-**SCENARIO-3-SETUP-7**: Verify that ``br-ex`` now has the original external IP address, and that the default route is on
+**SCENARIO-3-SETUP-5**: Verify that ``br-ex`` now has the original external IP address, and that the default route is on
 ``br-ex``
 
 .. code-block:: bash
@@ -84,6 +74,22 @@ below are for exemplary purpose. **Please replace them with the IP addresses of 
     198.59.156.0/24 dev br-ex  proto kernel  scope link  src 198.59.156.113
 
 Please note that the IP addresses above are exemplary purpose.
+
+**SCENARIO-3-SETUP-6**: Create Neutron routers ``ipv4-router`` and ``ipv6-router`` which need to provide external
+connectivity.
+
+.. code-block:: bash
+
+    neutron router-create ipv4-router
+    neutron router-create ipv6-router
+
+**SCENARIO-3-SETUP-7**: Create an external network/subnet ``ext-net`` using the appropriate values based on the
+data-center physical network setup.
+
+.. code-block:: bash
+
+    neutron net-create --router:external ext-net
+    neutron subnet-create --disable-dhcp --allocation-pool start=198.59.156.251,end=198.59.156.254 --gateway 198.59.156.1 ext-net 198.59.156.0/24
 
 **SCENARIO-3-SETUP-8**: Create Neutron networks ``ipv4-int-network1`` and ``ipv6-int-network2``
 with port_security disabled
