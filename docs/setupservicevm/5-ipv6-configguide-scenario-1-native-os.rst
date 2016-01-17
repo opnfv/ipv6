@@ -178,6 +178,8 @@ in ``devstack``:
 Please **NOTE** that the method of sourcing tenant credentials may vary depending on installers. For example,
 the following command may be used for some other installers:
 
+.. code-block:: bash
+
     # source the tenant credentials in some other installers
     source /opt/admin-openrc.sh
 
