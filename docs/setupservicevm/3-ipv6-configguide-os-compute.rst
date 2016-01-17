@@ -87,6 +87,9 @@ configuration parameters to determine if it has to run with the existing codebas
 
     opnfv@opnfv-os-compute:~/devstack$ source openrc admin demo
 
+Please **NOTE** that the method of sourcing tenant credentials may vary depending on installers.
+**Please refer to relevant documentation of installers if you encounter any issue**.
+
 **OS-M-9**: You can verify that OpenStack is set up correctly by showing hypervisor list
 
 .. code-block:: bash

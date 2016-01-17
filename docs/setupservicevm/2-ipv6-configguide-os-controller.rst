@@ -90,6 +90,9 @@ the existing codebase or update to the latest copy.
 
     opnfv@opnfv-os-controller:~/devstack$ source openrc admin demo
 
+Please **NOTE** that the method of sourcing tenant credentials may vary depending on installers.
+**Please refer to relevant documentation of installers if you encounter any issue**.
+
 **OS-N-10**: Verify some commands to check if setup is working fine.
 
 .. code-block:: bash
