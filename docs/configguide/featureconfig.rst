@@ -267,7 +267,7 @@ would be as shown as follows:
 **OPNFV-NATIVE-SETUP-17**: Now we can ``SSH`` to ``vRouter``.
 
 Please **NOTE** that in case of HA (High Availability) deployment model where multiple controller
-nodes are used, ``ipv6-router`` created in step **OPNFV-NATIVE-SETUP-4** could be in any of the controller
+nodes are used, ``ipv6-router`` created in step **OPNFV-NATIVE-SETUP-5** could be in any of the controller
 node. Thus you need to identify in which controller node ``ipv6-router`` is created in order to
 enter the ``ipv6-router`` namespace. The following command in Neutron will display the
 controller on which the ``ipv6-router`` is spawned.
@@ -382,8 +382,11 @@ that the method of sourcing tenant credentials may vary depending on installers.
 Informational Note: Move Public Network from Physical Network Interface to ``br-ex``
 ------------------------------------------------------------------------------------
 
-**This Step is Informational. OPNFV Installer has taken care of this Step during deployment.
-You may refer to this Step only if there is any issue, or if you are using other installers**.
+**SETUP-SVM-3**: Move the physical interface (i.e. the public network interface) to ``br-ex``
+**SETUP-SVM-4**: Verify setup of ``br-ex``
+
+**Those 2 steps are Informational. OPNFV Installer has taken care of those 2 steps during deployment.
+You may refer to this step only if there is any issue, or if you are using other installers**.
 
 We have to move the physical interface (i.e. the public network interface) to ``br-ex``, including moving
 the public IP address and setting up default route. Please refer to ``SETUP-SVM-3`` and
