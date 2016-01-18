@@ -383,6 +383,7 @@ Informational Note: Move Public Network from Physical Network Interface to ``br-
 ------------------------------------------------------------------------------------
 
 **SETUP-SVM-3**: Move the physical interface (i.e. the public network interface) to ``br-ex``
+
 **SETUP-SVM-4**: Verify setup of ``br-ex``
 
 **Those 2 steps are Informational. OPNFV Installer has taken care of those 2 steps during deployment.
@@ -686,4 +687,6 @@ to reach external ``ipv6-router``.
 .. code-block:: bash
 
     exit
+
+
 
