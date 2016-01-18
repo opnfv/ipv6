@@ -19,6 +19,8 @@ commands should be executed:
 .. code-block:: bash
 
     cd ~/devstack
+
+    # source the tenant credentials in devstack
     source openrc admin demo
 
 Please **NOTE** that the method of sourcing tenant credentials may vary depending on installers.

@@ -28,6 +28,7 @@ Start a new terminal, and change directory to where OpenStack is installed.
 
 .. code-block:: bash
 
+    # source the tenant credentials in devstack
     opnfv@opnfv-os-controller:~/devstack$ source openrc admin demo
 
 Please **NOTE** that the method of sourcing tenant credentials may vary depending on installers.
