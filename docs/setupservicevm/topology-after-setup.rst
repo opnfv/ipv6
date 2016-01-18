@@ -2,6 +2,18 @@
 Network Topology After Setup
 ============================
 
+*****************************
+Post-Install Network Topology
+*****************************
+
+The network topology after setting up service VM as IPv6 vRouter is shown as follows :numref:`postinstall-figure1`:
+
+.. figure:: images/ipv6-postinstall-topology.png
+   :name: postinstall-figure1
+   :width: 100%
+
+   Post-Install Network Topology
+
 ********************************************************
 Sample Network Topology of this Setup through Horizon UI
 ********************************************************
