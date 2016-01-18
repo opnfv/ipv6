@@ -36,8 +36,10 @@ Please **NOTE** that the method of sourcing tenant credentials may vary dependin
 
     glance image-create --name 'Fedora22' --disk-format qcow2 --container-format bare --file ./Fedora-Cloud-Base-22-20150521.x86_64.qcow2
 
-**SCENARIO-3-SETUP-4**: Now we have to move the public network from physical network
-interface to ``br-ex``, including moving the public IP address and setting up default route.
+**SCENARIO-3-SETUP-4**: Now we have to move the physical interface (i.e. the public network interface)
+to ``br-ex``, including moving the public IP address and setting up default route. **Please note that this step
+may already have been done when you use a different installer to deploy OpenStack because that installer
+may have already moved the physical interface to** ``br-ex`` **during deployment**.
 
 Because our ``opnfv-os-controller`` node has two interfaces ``eth0`` and ``eth1``,
 and ``eth1`` is used for external connectivity, move the IP address of ``eth1`` to ``br-ex``.

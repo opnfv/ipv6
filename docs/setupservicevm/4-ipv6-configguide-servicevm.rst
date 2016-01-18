@@ -41,8 +41,11 @@ Because we need to manually create networks/subnets to achieve the IPv6 vRouter,
 ``NEUTRON_CREATE_INITIAL_NETWORKS=False`` in ``local.conf`` file. When this flag is set to False,
 ``devstack`` does not create any networks/subnets during the setup phase.
 
-Now we have to move the public network from physical network interface to ``br-ex``,
-including moving the public IP address and setting up default route.
+Now we have to move the physical interface (i.e. the public network interface) to ``br-ex``,
+including moving the public IP address and setting up default route. **Please note that this step
+may already have been done when you use a different installer to deploy OpenStack because that installer
+may have already moved the physical interface to** ``br-ex`` **during deployment**.
+
 In OpenStack Controller Node ``opnfv-os-controller``, ``eth1`` is configured to provide external/public connectivity
 for both IPv4 and IPv6 (optional). So let us add this interface to ``br-ex`` and move the IP address, including the
 default route from ``eth1`` to ``br-ex``.

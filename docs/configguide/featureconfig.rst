@@ -92,6 +92,9 @@ Disable Security Groups in OpenStack ML2 Setup
 **OPNFV-NATIVE-SEC-3**: After updating the settings, you will have to restart the
 ``Neutron`` and ``Nova`` services.
 
+**Please note that the commands of restarting ``Neutron`` and ``Nova`` would vary depending on the installer.
+Please refer to relevant documentation of specific installers**
+
 ---------------------------------
 Set Up Service VM as IPv6 vRouter
 ---------------------------------
@@ -129,7 +132,7 @@ in ``devstack``, the following command should be used:
 **OPNFV-NATIVE-SETUP-4: This Step is Informational. OPNFV Installer has taken care of this Step
 during deployment. You may refer to this Step only if there is any issue, or if you are using other installers**.
 
-We have to move the public network from physical network interface to ``br-ex``, including moving
+We have to move the physical interface (i.e. the public network interface) to ``br-ex``, including moving
 the public IP address and setting up default route. Please refer to ``OS-NATIVE-SETUP-4`` and
 ``OS-NATIVE-SETUP-5`` in our `more complete instruction <http://artifacts.opnfv.org/ipv6/docs/setupservicevm/5-ipv6-configguide-scenario-1-native-os.html#set-up-service-vm-as-ipv6-vrouter>`_.
 
@@ -337,7 +340,7 @@ Informational Note: Move Public Network from Physical Network Interface to ``br-
 **This Step is Informational. OPNFV Installer has taken care of this Step during deployment.
 You may refer to this Step only if there is any issue, or if you are using other installers**.
 
-We have to move the public network from physical network interface to ``br-ex``, including moving
+We have to move the physical interface (i.e. the public network interface) to ``br-ex``, including moving
 the public IP address and setting up default route. Please refer to ``SETUP-SVM-3`` and
 ``SETUP-SVM-4`` in our `more complete instruction <http://artifacts.opnfv.org/ipv6/docs/setupservicevm/4-ipv6-configguide-servicevm.html#add-external-connectivity-to-br-ex>`_.
 
