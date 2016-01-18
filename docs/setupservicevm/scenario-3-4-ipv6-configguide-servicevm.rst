@@ -25,9 +25,9 @@ and `Compute Node <./scenario-3-3-ipv6-configguide-os-compute.html>`_ using ``de
 If you are installing OpenStack using a different installer (i.e. not with ``devstack``), please make sure
 that Security Groups are disabled in the setup.
 
-**Please refer to**
-`here <./5-ipv6-configguide-scenario-1-native-os.html#note-disable-security-groups-in-openstack-ml2-setup>_`
-**for the notes in** ``Section 2.4``, **steps** ``OS-NATIVE-SEC-1`` **through** ``OS-NATIVE-SEC-3``.
+**Please refer to
+`here <./5-ipv6-configguide-scenario-1-native-os.html#note-disable-security-groups-in-openstack-ml2-setup>`_
+for the notes in** ``Section 2.4``, **steps** ``OS-NATIVE-SEC-1`` **through** ``OS-NATIVE-SEC-3``.
 
 *********************************
 Set Up Service VM as IPv6 vRouter
