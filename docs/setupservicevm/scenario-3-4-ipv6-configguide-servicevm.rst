@@ -13,6 +13,26 @@ Now we can start to set up a service VM as an IPv6 vRouter. For exemplary purpos
 * We use ``devstack`` to install OpenStack Kilo, and the directory is ``~/devstack``
 * Note: all IP addresses as shown below are for exemplary purpose.
 
+****************************************************
+Note: Disable Security Groups in OpenStack ML2 Setup
+****************************************************
+
+Please note that Security Groups feature has been disabled automatically through ``local.conf`` configuration file
+during the setup procedure of OpenStack in both
+`Controller Node <./scenario-3-2-ipv6-configguide-os-controller.html>`_
+and `Compute Node <./scenario-3-3-ipv6-configguide-os-compute.html>`_ using ``devstack``.
+
+If you are installing OpenStack using a different installer (i.e. not with ``devstack``), please make sure
+that Security Groups are disabled in the setup.
+
+**Please refer to**
+`here <./5-ipv6-configguide-scenario-1-native-os.html#note-disable-security-groups-in-openstack-ml2-setup>_`
+**for the notes in** ``Section 2.4``, **steps** ``OS-NATIVE-SEC-1`` **through** ``OS-NATIVE-SEC-3``.
+
+*********************************
+Set Up Service VM as IPv6 vRouter
+*********************************
+
 **SCENARIO-3-SETUP-1**: Now we assume that OpenStack multi-node setup is up and running. The following
 commands should be executed:
 
