@@ -336,6 +336,42 @@ configuration and metadata files
 
     git clone https://github.com/sridhargaddam/opnfv_os_ipv6_poc.git /opt/stack/opnfv_os_ipv6_poc
 
+----------------------------------------------
+Disable Security Groups in OpenStack ML2 Setup
+----------------------------------------------
+
+Please **NOTE** that although Security Groups feature has been disabled automatically
+through ``local.conf`` configuration file by some installers such as ``devstack``, it is very likely
+that other installers such as ``Apex``, ``Compass``, ``Fuel`` or ``Joid`` will enable Security
+Groups feature after installation.
+
+**Please make sure that Security Groups are disabled in the setup**
+
+**OPNFV-SEC-1**: Change the settings in
+``/etc/neutron/plugins/ml2/ml2_conf.ini`` as follows
+
+.. code-block:: bash
+
+    # /etc/neutron/plugins/ml2/ml2_conf.ini
+    [securitygroup]
+    enable_security_group = False
+    firewall_driver = neutron.agent.firewall.NoopFirewallDriver
+
+**OPNFV-SEC-2**: Change the settings in ``/etc/nova/nova.conf`` as follows
+
+.. code-block:: bash
+
+    # /etc/nova/nova.conf
+    [DEFAULT]
+    security_group_api = nova
+    firewall_driver = nova.virt.firewall.NoopFirewallDriver
+
+**OPNFV-SEC-3**: After updating the settings, you will have to restart the
+``Neutron`` and ``Nova`` services.
+
+**Please note that the commands of restarting** ``Neutron`` **and** ``Nova`` **would vary
+depending on the installer. Please refer to relevant documentation of specific installers**
+
 ---------------------------------------------------
 Source the Credentials in OpenStack Controller Node
 ---------------------------------------------------
