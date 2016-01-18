@@ -92,8 +92,8 @@ Disable Security Groups in OpenStack ML2 Setup
 **OPNFV-NATIVE-SEC-3**: After updating the settings, you will have to restart the
 ``Neutron`` and ``Nova`` services.
 
-**Please note that the commands of restarting ``Neutron`` and ``Nova`` would vary depending on the installer.
-Please refer to relevant documentation of specific installers**
+**Please note that the commands of restarting** ``Neutron`` **and** ``Nova`` **would vary
+depending on the installer. Please refer to relevant documentation of specific installers**
 
 ---------------------------------
 Set Up Service VM as IPv6 vRouter
@@ -129,8 +129,8 @@ in ``devstack``, the following command should be used:
 
     glance image-create --name 'Fedora22' --disk-format qcow2 --container-format bare --file ./Fedora-Cloud-Base-22-20150521.x86_64.qcow2
 
-**OPNFV-NATIVE-SETUP-4: This Step is Informational. OPNFV Installer has taken care of this Step
-during deployment. You may refer to this Step only if there is any issue, or if you are using other installers**.
+**OPNFV-NATIVE-SETUP-4: This step is Informational. OPNFV Installer has taken care of this step
+during deployment. You may refer to this step only if there is any issue, or if you are using other installers**.
 
 We have to move the physical interface (i.e. the public network interface) to ``br-ex``, including moving
 the public IP address and setting up default route. Please refer to ``OS-NATIVE-SETUP-4`` and

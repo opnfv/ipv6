@@ -161,8 +161,8 @@ configuration parameters.
 **OS-NATIVE-SEC-3**: After updating the settings, you will have to restart the
 ``Neutron`` and ``Nova`` services.
 
-**Please note that the commands of restarting ``Neutron`` and ``Nova`` would vary depending on the installer.
-Please refer to relevant documentation of specific installers**
+**Please note that the commands of restarting** ``Neutron`` **and** ``Nova`` **would vary
+depending on the installer. Please refer to relevant documentation of specific installers**
 
 *********************************
 Set Up Service VM as IPv6 vRouter
@@ -200,7 +200,7 @@ the following command may be used for some other installers:
 
     glance image-create --name 'Fedora22' --disk-format qcow2 --container-format bare --file ./Fedora-Cloud-Base-22-20150521.x86_64.qcow2
 
-**OS-NATIVE-SETUP-4**: Now We have to move the physical interface (i.e. the public network interface)
+**OS-NATIVE-SETUP-4**: Now we have to move the physical interface (i.e. the public network interface)
 to ``br-ex``, including moving the public IP address and setting up default route. **Please note that this step
 may already have been done when you use a different installer to deploy OpenStack because that installer
 may have already moved the physical interface to** ``br-ex`` **during deployment**.
