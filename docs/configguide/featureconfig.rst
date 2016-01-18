@@ -52,12 +52,22 @@ Install OPNFV and Preparation
 .. code-block:: bash
 
     # HA deployment in OpenStack-only environment
-    sudo deploy.sh -s os-nofeature-ha
+    sudo ./deploy.sh -s os-nofeature-ha
 
     # Non-HA deployment in OpenStack-only environment
-    sudo deploy.sh -s os-nofeature-noha
+    sudo ./deploy.sh -s os-nofeature-noha
 
-Please **NOTE** that currently only ``Fuel`` installer supports this environment.
+**Joid** Installer:
+
+.. code-block:: bash
+
+    # HA deployment in OpenStack-only environment
+    sudo ./deploy.sh -o liberty -s nosdn -t ha
+
+    # Non-HA deployment in OpenStack-only environment
+    sudo ./deploy.sh -o liberty -s nosdn -t noha
+
+Please **NOTE** that currently only ``Fuel`` and ``Joid`` installers support this environment.
 
 **OPNFV-NATIVE-INSTALL-2**: Clone the following GitHub repository to get the
 configuration and metadata files
@@ -100,15 +110,33 @@ Set Up Service VM as IPv6 vRouter
 ---------------------------------
 
 **OPNFV-NATIVE-SETUP-1**: Now we assume that OpenStack multi-node setup is up and running.
-We have to source the tenant credentials in this step. The following command should be executed:
+We have to source the tenant credentials in this step. Please **NOTE** that the method of sourcing tenant
+credentials may vary depending on installers. For example:
+
+**Apex** installer:
 
 .. code-block:: bash
 
-    # source the tenant credentials in OPNFV
+    # source the tenant credentials using Apex installer of OPNFV
+    # you need to copy the file /home/stack/overcloudrc from the installer VM called "instack"
+    # to a location in controller node, for example, in the directory /opt
+    source /opt/overcloudrc
+
+**Compass** installer:
+
+.. code-block:: bash
+
+    # source the tenant credentials using Compass installer of OPNFV
     source /opt/admin-openrc.sh
 
-Please **NOTE** that the method of sourcing tenant credentials may vary depending on installers. For example,
-in ``devstack``, the following command should be used:
+**Joid** installer:
+
+.. code-block:: bash
+
+    # source the tenant credentials using Joid installer of OPNFV
+    source $HOME/joid_config/admin-openrc
+
+**devstack**:
 
 .. code-block:: bash
 
@@ -294,10 +322,10 @@ of OPNFV Brahmaputra Release:
 .. code-block:: bash
 
     # HA deployment in OpenStack with Open Daylight L2-only environment
-    sudo deploy.sh -s os-odl_l2-nofeature-ha
+    sudo ./deploy.sh -s os-odl_l2-nofeature-ha
 
     # Non-HA deployment in OpenStack with Open Daylight L2-only environment
-    sudo deploy.sh -s os-odl_l2-nofeature-noha
+    sudo ./deploy.sh -s os-odl_l2-nofeature-noha
 
 Please **NOTE** that currently only ``Apex`` and ``Fuel`` installer support this environment.
 
@@ -315,16 +343,33 @@ Source the Credentials in OpenStack Controller Node
 **SETUP-SVM-1**: Login in OpenStack Controller Node. Start a new terminal,
 and change directory to where OpenStack is installed.
 
-**SETUP-SVM-2**: We have to source the tenant credentials in this step.
-The following command should be executed:
+**SETUP-SVM-2**: We have to source the tenant credentials in this step. Please **NOTE**
+that the method of sourcing tenant credentials may vary depending on installers. For example:
+
+**Apex** installer:
 
 .. code-block:: bash
 
-    # source the tenant credentials in OPNFV
+    # source the tenant credentials using Apex installer of OPNFV
+    # you need to copy the file /home/stack/overcloudrc from the installer VM called "instack"
+    # to a location in controller node, for example, in the directory /opt
+    source /opt/overcloudrc
+
+**Compass** installer:
+
+.. code-block:: bash
+
+    # source the tenant credentials using Compass installer of OPNFV
     source /opt/admin-openrc.sh
 
-Please **NOTE** that the method of sourcing tenant credentials may vary depending on installers. For example,
-in ``devstack``, the following command should be used:
+**Joid** installer:
+
+.. code-block:: bash
+
+    # source the tenant credentials using Joid installer of OPNFV
+    source $HOME/joid_config/admin-openrc
+
+**devstack**:
 
 .. code-block:: bash
 
@@ -638,5 +683,4 @@ to reach external ``ipv6-router``.
 .. code-block:: bash
 
     exit
-
 

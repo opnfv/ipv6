@@ -178,14 +178,7 @@ in ``devstack``:
     cd ~/devstack
     source openrc admin demo
 
-Please **NOTE** that the method of sourcing tenant credentials may vary depending on installers. For example,
-the following command may be used for some other installers:
-
-.. code-block:: bash
-
-    # source the tenant credentials in some other installers
-    source /opt/admin-openrc.sh
-
+Please **NOTE** that the method of sourcing tenant credentials may vary depending on installers.
 **Please refer to relevant documentation of installers if you encounter any issue**.
 
 **OS-NATIVE-SETUP-2**: Download ``fedora22`` image which would be used for ``vRouter``
