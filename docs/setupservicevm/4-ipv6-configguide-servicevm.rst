@@ -364,19 +364,39 @@ interface of ``vRouter`` automatically configures an IPv6 SLAAC address.
 Testing to Verify Setup Complete
 ********************************
 
-Now, let us ``ssh`` to one of the VMs, e.g. VM1, to confirm that it has successfully configured the IPv6 address
-using ``SLAAC`` with prefix ``2001:db8:0:2::/64`` from ``vRouter``.
+Now, let us ``SSH`` to those VMs, e.g. VM1 and / or VM2 and / or vRouter, to confirm that
+it has successfully configured the IPv6 address using ``SLAAC`` with prefix
+``2001:db8:0:2::/64`` from ``vRouter``.
 
-Please note that you need to get the IPv4 address associated to VM1. This can be inferred from ``nova list`` command.
+We use ``floatingip`` mechanism to achieve ``SSH``.
 
-**SETUP-SVM-31**: ``ssh`` VM1
+**SETUP-SVM-31**: Now we can ``SSH`` to VMs. You can execute the following command.
 
 .. code-block:: bash
 
-    ssh -i /home/odl/vRouterKey cirros@<VM1-IPv4-address>
+    # 1. Create a floatingip and associate it with VM1, VM2 and vRouter (to the port id that is passed).
+    neutron floatingip-create --port-id $(neutron port-list | grep -w eth0-VM1 | \
+    awk '{print $2}') ext-net
+    neutron floatingip-create --port-id $(neutron port-list | grep -w eth0-VM2 | \
+    awk '{print $2}') ext-net
+    neutron floatingip-create --port-id $(neutron port-list | grep -w eth1-vRouter | \
+    awk '{print $2}') ext-net
 
-If everything goes well, ``ssh`` will be successful and you will be logged into VM1. Run some commands to verify
-that IPv6 addresses are configured on ``eth0`` interface.
+    # 2. To know / display the floatingip associated with VM1, VM2 and vRouter.
+    neutron floatingip-list -F floating_ip_address -F port_id | grep $(neutron port-list | \
+    grep -w eth0-VM1 | awk '{print $2}') | awk '{print $2}'
+    neutron floatingip-list -F floating_ip_address -F port_id | grep $(neutron port-list | \
+    grep -w eth0-VM2 | awk '{print $2}') | awk '{print $2}'
+    neutron floatingip-list -F floating_ip_address -F port_id | grep $(neutron port-list | \
+    grep -w eth1-vRouter | awk '{print $2}') | awk '{print $2}'
+
+    # 3. To ssh to the vRouter, VM1 and VM2, user can execute the following command.
+    ssh -i ~/vRouterKey fedora@<floating-ip-of-vRouter>
+    ssh -i ~/vRouterKey cirros@<floating-ip-of-VM1>
+    ssh -i ~/vRouterKey cirros@<floating-ip-of-VM2>
+
+If everything goes well, ``ssh`` will be successful and you will be logged into those VMs.
+Run some commands to verify that IPv6 addresses are configured on ``eth0`` interface.
 
 **SETUP-SVM-32**: Show an IPv6 address with a prefix of ``2001:db8:0:2::/64``
 
