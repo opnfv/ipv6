@@ -282,7 +282,26 @@ To ``SSH`` to ``vRouter``, you can execute the following command.
 
 .. code-block:: bash
 
-    sudo ip netns exec qrouter-$(neutron router-list | grep -w ipv6-router | awk '{print $2}') ssh -i ~/vRouterKey fedora@2001:db8:0:1:f816:3eff:fe11:1111
+    # 1. Create a floatingip and associate it with VM1, VM2 and vRouter (to the port id that is passed).
+    neutron floatingip-create --port-id $(neutron port-list | grep -w eth0-VM1 | \
+    awk '{print $2}') ext-net
+    neutron floatingip-create --port-id $(neutron port-list | grep -w eth0-VM2 | \
+    awk '{print $2}') ext-net
+    neutron floatingip-create --port-id $(neutron port-list | grep -w eth1-vRouter | \
+    awk '{print $2}') ext-net
+
+    # 2. To know / display the floatingip associated with VM1, VM2 and vRouter.
+    neutron floatingip-list -F floating_ip_address -F port_id | grep $(neutron port-list | \
+    grep -w eth0-VM1 | awk '{print $2}') | awk '{print $2}'
+    neutron floatingip-list -F floating_ip_address -F port_id | grep $(neutron port-list | \
+    grep -w eth0-VM2 | awk '{print $2}') | awk '{print $2}'
+    neutron floatingip-list -F floating_ip_address -F port_id | grep $(neutron port-list | \
+    grep -w eth1-vRouter | awk '{print $2}') | awk '{print $2}'
+
+    # 3. To ssh to the vRouter, VM1 and VM2, user can execute the following command.
+    ssh -i ~/vRouterKey fedora@<floating-ip-of-vRouter>
+    ssh -i ~/vRouterKey cirros@<floating-ip-of-VM1>
+    ssh -i ~/vRouterKey cirros@<floating-ip-of-VM2>
 
 ****************************************************************
 Setup Manual in OpenStack with Open Daylight L2-Only Environment
