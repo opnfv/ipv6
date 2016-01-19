@@ -413,12 +413,6 @@ Run some commands to verify that IPv6 addresses are configured on ``eth0`` inter
 If the above ping6 command succeeds, it implies that ``vRouter`` was able to successfully forward the IPv6 traffic
 to reach external ``ipv6-router``.
 
-**SETUP-SVM-34**: When all tests show that the setup works as expected, You can now exit the ``ipv6-router`` namespace.
-
-.. code-block:: bash
-
-    exit
-
 **********
 Next Steps
 **********
