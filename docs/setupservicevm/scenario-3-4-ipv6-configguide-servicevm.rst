@@ -110,9 +110,19 @@ connectivity.
 **SCENARIO-3-SETUP-7**: Create an external network/subnet ``ext-net`` using the appropriate values based on the
 data-center physical network setup.
 
+Please **NOTE** that if you use a different installer, i.e. NOT ``devstack``, your installer
+may have already created an external network during installation. Under this circumstance,
+you may only need to create the subnet of ``ext-net``. When you create the subnet, you must
+use the same name of external network that your installer creates.
+
 .. code-block:: bash
 
+    # If you use a different installer and it has already created an external work,
+    # Please skip this command "net-create"
     neutron net-create --router:external ext-net
+
+    # If you use a different installer and it has already created an external work,
+    # Change the name "ext-net" to match the name of external network that your installer has created
     neutron subnet-create --disable-dhcp --allocation-pool start=198.59.156.251,end=198.59.156.254 --gateway 198.59.156.1 ext-net 198.59.156.0/24
 
 **SCENARIO-3-SETUP-8**: Create Neutron networks ``ipv4-int-network1`` and ``ipv6-int-network2``
@@ -135,6 +145,8 @@ and associate it to ``ipv4-router``.
 
 .. code-block:: bash
 
+    # If you use a different installer and it has already created an external work,
+    # Change the name "ext-net" to match the name of external network that your installer has created
     neutron router-gateway-set ipv4-router ext-net
     neutron router-gateway-set ipv6-router ext-net
 
@@ -200,6 +212,8 @@ to know the IPv6 addresses that would be assigned to the port).
 .. code-block:: bash
 
     # 1. Create a floatingip and associate it with VM1, VM2 and vRouter (to the port id that is passed).
+    #    If you use a different installer and it has already created an external work,
+    #    Change the name "ext-net" to match the name of external network that your installer has created
     neutron floatingip-create --port-id $(neutron port-list | grep -w eth0-VM1 | \
     awk '{print $2}') ext-net
     neutron floatingip-create --port-id $(neutron port-list | grep -w eth0-VM2 | \
