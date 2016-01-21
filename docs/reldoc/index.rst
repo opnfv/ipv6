@@ -310,7 +310,7 @@ one IPv6 subnet ``ipv6-int-subnet2`` in ``ipv6-int-network2``, and associate bot
     --nic port-id=$(neutron port-list | grep -w eth0-VM1 | awk '{print $2}') \
     --key-name vRouterKey VM1
 
-    nova boot --image cirros-0.3.4-x86_64-uec --flavor m1.tiny 
+    nova boot --image cirros-0.3.4-x86_64-uec --flavor m1.tiny
     --user-data /opt/stack/opnfv_os_ipv6_poc/set_mtu.sh \
     --availability-zone nova:opnfv-os-compute \
     --nic port-id=$(neutron port-list | grep -w eth0-VM2 | awk '{print $2}') \
