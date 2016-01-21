@@ -56,7 +56,8 @@ Install OPNFV and Preparation
     export OS_VERSION=${{COMPASS_OS_VERSION}}
     export OPENSTACK_VERSION=${{COMPASS_OPENSTACK_VERSION}}
     export CONFDIR=$WORKSPACE/deploy/conf/vm_environment
-    sudo ./deploy.sh --dha $CONFDIR/os-nosdn-nofeature-ha.yml --network $CONFDIR/$NODE_NAME/network.yml
+    sudo ./deploy.sh --dha $CONFDIR/os-nosdn-nofeature-ha.yml \
+    --network $CONFDIR/$NODE_NAME/network.yml
 
     # Non-HA deployment in OpenStack-only environment
     # Non-HA deployment is currently not supported by Compass installer
@@ -88,7 +89,8 @@ configuration and metadata files
 
 .. code-block:: bash
 
-    git clone https://github.com/sridhargaddam/opnfv_os_ipv6_poc.git /opt/stack/opnfv_os_ipv6_poc
+    git clone https://github.com/sridhargaddam/opnfv_os_ipv6_poc.git \
+    /opt/stack/opnfv_os_ipv6_poc
 
 ----------------------------------------------
 Disable Security Groups in OpenStack ML2 Setup
@@ -163,13 +165,15 @@ credentials may vary depending on installers. For example:
 
 .. code-block:: bash
 
-    wget https://download.fedoraproject.org/pub/fedora/linux/releases/22/Cloud/x86_64/Images/Fedora-Cloud-Base-22-20150521.x86_64.qcow2
+    wget https://download.fedoraproject.org/pub/fedora/linux/releases/22/Cloud/x86_64/\
+    Images/Fedora-Cloud-Base-22-20150521.x86_64.qcow2
 
 **OPNFV-NATIVE-SETUP-3**: Import Fedora22 image to ``glance``
 
 .. code-block:: bash
 
-    glance image-create --name 'Fedora22' --disk-format qcow2 --container-format bare --file ./Fedora-Cloud-Base-22-20150521.x86_64.qcow2
+    glance image-create --name 'Fedora22' --disk-format qcow2 --container-format bare \
+    --file ./Fedora-Cloud-Base-22-20150521.x86_64.qcow2
 
 **OPNFV-NATIVE-SETUP-4: This step is Informational. OPNFV Installer has taken care of this step
 during deployment. You may refer to this step only if there is any issue, or if you are using other installers**.
@@ -208,7 +212,8 @@ network that installer creates when you create the subnet. For example:
 
     # Note that the name "ext-net" may work for some installers such as Compass and Joid
     # Change the name "ext-net" to match the name of external network that an installer creates
-    neutron subnet-create --disable-dhcp --allocation-pool start=198.59.156.251,end=198.59.156.254 --gateway 198.59.156.1 ext-net 198.59.156.0/24
+    neutron subnet-create --disable-dhcp --allocation-pool start=198.59.156.251,\
+    end=198.59.156.254 --gateway 198.59.156.1 ext-net 198.59.156.0/24
 
 **OPNFV-NATIVE-SETUP-7**: Create Neutron networks ``ipv4-int-network1`` and
 ``ipv6-int-network2`` with port_security disabled
@@ -223,7 +228,9 @@ network that installer creates when you create the subnet. For example:
 
 .. code-block:: bash
 
-    neutron subnet-create --name ipv4-int-subnet1 --dns-nameserver 8.8.8.8 ipv4-int-network1 20.0.0.0/24
+    neutron subnet-create --name ipv4-int-subnet1 --dns-nameserver 8.8.8.8 \
+    ipv4-int-network1 20.0.0.0/24
+
     neutron router-interface-add ipv4-router ipv4-int-subnet1
 
 **OPNFV-NATIVE-SETUP-9**: Associate the ``ext-net`` to the Neutron routers ``ipv4-router``
@@ -242,8 +249,12 @@ one IPv6 subnet ``ipv6-int-subnet2`` in ``ipv6-int-network2``, and associate bot
 
 .. code-block:: bash
 
-    neutron subnet-create --name ipv4-int-subnet2 --dns-nameserver 8.8.8.8 ipv6-int-network2 10.0.0.0/24
-    neutron subnet-create --name ipv6-int-subnet2 --ip-version 6 --ipv6-ra-mode slaac --ipv6-address-mode slaac ipv6-int-network2 2001:db8:0:1::/64
+    neutron subnet-create --name ipv4-int-subnet2 --dns-nameserver 8.8.8.8 \
+    ipv6-int-network2 10.0.0.0/24
+
+    neutron subnet-create --name ipv6-int-subnet2 --ip-version 6 --ipv6-ra-mode slaac \
+    --ipv6-address-mode slaac ipv6-int-network2 2001:db8:0:1::/64
+
     neutron router-interface-add ipv6-router ipv4-int-subnet2
     neutron router-interface-add ipv6-router ipv6-int-subnet2
 
@@ -273,17 +284,38 @@ one IPv6 subnet ``ipv6-int-subnet2`` in ``ipv6-int-network2``, and associate bot
 
 .. code-block:: bash
 
-    neutron router-update ipv6-router --routes type=dict list=true destination=2001:db8:0:2::/64,nexthop=2001:db8:0:1:f816:3eff:fe11:1111
+    neutron router-update ipv6-router --routes type=dict list=true \
+    destination=2001:db8:0:2::/64,nexthop=2001:db8:0:1:f816:3eff:fe11:1111
 
 **OPNFV-NATIVE-SETUP-15**: Boot Service VM (``vRouter``), VM1 and VM2
 
 .. code-block:: bash
 
-    nova boot --image Fedora22 --flavor m1.small --user-data /opt/stack/opnfv_os_ipv6_poc/metadata.txt --availability-zone nova:opnfv-os-compute --nic port-id=$(neutron port-list | grep -w eth0-vRouter | awk '{print $2}') --nic port-id=$(neutron port-list | grep -w eth1-vRouter | awk '{print $2}') --key-name vRouterKey vRouter
+    nova boot --image Fedora22 --flavor m1.small \
+    --user-data /opt/stack/opnfv_os_ipv6_poc/metadata.txt \
+    --availability-zone nova:opnfv-os-compute \
+    --nic port-id=$(neutron port-list | grep -w eth0-vRouter | awk '{print $2}') \
+    --nic port-id=$(neutron port-list | grep -w eth1-vRouter | awk '{print $2}') \
+    --key-name vRouterKey vRouter
+
     nova list
-    nova console-log vRouter #Please wait for some 10 to 15 minutes so that necessary packages (like radvd) are installed and vRouter is up.
-    nova boot --image cirros-0.3.4-x86_64-uec --flavor m1.tiny --nic port-id=$(neutron port-list | grep -w eth0-VM1 | awk '{print $2}') --availability-zone nova:opnfv-os-controller --key-name vRouterKey --user-data /opt/stack/opnfv_os_ipv6_poc/set_mtu.sh VM1
-    nova boot --image cirros-0.3.4-x86_64-uec --flavor m1.tiny --nic port-id=$(neutron port-list | grep -w eth0-VM2 | awk '{print $2}') --availability-zone nova:opnfv-os-compute --key-name vRouterKey --user-data /opt/stack/opnfv_os_ipv6_poc/set_mtu.sh VM2
+
+    # Please wait for some 10 to 15 minutes so that necessary packages (like radvd)
+    # are installed and vRouter is up.
+    nova console-log vRouter
+
+    nova boot --image cirros-0.3.4-x86_64-uec --flavor m1.tiny \
+    --user-data /opt/stack/opnfv_os_ipv6_poc/set_mtu.sh \
+    --availability-zone nova:opnfv-os-controller \
+    --nic port-id=$(neutron port-list | grep -w eth0-VM1 | awk '{print $2}') \
+    --key-name vRouterKey VM1
+
+    nova boot --image cirros-0.3.4-x86_64-uec --flavor m1.tiny 
+    --user-data /opt/stack/opnfv_os_ipv6_poc/set_mtu.sh \
+    --availability-zone nova:opnfv-os-compute \
+    --nic port-id=$(neutron port-list | grep -w eth0-VM2 | awk '{print $2}') \
+    --key-name vRouterKey VM2
+
     nova list # Verify that all the VMs are in ACTIVE state.
 
 **OPNFV-NATIVE-SETUP-16**: If all goes well, the IPv6 addresses assigned to the VMs
@@ -291,10 +323,14 @@ would be as shown as follows:
 
 .. code-block:: bash
 
-    vRouter eth0 interface would have the following IPv6 address: 2001:db8:0:1:f816:3eff:fe11:1111/64
-    vRouter eth1 interface would have the following IPv6 address: 2001:db8:0:2::1/64
-    VM1 would have the following IPv6 address: 2001:db8:0:2:f816:3eff:fe33:3333/64
-    VM2 would have the following IPv6 address: 2001:db8:0:2:f816:3eff:fe44:4444/64
+    # vRouter eth0 interface would have the following IPv6 address:
+    #     2001:db8:0:1:f816:3eff:fe11:1111/64
+    # vRouter eth1 interface would have the following IPv6 address:
+    #     2001:db8:0:2::1/64
+    # VM1 would have the following IPv6 address:
+    #     2001:db8:0:2:f816:3eff:fe33:3333/64
+    # VM2 would have the following IPv6 address:
+    #     2001:db8:0:2:f816:3eff:fe44:4444/64
 
 **OPNFV-NATIVE-SETUP-17**: Now we can ``SSH`` to VMs. You can execute the following command.
 
@@ -365,7 +401,8 @@ of OPNFV Brahmaputra Release:
     export OS_VERSION=${{COMPASS_OS_VERSION}}
     export OPENSTACK_VERSION=${{COMPASS_OPENSTACK_VERSION}}
     export CONFDIR=$WORKSPACE/deploy/conf/vm_environment
-    sudo ./deploy.sh --dha $CONFDIR/os-odl_l2-nofeature-ha.yml --network $CONFDIR/$NODE_NAME/network.yml
+    sudo ./deploy.sh --dha $CONFDIR/os-odl_l2-nofeature-ha.yml \
+    --network $CONFDIR/$NODE_NAME/network.yml
 
     # Non-HA deployment in OpenStack with Open Daylight L2-only environment
     # Non-HA deployment is currently not supported by Compass installer
@@ -387,7 +424,8 @@ configuration and metadata files
 
 .. code-block:: bash
 
-    git clone https://github.com/sridhargaddam/opnfv_os_ipv6_poc.git /opt/stack/opnfv_os_ipv6_poc
+    git clone https://github.com/sridhargaddam/opnfv_os_ipv6_poc.git \
+    /opt/stack/opnfv_os_ipv6_poc
 
 ----------------------------------------------
 Disable Security Groups in OpenStack ML2 Setup
@@ -514,7 +552,8 @@ network that installer creates when you create the subnet. For example:
 
     # Note that the name "ext-net" may work for some installers such as Compass and Joid
     # Change the name "ext-net" to match the name of external network that an installer creates
-    neutron subnet-create --disable-dhcp --allocation-pool start=198.59.156.251,end=198.59.156.254 --gateway 198.59.156.1 ext-net 198.59.156.0/24
+    neutron subnet-create --disable-dhcp --allocation-pool start=198.59.156.251,\
+    end=198.59.156.254 --gateway 198.59.156.1 ext-net 198.59.156.0/24
 
 Please note that the IP addresses in the command above are for exemplary purpose. **Please replace the IP addresses of
 your actual network**.
@@ -537,7 +576,8 @@ your actual network**.
 
 .. code-block:: bash
 
-    neutron subnet-create --name ipv4-int-subnet1 --dns-nameserver 8.8.8.8 ipv4-int-network1 20.0.0.0/24
+    neutron subnet-create --name ipv4-int-subnet1 --dns-nameserver 8.8.8.8 \
+    ipv4-int-network1 20.0.0.0/24
 
 **SETUP-SVM-10**: Associate the IPv4 internal subnet ``ipv4-int-subnet1`` to the Neutron router ``ipv4-router``.
 
@@ -577,7 +617,8 @@ IPv6 router.
 
 .. code-block:: bash
 
-    neutron subnet-create --name ipv4-int-subnet2 --dns-nameserver 8.8.8.8 ipv4-int-network2 10.0.0.0/24
+    neutron subnet-create --name ipv4-int-subnet2 --dns-nameserver 8.8.8.8 \
+    ipv4-int-network2 10.0.0.0/24
 
 **SETUP-SVM-15**: Associate the IPv4 internal subnet ``ipv4-int-subnet2`` to the Neutron router ``ipv6-router``.
 
@@ -593,7 +634,10 @@ Prepare Image, Metadata and Keypair for Service VM
 
 .. code-block:: bash
 
-    glance image-create --name 'Fedora22' --disk-format qcow2 --container-format bare --is-public true --copy-from https://download.fedoraproject.org/pub/fedora/linux/releases/22/Cloud/x86_64/Images/Fedora-Cloud-Base-22-20150521.x86_64.qcow2
+    glance image-create --name 'Fedora22' --disk-format qcow2 --container-format bare \
+    --is-public true --copy-from \
+    https://download.fedoraproject.org/pub/fedora/linux/releases/22/Cloud/x86_64/Images\
+    /Fedora-Cloud-Base-22-20150521.x86_64.qcow2
 
 **SETUP-SVM-17**: Create a keypair
 
@@ -622,7 +666,12 @@ and ``eth1`` interface on ``ipv4-int-network1`` connecting to ``ipv4-router``.
 
 .. code-block:: bash
 
-    nova boot --image Fedora22 --flavor m1.small --user-data /opt/stack/opnfv_os_ipv6_poc/metadata.txt --availability-zone nova:opnfv-os-compute --nic port-id=$(neutron port-list | grep -w eth0-vRouter | awk '{print $2}') --nic port-id=$(neutron port-list | grep -w eth1-vRouter | awk '{print $2}') --key-name vRouterKey vRouter
+    nova boot --image Fedora22 --flavor m1.small \
+    --user-data /opt/stack/opnfv_os_ipv6_poc/metadata.txt \
+    --availability-zone nova:opnfv-os-compute \
+    --nic port-id=$(neutron port-list | grep -w eth0-vRouter | awk '{print $2}') \
+    --nic port-id=$(neutron port-list | grep -w eth1-vRouter | awk '{print $2}') \
+    --key-name vRouterKey vRouter
 
 Please **note** that ``/opt/stack/opnfv_os_ipv6_poc/metadata.txt`` is used to enable the ``vRouter`` to automatically
 spawn a ``radvd``, and
@@ -665,13 +714,21 @@ options or via ``meta-data``.
 
 .. code-block:: bash
 
-    nova boot --image cirros-0.3.4-x86_64-uec --flavor m1.tiny --nic port-id=$(neutron port-list | grep -w eth0-VM1 | awk '{print $2}') --availability-zone nova:opnfv-os-controller --key-name vRouterKey --user-data /opt/stack/opnfv_os_ipv6_poc/set_mtu.sh VM1
+    nova boot --image cirros-0.3.4-x86_64-uec --flavor m1.tiny \
+    --user-data /opt/stack/opnfv_os_ipv6_poc/set_mtu.sh \
+    --availability-zone nova:opnfv-os-controller \
+    --nic port-id=$(neutron port-list | grep -w eth0-VM1 | awk '{print $2}') \
+    --key-name vRouterKey VM1
 
 **SETUP-SVM-22**: Create VM2 on OpenStack Compute Node with hostname ``opnfv-os-compute``
 
 .. code-block:: bash
 
-    nova boot --image cirros-0.3.4-x86_64-uec --flavor m1.tiny --nic port-id=$(neutron port-list | grep -w eth0-VM2 | awk '{print $2}') --availability-zone nova:opnfv-os-compute --key-name vRouterKey --user-data /opt/stack/opnfv_os_ipv6_poc/set_mtu.sh VM2
+    nova boot --image cirros-0.3.4-x86_64-uec --flavor m1.tiny \
+    --user-data /opt/stack/opnfv_os_ipv6_poc/set_mtu.sh \
+    --availability-zone nova:opnfv-os-compute \
+    --nic port-id=$(neutron port-list | grep -w eth0-VM2 | awk '{print $2}') \
+    --key-name vRouterKey VM2
 
 **SETUP-SVM-23**: Confirm that both the VMs are successfully booted.
 
@@ -706,7 +763,8 @@ through **SETUP-SVM-30**
 
 .. code-block:: bash
 
-    sudo ip netns exec qrouter-$(neutron router-list | grep -w ipv6-router | awk '{print $2}') bash
+    sudo ip netns exec qrouter-$(neutron router-list | grep -w ipv6-router | \
+    awk '{print $2}') bash
 
 **SETUP-SVM-25**: Upon successful execution of the above command, you will be in the router namespace.
 Now let us configure the IPv6 address on the <qr-xxx> interface.
@@ -753,10 +811,14 @@ interface of ``vRouter`` automatically configures an IPv6 SLAAC address.
 
 .. code-block:: bash
 
-    vRouter eth0 interface would have the following IPv6 address: 2001:db8:0:1:f816:3eff:fe11:1111/64
-    vRouter eth1 interface would have the following IPv6 address: 2001:db8:0:2::1/64
-    VM1 would have the following IPv6 address: 2001:db8:0:2:f816:3eff:fe33:3333/64
-    VM2 would have the following IPv6 address: 2001:db8:0:2:f816:3eff:fe44:4444/64
+    # vRouter eth0 interface would have the following IPv6 address:
+    #     2001:db8:0:1:f816:3eff:fe11:1111/64
+    # vRouter eth1 interface would have the following IPv6 address:
+    #     2001:db8:0:2::1/64
+    # VM1 would have the following IPv6 address:
+    #     2001:db8:0:2:f816:3eff:fe33:3333/64
+    # VM2 would have the following IPv6 address:
+    #     2001:db8:0:2:f816:3eff:fe44:4444/64
 
 --------------------------------
 Testing to Verify Setup Complete
