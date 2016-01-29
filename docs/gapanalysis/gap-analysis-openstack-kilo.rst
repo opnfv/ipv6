@@ -9,7 +9,7 @@ requirements of VIM-agnostic IPv6 functionality, including infrastructure layer 
 
 +-------------------------------------+-------------------------+-----------------------------------------------+
 |Use Case / Requirement               |Supported in Kilo Neutron|Notes                                          |
-|=====================================+=========================+===============================================+
++=====================================+=========================+===============================================+
 |All topologies work in a multi-tenant|Yes                      |The IPv6 design is following the Neutron tenant|
 |environment                          |                         |networks model; dnsmasq is being used inside   |
 |                                     |                         |DHCP network namespaces, while radvd is being  |
