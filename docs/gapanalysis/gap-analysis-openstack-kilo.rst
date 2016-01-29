@@ -109,3 +109,4 @@ requirements of VIM-agnostic IPv6 functionality, including infrastructure layer 
 |IPv6 support in Neutron Layer3 High Availability           |Yes                      |                                                                    |
 |(keepalived+VRRP).                                         |                         |                                                                    |
 +-----------------------------------------------------------+-------------------------+--------------------------------------------------------------------+
+
