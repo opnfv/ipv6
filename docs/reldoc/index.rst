@@ -77,10 +77,10 @@ Install OPNFV and Preparation
 .. code-block:: bash
 
     # HA deployment in OpenStack-only environment
-    sudo ./deploy.sh -s os-nofeature-ha
+    sudo ./deploy.sh -s os-nosdn-nofeature-ha
 
     # Non-HA deployment in OpenStack-only environment
-    sudo ./deploy.sh -s os-nofeature-noha
+    sudo ./deploy.sh -s os-nosdn-nofeature-noha
 
 **Joid** Installer:
 
@@ -91,6 +91,9 @@ Install OPNFV and Preparation
 
     # Non-HA deployment in OpenStack-only environment
     sudo ./deploy.sh -o liberty -s nosdn -t noha
+
+Please **NOTE** that you need to refer to installer's documentation for other necessary
+parameters applicable to your deployment.
 
 **OPNFV-NATIVE-INSTALL-2**: Clone the following GitHub repository to get the
 configuration and metadata files
@@ -425,7 +428,11 @@ of OPNFV Brahmaputra Release:
     # Non-HA deployment in OpenStack with Open Daylight L2-only environment
     sudo ./deploy.sh -s os-odl_l2-nofeature-noha
 
-Please **NOTE** that currently only ``Apex``, ``Compass`` and ``Fuel`` installer support this environment.
+Please **NOTE** that:
+
+* Currently only ``Apex``, ``Compass`` and ``Fuel`` installer support this environment.
+* You need to refer to installer's documentation for other necessary
+  parameters applicable to your deployment.
 
 **OPNFV-INSTALL-2**: Clone the following GitHub repository to get the
 configuration and metadata files
