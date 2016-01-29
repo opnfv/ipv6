@@ -27,7 +27,7 @@ requirements of VIM-agnostic IPv6 functionality, including infrastructure layer 
 |IPv6 VM to VM only                   |Yes                      |It is possible to assign IPv6-   |
 |                                     |                         |only addresses to VMs. Both      |
 |                                     |                         |switching (within VMs on the same|
-|                                     |                         |tenant network) as well as east /|
+|                                     |                         |tenant network) as well as east/ |
 |                                     |                         |west routing (between different  |
 |                                     |                         |networks of the same tenant) are |
 |                                     |                         |supported.                       |
@@ -96,8 +96,8 @@ requirements of VIM-agnostic IPv6 functionality, including infrastructure layer 
 |Multicast                            |                         |requirements)                    |
 +-------------------------------------+-------------------------+---------------------------------+
 |VM access to the meta-data server to |**No**                   |This is currently not supported. |
-|obtain user data, SSH keys, etc.     |                         |Config-drive or dual-stack IPv4 /|
-|using cloud-init with IPv6 only      |                         | IPv6 can be used as a workaround|
+|obtain user data, SSH keys, etc.     |                         |Config-drive or dual-stack IPv4/ |
+|using cloud-init with IPv6 only      |                         |IPv6 can be used as a workaround |
 |interfaces.                          |                         |(so that the IPv4 network is used|
 |                                     |                         |to obtain connectivity with the  |
 |                                     |                         |metadata service)                |
