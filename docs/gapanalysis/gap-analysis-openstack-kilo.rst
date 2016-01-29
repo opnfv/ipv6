@@ -135,7 +135,7 @@ requirements of VIM-agnostic IPv6 functionality, including infrastructure layer 
 |                                     |                         |users are required to specify the|
 |                                     |                         |LLA of the upstream router during|
 |                                     |                         |the subnet creation, or otherwise|
-|                                     |                         |manually edit the security-groups|                    
+|                                     |                         |manually edit the security-groups|
 |                                     |                         |rules to allow incoming traffic  |
 |                                     |                         |from this specific address.      |
 +-------------------------------------+-------------------------+---------------------------------+
