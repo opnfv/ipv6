@@ -649,10 +649,11 @@ Prepare Image, Metadata and Keypair for Service VM
 
 .. code-block:: bash
 
+    wget https://download.fedoraproject.org/pub/fedora/linux/releases/22/Cloud/x86_64/\
+    Images/Fedora-Cloud-Base-22-20150521.x86_64.qcow2
+
     glance image-create --name 'Fedora22' --disk-format qcow2 --container-format bare \
-    --is-public true --copy-from \
-    https://download.fedoraproject.org/pub/fedora/linux/releases/22/Cloud/x86_64/Images\
-    /Fedora-Cloud-Base-22-20150521.x86_64.qcow2
+    --file ./Fedora-Cloud-Base-22-20150521.x86_64.qcow2
 
 **SETUP-SVM-17**: Create a keypair
 
