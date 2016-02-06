@@ -1,3 +1,7 @@
+.. This work is licensed under a Creative Commons Attribution 4.0 International License.
+.. http://creativecommons.org/licenses/by/4.0
+.. (c) Bin Hu (AT&T) and Sridhar Gaddam (RedHat)
+
 ===============================================================
 IPv6 Configuration - Setting Up a Service VM as an IPv6 vRouter
 ===============================================================
@@ -114,6 +118,7 @@ Disable Security Groups in OpenStack ML2 Setup
 
     # /etc/neutron/plugins/ml2/ml2_conf.ini
     [securitygroup]
+    extension_drivers = port_security
     enable_security_group = False
     firewall_driver = neutron.agent.firewall.NoopFirewallDriver
 
