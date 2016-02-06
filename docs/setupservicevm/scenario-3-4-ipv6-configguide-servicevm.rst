@@ -1,3 +1,7 @@
+.. This work is licensed under a Creative Commons Attribution 4.0 International License.
+.. http://creativecommons.org/licenses/by/4.0
+.. (c) Bin Hu (AT&T) and Sridhar Gaddam (RedHat)
+
 ==========================================
 Setting Up a Service VM as an IPv6 vRouter
 ==========================================
@@ -126,12 +130,11 @@ use the same name of external network that your installer creates.
     neutron subnet-create --disable-dhcp --allocation-pool start=198.59.156.251,end=198.59.156.254 --gateway 198.59.156.1 ext-net 198.59.156.0/24
 
 **SCENARIO-3-SETUP-8**: Create Neutron networks ``ipv4-int-network1`` and ``ipv6-int-network2``
-with port_security disabled
 
 .. code-block:: bash
 
-    neutron net-create --port_security_enabled=False ipv4-int-network1
-    neutron net-create --port_security_enabled=False ipv6-int-network2
+    neutron net-create ipv4-int-network1
+    neutron net-create ipv6-int-network2
 
 **SCENARIO-3-SETUP-9**: Create IPv4 subnet ``ipv4-int-subnet1`` in the internal network ``ipv4-int-network1``,
 and associate it to ``ipv4-router``.
