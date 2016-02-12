@@ -56,7 +56,7 @@ Install OPNFV and Preparation
 .. code-block:: bash
 
     # HA deployment in OpenStack-only environment
-    sudo opnfv-deploy -d /etc/opnfv/os-nosdn-nofeature-ha.yaml
+    ./opnfv-deploy -d /etc/opnfv/os-nosdn-nofeature-ha.yaml
 
     # Non-HA deployment in OpenStack-only environment
     # Non-HA deployment is currently not supported by Apex installer.
@@ -70,7 +70,7 @@ Install OPNFV and Preparation
     export OS_VERSION=${{COMPASS_OS_VERSION}}
     export OPENSTACK_VERSION=${{COMPASS_OPENSTACK_VERSION}}
     export CONFDIR=$WORKSPACE/deploy/conf/vm_environment
-    sudo ./deploy.sh --dha $CONFDIR/os-nosdn-nofeature-ha.yml \
+    ./deploy.sh --dha $CONFDIR/os-nosdn-nofeature-ha.yml \
     --network $CONFDIR/$NODE_NAME/network.yml
 
     # Non-HA deployment in OpenStack-only environment
@@ -81,20 +81,20 @@ Install OPNFV and Preparation
 .. code-block:: bash
 
     # HA deployment in OpenStack-only environment
-    sudo ./deploy.sh -s os-nosdn-nofeature-ha
+    ./deploy.sh -s os-nosdn-nofeature-ha
 
     # Non-HA deployment in OpenStack-only environment
-    sudo ./deploy.sh -s os-nosdn-nofeature-noha
+    ./deploy.sh -s os-nosdn-nofeature-noha
 
 **Joid** Installer:
 
 .. code-block:: bash
 
     # HA deployment in OpenStack-only environment
-    sudo ./deploy.sh -o liberty -s nosdn -t ha
+    ./deploy.sh -o liberty -s nosdn -t ha
 
     # Non-HA deployment in OpenStack-only environment
-    sudo ./deploy.sh -o liberty -s nosdn -t noha
+    ./deploy.sh -o liberty -s nosdn -t nonha
 
 Please **NOTE** that you need to refer to installer's documentation for other necessary
 parameters applicable to your deployment.
@@ -403,7 +403,7 @@ of OPNFV Brahmaputra Release:
 .. code-block:: bash
 
     # HA deployment in OpenStack with Open Daylight L2-only environment
-    sudo opnfv-deploy -d /etc/opnfv/os-odl_l2-nofeature-ha.yaml
+    ./opnfv-deploy -d /etc/opnfv/os-odl_l2-nofeature-ha.yaml
 
     # Non-HA deployment in OpenStack with Open Daylight L2-only environment
     # Non-HA deployment is currently not supported by Apex installer.
@@ -417,7 +417,7 @@ of OPNFV Brahmaputra Release:
     export OS_VERSION=${{COMPASS_OS_VERSION}}
     export OPENSTACK_VERSION=${{COMPASS_OPENSTACK_VERSION}}
     export CONFDIR=$WORKSPACE/deploy/conf/vm_environment
-    sudo ./deploy.sh --dha $CONFDIR/os-odl_l2-nofeature-ha.yml \
+    ./deploy.sh --dha $CONFDIR/os-odl_l2-nofeature-ha.yml \
     --network $CONFDIR/$NODE_NAME/network.yml
 
     # Non-HA deployment in OpenStack with Open Daylight L2-only environment
@@ -428,16 +428,23 @@ of OPNFV Brahmaputra Release:
 .. code-block:: bash
 
     # HA deployment in OpenStack with Open Daylight L2-only environment
-    sudo ./deploy.sh -s os-odl_l2-nofeature-ha
+    ./deploy.sh -s os-odl_l2-nofeature-ha
 
     # Non-HA deployment in OpenStack with Open Daylight L2-only environment
-    sudo ./deploy.sh -s os-odl_l2-nofeature-noha
+    ./deploy.sh -s os-odl_l2-nofeature-noha
 
-Please **NOTE** that:
+**Joid** Installer:
 
-* Currently only ``Apex``, ``Compass`` and ``Fuel`` installer support this environment.
-* You need to refer to installer's documentation for other necessary
-  parameters applicable to your deployment.
+.. code-block:: bash
+
+    # HA deployment in OpenStack with Open Daylight L2-only environment
+    ./deploy.sh -o liberty -s odl -t ha
+
+    # Non-HA deployment in OpenStack with Open Daylight L2-only environment
+    ./deploy.sh -o liberty -s odl -t nonha
+
+Please **NOTE** that you need to refer to installer's documentation for other necessary
+parameters applicable to your deployment.
 
 **OPNFV-INSTALL-2**: Clone the following GitHub repository to get the
 configuration and metadata files
