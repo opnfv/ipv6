@@ -161,6 +161,13 @@ credentials may vary depending on installers. For example:
     # source the tenant credentials using Compass installer of OPNFV
     source /opt/admin-openrc.sh
 
+**Fuel** installer:
+
+.. code-block:: bash
+
+    # source the tenant credentials using Fuel installer of OPNFV
+    source /root/openrc
+
 **Joid** installer:
 
 .. code-block:: bash
@@ -515,6 +522,13 @@ that the method of sourcing tenant credentials may vary depending on installers.
 
     # source the tenant credentials using Compass installer of OPNFV
     source /opt/admin-openrc.sh
+
+**Fuel** installer:
+
+.. code-block:: bash
+
+    # source the tenant credentials using Fuel installer of OPNFV
+    source /root/openrc
 
 **Joid** installer:
 
