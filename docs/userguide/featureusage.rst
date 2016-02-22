@@ -77,7 +77,7 @@ requirements of VIM-agnostic IPv6 functionality, including infrastructure layer 
   |Provide IPv6/IPv4 feature parity in support for            |**To-Do**                |The L3 configuration should be transparent for the SR-IOV           |
   |pass-through capabilities (e.g., SR-IOV).                  |                         |implementation. SR-IOV networking support introduced in Juno based  |
   |                                                           |                         |on the ``sriovnicswitch`` ML2 driver is expected to work with IPv4  |
-  |                                                           |                         |and IPv6 enabled VMs. We need to verify if it works or not          |
+  |                                                           |                         |and IPv6 enabled VMs. We need to verify if it works or not.         |
   +-----------------------------------------------------------+-------------------------+--------------------------------------------------------------------+
   |Additional IPv6 extensions, for example: IPSEC, IPv6       |**No**                   |It does not appear to be considered yet (lack of clear requirements)|
   |Anycast, Multicast                                         |                         |                                                                    |
