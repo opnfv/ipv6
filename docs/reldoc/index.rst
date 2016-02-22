@@ -56,7 +56,7 @@ Install OPNFV and Preparation
 .. code-block:: bash
 
     # HA deployment in OpenStack-only environment
-    ./opnfv-deploy -d /etc/opnfv/os-nosdn-nofeature-ha.yaml
+    ./opnfv-deploy -d /etc/opnfv-apex/os-nosdn-nofeature-ha.yaml
 
     # Non-HA deployment in OpenStack-only environment
     # Non-HA deployment is currently not supported by Apex installer.
@@ -91,10 +91,10 @@ Install OPNFV and Preparation
 .. code-block:: bash
 
     # HA deployment in OpenStack-only environment
-    ./deploy.sh -o liberty -s nosdn -t ha
+    ./deploy.sh -o liberty -s nosdn -t ha -l default -f ipv6
 
     # Non-HA deployment in OpenStack-only environment
-    ./deploy.sh -o liberty -s nosdn -t nonha
+    ./deploy.sh -o liberty -s nosdn -t nonha -l default -f ipv6
 
 Please **NOTE** that you need to refer to installer's documentation for other necessary
 parameters applicable to your deployment.
@@ -410,7 +410,7 @@ of OPNFV Brahmaputra Release:
 .. code-block:: bash
 
     # HA deployment in OpenStack with Open Daylight L2-only environment
-    ./opnfv-deploy -d /etc/opnfv/os-odl_l2-nofeature-ha.yaml
+    ./opnfv-deploy -d /etc/opnfv-apex/os-odl_l2-nofeature-ha.yaml
 
     # Non-HA deployment in OpenStack with Open Daylight L2-only environment
     # Non-HA deployment is currently not supported by Apex installer.
@@ -445,10 +445,10 @@ of OPNFV Brahmaputra Release:
 .. code-block:: bash
 
     # HA deployment in OpenStack with Open Daylight L2-only environment
-    ./deploy.sh -o liberty -s odl -t ha
+    ./deploy.sh -o liberty -s odl -t ha -l default -f ipv6
 
     # Non-HA deployment in OpenStack with Open Daylight L2-only environment
-    ./deploy.sh -o liberty -s odl -t nonha
+    ./deploy.sh -o liberty -s odl -t nonha -l default -f ipv6
 
 Please **NOTE** that you need to refer to installer's documentation for other necessary
 parameters applicable to your deployment.
