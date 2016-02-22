@@ -19,6 +19,6 @@ OpenStack Kilo Official Release and Open Daylight Lithium Official Release.
    :numbered:
    :maxdepth: 4
 
-   gap-analysis-openstack-kilo.rst
-   gap-analysis-odl-lithium.rst
+   gap-analysis-openstack-liberty.rst
+   gap-analysis-odl-beryllium.rst
 
