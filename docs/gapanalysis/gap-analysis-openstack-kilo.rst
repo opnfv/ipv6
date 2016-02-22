@@ -2,20 +2,20 @@
 .. http://creativecommons.org/licenses/by/4.0
 .. (c) Bin Hu (AT&T) and Sridhar Gaddam (RedHat)
 
-=====================================
-IPv6 Gap Analysis with OpenStack Kilo
-=====================================
+========================================
+IPv6 Gap Analysis with OpenStack Liberty
+========================================
 
 This section provides users with IPv6 gap analysis regarding feature requirement with
-OpenStack Neutron in Kilo Official Release. The following table lists the use cases / feature
+OpenStack Neutron in Liberty Official Release. The following table lists the use cases / feature
 requirements of VIM-agnostic IPv6 functionality, including infrastructure layer and VNF
-(VM) layer, and its gap analysis with OpenStack Neutron in Kilo Official Release.
+(VM) layer, and its gap analysis with OpenStack Neutron in Liberty Official Release.
 
 .. table::
   :class: longtable
 
   +-----------------------------------------------------------+-------------------------+--------------------------------------------------------------------+
-  |Use Case / Requirement                                     |Supported in Kilo Neutron|Notes                                                               |
+  |Use Case / Requirement                                     |Supported in Liberty     |Notes                                                               |
   +===========================================================+=========================+====================================================================+
   |All topologies work in a multi-tenant environment          |Yes                      |The IPv6 design is following the Neutron tenant networks model;     |
   |                                                           |                         |dnsmasq is being used inside DHCP network namespaces, while radvd   |
@@ -31,9 +31,9 @@ requirements of VIM-agnostic IPv6 functionality, including infrastructure layer 
   |IPv6 external L2 VLAN directly attached to a VM            |Yes                      |IPv6 provider network model; RA messages from upstream (external)   |
   |                                                           |                         |router are forwarded into the VMs                                   |
   +-----------------------------------------------------------+-------------------------+--------------------------------------------------------------------+
-  |IPv6 subnet routed via L3 agent to an external IPv6 network|                         |Configuration is enhanced in Kilo to allow easier setup of the      |
-  |                                                           |1. Yes                   |upstream gateway, without the user forced to create an IPv6 subnet  |
-  |1. Both VLAN and overlay (e.g. GRE, VXLAN) subnet attached |                         |for the external network.                                           |
+  |IPv6 subnet routed via L3 agent to an external IPv6 network|                         |Configuration is enhanced since Kilo to allow easier setup of the   |
+  |                                                           |1. Yes                   |upstream gateway, without the user being forced to create an IPv6   |
+  |1. Both VLAN and overlay (e.g. GRE, VXLAN) subnet attached |                         |subnet for the external network.                                    |
   |   to VMs;                                                 |                         |                                                                    |
   |2. Must be able to support multiple L3 agents for a given  |2. Yes                   |                                                                    |
   |   external network to support scaling (neutron scheduler  |                         |                                                                    |
@@ -68,7 +68,7 @@ requirements of VIM-agnostic IPv6 functionality, including infrastructure layer 
   |Provide IPv6/IPv4 feature parity in support for            |**To-Do**                |The L3 configuration should be transparent for the SR-IOV           |
   |pass-through capabilities (e.g., SR-IOV).                  |                         |implementation. SR-IOV networking support introduced in Juno based  |
   |                                                           |                         |on the ``sriovnicswitch`` ML2 driver is expected to work with IPv4  |
-  |                                                           |                         |and IPv6 enabled VMs. We need to verify if it works or not          |
+  |                                                           |                         |and IPv6 enabled VMs. We need to verify if it works or not.         |
   +-----------------------------------------------------------+-------------------------+--------------------------------------------------------------------+
   |Additional IPv6 extensions, for example: IPSEC, IPv6       |**No**                   |It does not appear to be considered yet (lack of clear requirements)|
   |Anycast, Multicast                                         |                         |                                                                    |
@@ -93,7 +93,7 @@ requirements of VIM-agnostic IPv6 functionality, including infrastructure layer 
   |Security groups anti-spoofing: Prevent VM from using a     |Yes                      |                                                                    |
   |source IPv6/MAC address which is not assigned to the VM    |                         |                                                                    |
   +-----------------------------------------------------------+-------------------------+--------------------------------------------------------------------+
-  |Protect tenant and provider network from rough RAs         |Yes                      |When using a tenant network, Neutron is going to automatically      |
+  |Protect tenant and provider network from rogue RAs         |Yes                      |When using a tenant network, Neutron is going to automatically      |
   |                                                           |                         |handle the filter rules to allow connectivity of RAs to the VMs only|
   |                                                           |                         |from the Neutron router port; with provider networks, users are     |
   |                                                           |                         |required to specify the LLA of the upstream router during the subnet|
@@ -107,11 +107,11 @@ requirements of VIM-agnostic IPv6 functionality, including infrastructure layer 
   |Ability for a VM to support a mix of multiple IPv4 and IPv6|Yes                      |                                                                    |
   |networks, including multiples of the same type.            |                         |                                                                    |
   +-----------------------------------------------------------+-------------------------+--------------------------------------------------------------------+
-  |Support for IPv6 Prefix Delegation.                        |**Roadmap**              |Some partial support is available in Liberty release                |
+  |Support for IPv6 Prefix Delegation.                        |Yes                      |Partial support in Liberty                                          |
   +-----------------------------------------------------------+-------------------------+--------------------------------------------------------------------+
   |Distributed Virtual Routing (DVR) support for IPv6         |**No**                   |Blueprint proposed upstream, pending discussion.                    |
   +-----------------------------------------------------------+-------------------------+--------------------------------------------------------------------+
-  |IPv6 First-Hop Security, IPv6 ND spoofing.                 |**Roadmap**              |Supported in Liberty release                                        |
+  |IPv6 First-Hop Security, IPv6 ND spoofing                  |Yes                      |                                                                    |
   +-----------------------------------------------------------+-------------------------+--------------------------------------------------------------------+
   |IPv6 support in Neutron Layer3 High Availability           |Yes                      |                                                                    |
   |(keepalived+VRRP).                                         |                         |                                                                    |
