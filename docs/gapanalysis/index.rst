@@ -13,7 +13,7 @@ IPv6 Gap Analysis
 :Abstract:
 
 This document provides the users with top-down gap analysis regarding IPv6 feature requirements with
-OpenStack Kilo Official Release and Open Daylight Lithium Official Release.
+OpenStack Liberty Official Release and Open Daylight Beryllium Official Release.
 
 .. toctree::
    :numbered:
