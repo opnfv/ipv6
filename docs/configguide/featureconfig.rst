@@ -96,8 +96,12 @@ Install OPNFV and Preparation
     # Non-HA deployment in OpenStack-only environment
     ./deploy.sh -o liberty -s nosdn -t nonha -l default -f ipv6
 
-Please **NOTE** that you need to refer to installer's documentation for other necessary
-parameters applicable to your deployment.
+Please **NOTE** that:
+
+* You need to refer to **installer's documentation** for other necessary
+  parameters applicable to your deployment.
+* You need to refer to **Release Notes** and **installer's documentation** if there is
+  any issue in installation.
 
 **OPNFV-NATIVE-INSTALL-2**: Clone the following GitHub repository to get the
 configuration and metadata files
@@ -450,8 +454,12 @@ of OPNFV Brahmaputra Release:
     # Non-HA deployment in OpenStack with Open Daylight L2-only environment
     ./deploy.sh -o liberty -s odl -t nonha -l default -f ipv6
 
-Please **NOTE** that you need to refer to installer's documentation for other necessary
-parameters applicable to your deployment.
+Please **NOTE** that:
+
+* You need to refer to **installer's documentation** for other necessary
+  parameters applicable to your deployment.
+* You need to refer to **Release Notes** and **installer's documentation** if there is
+  any issue in installation.
 
 **OPNFV-INSTALL-2**: Clone the following GitHub repository to get the
 configuration and metadata files
