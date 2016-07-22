@@ -13,12 +13,12 @@ IPv6 Gap Analysis
 :Abstract:
 
 This document provides the users with top-down gap analysis regarding IPv6 feature requirements with
-OpenStack Liberty Official Release and Open Daylight Beryllium Official Release.
+OpenStack Mitaka Official Release and Open Daylight Boron Official Release.
 
 .. toctree::
    :numbered:
    :maxdepth: 4
 
-   gap-analysis-openstack-liberty.rst
-   gap-analysis-odl-beryllium.rst
+   gap-analysis-openstack-mitaka.rst
+   gap-analysis-odl-boron.rst
 
