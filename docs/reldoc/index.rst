@@ -6,7 +6,7 @@
 IPv6 Configuration - Setting Up a Service VM as an IPv6 vRouter
 ===============================================================
 
-This section provides instructions to set up a service VM as an IPv6 vRouter using OPNFV Brahmaputra Release
+This section provides instructions to set up a service VM as an IPv6 vRouter using OPNFV Colorado Release
 installers. The environment may be pure OpenStack option or Open Daylight L2-only option.
 The deployment model may be HA or non-HA. The infrastructure may be bare metal or virtual environment.
 
@@ -35,7 +35,7 @@ Setup Manual in OpenStack-Only Environment
 ******************************************
 
 If you intend to set up a service VM as an IPv6 vRouter in OpenStack-only environment of
-OPNFV Brahmaputra Release, please **NOTE** that:
+OPNFV Colorado Release, please **NOTE** that:
 
 * Because the anti-spoofing rules of Security Group feature in OpenStack prevents
   a VM from forwarding packets, we need to disable Security Group feature in the
@@ -49,7 +49,7 @@ OPNFV Brahmaputra Release, please **NOTE** that:
 Install OPNFV and Preparation
 -----------------------------
 
-**OPNFV-NATIVE-INSTALL-1**: To install OpenStack-only environment of OPNFV Brahmaputra Release:
+**OPNFV-NATIVE-INSTALL-1**: To install OpenStack-only environment of OPNFV Colorado Release:
 
 **Apex Installer**:
 
@@ -81,10 +81,31 @@ Install OPNFV and Preparation
 .. code-block:: bash
 
     # HA deployment in OpenStack-only environment
-    ./deploy.sh -s os-nosdn-nofeature-ha
+    # Scenario Name: os-nosdn-nofeature-ha
+    # Scenario Configuration File: ha_heat_ceilometer_scenario.yaml
+    sudo ./deploy.sh -b <stack-config-uri> -l <lab-name> -p <pod-name> \
+    -s ha_heat_ceilometer_scenario -i <iso-uri>
 
     # Non-HA deployment in OpenStack-only environment
-    ./deploy.sh -s os-nosdn-nofeature-noha
+    # Scenario Name: os-nosdn-nofeature-noha
+    # Scenario Configuration File: no-ha_heat_ceilometer_scenario.yaml
+    sudo ./deploy.sh -b <stack-config-uri> -l <lab-name> -p <pod-name> \
+    -s no-ha_heat_ceilometer_scenario -i <iso-uri>
+
+    # Note:
+    #
+    # 1. Refer to http://git.opnfv.org/cgit/fuel/tree/deploy/scenario/scenario.yaml for scenarios
+    # 2. Refer to http://git.opnfv.org/cgit/fuel/tree/ci/README for description of
+    #    stack configuration directory structure
+    # 3. <stack-config-uri> is the base URI of stack configuration directory structure
+    # 3.1 Example: http://git.opnfv.org/cgit/fuel/tree/deploy/config
+    # 4. <lab-name> and <pod-name> must match the directory structure in stack configuration
+    # 4.1 Example of <lab-name>: -l devel-pipeline
+    # 4.2 Example of <pod-name>: -p elx
+    # 5. <iso-uri> could be local or remote ISO image of Fuel Installer
+    # 5.1 Example: http://artifacts.opnfv.org/fuel/colorado/opnfv-colorado.1.0.iso
+    #
+    # Please refer to Fuel Installer's documentation for further information and any update
 
 **Joid** Installer:
 
@@ -146,8 +167,9 @@ Set Up Service VM as IPv6 vRouter
 ---------------------------------
 
 **OPNFV-NATIVE-SETUP-1**: Now we assume that OpenStack multi-node setup is up and running.
-We have to source the tenant credentials in this step. Please **NOTE** that the method of sourcing tenant
-credentials may vary depending on installers. For example:
+We have to source the tenant credentials in OpenStack controller node in this step.
+Please **NOTE** that the method of sourcing tenant credentials may vary depending on installers.
+For example:
 
 **Apex** installer:
 
@@ -226,7 +248,7 @@ network that installer creates when you create the subnet. For example:
 
 * **Apex** installer: ``external``
 * **Compass** installer: ``ext-net``
-* **Fuel** installer: ``net04_ext``
+* **Fuel** installer: ``admin_floating_net``
 * **Joid** installer: ``ext-net``
 
 **Please refer to the documentation of installers if there is any issue**
@@ -391,7 +413,7 @@ Setup Manual in OpenStack with Open Daylight L2-Only Environment
 ****************************************************************
 
 If you intend to set up a service VM as an IPv6 vRouter in an environment of OpenStack
-and Open Daylight L2-only of OPNFV Brahmaputra Release, please **NOTE** that:
+and Open Daylight L2-only of OPNFV Colorado Release, please **NOTE** that:
 
 * The hostnames, IP addresses, and username are for exemplary purpose in instructions.
   Please change as needed to fit your environment.
@@ -407,7 +429,7 @@ Install OPNFV and Preparation
 -----------------------------
 
 **OPNFV-INSTALL-1**: To install OpenStack with Open Daylight L2-only environment
-of OPNFV Brahmaputra Release:
+of OPNFV Colorado Release:
 
 **Apex Installer**:
 
@@ -439,10 +461,31 @@ of OPNFV Brahmaputra Release:
 .. code-block:: bash
 
     # HA deployment in OpenStack with Open Daylight L2-only environment
-    ./deploy.sh -s os-odl_l2-nofeature-ha
+    # Scenario Name: os-odl_l2-nofeature-ha
+    # Scenario Configuration File: ha_odl-l2_heat_ceilometer_scenario.yaml
+    sudo ./deploy.sh -b <stack-config-uri> -l <lab-name> -p <pod-name> \
+    -s ha_odl-l2_heat_ceilometer_scenario -i <iso-uri>
 
     # Non-HA deployment in OpenStack with Open Daylight L2-only environment
-    ./deploy.sh -s os-odl_l2-nofeature-noha
+    # Scenario Name: os-odl_l2-nofeature-noha
+    # Scenario Configuration File: no-ha_odl-l2_heat_ceilometer_scenario.yaml
+    sudo ./deploy.sh -b <stack-config-uri> -l <lab-name> -p <pod-name> \
+    -s no-ha_odl-l2_heat_ceilometer_scenario -i <iso-uri>
+
+    # Note:
+    #
+    # 1. Refer to http://git.opnfv.org/cgit/fuel/tree/deploy/scenario/scenario.yaml for scenarios
+    # 2. Refer to http://git.opnfv.org/cgit/fuel/tree/ci/README for description of
+    #    stack configuration directory structure
+    # 3. <stack-config-uri> is the base URI of stack configuration directory structure
+    # 3.1 Example: http://git.opnfv.org/cgit/fuel/tree/deploy/config
+    # 4. <lab-name> and <pod-name> must match the directory structure in stack configuration
+    # 4.1 Example of <lab-name>: -l devel-pipeline
+    # 4.2 Example of <pod-name>: -p elx
+    # 5. <iso-uri> could be local or remote ISO image of Fuel Installer
+    # 5.1 Example: http://artifacts.opnfv.org/fuel/colorado/opnfv-colorado.1.0.iso
+    #
+    # Please refer to Fuel Installer's documentation for further information and any update
 
 **Joid** Installer:
 
@@ -588,7 +631,7 @@ network that installer creates when you create the subnet. For example:
 
 * **Apex** installer: ``external``
 * **Compass** installer: ``ext-net``
-* **Fuel** installer: ``net04_ext``
+* **Fuel** installer: ``admin_floating_net``
 * **Joid** installer: ``ext-net``
 
 **Please refer to the documentation of installers if there is any issue**
