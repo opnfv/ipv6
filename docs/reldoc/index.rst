@@ -59,7 +59,7 @@ Install OPNFV and Preparation
     ./opnfv-deploy -d /etc/opnfv-apex/os-nosdn-nofeature-ha.yaml
 
     # Non-HA deployment in OpenStack-only environment
-    # Non-HA deployment is currently not supported by Apex installer.
+    ./opnfv-deploy -d /etc/opnfv-apex/os-nosdn-nofeature-noha.yaml
 
 **Compass** Installer:
 
@@ -175,10 +175,12 @@ For example:
 
 .. code-block:: bash
 
-    # source the tenant credentials using Apex installer of OPNFV
-    # you need to copy the file /home/stack/overcloudrc from the installer VM called "instack"
-    # to a location in controller node, for example, in the directory /opt
-    source /opt/overcloudrc
+    # On jump host, source the tenant credentials using /bin/opnfv-util provided by Apex installer
+    opnfv-util undercloud "source overcloudrc; keystone service-list" 
+
+    # Alternatively, you can copy the file /home/stack/overcloudrc from the installer VM called "undercloud"
+    # to a location in controller node, for example, in the directory /opt, and do:
+    # source /opt/overcloudrc
 
 **Compass** installer:
 
@@ -439,7 +441,12 @@ of OPNFV Colorado Release:
     ./opnfv-deploy -d /etc/opnfv-apex/os-odl_l2-nofeature-ha.yaml
 
     # Non-HA deployment in OpenStack with Open Daylight L2-only environment
-    # Non-HA deployment is currently not supported by Apex installer.
+    # There is no settings file provided by default for odl_l2 non-HA deployment
+    # You need to copy /etc/opnfv-apex/os-odl_l2-nofeature-ha.yaml to another file
+    # e.g. /etc/opnfv-apex/os-odl_l2-nofeature-noha.yaml
+    # and change the "ha_enabled" parameter to be "false", i.e.: "ha_enabled: false"
+    # and do:
+   ./opnfv-deploy -d /etc/opnfv-apex/os-odl_l2-nofeature-noha.yaml
 
 **Compass** Installer:
 
@@ -562,10 +569,12 @@ that the method of sourcing tenant credentials may vary depending on installers.
 
 .. code-block:: bash
 
-    # source the tenant credentials using Apex installer of OPNFV
-    # you need to copy the file /home/stack/overcloudrc from the installer VM called "instack"
-    # to a location in controller node, for example, in the directory /opt
-    source /opt/overcloudrc
+    # On jump host, source the tenant credentials using /bin/opnfv-util provided by Apex installer
+    opnfv-util undercloud "source overcloudrc; keystone service-list" 
+
+    # Alternatively, you can copy the file /home/stack/overcloudrc from the installer VM called "undercloud"
+    # to a location in controller node, for example, in the directory /opt, and do:
+    # source /opt/overcloudrc
 
 **Compass** installer:
 
