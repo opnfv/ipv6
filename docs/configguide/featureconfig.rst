@@ -112,10 +112,10 @@ Install OPNFV and Preparation
 .. code-block:: bash
 
     # HA deployment in OpenStack-only environment
-    ./deploy.sh -o liberty -s nosdn -t ha -l default -f ipv6
+    ./deploy.sh -o mitaka -s nosdn -t ha -l default -f ipv6
 
     # Non-HA deployment in OpenStack-only environment
-    ./deploy.sh -o liberty -s nosdn -t nonha -l default -f ipv6
+    ./deploy.sh -o mitaka -s nosdn -t nonha -l default -f ipv6
 
 Please **NOTE** that:
 
@@ -499,10 +499,10 @@ of OPNFV Colorado Release:
 .. code-block:: bash
 
     # HA deployment in OpenStack with Open Daylight L2-only environment
-    ./deploy.sh -o liberty -s odl -t ha -l default -f ipv6
+    ./deploy.sh -o mitaka -s odl -t ha -l default -f ipv6
 
     # Non-HA deployment in OpenStack with Open Daylight L2-only environment
-    ./deploy.sh -o liberty -s odl -t nonha -l default -f ipv6
+    ./deploy.sh -o mitaka -s odl -t nonha -l default -f ipv6
 
 Please **NOTE** that:
 
