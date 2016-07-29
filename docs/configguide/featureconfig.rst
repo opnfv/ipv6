@@ -1015,4 +1015,3 @@ Run some commands to verify that IPv6 addresses are configured on ``eth0`` inter
 
 If the above ping6 command succeeds, it implies that ``vRouter`` was able to successfully forward the IPv6 traffic
 to reach external ``ipv6-router``.
-

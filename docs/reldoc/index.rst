@@ -1035,4 +1035,3 @@ Automated post installation activities
 **************************************
 
 Refer to the relevant testing guides, results, and release notes of Yardstick Project.
-
