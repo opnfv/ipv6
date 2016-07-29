@@ -83,14 +83,16 @@ Install OPNFV and Preparation
     # HA deployment in OpenStack-only environment
     # Scenario Name: os-nosdn-nofeature-ha
     # Scenario Configuration File: ha_heat_ceilometer_scenario.yaml
+    # You can use either Scenario Name or Scenario Configuration File Name in "-s" parameter
     sudo ./deploy.sh -b <stack-config-uri> -l <lab-name> -p <pod-name> \
-    -s ha_heat_ceilometer_scenario -i <iso-uri>
+    -s os-nosdn-nofeature-ha -i <iso-uri>
 
     # Non-HA deployment in OpenStack-only environment
     # Scenario Name: os-nosdn-nofeature-noha
     # Scenario Configuration File: no-ha_heat_ceilometer_scenario.yaml
+    # You can use either Scenario Name or Scenario Configuration File Name in "-s" parameter
     sudo ./deploy.sh -b <stack-config-uri> -l <lab-name> -p <pod-name> \
-    -s no-ha_heat_ceilometer_scenario -i <iso-uri>
+    -s os-nosdn-nofeature-noha -i <iso-uri>
 
     # Note:
     #
@@ -470,14 +472,16 @@ of OPNFV Colorado Release:
     # HA deployment in OpenStack with Open Daylight L2-only environment
     # Scenario Name: os-odl_l2-nofeature-ha
     # Scenario Configuration File: ha_odl-l2_heat_ceilometer_scenario.yaml
+    # You can use either Scenario Name or Scenario Configuration File Name in "-s" parameter
     sudo ./deploy.sh -b <stack-config-uri> -l <lab-name> -p <pod-name> \
-    -s ha_odl-l2_heat_ceilometer_scenario -i <iso-uri>
+    -s os-odl_l2-nofeature-ha -i <iso-uri>
 
     # Non-HA deployment in OpenStack with Open Daylight L2-only environment
     # Scenario Name: os-odl_l2-nofeature-noha
     # Scenario Configuration File: no-ha_odl-l2_heat_ceilometer_scenario.yaml
+    # You can use either Scenario Name or Scenario Configuration File Name in "-s" parameter
     sudo ./deploy.sh -b <stack-config-uri> -l <lab-name> -p <pod-name> \
-    -s no-ha_odl-l2_heat_ceilometer_scenario -i <iso-uri>
+    -s os-odl_l2-nofeature-noha -i <iso-uri>
 
     # Note:
     #
