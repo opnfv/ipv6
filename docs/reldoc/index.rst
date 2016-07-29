@@ -55,11 +55,28 @@ Install OPNFV and Preparation
 
 .. code-block:: bash
 
-    # HA deployment in OpenStack-only environment
-    ./opnfv-deploy -d /etc/opnfv-apex/os-nosdn-nofeature-ha.yaml
+    # HA, Virtual deployment in OpenStack-only environment
+    ./opnfv-deploy -v -d /etc/opnfv-apex/os-nosdn-nofeature-ha.yaml \
+    -n /etc/opnfv-apex/network_setting.yaml
 
-    # Non-HA deployment in OpenStack-only environment
-    ./opnfv-deploy -d /etc/opnfv-apex/os-nosdn-nofeature-noha.yaml
+    # HA, Bare Metal deployment in OpenStack-only environment
+    ./opnfv-deploy -d /etc/opnfv-apex/os-nosdn-nofeature-ha.yaml \
+    -i <inventory file> -n /etc/opnfv-apex/network_setting.yaml
+
+    # Non-HA, Virtual deployment in OpenStack-only environment
+    ./opnfv-deploy -v -d /etc/opnfv-apex/os-nosdn-nofeature-noha.yaml \
+    -n /etc/opnfv-apex/network_setting.yaml
+
+    # Non-HA, Bare Metal deployment in OpenStack-only environment
+    ./opnfv-deploy -d /etc/opnfv-apex/os-nosdn-nofeature-noha.yaml \
+    -i <inventory file> -n /etc/opnfv-apex/network_setting.yaml
+
+    # Note:
+    #
+    # 1. Parameter ""-v" is mandatory for Virtual deployment
+    # 2. Parameter "-i <inventory file>" is mandatory for Bare Metal deployment
+    # 2.1 Refer to https://git.opnfv.org/cgit/apex/tree/config/inventory for examples of inventory file
+    # 3. You can use "-n /etc/opnfv-apex/network_setting_v6.yaml" for deployment in IPv6-only infrastructure
 
 **Compass** Installer:
 
@@ -439,16 +456,34 @@ of OPNFV Colorado Release:
 
 .. code-block:: bash
 
-    # HA deployment in OpenStack with Open Daylight L2-only environment
-    ./opnfv-deploy -d /etc/opnfv-apex/os-odl_l2-nofeature-ha.yaml
+    # HA, Virtual deployment in OpenStack with Open Daylight L2-only environment
+    ./opnfv-deploy -v -d /etc/opnfv-apex/os-odl_l2-nofeature-ha.yaml \
+    -n /etc/opnfv-apex/network_setting.yaml
+
+    # HA, Bare Metal deployment in OpenStack with Open Daylight L2-only environment
+    ./opnfv-deploy -d /etc/opnfv-apex/os-odl_l2-nofeature-ha.yaml \
+    -i <inventory file> -n /etc/opnfv-apex/network_setting.yaml
 
     # Non-HA deployment in OpenStack with Open Daylight L2-only environment
     # There is no settings file provided by default for odl_l2 non-HA deployment
     # You need to copy /etc/opnfv-apex/os-odl_l2-nofeature-ha.yaml to another file
     # e.g. /etc/opnfv-apex/os-odl_l2-nofeature-noha.yaml
-    # and change the "ha_enabled" parameter to be "false", i.e.: "ha_enabled: false"
-    # and do:
-   ./opnfv-deploy -d /etc/opnfv-apex/os-odl_l2-nofeature-noha.yaml
+    # and change the "ha_enabled" parameter to be "false", i.e.: "ha_enabled: false", and:
+
+    # - For Non-HA, Virtual deployment
+    ./opnfv-deploy -v -d /etc/opnfv-apex/os-odl_l2-nofeature-noha.yaml \
+    -n /etc/opnfv-apex/network_setting.yaml
+
+    # - For Non-HA, Bare Metal deployment
+    ./opnfv-deploy -d /etc/opnfv-apex/os-odl_l2-nofeature-noha.yaml \
+    -i <inventory file> -n /etc/opnfv-apex/network_setting.yaml
+
+    # Note:
+    #
+    # 1. Parameter ""-v" is mandatory for Virtual deployment
+    # 2. Parameter "-i <inventory file>" is mandatory for Bare Metal deployment
+    # 2.1 Refer to https://git.opnfv.org/cgit/apex/tree/config/inventory for examples of inventory file
+    # 3. You can use "-n /etc/opnfv-apex/network_setting_v6.yaml" for deployment in IPv6-only infrastructure
 
 **Compass** Installer:
 
