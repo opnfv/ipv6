@@ -18,8 +18,8 @@ There are 2 options in Open Daylight Boron to provide Virtualized Networks:
 1 ``Old Netvirt``: netvirt implementation used in Open Daylight Beryllium Release
   identified by feature ``odl-ovsdb-openstack``
 
-2 ``New Netvirt``: netvirt implementation which will replace the Old Netvirt in the future
-  releases based on a more modular design. It is identified by feature
+2 ``New Netvirt``: netvirt implementation which will replace the Old Netvirt in the
+  future releases based on a more modular design. It is identified by feature
   ``odl-netvirt-openstack``
 
 .. table::
@@ -68,3 +68,4 @@ There are 2 options in Open Daylight Boron to provide Virtualized Networks:
   |ODL on an IPv6 only Infrastructure.               |**No**               |**Work in Progress**   |Deploying OpenStack with ODL on an IPv6 only infrastructure   |
   |                                                  |                     |                       |where the API endpoints are all IPv6 addresses.               |
   +--------------------------------------------------+---------------------+-----------------------+--------------------------------------------------------------+
+
