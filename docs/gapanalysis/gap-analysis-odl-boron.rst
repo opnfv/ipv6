@@ -16,16 +16,18 @@ requirements of VIM-agnostic IPv6 functionality, including infrastructure layer 
 
   +-------------------------------------------------------------+----------------------+--------------------------------------------------------------------------+
   |Use Case / Requirement                                       |Supported in ODL Boron|Notes                                                                     |
-  +=============================================================+======================+==========================================================================+
-  |REST API support for IPv6 subnet creation in ODL             |Yes                   |Yes, it is possible to create IPv6 subnets in ODL using Neutron REST API. |
-  |                                                             |                      |                                                                          |
-  |                                                             |                      |For a network which has both IPv4 and IPv6 subnets, ODL mechanism driver  |
-  |                                                             |                      |will send the port information which includes IPv4/v6 addresses to ODL    |
-  |                                                             |                      |Neutron northbound API. When port information is queried it displays IPv4 |
-  |                                                             |                      |and IPv6 addresses. However, in Boron release, ODL net-virt provider      |
-  |                                                             |                      |does not support IPv6 features (i.e., the actual functionality is missing |
-  |                                                             |                      |and would be available only in the later releases of ODL).                |
-  +-------------------------------------------------------------+----------------------+--------------------------------------------------------------------------+
+  |                                                             +----------+-----------+                                                                          |
+  |                                                             |   1      |     2     |                                                                          |
+  +=============================================================+==========+===========+==========================================================================+
+  |REST API support for IPv6 subnet creation in ODL             |Yes       |           |Yes, it is possible to create IPv6 subnets in ODL using Neutron REST API. |
+  |                                                             |          |           |                                                                          |
+  |                                                             |          |           |For a network which has both IPv4 and IPv6 subnets, ODL mechanism driver  |
+  |                                                             |          |           |will send the port information which includes IPv4/v6 addresses to ODL    |
+  |                                                             |          |           |Neutron northbound API. When port information is queried it displays IPv4 |
+  |                                                             |          |           |and IPv6 addresses. However, in Boron release, ODL net-virt provider      |
+  |                                                             |          |           |does not support IPv6 features (i.e., the actual functionality is missing |
+  |                                                             |          |           |and would be available only in the later releases of ODL).                |
+  +-------------------------------------------------------------+----------+-----------+--------------------------------------------------------------------------+
   |IPv6 Router support in ODL                                   |**No**                |ODL net-virt provider in Boron release only supports IPv4 Router.         |
   |                                                             |                      |                                                                          |
   |1. Communication between VMs on same compute node            |                      |In the meantime, if IPv6 Routing is necessary, we can use ODL for L2      |
