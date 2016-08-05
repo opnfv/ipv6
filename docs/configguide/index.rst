@@ -10,9 +10,9 @@ This section provides instructions to install OPNFV on IPv6-only Infrastructure.
 and API endpoints will be IPv6-only except:
 
 1. "admin" network in underlay/undercloud still has to be IPv4, due to lack of support of IPMI
-  over IPv6 or PXE over IPv6.
+   over IPv6 or PXE over IPv6.
 2. OVS VxLAN (or GRE) tunnel endpoint is still IPv4 only, although IPv6 traffic can be
-  encapsulated within the tunnel.
+   encapsulated within the tunnel.
 3. Metadata server is still IPv4 only.
 
 Except the limitations above, the use case scenario of the IPv6-only infrastructure includes:
@@ -21,9 +21,9 @@ Except the limitations above, the use case scenario of the IPv6-only infrastruct
 2. Horizon/ODL-DLUX access using IPv6 address from an external host.
 3. OpenStack API access using IPv6 addresses from various python-clients.
 4. Ability to create Neutron Routers, IPv6 subnets (e.g. SLAAC/DHCPv6-Stateful/
-  DHCPv6-Stateless) to support North-South traffic.
+   DHCPv6-Stateless) to support North-South traffic.
 5. Inter VM communication (East-West traffic) when one of the VM is on Controller node
-  and the other on the Compute node.
+   and the other on the Compute node.
 6. VNC access into a VM using IPv6 addresses.
 
 -------------------------------------------
