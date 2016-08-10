@@ -22,8 +22,8 @@ Except the limitations above, the use case scenario of the IPv6-only infrastruct
 3. OpenStack API access using IPv6 addresses from various python-clients.
 4. Ability to create Neutron Routers, IPv6 subnets (e.g. SLAAC/DHCPv6-Stateful/
    DHCPv6-Stateless) to support North-South traffic.
-5. Inter VM communication (East-West traffic) when one of the VM is on Controller node
-   and the other on the Compute node.
+5. Inter VM communication (East-West routing) when VMs are spread
+   across two compute nodes.
 6. VNC access into a VM using IPv6 addresses.
 
 -------------------------------------------
@@ -151,7 +151,9 @@ Overlay Testing
 +++++++++++++++
 
 **Overlay** Testing is to validate that IPv6 is supported in tenant networks, subnets and routers.
-Tempest Scenario testing covers the following overlay IPv6 scenarios:
+Both Tempest API testing and Tempest Scenario testing are used in our Overlay Testing.
+
+Tempest API testing validates that the Neutron API supports the creation of IPv6 networks, subnets, routers, etc:
 
 .. code-block:: bash
 
@@ -183,6 +185,21 @@ Tempest Scenario testing covers the following overlay IPv6 scenarios:
     tempest.api.network.test_security_groups.SecGroupIPv6Test.test_create_show_delete_security_group_rule
     tempest.api.network.test_security_groups.SecGroupIPv6Test.test_list_security_groups
 
-The above scenarios are quite comprehensive to validate IPv6 tenant networks. We are using above
-Tempest Scenario testing as Smoke Test in FuncTest, which is integrated into OPNFV's CI/CD environment.
+Tempest Scenario testing validates some specific overlay IPv6 scenarios
+(i.e. use cases) as follows:
+
+.. code-block:: bash
+
+    tempest.scenario.test_network_v6.TestGettingAddress.test_dhcp6_stateless_from_os
+    tempest.scenario.test_network_v6.TestGettingAddress.test_dualnet_dhcp6_stateless_from_os
+    tempest.scenario.test_network_v6.TestGettingAddress.test_dualnet_multi_prefix_dhcpv6_stateless
+    tempest.scenario.test_network_v6.TestGettingAddress.test_dualnet_multi_prefix_slaac
+    tempest.scenario.test_network_v6.TestGettingAddress.test_dualnet_slaac_from_os
+    tempest.scenario.test_network_v6.TestGettingAddress.test_multi_prefix_dhcpv6_stateless
+    tempest.scenario.test_network_v6.TestGettingAddress.test_multi_prefix_slaac
+    tempest.scenario.test_network_v6.TestGettingAddress.test_slaac_from_os
+
+The above Tempest API testing and Scenario testing are quite comprehensive to validate
+overlay IPv6 tenant networks. They are used in Smoke Test in FuncTest, which is integrated
+into OPNFV's CI/CD environment.
 

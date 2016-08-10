@@ -436,6 +436,10 @@ Setup Manual in OpenStack with Open Daylight L2-Only Environment
 If you intend to set up a service VM as an IPv6 vRouter in an environment of OpenStack
 and Open Daylight L2-only of OPNFV Colorado Release, please **NOTE** that:
 
+* We **SHOULD** use the ``odl-ovsdb-openstack`` version of Open Daylight Boron
+  in OPNFV Colorado Release. Please refer to our
+  `Gap Analysis <http://artifacts.opnfv.org/ipv6/docs/gapanalysis/gap-analysis-odl-boron.html>`_
+  for more information.
 * The hostnames, IP addresses, and username are for exemplary purpose in instructions.
   Please change as needed to fit your environment.
 * The instructions apply to both deployment model of single controller node and
@@ -1015,3 +1019,4 @@ Run some commands to verify that IPv6 addresses are configured on ``eth0`` inter
 
 If the above ping6 command succeeds, it implies that ``vRouter`` was able to successfully forward the IPv6 traffic
 to reach external ``ipv6-router``.
+
