@@ -200,6 +200,6 @@ Tempest Scenario testing validates some specific overlay IPv6 scenarios
     tempest.scenario.test_network_v6.TestGettingAddress.test_slaac_from_os
 
 The above Tempest API testing and Scenario testing are quite comprehensive to validate
-overlay IPv6 tenant networks. They are used in Smoke Test in FuncTest, which is integrated
-into OPNFV's CI/CD environment.
+overlay IPv6 tenant networks. They are part of OpenStack default Smoke Tests,
+run in FuncTest and integrated into OPNFV's CI/CD environment.
 
