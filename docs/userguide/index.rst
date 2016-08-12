@@ -19,6 +19,6 @@ IPv6 User Guide
 .. additional documents can be added to this directory and added in the right order
 .. to this file as a list below.
 
-   ./feature.configguide.rst
-   ./feature.userguide.rst
+   feature.configguide.rst
+   feature.userguide.rst
 
