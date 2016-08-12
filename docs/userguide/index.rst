@@ -19,4 +19,4 @@ This IPv6 User Guide document provides the users with:
    :maxdepth: 4
 
    ./feature.configguide.rst
-
+   ./feature.userguide.rst
