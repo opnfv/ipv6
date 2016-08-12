@@ -13,7 +13,7 @@ IPv6 User Guide
 .. by the installer project.
 
 .. toctree::
-   :maxdepth: 3
+   :maxdepth: 4
 
 .. The feature.userguide.rst file should contain the text for this document
 .. additional documents can be added to this directory and added in the right order
