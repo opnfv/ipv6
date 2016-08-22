@@ -155,8 +155,12 @@ configuration and metadata files
 Disable Security Groups in OpenStack ML2 Setup
 ----------------------------------------------
 
+In order to disable Security Groups globally, please make sure that the settings in
+**OPNFV-NATIVE-SEC-1** and **OPNFV-NATIVE-SEC-2** are applied, if they
+are not there by default.
+
 **OPNFV-NATIVE-SEC-1**: Change the settings in
-``/etc/neutron/plugins/ml2/ml2_conf.ini`` as follows
+``/etc/neutron/plugins/ml2/ml2_conf.ini`` as follows, if they are not there by default
 
 .. code-block:: bash
 
@@ -165,8 +169,12 @@ Disable Security Groups in OpenStack ML2 Setup
     extension_drivers = port_security
     enable_security_group = False
     firewall_driver = neutron.agent.firewall.NoopFirewallDriver
+    [ml2]
+    extension_drivers = port_security
 
-**OPNFV-NATIVE-SEC-2**: Change the settings in ``/etc/nova/nova.conf`` as follows
+
+**OPNFV-NATIVE-SEC-2**: Change the settings in ``/etc/nova/nova.conf`` as follows,
+if they are not there by default.
 
 .. code-block:: bash
 
