@@ -155,6 +155,13 @@ configuration and metadata files
 Disable Security Groups in OpenStack ML2 Setup
 ----------------------------------------------
 
+Please **NOTE** that although Security Groups feature has been disabled automatically
+through ``local.conf`` configuration file by some installers such as ``devstack``, it is very likely
+that other installers such as ``Apex``, ``Compass``, ``Fuel`` or ``Joid`` will enable Security
+Groups feature after installation.
+
+**Please make sure that Security Groups are disabled in the setup**
+
 In order to disable Security Groups globally, please make sure that the settings in
 **OPNFV-NATIVE-SEC-1** and **OPNFV-NATIVE-SEC-2** are applied, if they
 are not there by default.
@@ -166,12 +173,10 @@ are not there by default.
 
     # /etc/neutron/plugins/ml2/ml2_conf.ini
     [securitygroup]
-    extension_drivers = port_security
     enable_security_group = False
     firewall_driver = neutron.agent.firewall.NoopFirewallDriver
     [ml2]
     extension_drivers = port_security
-
 
 **OPNFV-NATIVE-SEC-2**: Change the settings in ``/etc/nova/nova.conf`` as follows,
 if they are not there by default.
@@ -581,8 +586,12 @@ Groups feature after installation.
 
 **Please make sure that Security Groups are disabled in the setup**
 
+In order to disable Security Groups globally, please make sure that the settings in
+**OPNFV-SEC-1** and **OPNFV-SEC-2** are applied, if they are not there by default.
+
 **OPNFV-SEC-1**: Change the settings in
-``/etc/neutron/plugins/ml2/ml2_conf.ini`` as follows
+``/etc/neutron/plugins/ml2/ml2_conf.ini`` as follows, if they
+are not there by default.
 
 .. code-block:: bash
 
@@ -590,8 +599,11 @@ Groups feature after installation.
     [securitygroup]
     enable_security_group = False
     firewall_driver = neutron.agent.firewall.NoopFirewallDriver
+    [ml2]
+    extension_drivers = port_security
 
-**OPNFV-SEC-2**: Change the settings in ``/etc/nova/nova.conf`` as follows
+**OPNFV-SEC-2**: Change the settings in ``/etc/nova/nova.conf`` as follows,
+if they are not there by default.
 
 .. code-block:: bash
 
