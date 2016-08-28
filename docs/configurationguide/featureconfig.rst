@@ -173,10 +173,12 @@ are not there by default.
 
     # /etc/neutron/plugins/ml2/ml2_conf.ini
     [securitygroup]
-    enable_security_group = False
+    enable_security_group = True
     firewall_driver = neutron.agent.firewall.NoopFirewallDriver
     [ml2]
     extension_drivers = port_security
+    [agent]
+    prevent_arp_spoofing = False
 
 **OPNFV-NATIVE-SEC-2**: Change the settings in ``/etc/nova/nova.conf`` as follows,
 if they are not there by default.
@@ -185,7 +187,7 @@ if they are not there by default.
 
     # /etc/nova/nova.conf
     [DEFAULT]
-    security_group_api = nova
+    security_group_api = neutron
     firewall_driver = nova.virt.firewall.NoopFirewallDriver
 
 **OPNFV-NATIVE-SEC-3**: After updating the settings, you will have to restart the
@@ -597,10 +599,12 @@ are not there by default.
 
     # /etc/neutron/plugins/ml2/ml2_conf.ini
     [securitygroup]
-    enable_security_group = False
+    enable_security_group = True
     firewall_driver = neutron.agent.firewall.NoopFirewallDriver
     [ml2]
     extension_drivers = port_security
+    [agent]
+    prevent_arp_spoofing = False
 
 **OPNFV-SEC-2**: Change the settings in ``/etc/nova/nova.conf`` as follows,
 if they are not there by default.
@@ -609,7 +613,7 @@ if they are not there by default.
 
     # /etc/nova/nova.conf
     [DEFAULT]
-    security_group_api = nova
+    security_group_api = neutron
     firewall_driver = nova.virt.firewall.NoopFirewallDriver
 
 **OPNFV-SEC-3**: After updating the settings, you will have to restart the
