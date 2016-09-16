@@ -57,16 +57,6 @@ Install OPNFV in OpenStack-Only Environment
     # 2.1 Refer to https://git.opnfv.org/cgit/apex/tree/config/inventory for examples of inventory file
     # 3. You can use "-n /etc/opnfv-apex/network_setting.yaml" for deployment in IPv4 infrastructure
 
-**Joid** Installer:
-
-.. code-block:: bash
-
-    # HA deployment in OpenStack-only environment
-    ./deploy.sh -o mitaka -s nosdn -t ha -l default -f ipv6
-
-    # Non-HA deployment in OpenStack-only environment
-    ./deploy.sh -o mitaka -s nosdn -t nonha -l default -f ipv6
-
 Please **NOTE** that:
 
 * You need to refer to **installer's documentation** for other necessary
@@ -110,16 +100,6 @@ Install OPNFV in OpenStack with ODL-L2 Environment
     # 2. Parameter "-i <inventory file>" is mandatory for Bare Metal deployment
     # 2.1 Refer to https://git.opnfv.org/cgit/apex/tree/config/inventory for examples of inventory file
     # 3. You can use "-n /etc/opnfv-apex/network_setting.yaml" for deployment in IPv4 infrastructure
-
-**Joid** Installer:
-
-.. code-block:: bash
-
-    # HA deployment in OpenStack with Open Daylight L2-only environment
-    ./deploy.sh -o mitaka -s odl -t ha -l default -f ipv6
-
-    # Non-HA deployment in OpenStack with Open Daylight L2-only environment
-    ./deploy.sh -o mitaka -s odl -t nonha -l default -f ipv6
 
 Please **NOTE** that:
 
