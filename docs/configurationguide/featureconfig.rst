@@ -417,11 +417,12 @@ would be as shown as follows:
     # VM2 would have the following IPv6 address:
     #     2001:db8:0:2:f816:3eff:fe44:4444/64
 
-**OPNFV-NATIVE-SETUP-17**: Now we need to disable ``eth0-VM1``, ``eth0-VM2`` port-security
+**OPNFV-NATIVE-SETUP-17**: Now we need to disable ``eth0-VM1``, ``eth0-VM2``,
+``eth0-vRouter`` and ``eth1-vRouter`` port-security
 
 .. code-block:: bash
 
-    for port in eth0-VM1 eth0-VM2
+    for port in eth0-VM1 eth0-VM2 eth0-vRouter eth1-vRouter
     do
         neutron port-update --no-security-groups $port
         neutron port-update $port --port-security-enabled=False
@@ -1054,3 +1055,4 @@ Run some commands to verify that IPv6 addresses are configured on ``eth0`` inter
 
 If the above ping6 command succeeds, it implies that ``vRouter`` was able to successfully forward the IPv6 traffic
 to reach external ``ipv6-router``.
+
