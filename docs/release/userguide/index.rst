@@ -184,11 +184,11 @@ There are 2 options in Open Daylight Boron to provide Virtualized Networks:
   |                                                  |                     |                       |information is queried it displays IPv4 and IPv6 addresses.   |
   +--------------------------------------------------+---------------------+-----------------------+--------------------------------------------------------------+
   |IPv6 Router support in ODL:                       |**No**               |Yes                    |                                                              |
-  |1. Communication between VMs on same compute node |                     |                       |                                                              |
+  |1. Communication between VMs on same network      |                     |                       |                                                              |
   +--------------------------------------------------+---------------------+-----------------------+--------------------------------------------------------------+
   |IPv6 Router support in ODL:                       |**No**               |Yes                    |                                                              |
-  |2. Communication between VMs on different compute |                     |                       |                                                              |
-  |   nodes (east-west)                              |                     |                       |                                                              |
+  |2. Communication between VMs on different networks|                     |                       |                                                              |
+  |   connected to the same router (east-west)       |                     |                       |                                                              |
   +--------------------------------------------------+---------------------+-----------------------+--------------------------------------------------------------+
   |IPv6 Router support in ODL:                       |**No**               |**Work in Progress**   |Work in progress.                                             |
   |3. External routing (north-south)                 |                     |                       |                                                              |
@@ -215,8 +215,8 @@ There are 2 options in Open Daylight Boron to provide Virtualized Networks:
   |ODL on an IPv6 only Infrastructure.               |**No**               |**Work in Progress**   |Deploying OpenStack with ODL on an IPv6 only infrastructure   |
   |                                                  |                     |                       |where the API endpoints are all IPv6 addresses.               |
   +--------------------------------------------------+---------------------+-----------------------+--------------------------------------------------------------+
-  |VxLAN Tunnels with IPv6 Endpoints                 |**No**               |**Work in Progress**   |Work in progress. The necessary patches are under review to   |
-  |                                                  |                     |                       |support this use case for OVS 2.6 or higher version.          |
+  |VxLAN Tunnels with IPv6 Endpoints                 |**No**               |**Work in Progress**   |The necessary patches are under review to support this use    |
+  |                                                  |                     |                       |case for OVS 2.6 or higher version.                           |
   +--------------------------------------------------+---------------------+-----------------------+--------------------------------------------------------------+
 
 References
