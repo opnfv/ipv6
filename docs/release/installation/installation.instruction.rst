@@ -120,11 +120,22 @@ Underlay Testing
 
 **Underlay** Testing is to validate that API endpoints are listening on IPv6 addresses.
 This can be as simple as validating Keystone service, and as complete as validating each
-API endpoint. It is important to reuse Tempest API testing.
+API endpoint. It is important to reuse Tempest API testing. Currently:
 
-Please **Note** that, to the best of our knowledge, Tempest API testing does not validate
-API endpoints listening on IPv6 addresses. Thus Underlay Testing is postponed to future
-release until Tempest API testing is ready to validate API endpoints listening on IPv6 addresses.
+* Apex Installer will change ``OS_AUTH_URL`` in ``overcloudrc`` during installation
+  process. For example: ``export OS_AUTH_URL=http://[2001:db8::15]:5000/v2.0``.
+  ``OS_AUTH_URL`` points to Keystone and Keystone catalog.
+* When FuncTest runs Tempest for the first time, the ``OS_AUTH_URL`` is taken
+  from the environment and placed automatically in ``Tempest.conf``.
+* Under this circumstance, ``openstack catalog list`` will return IPv6 URL
+  endpoints for all the services in catalog, including Nova, Neutron, etc,
+  and covering public URLs, private URLs and admin URLs.
+* Thus, as long as the IPv6 URL is given in the ``overclourc``, all the tests
+  will use that (including Tempest).
+
+Therefore Tempest API testing is reused to validate API endpoints are listening
+on IPv6 addresses as stated above. They are part of OpenStack default Smoke
+Tests, run in FuncTest and integrated into OPNFV's CI/CD environment.
 
 +++++++++++++++
 Overlay Testing
