@@ -7,9 +7,11 @@ Using IPv6 Feature of Danube Release
 ====================================
 
 This section provides the users with gap analysis regarding IPv6 feature requirements with
-OpenStack Newton Official Release and Open Daylight Boron/Carbon Official Release. The gap analysis
+OpenStack Newton Official Release and Open Daylight Boron Official Release. The gap analysis
 serves as feature specific user guides and references when as a user you may leverage the
 IPv6 feature in the platform and need to perform some IPv6 related operations.
+
+For more information, please find Neutron's IPv6 document for Newton Release [1]_.
 
 ***************************************
 IPv6 Gap Analysis with OpenStack Newton
@@ -84,10 +86,12 @@ requirements of VIM-agnostic IPv6 functionality, including infrastructure layer 
   +-----------------------------------------------------------+-------------------+--------------------------------------------------------------------+
   |VM access to the meta-data server to obtain user data, SSH |**No**             |This is currently not supported. Config-drive or dual-stack IPv4 /  |
   |keys, etc. using cloud-init with IPv6 only interfaces.     |                   |IPv6 can be used as a workaround (so that the IPv4 network is used  |
-  |                                                           |                   |to obtain connectivity with the metadata service)                   |
+  |                                                           |                   |to obtain connectivity with the metadata service). The following    |
+  |                                                           |                   |blog [2]_ provides a neat summary on how to use config-drive for    |
+  |                                                           |                   |metadata with IPv6 network.                                         |
   +-----------------------------------------------------------+-------------------+--------------------------------------------------------------------+
-  |Full support for IPv6 matching (i.e., IPv6, ICMPv6, TCP,   |Yes                |                                                                    |
-  |UDP) in security groups. Ability to control and manage all |                   |                                                                    |
+  |Full support for IPv6 matching (i.e., IPv6, ICMPv6, TCP,   |Yes                |Both IPTables firewall driver and OVS firewall driver support IPv6  |
+  |UDP) in security groups. Ability to control and manage all |                   |Security Group API.                                                 |
   |IPv6 security group capabilities via Neutron/Nova API (REST|                   |                                                                    |
   |and CLI) as well as via Horizon.                           |                   |                                                                    |
   +-----------------------------------------------------------+-------------------+--------------------------------------------------------------------+
@@ -116,9 +120,25 @@ requirements of VIM-agnostic IPv6 functionality, including infrastructure layer 
   |Ability for a VM to support a mix of multiple IPv4 and IPv6|Yes                |                                                                    |
   |networks, including multiples of the same type.            |                   |                                                                    |
   +-----------------------------------------------------------+-------------------+--------------------------------------------------------------------+
+  |IPv6 Support in "Allowed Address Pairs" Extension          |Yes                |                                                                    |
+  +-----------------------------------------------------------+-------------------+--------------------------------------------------------------------+
   |Support for IPv6 Prefix Delegation.                        |Yes                |Partial support in Newton                                           |
   +-----------------------------------------------------------+-------------------+--------------------------------------------------------------------+
-  |Distributed Virtual Routing (DVR) support for IPv6         |**No**             |Blueprint proposed upstream, pending discussion.                    |
+  |Distributed Virtual Routing (DVR) support for IPv6         |**No**             |In Newton DVR implementation, IPv6 works. But all the IPv6 ingress/ |
+  |                                                           |                   |egress traffic is routed via the centralized controller node, i.e.  |
+  |                                                           |                   |similar to SNAT traffic.                                            |
+  |                                                           |                   |A fully distributed IPv6 router is not yet supported in Neutron.    |
+  +-----------------------------------------------------------+-------------------+--------------------------------------------------------------------+
+  |VPNaaS                                                     |Yes                |VPNaaS supports IPv6. But this feature is not extensively tested.   |
+  +-----------------------------------------------------------+-------------------+--------------------------------------------------------------------+
+  |FWaaS                                                      |Yes                |                                                                    |
+  +-----------------------------------------------------------+-------------------+--------------------------------------------------------------------+
+  |BGP Dynamic Routing Support for IPv6 Prefixes              |Yes                |BGP Dynamic Routing supports peering via IPv6 and advertising IPv6  |
+  |                                                           |                   |prefixes.                                                           |
+  +-----------------------------------------------------------+-------------------+--------------------------------------------------------------------+
+  |VxLAN Tunnels with IPv6 endpoints.                         |Yes                |Neutron ML2/OVS supports configuring local_ip with IPv6 address so  |
+  |                                                           |                   |that VxLAN tunnels are established with IPv6 addresses. This        |
+  |                                                           |                   |feature requires OVS 2.6 or higher version.                         |
   +-----------------------------------------------------------+-------------------+--------------------------------------------------------------------+
   |IPv6 First-Hop Security, IPv6 ND spoofing                  |Yes                |                                                                    |
   +-----------------------------------------------------------+-------------------+--------------------------------------------------------------------+
@@ -126,18 +146,18 @@ requirements of VIM-agnostic IPv6 functionality, including infrastructure layer 
   |(keepalived+VRRP).                                         |                   |                                                                    |
   +-----------------------------------------------------------+-------------------+--------------------------------------------------------------------+
 
-*************************************************
-IPv6 Gap Analysis with Open Daylight Boron/Carbon
-*************************************************
+******************************************
+IPv6 Gap Analysis with Open Daylight Boron
+******************************************
 
 This section provides users with IPv6 gap analysis regarding feature requirement with
-Open Daylight Boron/Carbon Official Release. The following table lists the use cases / feature
+Open Daylight Boron Official Release. The following table lists the use cases / feature
 requirements of VIM-agnostic IPv6 functionality, including infrastructure layer and VNF
-(VM) layer, and its gap analysis with Open Daylight Boron/Carbon Official Release.
+(VM) layer, and its gap analysis with Open Daylight Boron Official Release.
 
-**Open Daylight Boron/Carbon Status**
+**Open Daylight Boron Status**
 
-There are 2 options in Open Daylight Boron/Carbon to provide Virtualized Networks:
+There are 2 options in Open Daylight Boron to provide Virtualized Networks:
 
 1 ``Old Netvirt``: netvirt implementation used in Open Daylight Beryllium Release
   identified by feature ``odl-ovsdb-openstack``
@@ -150,7 +170,7 @@ There are 2 options in Open Daylight Boron/Carbon to provide Virtualized Network
   :class: longtable
 
   +--------------------------------------------------+---------------------------------------------+--------------------------------------------------------------+
-  |Use Case / Requirement                            |           Supported in ODL Boron/Carbon     |Notes                                                         |
+  |Use Case / Requirement                            |           Supported in ODL Boron            |Notes                                                         |
   |                                                  +---------------------+-----------------------+                                                              |
   |                                                  |     Old Netvirt     |      New Netvirt      |                                                              |
   |                                                  |(odl-ovsdb-openstack)|(odl-netvirt-openstack)|                                                              |
@@ -163,11 +183,14 @@ There are 2 options in Open Daylight Boron/Carbon to provide Virtualized Network
   |                                                  |                     |                       |IPv4/v6 addresses to ODL Neutron northbound API. When port    |
   |                                                  |                     |                       |information is queried it displays IPv4 and IPv6 addresses.   |
   +--------------------------------------------------+---------------------+-----------------------+--------------------------------------------------------------+
-  |IPv6 Router support in ODL                        |**No**               |**Partial**            |IPv6 Router support is work in progress in ODL.               |
-  |                                                  |                     |                       |                                                              |
-  |1. Communication between VMs on same compute node |                     |                       |Currently communication between VMs on the same network is    |
-  |2. Communication between VMs on different compute |                     |                       |supported, and the support for the other modes is work in     |
-  |   nodes (east-west)                              |                     |                       |progress.                                                     |
+  |IPv6 Router support in ODL:                       |**No**               |Yes                    |                                                              |
+  |1. Communication between VMs on same compute node |                     |                       |                                                              |
+  +--------------------------------------------------+---------------------+-----------------------+--------------------------------------------------------------+
+  |IPv6 Router support in ODL:                       |**No**               |Yes                    |                                                              |
+  |2. Communication between VMs on different compute |                     |                       |                                                              |
+  |   nodes (east-west)                              |                     |                       |                                                              |
+  +--------------------------------------------------+---------------------+-----------------------+--------------------------------------------------------------+
+  |IPv6 Router support in ODL:                       |**No**               |**Work in Progress**   |Work in progress.                                             |
   |3. External routing (north-south)                 |                     |                       |                                                              |
   +--------------------------------------------------+---------------------+-----------------------+--------------------------------------------------------------+
   |IPAM: Support for IPv6 Address assignment modes.  |**No**               |Yes                    |ODL IPv6 Router supports all the IPv6 Address assignment modes|
@@ -179,8 +202,8 @@ There are 2 options in Open Daylight Boron/Carbon to provide Virtualized Network
   |When using ODL for L2 forwarding/tunneling, it is |Yes                  |Yes                    |                                                              |
   |compatible with IPv6.                             |                     |                       |                                                              |
   +--------------------------------------------------+---------------------+-----------------------+--------------------------------------------------------------+
-  |Full support for IPv6 matching (i.e. IPv6, ICMPv6,|**Partial**          |**Partial**            |Security Groups for IPv6 is a work in progress, and some      |
-  |TCP, UDP) in security groups. Ability to control  |                     |                       |partial support is available.                                 |
+  |Full support for IPv6 matching (i.e. IPv6, ICMPv6,|**Partial**          |Yes                    |Security Groups for IPv6 is supported in the new NetVirt.     |
+  |TCP, UDP) in security groups. Ability to control  |                     |                       |                                                              |
   |and manage all IPv6 security group capabilities   |                     |                       |                                                              |
   |via Neutron/Nova API (REST and CLI) as well as via|                     |                       |                                                              |
   |Horizon                                           |                     |                       |                                                              |
@@ -192,3 +215,13 @@ There are 2 options in Open Daylight Boron/Carbon to provide Virtualized Network
   |ODL on an IPv6 only Infrastructure.               |**No**               |**Work in Progress**   |Deploying OpenStack with ODL on an IPv6 only infrastructure   |
   |                                                  |                     |                       |where the API endpoints are all IPv6 addresses.               |
   +--------------------------------------------------+---------------------+-----------------------+--------------------------------------------------------------+
+  |VxLAN Tunnels with IPv6 Endpoints                 |**No**               |**Work in Progress**   |Work in progress. The necessary patches are under review to   |
+  |                                                  |                     |                       |support this use case for OVS 2.6 or higher version.          |
+  +--------------------------------------------------+---------------------+-----------------------+--------------------------------------------------------------+
+
+References
+
+.. [1] Neutron IPv6 Documentation for Newton Release: http://docs.openstack.org/newton/networking-guide/config-ipv6.html
+
+.. [2] How to Use Config-Drive for Metadata with IPv6 Network: http://superuser.openstack.org/articles/deploying-ipv6-only-tenants-with-openstack/
+
