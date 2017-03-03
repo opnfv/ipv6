@@ -6,16 +6,18 @@
 Install OPNFV on IPv6-Only Infrastructure
 =========================================
 
-This section provides instructions to install OPNFV on IPv6-only Infrastructure. All underlay networks
-and API endpoints will be IPv6-only except:
+This section provides instructions to install OPNFV on IPv6-only
+Infrastructure. All underlay networks and API endpoints will be IPv6-only
+except:
 
-1. "admin" network in underlay/undercloud still has to be IPv4, due to lack of support of IPMI
-   over IPv6 or PXE over IPv6.
-2. OVS VxLAN (or GRE) tunnel endpoint is still IPv4 only, although IPv6 traffic can be
-   encapsulated within the tunnel.
+1. "admin" network in underlay/undercloud still has to be IPv4, due to lack of
+   support of IPMI over IPv6 or PXE over IPv6.
+2. OVS VxLAN (or GRE) tunnel endpoint is still IPv4 only, although IPv6 traffic
+   can be encapsulated within the tunnel.
 3. Metadata server is still IPv4 only.
 
-Except the limitations above, the use case scenario of the IPv6-only infrastructure includes:
+Except the limitations above, the use case scenario of the IPv6-only
+infrastructure includes:
 
 1. Support OPNFV deployment on an IPv6 only infrastructure.
 2. Horizon/ODL-DLUX access using IPv6 address from an external host.
@@ -36,77 +38,71 @@ Install OPNFV in OpenStack-Only Environment
 
     # HA, Virtual deployment in OpenStack-only environment
     ./opnfv-deploy -v -d /etc/opnfv-apex/os-nosdn-nofeature-ha.yaml \
-    -n /etc/opnfv-apex/network_setting_v6.yaml
+    -n /etc/opnfv-apex/network_settings_v6.yaml
 
     # HA, Bare Metal deployment in OpenStack-only environment
     ./opnfv-deploy -d /etc/opnfv-apex/os-nosdn-nofeature-ha.yaml \
-    -i <inventory file> -n /etc/opnfv-apex/network_setting_v6.yaml
+    -i <inventory file> -n /etc/opnfv-apex/network_settings_v6.yaml
 
     # Non-HA, Virtual deployment in OpenStack-only environment
     ./opnfv-deploy -v -d /etc/opnfv-apex/os-nosdn-nofeature-noha.yaml \
-    -n /etc/opnfv-apex/network_setting_v6.yaml
+    -n /etc/opnfv-apex/network_settings_v6.yaml
 
     # Non-HA, Bare Metal deployment in OpenStack-only environment
     ./opnfv-deploy -d /etc/opnfv-apex/os-nosdn-nofeature-noha.yaml \
-    -i <inventory file> -n /etc/opnfv-apex/network_setting_v6.yaml
+    -i <inventory file> -n /etc/opnfv-apex/network_settings_v6.yaml
 
     # Note:
     #
     # 1. Parameter ""-v" is mandatory for Virtual deployment
     # 2. Parameter "-i <inventory file>" is mandatory for Bare Metal deployment
     # 2.1 Refer to https://git.opnfv.org/cgit/apex/tree/config/inventory for examples of inventory file
-    # 3. You can use "-n /etc/opnfv-apex/network_setting.yaml" for deployment in IPv4 infrastructure
+    # 3. You can use "-n /etc/opnfv-apex/network_settings.yaml" for deployment in IPv4 infrastructure
 
 Please **NOTE** that:
 
 * You need to refer to **installer's documentation** for other necessary
   parameters applicable to your deployment.
-* You need to refer to **Release Notes** and **installer's documentation** if there is
-  any issue in installation.
+* You need to refer to **Release Notes** and **installer's documentation** if
+  there is any issue in installation.
 
 --------------------------------------------------
-Install OPNFV in OpenStack with ODL-L2 Environment
+Install OPNFV in OpenStack with ODL-L3 Environment
 --------------------------------------------------
 
 **Apex Installer**:
 
 .. code-block:: bash
 
-    # HA, Virtual deployment in OpenStack with Open Daylight L2-only environment
-    ./opnfv-deploy -v -d /etc/opnfv-apex/os-odl_l2-nofeature-ha.yaml \
-    -n /etc/opnfv-apex/network_setting_v6.yaml
+    # HA, Virtual deployment in OpenStack with Open Daylight L3 environment
+    ./opnfv-deploy -v -d /etc/opnfv-apex/os-odl_l3-nofeature-ha.yaml \
+    -n /etc/opnfv-apex/network_settings_v6.yaml
 
-    # HA, Bare Metal deployment in OpenStack with Open Daylight L2-only environment
-    ./opnfv-deploy -d /etc/opnfv-apex/os-odl_l2-nofeature-ha.yaml \
-    -i <inventory file> -n /etc/opnfv-apex/network_setting_v6.yaml
+    # HA, Bare Metal deployment in OpenStack with Open Daylight L3 environment
+    ./opnfv-deploy -d /etc/opnfv-apex/os-odl_l3-nofeature-ha.yaml \
+    -i <inventory file> -n /etc/opnfv-apex/network_settings_v6.yaml
 
-    # Non-HA deployment in OpenStack with Open Daylight L2-only environment
-    # There is no settings file provided by default for odl_l2 non-HA deployment
-    # You need to copy /etc/opnfv-apex/os-odl_l2-nofeature-ha.yaml to another file
-    # e.g. /etc/opnfv-apex/os-odl_l2-nofeature-noha.yaml
-    # and change the "ha_enabled" parameter to be "false", i.e.: "ha_enabled: false", and:
+    # Non-HA, Virtual deployment in OpenStack with Open Daylight L3 environment
+    ./opnfv-deploy -v -d /etc/opnfv-apex/os-odl_l3-nofeature-noha.yaml \
+    -n /etc/opnfv-apex/network_settings_v6.yaml
 
-    # - For Non-HA, Virtual deployment
-    ./opnfv-deploy -v -d /etc/opnfv-apex/os-odl_l2-nofeature-noha.yaml \
-    -n /etc/opnfv-apex/network_setting_v6.yaml
-
-    # - For Non-HA, Bare Metal deployment
-    ./opnfv-deploy -d /etc/opnfv-apex/os-odl_l2-nofeature-noha.yaml \
-    -i <inventory file> -n /etc/opnfv-apex/network_setting_v6.yaml
+    # Non-HA, Bare Metal deployment in OpenStack with Open Daylight L3 environment
+    ./opnfv-deploy -d /etc/opnfv-apex/os-odl_l3-nofeature-noha.yaml \
+    -i <inventory file> -n /etc/opnfv-apex/network_settings_v6.yaml
 
     # Note:
     #
     # 1. Parameter ""-v" is mandatory for Virtual deployment
     # 2. Parameter "-i <inventory file>" is mandatory for Bare Metal deployment
     # 2.1 Refer to https://git.opnfv.org/cgit/apex/tree/config/inventory for examples of inventory file
-    # 3. You can use "-n /etc/opnfv-apex/network_setting.yaml" for deployment in IPv4 infrastructure
+    # 3. You can use "-n /etc/opnfv-apex/network_settings.yaml" for deployment in IPv4 infrastructure
 
 Please **NOTE** that:
 
 * You need to refer to **installer's documentation** for other necessary
   parameters applicable to your deployment.
-* You need to refer to **Release Notes** and **installer's documentation** if there is
-  any issue in installation.
+* You need to refer to **Release Notes** and **installer's documentation** if
+  there is any issue in installation.
 
 -------------------
 Testing Methodology
@@ -114,16 +110,22 @@ Testing Methodology
 
 There are 2 levels of testing to validate the deployment.
 
-++++++++++++++++
-Underlay Testing
-++++++++++++++++
+++++++++++++++++++++++++++++++++++++++++++++
+Underlay Testing for OpenStack API Endpoints
+++++++++++++++++++++++++++++++++++++++++++++
 
-**Underlay** Testing is to validate that API endpoints are listening on IPv6 addresses.
-This can be as simple as validating Keystone service, and as complete as validating each
-API endpoint. It is important to reuse Tempest API testing. Currently:
+**Underlay** Testing is to validate that API endpoints are listening on IPv6
+addresses. Currently, we are only considering the **Underlay Testing** for
+OpenStack API endpoints. The **Underlay Testing** for Open Daylight API
+endpoints is for future release.
 
-* Apex Installer will change ``OS_AUTH_URL`` in ``overcloudrc`` during installation
-  process. For example: ``export OS_AUTH_URL=http://[2001:db8::15]:5000/v2.0``.
+The **Underlay Testing** for OpenStack API endpoints can be as simple as
+validating Keystone service, and as complete as validating each API endpoint.
+It is important to reuse Tempest API testing. Currently:
+
+* Apex Installer will change ``OS_AUTH_URL`` in ``overcloudrc`` during
+  installation process. For example:
+  ``export OS_AUTH_URL=http://[2001:db8::15]:5000/v2.0``.
   ``OS_AUTH_URL`` points to Keystone and Keystone catalog.
 * When FuncTest runs Tempest for the first time, the ``OS_AUTH_URL`` is taken
   from the environment and placed automatically in ``Tempest.conf``.
@@ -141,10 +143,12 @@ Tests, run in FuncTest and integrated into OPNFV's CI/CD environment.
 Overlay Testing
 +++++++++++++++
 
-**Overlay** Testing is to validate that IPv6 is supported in tenant networks, subnets and routers.
-Both Tempest API testing and Tempest Scenario testing are used in our Overlay Testing.
+**Overlay** Testing is to validate that IPv6 is supported in tenant networks,
+subnets and routers. Both Tempest API testing and Tempest Scenario testing are
+used in our Overlay Testing.
 
-Tempest API testing validates that the Neutron API supports the creation of IPv6 networks, subnets, routers, etc:
+Tempest API testing validates that the Neutron API supports the creation of
+IPv6 networks, subnets, routers, etc:
 
 .. code-block:: bash
 
@@ -190,7 +194,7 @@ Tempest Scenario testing validates some specific overlay IPv6 scenarios
     tempest.scenario.test_network_v6.TestGettingAddress.test_multi_prefix_slaac
     tempest.scenario.test_network_v6.TestGettingAddress.test_slaac_from_os
 
-The above Tempest API testing and Scenario testing are quite comprehensive to validate
-overlay IPv6 tenant networks. They are part of OpenStack default Smoke Tests,
-run in FuncTest and integrated into OPNFV's CI/CD environment.
+The above Tempest API testing and Scenario testing are quite comprehensive to
+validate overlay IPv6 tenant networks. They are part of OpenStack default
+Smoke Tests, run in FuncTest and integrated into OPNFV's CI/CD environment.
 
