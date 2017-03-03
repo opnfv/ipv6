@@ -2,20 +2,17 @@
 .. http://creativecommons.org/licenses/by/4.0
 .. (c) Bin Hu (AT&T) and Sridhar Gaddam (RedHat)
 
-===================================================
-IPv6 Installation Procedure and Configuration Guide
-===================================================
+===========================
+IPv6 Installation Procedure
+===========================
 
 :Abstract:
 
-This document provides the users with:
-
-1. Installation Procedure to install OPNFV Danube Release on IPv6-only Infrastructure
-2. Configuration Guide to set up a service VM as an IPv6 vRouter using OPNFV Danube Release
+This document provides the users with the Installation Procedure to install
+OPNFV Danube Release on IPv6-only Infrastructure.
 
 .. toctree::
    :numbered:
    :maxdepth: 4
 
    ./installation.instruction.rst
-   ./feature.configuration.rst
