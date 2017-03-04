@@ -485,36 +485,15 @@ of OPNFV Danube Release:
 
 **Apex Installer**:
 
-.. code-block:: bash
+Please **NOTE** that:
 
-    # HA, Virtual deployment in OpenStack with Open Daylight L2-only environment
-    ./opnfv-deploy -v -d /etc/opnfv-apex/os-odl_l2-nofeature-ha.yaml \
-    -n /etc/opnfv-apex/network_setting.yaml
-
-    # HA, Bare Metal deployment in OpenStack with Open Daylight L2-only environment
-    ./opnfv-deploy -d /etc/opnfv-apex/os-odl_l2-nofeature-ha.yaml \
-    -i <inventory file> -n /etc/opnfv-apex/network_setting.yaml
-
-    # Non-HA deployment in OpenStack with Open Daylight L2-only environment
-    # There is no settings file provided by default for odl_l2 non-HA deployment
-    # You need to copy /etc/opnfv-apex/os-odl_l2-nofeature-ha.yaml to another file
-    # e.g. /etc/opnfv-apex/os-odl_l2-nofeature-noha.yaml
-    # and change the "ha_enabled" parameter to be "false", i.e.: "ha_enabled: false", and:
-
-    # - For Non-HA, Virtual deployment
-    ./opnfv-deploy -v -d /etc/opnfv-apex/os-odl_l2-nofeature-noha.yaml \
-    -n /etc/opnfv-apex/network_setting.yaml
-
-    # - For Non-HA, Bare Metal deployment
-    ./opnfv-deploy -d /etc/opnfv-apex/os-odl_l2-nofeature-noha.yaml \
-    -i <inventory file> -n /etc/opnfv-apex/network_setting.yaml
-
-    # Note:
-    #
-    # 1. Parameter ""-v" is mandatory for Virtual deployment
-    # 2. Parameter "-i <inventory file>" is mandatory for Bare Metal deployment
-    # 2.1 Refer to https://git.opnfv.org/cgit/apex/tree/config/inventory for examples of inventory file
-    # 3. You can use "-n /etc/opnfv-apex/network_setting_v6.yaml" for deployment in IPv6-only infrastructure
+* In OPNFV Danube Release, Apex Installer no longer supports Open Daylight
+  L2-only environment or ``odl-ovsdb-openstack``. Instead, it supports Open
+  Daylight L3 deployment with ``odl-netvirt-openstack``.
+* IPv6 features are not fully supported in Open Daylight L3 with
+  ``odl-netvirt-openstack`` yet. It is still a work in progress.
+* Thus we cannot realize Service VM as an IPv6 vRouter using Apex Installer
+  under OpenStack + Open Daylight L3 with ``odl-netvirt-openstack`` environment.
 
 **Compass** Installer:
 
