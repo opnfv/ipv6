@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "dabed58f_7c316eeb",
+        "filename": "docs/release/configguide/index.rst",
+        "patchSetId": 1
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 6383
+      },
+      "writtenOn": "2017-03-08T14:49:08Z",
+      "side": 1,
+      "message": "Its an \u0027_\u0027 (underscore)\nIts required for the label syntax. Please see http://docs.opnfv.org/en/latest/how-to-use-docs/include-documentation.html#as-hyperlink",
+      "parentUuid": "dabed58f_dc209a9d",
+      "range": {
+        "startLine": 1,
+        "startChar": 3,
+        "endLine": 1,
+        "endChar": 4
+      },
+      "revId": "8cdec37b96da004df0e818725e3bbcde42d43095",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "dabed58f_fc255eab",
         "filename": "docs/release/installation/index.rst",
         "patchSetId": 1
