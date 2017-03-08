@@ -1,0 +1,96 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "dabed58f_dc209a9d",
+        "filename": "docs/release/configguide/index.rst",
+        "patchSetId": 1
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 168
+      },
+      "writtenOn": "2017-03-08T14:43:46Z",
+      "side": 1,
+      "message": "Is this extra space intentionally needed or by accident?",
+      "range": {
+        "startLine": 1,
+        "startChar": 3,
+        "endLine": 1,
+        "endChar": 4
+      },
+      "revId": "8cdec37b96da004df0e818725e3bbcde42d43095",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "dabed58f_fc255eab",
+        "filename": "docs/release/installation/index.rst",
+        "patchSetId": 1
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 168
+      },
+      "writtenOn": "2017-03-08T14:43:46Z",
+      "side": 1,
+      "message": "Is this extra space intentionally needed or by accident?",
+      "range": {
+        "startLine": 1,
+        "startChar": 3,
+        "endLine": 1,
+        "endChar": 4
+      },
+      "revId": "8cdec37b96da004df0e818725e3bbcde42d43095",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "dabed58f_9c3a22cc",
+        "filename": "docs/release/release-notes/index.rst",
+        "patchSetId": 1
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 168
+      },
+      "writtenOn": "2017-03-08T14:43:46Z",
+      "side": 1,
+      "message": "Is this extra space intentionally needed or by accident?",
+      "range": {
+        "startLine": 1,
+        "startChar": 3,
+        "endLine": 1,
+        "endChar": 4
+      },
+      "revId": "8cdec37b96da004df0e818725e3bbcde42d43095",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "dabed58f_bc37e6e2",
+        "filename": "docs/release/userguide/index.rst",
+        "patchSetId": 1
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 168
+      },
+      "writtenOn": "2017-03-08T14:43:46Z",
+      "side": 1,
+      "message": "Is this extra space intentionally needed or by accident?",
+      "range": {
+        "startLine": 1,
+        "startChar": 3,
+        "endLine": 1,
+        "endChar": 4
+      },
+      "revId": "8cdec37b96da004df0e818725e3bbcde42d43095",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
+    }
+  ]
+}
