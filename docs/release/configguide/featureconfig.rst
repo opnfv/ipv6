@@ -465,7 +465,7 @@ and Open Daylight L2-only of OPNFV Danube Release, please **NOTE** that:
 
 * We **SHOULD** use the ``odl-ovsdb-openstack`` version of Open Daylight Boron
   in OPNFV Danube Release. Please refer to our
-  `Gap Analysis <http://artifacts.opnfv.org/ipv6/docs/gapanalysis/gap-analysis-odl-boron.html>`_
+  `Gap Analysis <http://artifacts.opnfv.org/ipv6/docs/release_userguide/index.html#ipv6-gap-analysis-with-open-daylight-boron>`_
   for more information.
 * The hostnames, IP addresses, and username are for exemplary purpose in instructions.
   Please change as needed to fit your environment.
