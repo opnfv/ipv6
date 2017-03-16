@@ -23,7 +23,7 @@ Version History
 | 2017-02-16         | 0.1.0              | Bin Hu             | First draft        |
 |                    |                    |                    |                    |
 +--------------------+--------------------+--------------------+--------------------+
-|                    | 0.1.1              |                    |                    |
+| 2017-03-15         | 0.2.0              | Bin Hu             | Baseline draft     |
 |                    |                    |                    |                    |
 +--------------------+--------------------+--------------------+--------------------+
 |                    | 1.0                |                    |                    |
@@ -33,121 +33,33 @@ Version History
 Important Notes
 ---------------
 
-<STATE IMPORTANT NOTES/DEVIATIONS SINCE PREVIOUS ITERATIVE RELEASE AND OTHER IMPORTANT NOTES FOR THIS RELEASE>
+**Attention:** Please be aware that:
 
-<EXAMPLE>:
+* Since Danube, Apex Installer no longer supports Open Daylight L2-only
+  environment or ``odl-ovsdb-openstack``. Instead, it supports Open Daylight L3
+  deployment with ``odl-netvirt-openstack``.
+* IPv6 features are not fully supported in Open Daylight L3 with
+  ``odl-netvirt-openstack`` yet. It is still a work in progress.
+* Thus we cannot realize Service VM as an IPv6 vRouter using Apex Installer
+  under OpenStack + Open Daylight L3 with ``odl-netvirt-openstack environment``.
 
-**Attention:** Please be aware that since LSV3 a pre-deploy script must be ran on the Fuel master -
-see the OPNFV@Fuel SW installation instructions
+For details, please refer to our **User Guide** <../release_userguide/index.html>_.
 
 Summary
 -------
 
-<SUMMARIZE THE RELEASE - THE CONTENT - AND OTHER IMPORTANT HIGH LEVEL PROPERTIES>
+This is the Danube release of the IPv6 feature as part of OPNFV, including:
 
-<EXAMPLE>:
+* Installation of OPNFV on IPv6-Only Infrastructure by Apex Installer
+* Configuration of setting up a Service VM as an IPv6 vRouter
+* User Guide, which analyzes the gap of IPv6 support in OpenStack Newton
+  and OpenDaylight Boron.
 
-Arno Fuel@OPNFV is based the OpenStack Fuel upstream project version 6.0.1,
-but adds OPNFV unique components such as OpenDaylight version: Helium as well as other OPNFV unique configurations......
+Please refer to our:
 
-Release Data
-------------
-<STATE RELEVANT RELEASE DATA/RECORDS>
-
-<EXAMPLE>:
-
-+--------------------------------------+--------------------------------------+
-| **Project**                          | E.g. Arno/genesis/fuel@opnfv         |
-|                                      |                                      |
-+--------------------------------------+--------------------------------------+
-| **Repo/commit-ID**                   | E.g. genesis/adf634a0d4.....         |
-|                                      |                                      |
-+--------------------------------------+--------------------------------------+
-| **Release designation**              | E.g. Arno RC2                        |
-|                                      |                                      |
-+--------------------------------------+--------------------------------------+
-| **Release date**                     | E.g. 2015-04-16                      |
-|                                      |                                      |
-+--------------------------------------+--------------------------------------+
-| **Purpose of the delivery**          | E.g. OPNFV Internal quality assurance|
-|                                      |                                      |
-+--------------------------------------+--------------------------------------+
-
-Version Change
-^^^^^^^^^^^^^^
-
-Module Version Changes
-~~~~~~~~~~~~~~~~~~~~~~
-<STATE WHAT UPSTREAM, - AS WELL AS OPNFV MODULE VERSIONS HAVE CHANGED>
-
-<EXAMPLE>:
-
-- Fuel have changed from 5.1 to 6.0.1
-
-- OpenDaylight has changed from Helium-SR1 to Helium-SR2
-
-Document Version Changes
-~~~~~~~~~~~~~~~~~~~~~~~~
-<STATE WHAT RELATED DOCUMENTS THAT CHANGES WITH THIS RELEASE>
-
-<EXAMPLE>:
-
-- The Fuel@OPNFV installation guide version has changed from version 0.1 to to 0.2
-
-Reason for Version
-^^^^^^^^^^^^^^^^^^
-
-Feature Additions
-~~~~~~~~~~~~~~~~~
-<STATE ADDED FEATURES BY REFERENCE TO JIRA>
-
-<EXAMPLE>:
-
-**JIRA BACK-LOG:**
-
-+--------------------------------------+--------------------------------------+
-| **JIRA REFERENCE**                   | **SLOGAN**                           |
-|                                      |                                      |
-+--------------------------------------+--------------------------------------+
-| BGS-123                              | ADD OpenDaylight ml2 integration     |
-|                                      |                                      |
-+--------------------------------------+--------------------------------------+
-| BGS-456                              | Add auto-deployment of Fuel@OPNFV    |
-|                                      |                                      |
-+--------------------------------------+--------------------------------------+
-
-Bug Corrections
-~~~~~~~~~~~~~~~
-
-**JIRA TICKETS:**
-
-+--------------------------------------+--------------------------------------+
-| **JIRA REFERENCE**                   | **SLOGAN**                           |
-|                                      |                                      |
-+--------------------------------------+--------------------------------------+
-| BGS-888                              | Fuel doesn't deploy                  |
-|                                      |                                      |
-+--------------------------------------+--------------------------------------+
-| BGS-999                              | Floating IP doesn't work             |
-|                                      |                                      |
-+--------------------------------------+--------------------------------------+
-
-Deliverables
-------------
-
-Software Deliverables
-^^^^^^^^^^^^^^^^^^^^^
-
-<STATE WHAT SOFTWARE DELIVERABLES THAT ARE RELATED TO THIS VERSION, AND WHERE THOSE CAN BE RETRIEVED>
-
-<EXAMPLE>:
-
-Documentation Deliverables
-^^^^^^^^^^^^^^^^^^^^^^^^^^
-
-<STATE WHAT DOCUMENTATION DELIVERABLES THAT ARE RELATED TO THIS VERSION, AND WHERE THOSE CAN BE RETRIEVED>
-
-<EXAMPLE>:
+* **Install Guide** <release_installation/index.html>_
+* **Configuration Guide** <release_configguide/index.html>_
+* **User Guide** <../release_userguide/index.html>_
 
 Known Limitations, Issues and Workarounds
 -----------------------------------------
@@ -155,85 +67,27 @@ Known Limitations, Issues and Workarounds
 System Limitations
 ^^^^^^^^^^^^^^^^^^
 
-<STATE ALL RELEVANT SYSTEM LIMITATIONS>
-
-<EXAMPLE>:
-
-**Max number of blades:**   1 Fuel master, 3 Controllers, 20 Compute blades
-
-**Min number of blades:**   1 Fuel master, 1 Controller, 1 Compute blade
-
-**Storage:**    Ceph is the only supported storage configuration.
-
-**Max number of networks:**   3800 (Needs special switch config.)
-
-**L3Agent:**   L3 agent and floating IPs is not supported.
+None.
 
 Known Issues
 ^^^^^^^^^^^^
 
-<STATE ALL KNOWN ISSUES WITH JIRA REFERENCE>
-
-<EXAMPLE>:
-
-**JIRA TICKETS:**
-
-+--------------------------------------+--------------------------------------+
-| **JIRA REFERENCE**                   | **SLOGAN**                           |
-|                                      |                                      |
-+--------------------------------------+--------------------------------------+
-| BGS-987                              | Nova-compute process does            |
-|                                      | not re-spawn when killed             |
-|                                      |                                      |
-+--------------------------------------+--------------------------------------+
-| BGS-654                              | MOS 5.1 : neutron net-list returns   |
-|                                      | "400 Bad request"                    |
-|                                      |                                      |
-+--------------------------------------+--------------------------------------+
+None.
 
 Workarounds
 ^^^^^^^^^^^
 
-<STATE ALL KNOWN WORKAROUNDS TO THE ISSUES STATED ABOVE>
-
-<EXAMPLE>:
-
-- In case the contact with a compute is lost - restart the compute host
-- In case the disk is full on a controller - delete all files in /tmp
+N/A.
 
 Test Result
 -----------
 
-<STATE THE QA COVERAGE AND RESULTS>
-
-<EXAMPLE>:
-
-Fuel@OPNFV Arno RC2 has undergone QA test runs with the following results:
-
-+--------------------------------------+--------------------------------------+
-| **TEST-SUITE**                       | **Results:**                         |
-|                                      |                                      |
-+--------------------------------------+--------------------------------------+
-| Tempest test suite 123               | Following tests failed:              |
-|                                      |                                      |
-|                                      | 1. Image resizing....                |
-|                                      |                                      |
-|                                      | 2. Heat deploy....                   |
-+--------------------------------------+--------------------------------------+
-| Robot test suite 456                 | Following tests failed:              |
-|                                      |                                      |
-|                                      | 1.......                             |
-|                                      |                                      |
-|                                      | 2.......                             |
-+--------------------------------------+--------------------------------------+
+Please refer to **Testing Methodology** <../release_installation/index.html#testing-methodology>_.
 
 References
 ----------
 
-<STATE RELEVANT REFERENCES FOR THIS RELEASE/VERSION>
-
-<EXAMPLE>:
-
 For more information on the OPNFV Danube release, please see:
 
 http://opnfv.org/danube
+
