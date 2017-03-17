@@ -89,5 +89,5 @@ References
 
 For more information on the OPNFV Danube release, please see:
 
-http://opnfv.org/danube
+http://www.opnfv.org/software
 
