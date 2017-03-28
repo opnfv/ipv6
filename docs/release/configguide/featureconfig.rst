@@ -122,7 +122,7 @@ Install OPNFV and Preparation
     # 4.1 Example of <lab-name>: -l devel-pipeline
     # 4.2 Example of <pod-name>: -p elx
     # 5. <iso-uri> could be local or remote ISO image of Fuel Installer
-    # 5.1 Example: http://artifacts.opnfv.org/fuel/colorado/opnfv-colorado.1.0.iso
+    # 5.1 Example: http://artifacts.opnfv.org/fuel/danube/opnfv-danube.1.0.iso
     #
     # Please refer to Fuel Installer's documentation for further information and any update
 
@@ -539,7 +539,7 @@ Please **NOTE** that:
     # 4.1 Example of <lab-name>: -l devel-pipeline
     # 4.2 Example of <pod-name>: -p elx
     # 5. <iso-uri> could be local or remote ISO image of Fuel Installer
-    # 5.1 Example: http://artifacts.opnfv.org/fuel/colorado/opnfv-colorado.1.0.iso
+    # 5.1 Example: http://artifacts.opnfv.org/fuel/danube/opnfv-danube.1.0.iso
     #
     # Please refer to Fuel Installer's documentation for further information and any update
 
