@@ -10,12 +10,6 @@ This section provides instructions to set up a service VM as an IPv6 vRouter usi
 installers. The environment may be pure OpenStack option or Open Daylight L2-only option.
 The deployment model may be HA or non-HA. The infrastructure may be bare metal or virtual environment.
 
-For complete instructions and documentations of setting up service VM as an IPv6 vRouter using ANY method,
-please refer to:
-
-1. IPv6 Configuration Guide (HTML): http://artifacts.opnfv.org/ipv6/docs/setupservicevm/index.html
-2. IPv6 User Guide (HTML): http://artifacts.opnfv.org/ipv6/docs/gapanalysis/index.html
-
 ****************************
 Pre-configuration Activities
 ****************************

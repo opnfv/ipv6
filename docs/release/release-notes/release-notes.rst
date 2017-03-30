@@ -43,7 +43,7 @@ Important Notes
 * Thus we cannot realize Service VM as an IPv6 vRouter using Apex Installer
   under OpenStack + Open Daylight L3 with ``odl-netvirt-openstack environment``.
 
-For details, please refer to our `User Guide <../release_userguide/index.html>`_.
+For details, please refer to our `User Guide <../userguide/index.html>`_.
 
 Summary
 -------
@@ -57,9 +57,9 @@ This is the Danube release of the IPv6 feature as part of OPNFV, including:
 
 Please refer to our:
 
-* `Installation Guide <../release_installation/index.html>`_
-* `Configuration Guide <../release_configguide/index.html>`_
-* `User Guide <../release_userguide/index.html>`_
+* `Installation Guide <../installation/index.html>`_
+* `Configuration Guide <../configguide/index.html>`_
+* `User Guide <../userguide/index.html>`_
 
 Known Limitations, Issues and Workarounds
 -----------------------------------------
@@ -82,7 +82,7 @@ N/A.
 Test Result
 -----------
 
-Please refer to `Testing Methodology <../release_installation/index.html#testing-methodology>`_.
+Please refer to `Testing Methodology <../installation/index.html#testing-methodology>`_.
 
 References
 ----------
