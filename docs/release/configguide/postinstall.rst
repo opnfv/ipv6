@@ -10,11 +10,7 @@ Congratulations, you have completed the setup of using a service VM to act as an
 You have validated the setup based on the instruction in previous sections. If you want to further
 test your setup, you can ``ping6`` among ``VM1``, ``VM2``, ``vRouter`` and ``ipv6-router``.
 
-This setup allows further open innovation by any 3rd-party. For more instructions and documentations,
-please refer to:
-
-1. IPv6 Configuration Guide (HTML): http://artifacts.opnfv.org/ipv6/docs/setupservicevm/index.html
-2. IPv6 User Guide (HTML): http://artifacts.opnfv.org/ipv6/docs/gapanalysis/index.html
+This setup allows further open innovation by any 3rd-party.
 
 **************************************
 Automated post installation activities

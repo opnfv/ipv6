@@ -11,7 +11,7 @@ IPv6 Installation Procedure
 :Abstract:
 
 This document provides the users with the Installation Procedure to install
-OPNFV Danube Release on IPv6-only Infrastructure.
+OPNFV Euphrates Release on IPv6-only Infrastructure.
 
 .. toctree::
    :numbered:

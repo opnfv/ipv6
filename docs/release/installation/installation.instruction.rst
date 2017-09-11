@@ -12,9 +12,7 @@ except:
 
 1. "admin" network in underlay/undercloud still has to be IPv4, due to lack of
    support of IPMI over IPv6 or PXE over IPv6.
-2. OVS VxLAN (or GRE) tunnel endpoint is still IPv4 only, although IPv6 traffic
-   can be encapsulated within the tunnel.
-3. Metadata server is still IPv4 only.
+2. Metadata server is still IPv4 only.
 
 Except the limitations above, the use case scenario of the IPv6-only
 infrastructure includes:
@@ -27,6 +25,7 @@ infrastructure includes:
 5. Inter VM communication (East-West routing) when VMs are spread
    across two compute nodes.
 6. VNC access into a VM using IPv6 addresses.
+7. IPv6 support in OVS VxLAN (and/or GRE) tunnel endpoints with OVS 2.6+ (**NEW**)
 
 -------------------------------------------
 Install OPNFV in OpenStack-Only Environment

@@ -6,7 +6,7 @@
 OPNFV IPv6 Project Release Notes
 ================================
 
-This document provides the release notes for Danube of IPv6 Project.
+This document provides the release notes for Euphrates of IPv6 Project.
 
 .. contents::
    :depth: 3
@@ -20,13 +20,13 @@ Version History
 | **Date**           | **Version**        | **Author**         | **Comment**        |
 |                    |                    |                    |                    |
 +--------------------+--------------------+--------------------+--------------------+
-| 2017-02-16         | 0.1.0              | Bin Hu             | First draft        |
+| 2017-09-10         | 0.1.0              | Bin Hu             | First draft        |
 |                    |                    |                    |                    |
 +--------------------+--------------------+--------------------+--------------------+
-| 2017-03-15         | 0.2.0              | Bin Hu             | Baseline draft     |
+|                    | 0.x.0              |                    | Baseline draft     |
 |                    |                    |                    |                    |
 +--------------------+--------------------+--------------------+--------------------+
-| 2017-03-21         | 1.0.0              | Bin Hu             | Release Ready      |
+|                    | 1.0.0              |                    | Release Ready      |
 |                    |                    |                    |                    |
 +--------------------+--------------------+--------------------+--------------------+
 
@@ -48,12 +48,12 @@ For details, please refer to our `User Guide <../userguide/index.html>`_.
 Summary
 -------
 
-This is the Danube release of the IPv6 feature as part of OPNFV, including:
+This is the Euphrates release of the IPv6 feature as part of OPNFV, including:
 
 * Installation of OPNFV on IPv6-Only Infrastructure by Apex Installer
 * Configuration of setting up a Service VM as an IPv6 vRouter
-* User Guide, which analyzes the gap of IPv6 support in OpenStack Newton
-  and OpenDaylight Boron.
+* User Guide, which analyzes the gap of IPv6 support in OpenStack Ocata
+  and OpenDaylight Carbon.
 
 Please refer to our:
 
@@ -87,7 +87,7 @@ Please refer to `Testing Methodology <../installation/index.html#testing-methodo
 References
 ----------
 
-For more information on the OPNFV Danube release, please see:
+For more information on the OPNFV Euphrates release, please see:
 
 http://www.opnfv.org/software
 

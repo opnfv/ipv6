@@ -11,7 +11,7 @@ IPv6 Configuration Guide
 :Abstract:
 
 This document provides the users with the Configuration Guide to set up a
-service VM as an IPv6 vRouter using OPNFV Danube Release.
+service VM as an IPv6 vRouter using OPNFV Euphrates Release.
 
 .. toctree::
    :numbered:
