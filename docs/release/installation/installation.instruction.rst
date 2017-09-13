@@ -74,19 +74,19 @@ Install OPNFV in OpenStack with ODL-L3 Environment
 .. code-block:: bash
 
     # HA, Virtual deployment in OpenStack with Open Daylight L3 environment
-    ./opnfv-deploy -v -d /etc/opnfv-apex/os-odl_l3-nofeature-ha.yaml \
+    ./opnfv-deploy -v -d /etc/opnfv-apex/os-odl-nofeature-ha.yaml \
     -n /etc/opnfv-apex/network_settings_v6.yaml
 
     # HA, Bare Metal deployment in OpenStack with Open Daylight L3 environment
-    ./opnfv-deploy -d /etc/opnfv-apex/os-odl_l3-nofeature-ha.yaml \
+    ./opnfv-deploy -d /etc/opnfv-apex/os-odl-nofeature-ha.yaml \
     -i <inventory file> -n /etc/opnfv-apex/network_settings_v6.yaml
 
     # Non-HA, Virtual deployment in OpenStack with Open Daylight L3 environment
-    ./opnfv-deploy -v -d /etc/opnfv-apex/os-odl_l3-nofeature-noha.yaml \
+    ./opnfv-deploy -v -d /etc/opnfv-apex/os-odl-nofeature-noha.yaml \
     -n /etc/opnfv-apex/network_settings_v6.yaml
 
     # Non-HA, Bare Metal deployment in OpenStack with Open Daylight L3 environment
-    ./opnfv-deploy -d /etc/opnfv-apex/os-odl_l3-nofeature-noha.yaml \
+    ./opnfv-deploy -d /etc/opnfv-apex/os-odl-nofeature-noha.yaml \
     -i <inventory file> -n /etc/opnfv-apex/network_settings_v6.yaml
 
     # Note:
