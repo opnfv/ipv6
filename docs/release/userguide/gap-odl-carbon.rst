@@ -2,31 +2,34 @@
 .. http://creativecommons.org/licenses/by/4.0
 .. (c) Bin Hu (AT&T) and Sridhar Gaddam (RedHat)
 
-==========================================
-IPv6 Gap Analysis with Open Daylight Boron
-==========================================
+===========================================
+IPv6 Gap Analysis with Open Daylight Carbon
+===========================================
 
 This section provides users with IPv6 gap analysis regarding feature requirement with
-Open Daylight Boron Official Release. The following table lists the use cases / feature
+Open Daylight Carbon Official Release. The following table lists the use cases / feature
 requirements of VIM-agnostic IPv6 functionality, including infrastructure layer and VNF
-(VM) layer, and its gap analysis with Open Daylight Boron Official Release.
+(VM) layer, and its gap analysis with Open Daylight Carbon Official Release.
 
-**Open Daylight Boron Status**
+**Open Daylight Carbon Status**
 
-There are 2 options in Open Daylight Boron to provide Virtualized Networks:
+There are 2 options in Open Daylight Carbon to provide Virtualized Networks:
 
-1 ``Old Netvirt``: netvirt implementation used in Open Daylight Beryllium Release
+1 ``Old Netvirt``: netvirt implementation used in Open Daylight Beryllium and Boron Release
   identified by feature ``odl-ovsdb-openstack``
 
 2 ``New Netvirt``: netvirt implementation which will replace the Old Netvirt in the
   future releases based on a more modular design. It is identified by feature
   ``odl-netvirt-openstack``
 
+Please **NOTE** that in terms of IPv6 support in OpenDaylight, there is no difference
+between **Carbon** release and **Boron** release.
+
 .. table::
   :class: longtable
 
   +--------------------------------------------------+-----------------------------------------------+--------------------------------------------------------------+
-  |Use Case / Requirement                            |            Supported in ODL Boron             |Notes                                                         |
+  |Use Case / Requirement                            |            Supported in ODL Carbon            |Notes                                                         |
   |                                                  +----------------------+------------------------+                                                              |
   |                                                  |     Old Netvirt      |      New Netvirt       |                                                              |
   |                                                  |(odl-ovsdb-openstack) |(odl-netvirt-openstack) |                                                              |
