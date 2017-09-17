@@ -2,31 +2,34 @@
 .. http://creativecommons.org/licenses/by/4.0
 .. (c) Bin Hu (AT&T) and Sridhar Gaddam (RedHat)
 
-====================================
-Using IPv6 Feature of Danube Release
-====================================
+=======================================
+Using IPv6 Feature of Euphrates Release
+=======================================
 
 This section provides the users with gap analysis regarding IPv6 feature requirements with
-OpenStack Newton Official Release and Open Daylight Boron Official Release. The gap analysis
+OpenStack Ocata Official Release and Open Daylight Carbon Official Release. The gap analysis
 serves as feature specific user guides and references when as a user you may leverage the
 IPv6 feature in the platform and need to perform some IPv6 related operations.
 
-For more information, please find Neutron's IPv6 document for Newton Release [1]_.
+For more information, please find Neutron's IPv6 document for Ocata Release [1]_.
 
-***************************************
-IPv6 Gap Analysis with OpenStack Newton
-***************************************
+**************************************
+IPv6 Gap Analysis with OpenStack Ocata
+**************************************
 
 This section provides users with IPv6 gap analysis regarding feature requirement with
-OpenStack Neutron in Newton Official Release. The following table lists the use cases / feature
+OpenStack Neutron in Ocata Official Release. The following table lists the use cases / feature
 requirements of VIM-agnostic IPv6 functionality, including infrastructure layer and VNF
-(VM) layer, and its gap analysis with OpenStack Neutron in Newton Official Release.
+(VM) layer, and its gap analysis with OpenStack Neutron in Ocata Official Release.
+
+Please **NOTE** that in terms of IPv6 support in OpenStack Neutron, there is no difference
+between **Ocata** release and **Newton** release.
 
 .. table::
   :class: longtable
 
   +-----------------------------------------------------------+-------------------+--------------------------------------------------------------------+
-  |Use Case / Requirement                                     |Supported in Newton|Notes                                                               |
+  |Use Case / Requirement                                     |Supported in Ocata |Notes                                                               |
   +===========================================================+===================+====================================================================+
   |All topologies work in a multi-tenant environment          |Yes                |The IPv6 design is following the Neutron tenant networks model;     |
   |                                                           |                   |dnsmasq is being used inside DHCP network namespaces, while radvd   |
@@ -122,9 +125,9 @@ requirements of VIM-agnostic IPv6 functionality, including infrastructure layer 
   +-----------------------------------------------------------+-------------------+--------------------------------------------------------------------+
   |IPv6 Support in "Allowed Address Pairs" Extension          |Yes                |                                                                    |
   +-----------------------------------------------------------+-------------------+--------------------------------------------------------------------+
-  |Support for IPv6 Prefix Delegation.                        |Yes                |Partial support in Newton                                           |
+  |Support for IPv6 Prefix Delegation.                        |Yes                |Partial support in Ocata                                            |
   +-----------------------------------------------------------+-------------------+--------------------------------------------------------------------+
-  |Distributed Virtual Routing (DVR) support for IPv6         |**No**             |In Newton DVR implementation, IPv6 works. But all the IPv6 ingress/ |
+  |Distributed Virtual Routing (DVR) support for IPv6         |**No**             |In Ocata DVR implementation, IPv6 works. But all the IPv6 ingress/  |
   |                                                           |                   |egress traffic is routed via the centralized controller node, i.e.  |
   |                                                           |                   |similar to SNAT traffic.                                            |
   |                                                           |                   |A fully distributed IPv6 router is not yet supported in Neutron.    |
@@ -146,31 +149,34 @@ requirements of VIM-agnostic IPv6 functionality, including infrastructure layer 
   |(keepalived+VRRP).                                         |                   |                                                                    |
   +-----------------------------------------------------------+-------------------+--------------------------------------------------------------------+
 
-******************************************
-IPv6 Gap Analysis with Open Daylight Boron
-******************************************
+*******************************************
+IPv6 Gap Analysis with Open Daylight Carbon
+*******************************************
 
 This section provides users with IPv6 gap analysis regarding feature requirement with
-Open Daylight Boron Official Release. The following table lists the use cases / feature
+Open Daylight Carbon Official Release. The following table lists the use cases / feature
 requirements of VIM-agnostic IPv6 functionality, including infrastructure layer and VNF
-(VM) layer, and its gap analysis with Open Daylight Boron Official Release.
+(VM) layer, and its gap analysis with Open Daylight Carbon Official Release.
 
-**Open Daylight Boron Status**
+**Open Daylight Carbon Status**
 
-There are 2 options in Open Daylight Boron to provide Virtualized Networks:
+There are 2 options in Open Daylight Carbon to provide Virtualized Networks:
 
-1 ``Old Netvirt``: netvirt implementation used in Open Daylight Beryllium Release
+1 ``Old Netvirt``: netvirt implementation used in Open Daylight Beryllium and Boron Release
   identified by feature ``odl-ovsdb-openstack``
 
 2 ``New Netvirt``: netvirt implementation which will replace the Old Netvirt in the
   future releases based on a more modular design. It is identified by feature
   ``odl-netvirt-openstack``
 
+Please **NOTE** that in terms of IPv6 support in OpenDaylight, there is no difference
+between **Carbon** release and **Boron** release.
+
 .. table::
   :class: longtable
 
   +--------------------------------------------------+-----------------------------------------------+--------------------------------------------------------------+
-  |Use Case / Requirement                            |            Supported in ODL Boron             |Notes                                                         |
+  |Use Case / Requirement                            |            Supported in ODL Carbon            |Notes                                                         |
   |                                                  +----------------------+------------------------+                                                              |
   |                                                  |     Old Netvirt      |      New Netvirt       |                                                              |
   |                                                  |(odl-ovsdb-openstack) |(odl-netvirt-openstack) |                                                              |
@@ -226,7 +232,7 @@ There are 2 options in Open Daylight Boron to provide Virtualized Networks:
 
 References
 
-.. [1] Neutron IPv6 Documentation for Newton Release: http://docs.openstack.org/newton/networking-guide/config-ipv6.html
+.. [1] Neutron IPv6 Documentation for Ocata Release: http://docs.openstack.org/ocata/networking-guide/config-ipv6.html
 
 .. [2] How to Use Config-Drive for Metadata with IPv6 Network: http://superuser.openstack.org/articles/deploying-ipv6-only-tenants-with-openstack/
 
