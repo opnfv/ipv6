@@ -17,9 +17,6 @@ In Open Daylight Carbon official release, the legacy ``Old Netvirt`` identified 
 ``odl-ovsdb-openstack`` is deprecated and no longer supported. The ``New Netvirt``
 identified by feature ``odl-netvirt-openstack`` is used.
 
-Please **NOTE** that in terms of IPv6 support in OpenDaylight, there is no difference
-between **Carbon** release and **Boron** release.
-
 .. table::
   :class: longtable
 
