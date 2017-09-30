@@ -21,13 +21,10 @@ Version History
 |                    |                    |                    |                    |
 +--------------------+--------------------+--------------------+--------------------+
 | 2017-09-10         | 0.1.0              | Bin Hu             | First draft        |
-|                    |                    |                    |                    |
 +--------------------+--------------------+--------------------+--------------------+
-|                    | 0.x.0              |                    | Baseline draft     |
-|                    |                    |                    |                    |
+| 2017-09-30         | 0.5.0              | Bin Hu             | Baseline draft     |
 +--------------------+--------------------+--------------------+--------------------+
 |                    | 1.0.0              |                    | Release Ready      |
-|                    |                    |                    |                    |
 +--------------------+--------------------+--------------------+--------------------+
 
 Important Notes
@@ -51,7 +48,8 @@ Summary
 This is the Euphrates release of the IPv6 feature as part of OPNFV, including:
 
 * Installation of OPNFV on IPv6-Only Infrastructure by Apex Installer
-* Configuration of setting up a Service VM as an IPv6 vRouter
+* Configuration of setting up a Service VM as an IPv6 vRouter in OpenStack-Only
+  environment
 * User Guide, which analyzes the gap of IPv6 support in OpenStack Ocata
   and OpenDaylight Carbon.
 
