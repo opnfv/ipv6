@@ -1,0 +1,52 @@
+---
+project: 'IPv6-enabled OPNFV Project (ipv6)'
+project_creation_date: 'November 25, 2014'
+project_category: 'Integration & Testing'
+lifecycle_state: 'Incubation'
+project_lead: &opnfv_ipv6_ptl
+    name: 'Bin Hu'
+    email: 'bh526r@att.com'
+    id: 'bh526r'
+    company: 'att.com'
+    timezone: 'Unknown'
+primary_contact: *opnfv_ipv6_ptl
+issue_tracking:
+    type: 'jira'
+    url: 'https://jira.opnfv.org/projects/IPVSIX'
+    key: 'IPVSIX'
+mailing_list:
+    type: 'mailman2'
+    url: 'opnfv-tech-discuss@lists.opnfv.org'
+    tag: '[ipv6]'
+realtime_discussion:
+    type: irc
+    server: 'freenode.net'
+    channel: '#opnfv-ipv6'
+meetings:
+    - type: 'gotomeeting+irc'
+      agenda:  # eg: 'https://wiki.opnfv.org/display/'
+      url:  # eg: 'https://global.gotomeeting.com/join/819733085'
+      server: 'freenode.net'
+      channel: '#opnfv-meeting'
+      repeats: 'weekly'
+      time:  # eg: '16:00 UTC'
+repositories:
+    - 'ipv6'
+committers:
+    - <<: *opnfv_ipv6_ptl
+    - name: 'tom nadeau'
+      email: 'tnadeau@lucidvision.com'
+      company: 'lucidvision.com'
+      id: 'tdnadeau'
+    - name: 'Thomas Nadeau'
+      email: 'tnadeau@brocade.com'
+      company: 'brocade.com'
+      id: 'tnadeaubrocade'
+    - name: 'Peter Lee'
+      email: 'peter@corenova.com'
+      company: 'corenova.com'
+      id: 'peterklee'
+tsc:
+    # yamllint disable rule:line-length
+    approval: ''
+    # yamllint enable rule:line-length
