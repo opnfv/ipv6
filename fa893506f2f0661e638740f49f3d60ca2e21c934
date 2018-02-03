@@ -1,0 +1,165 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "9a3d3df0_767bffbd",
+        "filename": "INFO.yaml",
+        "patchSetId": 1
+      },
+      "lineNbr": 5,
+      "author": {
+        "id": 168
+      },
+      "writtenOn": "2018-02-03T03:17:50Z",
+      "side": 1,
+      "message": "It should be \"Mature\".\n\nWe passed graduation review and got TSC approval on 12/19/2017. See http://meetbot.opnfv.org/meetings/opnfv-meeting/2017/opnfv-meeting.2017-12-19-13.59.html.\n\nThus the lifecycle status should be \"Mature\".",
+      "range": {
+        "startLine": 5,
+        "startChar": 18,
+        "endLine": 5,
+        "endChar": 28
+      },
+      "revId": "fa893506f2f0661e638740f49f3d60ca2e21c934",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9a3d3df0_d64dab9b",
+        "filename": "INFO.yaml",
+        "patchSetId": 1
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 168
+      },
+      "writtenOn": "2018-02-03T03:17:50Z",
+      "side": 1,
+      "message": "Not sure what type of value it should be. I am in Pacific Timezone, UTC-08:00.",
+      "range": {
+        "startLine": 11,
+        "startChar": 15,
+        "endLine": 11,
+        "endChar": 22
+      },
+      "revId": "fa893506f2f0661e638740f49f3d60ca2e21c934",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9a3d3df0_b63747fe",
+        "filename": "INFO.yaml",
+        "patchSetId": 1
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 168
+      },
+      "writtenOn": "2018-02-03T03:17:50Z",
+      "side": 1,
+      "message": "https://wiki.opnfv.org/display/meetings/Ipv6",
+      "range": {
+        "startLine": 27,
+        "startChar": 15,
+        "endLine": 27,
+        "endChar": 54
+      },
+      "revId": "fa893506f2f0661e638740f49f3d60ca2e21c934",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9a3d3df0_d6348bfd",
+        "filename": "INFO.yaml",
+        "patchSetId": 1
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 168
+      },
+      "writtenOn": "2018-02-03T03:17:50Z",
+      "side": 1,
+      "message": "Yes, GTM is correct",
+      "range": {
+        "startLine": 28,
+        "startChar": 12,
+        "endLine": 28,
+        "endChar": 65
+      },
+      "revId": "fa893506f2f0661e638740f49f3d60ca2e21c934",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9a3d3df0_16443372",
+        "filename": "INFO.yaml",
+        "patchSetId": 1
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 168
+      },
+      "writtenOn": "2018-02-03T03:17:50Z",
+      "side": 1,
+      "message": "biweekly / every 2 weeks",
+      "range": {
+        "startLine": 31,
+        "startChar": 16,
+        "endLine": 31,
+        "endChar": 22
+      },
+      "revId": "fa893506f2f0661e638740f49f3d60ca2e21c934",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9a3d3df0_7652df35",
+        "filename": "INFO.yaml",
+        "patchSetId": 1
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 168
+      },
+      "writtenOn": "2018-02-03T03:17:50Z",
+      "side": 1,
+      "message": "Time is correct",
+      "range": {
+        "startLine": 32,
+        "startChar": 13,
+        "endLine": 32,
+        "endChar": 30
+      },
+      "revId": "fa893506f2f0661e638740f49f3d60ca2e21c934",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9a3d3df0_b650e732",
+        "filename": "INFO.yaml",
+        "patchSetId": 1
+      },
+      "lineNbr": 35,
+      "author": {
+        "id": 168
+      },
+      "writtenOn": "2018-02-03T03:17:50Z",
+      "side": 1,
+      "message": "Current committers are:\n\nBin Hu (AT\u0026T), \u003cbh526r@att.com\u003e\nPeter Lee (ClearPath), \u003cplee@clearpathnet.com\u003e\nPrakash Ramchandran (Huawei), \u003cprakash.ramchandran@huawei.com\u003e\nSridhar Gaddam (RedHat), \u003csgaddam@redhat.com\u003e or \u003csridhar.gaddam@redhat.com\u003e",
+      "range": {
+        "startLine": 35,
+        "startChar": 0,
+        "endLine": 35,
+        "endChar": 11
+      },
+      "revId": "fa893506f2f0661e638740f49f3d60ca2e21c934",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
+    }
+  ]
+}
