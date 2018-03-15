@@ -6,7 +6,7 @@
 OPNFV IPv6 Project Release Notes
 ================================
 
-This document provides the release notes for Euphrates of IPv6 Project.
+This document provides the release notes for Fraser of IPv6 Project.
 
 .. contents::
    :depth: 3
@@ -20,13 +20,7 @@ Version History
 | **Date**           | **Version**        | **Author**         | **Comment**        |
 |                    |                    |                    |                    |
 +--------------------+--------------------+--------------------+--------------------+
-| 2017-09-10         | 0.1.0              | Bin Hu             | First draft        |
-+--------------------+--------------------+--------------------+--------------------+
-| 2017-09-30         | 0.5.0              | Bin Hu             | Baseline draft     |
-+--------------------+--------------------+--------------------+--------------------+
-| 2017-10-16         | 5.0.0              | Bin Hu             | Release Ready      |
-+--------------------+--------------------+--------------------+--------------------+
-| 2017-12-13         | 5.1.0              | Bin Hu             | Euhprates 5.1 Ready|
+| 2018-03-15         | 0.5.0              | Bin Hu             | Baseline draft     |
 +--------------------+--------------------+--------------------+--------------------+
 
 Important Notes
@@ -47,13 +41,13 @@ For details, please refer to our `User Guide <../userguide/index.html>`_.
 Summary
 -------
 
-This is the Euphrates release of the IPv6 feature as part of OPNFV, including:
+This is the Fraser release of the IPv6 feature as part of OPNFV, including:
 
 * Installation of OPNFV on IPv6-Only Infrastructure by Apex Installer
 * Configuration of setting up a Service VM as an IPv6 vRouter in OpenStack-Only
   environment
-* User Guide, which analyzes the gap of IPv6 support in OpenStack Ocata
-  and OpenDaylight Carbon.
+* User Guide, which analyzes the gap of IPv6 support in OpenStack Pike
+  and OpenDaylight Nitrogen.
 
 Please refer to our:
 
@@ -87,7 +81,7 @@ Please refer to `Testing Methodology <../installation/index.html#testing-methodo
 References
 ----------
 
-For more information on the OPNFV Euphrates release, please see:
+For more information on the OPNFV Fraser release, please see:
 
 http://www.opnfv.org/software
 

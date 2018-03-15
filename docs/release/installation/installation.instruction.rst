@@ -10,8 +10,12 @@ This section provides instructions to install OPNFV on IPv6-only
 Infrastructure. All underlay networks and API endpoints will be IPv6-only
 except:
 
-1. "admin" network in underlay/undercloud still has to be IPv4, due to lack of
-   support of IPMI over IPv6 or PXE over IPv6.
+1. "admin" network in underlay/undercloud still has to be IPv4.
+   * It was due to lack of support of IPMI over IPv6 or PXE over IPv6.
+   * iPXE does support IPv6 now. Ironic has added support for booting
+     nodes with IPv6.
+   * We are starting to work on enabling IPv6-only environment for all
+     networks. For TripleO, this work is still ongoing.
 2. Metadata server is still IPv4 only.
 
 Except the limitations above, the use case scenario of the IPv6-only
@@ -25,7 +29,8 @@ infrastructure includes:
 5. Inter VM communication (East-West routing) when VMs are spread
    across two compute nodes.
 6. VNC access into a VM using IPv6 addresses.
-7. IPv6 support in OVS VxLAN (and/or GRE) tunnel endpoints with OVS 2.6+ (**NEW**)
+7. IPv6 support in OVS VxLAN (and/or GRE) tunnel endpoints with OVS 2.6+.
+8. IPv6 support in iPXE, and booting nodes with IPv6 (**NEW**).
 
 -------------------------------------------
 Install OPNFV in OpenStack-Only Environment

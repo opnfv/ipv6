@@ -2,34 +2,34 @@
 .. http://creativecommons.org/licenses/by/4.0
 .. (c) Bin Hu (AT&T) and Sridhar Gaddam (RedHat)
 
-=======================================
-Using IPv6 Feature of Euphrates Release
-=======================================
+====================================
+Using IPv6 Feature of Fraser Release
+====================================
 
 This section provides the users with gap analysis regarding IPv6 feature requirements with
-OpenStack Ocata Official Release and Open Daylight Carbon Official Release. The gap analysis
+OpenStack Pike Official Release and Open Daylight Nitrogen Official Release. The gap analysis
 serves as feature specific user guides and references when as a user you may leverage the
 IPv6 feature in the platform and need to perform some IPv6 related operations.
 
-For more information, please find Neutron's IPv6 document for Ocata Release [1]_.
+For more information, please find Neutron's IPv6 document for Pike Release [1]_.
 
-**************************************
-IPv6 Gap Analysis with OpenStack Ocata
-**************************************
+*************************************
+IPv6 Gap Analysis with OpenStack Pike
+*************************************
 
 This section provides users with IPv6 gap analysis regarding feature requirement with
-OpenStack Neutron in Ocata Official Release. The following table lists the use cases / feature
+OpenStack Neutron in Pike Official Release. The following table lists the use cases / feature
 requirements of VIM-agnostic IPv6 functionality, including infrastructure layer and VNF
-(VM) layer, and its gap analysis with OpenStack Neutron in Ocata Official Release.
+(VM) layer, and its gap analysis with OpenStack Neutron in Pike Official Release.
 
 Please **NOTE** that in terms of IPv6 support in OpenStack Neutron, there is no difference
-between **Ocata** release and **Newton** release.
+between **Pike** release and **Ocata** release.
 
 .. table::
   :class: longtable
 
   +-----------------------------------------------------------+-------------------+--------------------------------------------------------------------+
-  |Use Case / Requirement                                     |Supported in Ocata |Notes                                                               |
+  |Use Case / Requirement                                     |Supported in Pike  |Notes                                                               |
   +===========================================================+===================+====================================================================+
   |All topologies work in a multi-tenant environment          |Yes                |The IPv6 design is following the Neutron tenant networks model;     |
   |                                                           |                   |dnsmasq is being used inside DHCP network namespaces, while radvd   |
@@ -125,9 +125,9 @@ between **Ocata** release and **Newton** release.
   +-----------------------------------------------------------+-------------------+--------------------------------------------------------------------+
   |IPv6 Support in "Allowed Address Pairs" Extension          |Yes                |                                                                    |
   +-----------------------------------------------------------+-------------------+--------------------------------------------------------------------+
-  |Support for IPv6 Prefix Delegation.                        |Yes                |Partial support in Ocata                                            |
+  |Support for IPv6 Prefix Delegation.                        |Yes                |Partial support in Pike                                             |
   +-----------------------------------------------------------+-------------------+--------------------------------------------------------------------+
-  |Distributed Virtual Routing (DVR) support for IPv6         |**No**             |In Ocata DVR implementation, IPv6 works. But all the IPv6 ingress/  |
+  |Distributed Virtual Routing (DVR) support for IPv6         |**No**             |In Pike DVR implementation, IPv6 works. But all the IPv6 ingress/   |
   |                                                           |                   |egress traffic is routed via the centralized controller node, i.e.  |
   |                                                           |                   |similar to SNAT traffic.                                            |
   |                                                           |                   |A fully distributed IPv6 router is not yet supported in Neutron.    |
@@ -149,78 +149,80 @@ between **Ocata** release and **Newton** release.
   |(keepalived+VRRP).                                         |                   |                                                                    |
   +-----------------------------------------------------------+-------------------+--------------------------------------------------------------------+
 
-*******************************************
-IPv6 Gap Analysis with Open Daylight Carbon
-*******************************************
+*********************************************
+IPv6 Gap Analysis with Open Daylight Nitrogen
+*********************************************
 
 This section provides users with IPv6 gap analysis regarding feature requirement with
-Open Daylight Carbon Official Release. The following table lists the use cases / feature
+Open Daylight Nitrogen Official Release. The following table lists the use cases / feature
 requirements of VIM-agnostic IPv6 functionality, including infrastructure layer and VNF
-(VM) layer, and its gap analysis with Open Daylight Carbon Official Release.
+(VM) layer, and its gap analysis with Open Daylight Nitrogen Official Release.
 
-**Open Daylight Carbon Status**
+**Open Daylight Nitrogen Status**
 
-In Open Daylight Carbon official release, the legacy ``Old Netvirt`` identified by feature
+In Open Daylight Nitrogen official release, the legacy ``Old Netvirt`` identified by feature
 ``odl-ovsdb-openstack`` is deprecated and no longer supported. The ``New Netvirt``
 identified by feature ``odl-netvirt-openstack`` is used.
 
 .. table::
   :class: longtable
 
-  +--------------------------------------------------+-----------------------+--------------------------------------------------------------+
-  |Use Case / Requirement                            |Supported in ODL Carbon|Notes                                                         |
-  +==================================================+=======================+==============================================================+
-  |REST API support for IPv6 subnet creation in ODL  |Yes                    |Yes, it is possible to create IPv6 subnets in ODL using       |
-  |                                                  |                       |Neutron REST API.                                             |
-  |                                                  |                       |                                                              |
-  |                                                  |                       |For a network which has both IPv4 and IPv6 subnets, ODL       |
-  |                                                  |                       |mechanism driver will send the port information which         |
-  |                                                  |                       |includes IPv4/v6 addresses to ODL Neutron northbound API.     |
-  |                                                  |                       |When port information is queried, it displays IPv4 and IPv6   |
-  |                                                  |                       |addresses.                                                    |
-  +--------------------------------------------------+-----------------------+--------------------------------------------------------------+
-  |IPv6 Router support in ODL:                       |Yes                    |                                                              |
-  |                                                  |                       |                                                              |
-  |1. Communication between VMs on same network      |                       |                                                              |
-  +--------------------------------------------------+-----------------------+--------------------------------------------------------------+
-  |IPv6 Router support in ODL:                       |Yes                    |                                                              |
-  |                                                  |                       |                                                              |
-  |2. Communication between VMs on different         |                       |                                                              |
-  |   networks connected to the same router          |                       |                                                              |
-  |   (east-west)                                    |                       |                                                              |
-  +--------------------------------------------------+-----------------------+--------------------------------------------------------------+
-  |IPv6 Router support in ODL:                       |**Work in Progress**   |Work in progress.                                             |
-  |                                                  |                       |                                                              |
-  |3. External routing (north-south)                 |                       |                                                              |
-  +--------------------------------------------------+-----------------------+--------------------------------------------------------------+
-  |IPAM: Support for IPv6 Address assignment modes.  |Yes                    |ODL IPv6 Router supports all the IPv6 Address assignment      |
-  |                                                  |                       |modes along with Neutron DHCP Agent.                          |
-  |1. SLAAC                                          |                       |                                                              |
-  |2. DHCPv6 Stateless                               |                       |                                                              |
-  |3. DHCPv6 Stateful                                |                       |                                                              |
-  +--------------------------------------------------+-----------------------+--------------------------------------------------------------+
-  |When using ODL for L2 forwarding/tunneling, it is |Yes                    |                                                              |
-  |compatible with IPv6.                             |                       |                                                              |
-  +--------------------------------------------------+-----------------------+--------------------------------------------------------------+
-  |Full support for IPv6 matching (i.e. IPv6, ICMPv6,|Yes                    |                                                              |
-  |TCP, UDP) in security groups. Ability to control  |                       |                                                              |
-  |and manage all IPv6 security group capabilities   |                       |                                                              |
-  |via Neutron/Nova API (REST and CLI) as well as    |                       |                                                              |
-  |via Horizon                                       |                       |                                                              |
-  +--------------------------------------------------+-----------------------+--------------------------------------------------------------+
-  |Shared Networks support                           |Yes                    |                                                              |
-  +--------------------------------------------------+-----------------------+--------------------------------------------------------------+
-  |IPv6 external L2 VLAN directly attached to a VM.  |**ToDo**               |                                                              |
-  +--------------------------------------------------+-----------------------+--------------------------------------------------------------+
-  |ODL on an IPv6 only Infrastructure.               |**Work in Progress**   |Deploying OpenStack with ODL on an IPv6 only infrastructure   |
-  |                                                  |                       |where the API endpoints are all IPv6 addresses.               |
-  +--------------------------------------------------+-----------------------+--------------------------------------------------------------+
-  |VxLAN Tunnels with IPv6 Endpoints                 |Yes                    |                                                              |
-  +--------------------------------------------------+-----------------------+--------------------------------------------------------------+
+  +--------------------------------------------------+-------------------------+--------------------------------------------------------------+
+  |Use Case / Requirement                            |Supported in ODL Nitrogen|Notes                                                         |
+  +==================================================+=========================+==============================================================+
+  |REST API support for IPv6 subnet creation in ODL  |Yes                      |Yes, it is possible to create IPv6 subnets in ODL using       |
+  |                                                  |                         |Neutron REST API.                                             |
+  |                                                  |                         |                                                              |
+  |                                                  |                         |For a network which has both IPv4 and IPv6 subnets, ODL       |
+  |                                                  |                         |mechanism driver will send the port information which         |
+  |                                                  |                         |includes IPv4/v6 addresses to ODL Neutron northbound API.     |
+  |                                                  |                         |When port information is queried, it displays IPv4 and IPv6   |
+  |                                                  |                         |addresses.                                                    |
+  +--------------------------------------------------+-------------------------+--------------------------------------------------------------+
+  |IPv6 Router support in ODL:                       |Yes                      |                                                              |
+  |                                                  |                         |                                                              |
+  |1. Communication between VMs on same network      |                         |                                                              |
+  +--------------------------------------------------+-------------------------+--------------------------------------------------------------+
+  |IPv6 Router support in ODL:                       |Yes                      |                                                              |
+  |                                                  |                         |                                                              |
+  |2. Communication between VMs on different         |                         |                                                              |
+  |   networks connected to the same router          |                         |                                                              |
+  |   (east-west)                                    |                         |                                                              |
+  +--------------------------------------------------+-------------------------+--------------------------------------------------------------+
+  |IPv6 Router support in ODL:                       |Yes                      |In ODL Nitrogen Release, RFE "IPv6 Inter-DC L3 North-South    |
+  |                                                  |                         |Connectivity Using L3VPN Provider Network Types" [1]_ is      |
+  |3. External routing (north-south)                 |                         |merged.                                                       |
+  +--------------------------------------------------+-------------------------+--------------------------------------------------------------+
+  |IPAM: Support for IPv6 Address assignment modes.  |Yes                      |ODL IPv6 Router supports all the IPv6 Address assignment      |
+  |                                                  |                         |modes along with Neutron DHCP Agent.                          |
+  |1. SLAAC                                          |                         |                                                              |
+  |2. DHCPv6 Stateless                               |                         |                                                              |
+  |3. DHCPv6 Stateful                                |                         |                                                              |
+  +--------------------------------------------------+-------------------------+--------------------------------------------------------------+
+  |When using ODL for L2 forwarding/tunneling, it is |Yes                      |                                                              |
+  |compatible with IPv6.                             |                         |                                                              |
+  +--------------------------------------------------+-------------------------+--------------------------------------------------------------+
+  |Full support for IPv6 matching (i.e. IPv6, ICMPv6,|Yes                      |                                                              |
+  |TCP, UDP) in security groups. Ability to control  |                         |                                                              |
+  |and manage all IPv6 security group capabilities   |                         |                                                              |
+  |via Neutron/Nova API (REST and CLI) as well as    |                         |                                                              |
+  |via Horizon                                       |                         |                                                              |
+  +--------------------------------------------------+-------------------------+--------------------------------------------------------------+
+  |Shared Networks support                           |Yes                      |                                                              |
+  +--------------------------------------------------+-------------------------+--------------------------------------------------------------+
+  |IPv6 external L2 VLAN directly attached to a VM.  |**ToDo**                 |                                                              |
+  +--------------------------------------------------+-------------------------+--------------------------------------------------------------+
+  |ODL on an IPv6 only Infrastructure.               |**Work in Progress**     |Deploying OpenStack with ODL on an IPv6 only infrastructure   |
+  |                                                  |                         |where the API endpoints are all IPv6 addresses.               |
+  +--------------------------------------------------+-------------------------+--------------------------------------------------------------+
+  |VxLAN Tunnels with IPv6 Endpoints                 |Yes                      |                                                              |
+  +--------------------------------------------------+-------------------------+--------------------------------------------------------------+
 
 References
 
-.. [1] Neutron IPv6 Documentation for Ocata Release: http://docs.openstack.org/ocata/networking-guide/config-ipv6.html
+.. [1] Neutron IPv6 Documentation for Pike Release: http://docs.openstack.org/neutron/pike/admin/config-ipv6.html
 
 .. [2] How to Use Config-Drive for Metadata with IPv6 Network: http://superuser.openstack.org/articles/deploying-ipv6-only-tenants-with-openstack/
+
+.. [3] http://docs.opendaylight.org/en/latest/submodules/netvirt/docs/specs/ipv6-interdc-l3vpn.html
 
