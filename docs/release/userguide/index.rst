@@ -22,6 +22,6 @@ For more information, please find `Neutron's IPv6 document for Pike Release
    :numbered:
    :maxdepth: 4
 
-   ./gap-os-ocata.rst
-   ./gap-odl-carbon.rst
+   ./gap-os-pike.rst
+   ./gap-odl-nitrogen.rst
 
