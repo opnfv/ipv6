@@ -24,13 +24,13 @@ We will describe how to use IPv6 in Docker in the following 5 sections:
 Install Docker Community Edition (CE)
 -------------------------------------
 
-**Step 1.1**: Download Docker (CE) on your system from [1]_.
+**Step 3.1.1**: Download Docker (CE) on your system from "this link" [1]_.
 
-For Ubuntu 16.04 Xenial x86_64, please refer to [2]_.
+For Ubuntu 16.04 Xenial x86_64, please refer to "Docker CE for Ubuntu" [2]_.
 
-**Step 1.2**: Refer to [3]_ to install Docker CE on Xenial.
+**Step 3.1.2**: Refer to "this link" [3]_ to install Docker CE on Xenial.
 
-**Step 1.3**: Once you installed the docker, you can verify the standalone
+**Step 3.1.3**: Once you installed the docker, you can verify the standalone
 default bridge nework as follows:
 
 .. code-block:: bash
@@ -56,7 +56,7 @@ Note that:
   your containers to look like physical hosts on your network, each with a
   unique MAC address.
 * Third-party network plugins allow you to integrate Docker with specialized
-  network stacks. Please refer to [4]_.
+  network stacks. Please refer to "Docker Networking Tutorials" [4]_.
 
 .. code-block:: bash
 
@@ -177,10 +177,10 @@ IPv6 with Docker
 
 Verifyig IPv6 with Docker involves the following steps:
 
-**Step 2.1**: Enable ipv6 support for Docker
+**Step 3.2.1**: Enable ipv6 support for Docker
 
 In the simplest term, the first step is to enable IPv6 on Docker on Linux hosts.
-Please refer to [5]_:
+Please refer to "this link" [5]_:
 
 * Edit ``/etc/docker/daemon.json``
 * Set the ``ipv6`` key to true.
@@ -191,7 +191,7 @@ Please refer to [5]_:
 
 Save the file.
 
-**Step 2.1.1**: Set up IPv6 addressing for Docker in ``daemon.json``
+**Step 3.2.1.1**: Set up IPv6 addressing for Docker in ``daemon.json``
 
 If you need IPv6 support for Docker containers, you need to enable the option
 on the Docker daemon ``daemon.json`` and reload its configuration, before
@@ -200,7 +200,7 @@ creating any IPv6 networks or assigning containers IPv6 addresses.
 When you create your network, you can specify the ``--ipv6`` flag to enable
 IPv6. You can't selectively disable IPv6 support on the default bridge network.
 
-**Step 2.1.2**: Enable forwarding from Docker containers to the outside world
+**Step 3.2.1.2**: Enable forwarding from Docker containers to the outside world
 
 By default, traffic from containers connected to the default bridge network is
 not forwarded to the outside world. To enable forwarding, you need to change
@@ -222,13 +222,13 @@ kernel.
 These settings do not persist across a reboot, so you may need to add them to
 a start-up script.
 
-**Step 2.1.3**: Use the default bridge network
+**Step 3.2.1.3**: Use the default bridge network
 
 The default bridge network is considered a legacy detail of Docker and is not
 recommended for production use. Configuring it is a manual operation, and it
 has technical shortcomings.
 
-**Step 2.1.4**: Connect a container to the default bridge network
+**Step 3.2.1.4**: Connect a container to the default bridge network
 
 If you do not specify a network using the ``--network`` flag, and you do
 specify a network driver, your container is connected to the default bridge
@@ -236,7 +236,7 @@ network by default. Containers connected to the default bridge network can
 communicate, but only by IP address, unless they are linked using the legacy
 ``--link`` flag.
 
-**Step 2.1.5**: Configure the default bridge network
+**Step 3.2.1.5**: Configure the default bridge network
 
 To configure the default bridge network, you specify options in ``daemon.json``.
 Here is an example of ``daemon.json`` with several options specified. Only
@@ -256,22 +256,22 @@ specify the settings you need to customize.
 
 Restart Docker for the changes to take effect.
 
-**Step 2.1.6**: Use IPv6 with the default bridge network
+**Step 3.2.1.6**: Use IPv6 with the default bridge network
 
 If you configure Docker for IPv6 support (see **Step 2.1.1**), the default
 bridge network is also configured for IPv6 automatically. Unlike user-defined
 bridges, you cannot selectively disable IPv6 on the default bridge.
 
-**Step 2.1.7**: Reload the Docker configuration file
+**Step 3.2.1.7**: Reload the Docker configuration file
 
 .. code-block:: bash
 
     $ systemctl reload docker
 
-**Step 2.1.8**: You can now create networks with the ``--ipv6`` flag and assign
+**Step 3.2.1.8**: You can now create networks with the ``--ipv6`` flag and assign
 containers IPv6 addresses.
 
-**Step 2.1.9**: Verify your host and docker networks
+**Step 3.2.1.9**: Verify your host and docker networks
 
 .. code-block:: bash
 
@@ -286,7 +286,7 @@ containers IPv6 addresses.
     898fbb0a0c83        my_bridge           bridge              local
     57ac095fdaab        none                null                local
 
-**Step 2.1.10**: Edit ``/etc/docker/daemon.json`` and set the ipv6 key to true.
+**Step 3.2.1.10**: Edit ``/etc/docker/daemon.json`` and set the ipv6 key to true.
 
 .. code-block:: bash
 
@@ -296,13 +296,13 @@ containers IPv6 addresses.
 
 Save the file.
 
-**Step 2.1.11**: Reload the Docker configuration file.
+**Step 3.2.1.11**: Reload the Docker configuration file.
 
 .. code-block:: bash
 
     $ sudo systemctl reload docker
 
-**Step 2.1.12**: You can now create networks with the ``--ipv6`` flag and
+**Step 3.2.1.12**: You can now create networks with the ``--ipv6`` flag and
 assign containers IPv6 addresses using the ``--ip6`` flag.
 
 .. code-block:: bash
@@ -379,15 +379,15 @@ The above was found on following Docker.
       127.0.0.0/8
     Live Restore Enabled: false
 
-**Step 2.2**: Check the network drivers
+**Step 3.2.2**: Check the network drivers
 
-Among the 4 supported drivers, we will be using user-defined bridge-network [6]_.
+Among the 4 supported drivers, we will be using "User-Defined Bridge Network" [6]_.
 
 -----------------------------
 Design Simple IPv6 Topologies
 -----------------------------
 
-**Step 3.1**: Creating IPv6 user-defined subnet.
+**Step 3.3.1**: Creating IPv6 user-defined subnet.
 
 Let's create a Docker with IPv6 subnet:
 
@@ -434,9 +434,9 @@ This brings us to question how do we assign IPv6 and IPv6 address for our soluti
 Design Solutions
 ----------------
 
-For best practices, please refer to [7]_.
+For best practices, please refer to "Best Practice Document" [7]_.
 
-Use IPv6 Calcualtor at [8]_.
+Use IPv6 Calcualtor at "this link" [8]_.
 
 * For IPv4 172.16.0.1   = 6to4 prefix 2002:ac10:0001::/48
 * For IPv4 172.17.01/24 = 6to4 prefix 2002:ac11:0001::/48
@@ -528,7 +528,7 @@ To generate this message, Docker took the following steps:
 3. The Docker daemon created a new container from that image which runs the
    executable that produces the output you are currently reading.
 4. The Docker daemon streamed that output to the Docker client, which sent it
-    to your terminal.
+   to your terminal.
 
 To try something more ambitious, you can run an Ubuntu container with:
 
@@ -543,7 +543,7 @@ To try something more ambitious, you can run an Ubuntu container with:
 On terminal it appears that the docker is functioning normally.
 
 Let's now push to see if we can use the ``my_ipv6_bridge`` network.
-Please refer to "User-Defined Bridge" [9]_.
+Please refer to "User-Defined Bridge Network" [9]_.
 
 ++++++++++++++++++++++++++++++++++++++++++++
 Connect a container to a user-defined bridge
@@ -708,7 +708,7 @@ to follow one of the IPv6 solutions we have come across.
 Challenges in Production Use
 ----------------------------
 
-The link "here" [10]_ discusses the details of the use of ``nftables`` which
+"This link" [10]_ discusses the details of the use of ``nftables`` which
 is nextgen ``iptables``, and tries to build production worthy Docker for IPv6
 usage.
 
