@@ -189,9 +189,13 @@ identified by feature ``odl-netvirt-openstack`` is used.
   |   networks connected to the same router          |                         |                                                              |
   |   (east-west)                                    |                         |                                                              |
   +--------------------------------------------------+-------------------------+--------------------------------------------------------------+
-  |IPv6 Router support in ODL:                       |Yes                      |In ODL Nitrogen Release, RFE "IPv6 Inter-DC L3 North-South    |
-  |                                                  |                         |Connectivity Using L3VPN Provider Network Types" [1]_ is      |
-  |3. External routing (north-south)                 |                         |merged.                                                       |
+  |IPv6 Router support in ODL:                       |**NO**                   |This feature is targeted for Flourine Release.                |
+  |                                                  |                         |In ODL Nitrogen Release, RFE "IPv6 Inter-DC L3 North-South    |
+  |3. External routing (north-south)                 |                         |Connectivity Using L3VPN Provider Network Types" Spec [3]_ is |
+  |                                                  |                         |merged. But the code patch has not been merged yet.           |
+  |                                                  |                         |On the other hand, "IPv6 Cluster Support" is available in     |
+  |                                                  |                         |Nitrogen Release [4]_. Basically, existing IPv6 features were |
+  |                                                  |                         |enhanced to work in a three node ODL Clustered Setup.         |
   +--------------------------------------------------+-------------------------+--------------------------------------------------------------+
   |IPAM: Support for IPv6 Address assignment modes.  |Yes                      |ODL IPv6 Router supports all the IPv6 Address assignment      |
   |                                                  |                         |modes along with Neutron DHCP Agent.                          |
@@ -225,4 +229,6 @@ References
 .. [2] How to Use Config-Drive for Metadata with IPv6 Network: http://superuser.openstack.org/articles/deploying-ipv6-only-tenants-with-openstack/
 
 .. [3] http://docs.opendaylight.org/en/latest/submodules/netvirt/docs/specs/ipv6-interdc-l3vpn.html
+
+.. [4] http://git.opendaylight.org/gerrit/#/c/66707/
 
