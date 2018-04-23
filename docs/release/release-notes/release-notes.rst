@@ -16,12 +16,14 @@ This document provides the release notes for Fraser of IPv6 Project.
 Version History
 ---------------
 
-+--------------------+--------------------+--------------------+--------------------+
-| **Date**           | **Version**        | **Author**         | **Comment**        |
-|                    |                    |                    |                    |
-+--------------------+--------------------+--------------------+--------------------+
-| 2018-03-15         | 0.5.0              | Bin Hu             | Baseline draft     |
-+--------------------+--------------------+--------------------+--------------------+
++--------------------+--------------------+--------------------+----------------------+
+| **Date**           | **Version**        | **Author**         | **Comment**          |
+|                    |                    |                    |                      |
++--------------------+--------------------+--------------------+----------------------+
+| 2018-03-15         | 0.5.0              | Bin Hu             | Baseline draft       |
++--------------------+--------------------+--------------------+----------------------+
+| 2018-04-22         | 1.0.0              | Bin Hu             | Fraser Release 6.0.0 |
++--------------------+--------------------+--------------------+----------------------+
 
 Important Notes
 ---------------
@@ -46,8 +48,9 @@ This is the Fraser release of the IPv6 feature as part of OPNFV, including:
 * Installation of OPNFV on IPv6-Only Infrastructure by Apex Installer
 * Configuration of setting up a Service VM as an IPv6 vRouter in OpenStack-Only
   environment
-* User Guide, which analyzes the gap of IPv6 support in OpenStack Pike
-  and OpenDaylight Nitrogen.
+* User Guide, which includes:
+  * analysis of the gap of IPv6 support in OpenStack Pike and OpenDaylight Nitrogen
+  * exploration of IPv6 in container networking
 
 Please refer to our:
 
