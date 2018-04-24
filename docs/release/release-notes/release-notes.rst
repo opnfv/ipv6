@@ -49,7 +49,8 @@ This is the Fraser release of the IPv6 feature as part of OPNFV, including:
 * Configuration of setting up a Service VM as an IPv6 vRouter in OpenStack-Only
   environment
 * User Guide, which includes:
-  * analysis of the gap of IPv6 support in OpenStack Pike and OpenDaylight Nitrogen
+
+  * gap analysis of IPv6 support in OpenStack Pike and OpenDaylight Nitrogen
   * exploration of IPv6 in container networking
 
 Please refer to our:
