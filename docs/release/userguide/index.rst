@@ -5,16 +5,16 @@
 .. (c) Bin Hu (AT&T) and Sridhar Gaddam (RedHat)
 
 ====================================
-Using IPv6 Feature of Fraser Release
+Using IPv6 Feature of Gambia Release
 ====================================
 
 :Abstract:
 
 This section provides the users with:
 
-* Gap Analysis regarding IPv6 feature requirements with OpenStack Pike
+* Gap Analysis regarding IPv6 feature requirements with OpenStack Queens
   Official Release
-* Gap Analysis regarding IPv6 feature requirements with Open Daylight Nitrogen
+* Gap Analysis regarding IPv6 feature requirements with Open Daylight Oxygen
   Official Release.
 * IPv6 Setup in Container Networking
 

@@ -3,7 +3,7 @@
 .. (c) Bin Hu (AT&T) and Sridhar Gaddam (RedHat)
 
 ====================================
-Using IPv6 Feature of Fraser Release
+Using IPv6 Feature of Gambia Release
 ====================================
 
 This section provides the users with gap analysis regarding IPv6 feature requirements with

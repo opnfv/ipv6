@@ -6,7 +6,7 @@
 OPNFV IPv6 Project Release Notes
 ================================
 
-This document provides the release notes for Fraser of IPv6 Project.
+This document provides the release notes for Gambia of IPv6 Project.
 
 .. contents::
    :depth: 3
@@ -20,13 +20,7 @@ Version History
 | **Date**           | **Version**        | **Author**         | **Comment**          |
 |                    |                    |                    |                      |
 +--------------------+--------------------+--------------------+----------------------+
-| 2018-03-15         | 0.5.0              | Bin Hu             | Baseline draft       |
-+--------------------+--------------------+--------------------+----------------------+
-| 2018-04-22         | 1.0.0              | Bin Hu             | Fraser Release 6.0.0 |
-+--------------------+--------------------+--------------------+----------------------+
-| 2018-05-22         | 1.1.0              | Bin Hu             | Fraser Release 6.1.0 |
-+--------------------+--------------------+--------------------+----------------------+
-| 2018-06-27         | 1.2.0              | Bin Hu             | Fraser Release 6.2.0 |
+| 2018-09-06         | 0.1.0              | Bin Hu             | Initial draft        |
 +--------------------+--------------------+--------------------+----------------------+
 
 Release Data
@@ -35,13 +29,13 @@ Release Data
 +--------------------------------------+--------------------------------------+
 | **Project**                          | IPv6                                 |
 +--------------------------------------+--------------------------------------+
-| **Repo/tag**                         | ipv6/opnfv-6.2.0                     |
+| **Repo/tag**                         | ipv6/opnfv-7.0.0                     |
 +--------------------------------------+--------------------------------------+
-| **Release designation**              | Fraser Release (6.2.0)               |
+| **Release designation**              | Gambia Release (7.0.0)               |
 +--------------------------------------+--------------------------------------+
-| **Release date**                     | June 29, 2018                        |
+| **Release date**                     | TBD                                  |
 +--------------------------------------+--------------------------------------+
-| **Purpose of the delivery**          | OPNFV Fraser Release                 |
+| **Purpose of the delivery**          | OPNFV Gambia Release                 |
 +--------------------------------------+--------------------------------------+
 
 Important Notes
@@ -62,7 +56,7 @@ For details, please refer to our `User Guide <../userguide/index.html>`_.
 Summary
 -------
 
-This is the Fraser release of the IPv6 feature as part of OPNFV, including:
+This is the Gambia release of the IPv6 feature as part of OPNFV, including:
 
 * Installation of OPNFV on IPv6-Only Infrastructure by Apex Installer
 * Configuration of setting up a Service VM as an IPv6 vRouter in OpenStack-Only
@@ -104,7 +98,7 @@ Please refer to `Testing Methodology <../installation/index.html#testing-methodo
 References
 ----------
 
-For more information on the OPNFV Fraser release, please see:
+For more information on the OPNFV Gambia release, please see:
 
 http://www.opnfv.org/software
 
