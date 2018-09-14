@@ -228,7 +228,7 @@ References
 
 .. [2] How to Use Config-Drive for Metadata with IPv6 Network: http://superuser.openstack.org/articles/deploying-ipv6-only-tenants-with-openstack/
 
-.. [3] http://docs.opendaylight.org/en/latest/submodules/netvirt/docs/specs/ipv6-interdc-l3vpn.html
+.. [3] https://docs.opendaylight.org/projects/netvirt/en/stable-fluorine/specs/oxygen/ipv6-interdc-l3vpn.html
 
 .. [4] http://git.opendaylight.org/gerrit/#/c/66707/
 

@@ -75,5 +75,5 @@ identified by feature ``odl-netvirt-openstack`` is used.
   |VxLAN Tunnels with IPv6 Endpoints                 |Yes                      |                                                              |
   +--------------------------------------------------+-------------------------+--------------------------------------------------------------+
 
-.. [1] http://docs.opendaylight.org/en/latest/submodules/netvirt/docs/specs/ipv6-interdc-l3vpn.html
+.. [1] https://docs.opendaylight.org/projects/netvirt/en/stable-fluorine/specs/oxygen/ipv6-interdc-l3vpn.html
 .. [2] http://git.opendaylight.org/gerrit/#/c/66707/
