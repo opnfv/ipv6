@@ -2,18 +2,18 @@
 .. http://creativecommons.org/licenses/by/4.0
 .. (c) Bin Hu (AT&T) and Sridhar Gaddam (RedHat)
 
-=============================================
-IPv6 Gap Analysis with Open Daylight Nitrogen
-=============================================
+===========================================
+IPv6 Gap Analysis with Open Daylight Oxygen
+===========================================
 
 This section provides users with IPv6 gap analysis regarding feature requirement with
-Open Daylight Nitrogen Official Release. The following table lists the use cases / feature
+Open Daylight Oxygen Official Release. The following table lists the use cases / feature
 requirements of VIM-agnostic IPv6 functionality, including infrastructure layer and VNF
-(VM) layer, and its gap analysis with Open Daylight Nitrogen Official Release.
+(VM) layer, and its gap analysis with Open Daylight Oxygen Official Release.
 
-**Open Daylight Nitrogen Status**
+**Open Daylight Oxygen Status**
 
-In Open Daylight Nitrogen official release, the legacy ``Old Netvirt`` identified by feature
+In Open Daylight Oxygen official release, the legacy ``Old Netvirt`` identified by feature
 ``odl-ovsdb-openstack`` is deprecated and no longer supported. The ``New Netvirt``
 identified by feature ``odl-netvirt-openstack`` is used.
 
@@ -21,7 +21,7 @@ identified by feature ``odl-netvirt-openstack`` is used.
   :class: longtable
 
   +--------------------------------------------------+-------------------------+--------------------------------------------------------------+
-  |Use Case / Requirement                            |Supported in ODL Nitrogen|Notes                                                         |
+  |Use Case / Requirement                            |Supported in ODL Oxygen  |Notes                                                         |
   +==================================================+=========================+==============================================================+
   |REST API support for IPv6 subnet creation in ODL  |Yes                      |Yes, it is possible to create IPv6 subnets in ODL using       |
   |                                                  |                         |Neutron REST API.                                             |
@@ -43,11 +43,11 @@ identified by feature ``odl-netvirt-openstack`` is used.
   |   (east-west)                                    |                         |                                                              |
   +--------------------------------------------------+-------------------------+--------------------------------------------------------------+
   |IPv6 Router support in ODL:                       |**NO**                   |This feature is targeted for Flourine Release.                |
-  |                                                  |                         |In ODL Nitrogen Release, RFE "IPv6 Inter-DC L3 North-South    |
+  |                                                  |                         |In ODL Oxygen Release, RFE "IPv6 Inter-DC L3 North-South      |
   |3. External routing (north-south)                 |                         |Connectivity Using L3VPN Provider Network Types" Spec [1]_ is |
   |                                                  |                         |merged. But the code patch has not been merged yet.           |
   |                                                  |                         |On the other hand, "IPv6 Cluster Support" is available in     |
-  |                                                  |                         |Nitrogen Release [2]_. Basically, existing IPv6 features were |
+  |                                                  |                         |Oxygen Release [2]_. Basically, existing IPv6 features were   |
   |                                                  |                         |enhanced to work in a three node ODL Clustered Setup.         |
   +--------------------------------------------------+-------------------------+--------------------------------------------------------------+
   |IPAM: Support for IPv6 Address assignment modes.  |Yes                      |ODL IPv6 Router supports all the IPv6 Address assignment      |
