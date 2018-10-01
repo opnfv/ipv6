@@ -7,29 +7,29 @@ Using IPv6 Feature of Gambia Release
 ====================================
 
 This section provides the users with gap analysis regarding IPv6 feature requirements with
-OpenStack Pike Official Release and Open Daylight Nitrogen Official Release. The gap analysis
+OpenStack Queens Official Release and Open Daylight Oxygen Official Release. The gap analysis
 serves as feature specific user guides and references when as a user you may leverage the
 IPv6 feature in the platform and need to perform some IPv6 related operations.
 
-For more information, please find Neutron's IPv6 document for Pike Release [1]_.
+For more information, please find Neutron's IPv6 document for Queens Release [1]_.
 
-*************************************
-IPv6 Gap Analysis with OpenStack Pike
-*************************************
+***************************************
+IPv6 Gap Analysis with OpenStack Queens
+***************************************
 
 This section provides users with IPv6 gap analysis regarding feature requirement with
-OpenStack Neutron in Pike Official Release. The following table lists the use cases / feature
+OpenStack Neutron in Queens Official Release. The following table lists the use cases / feature
 requirements of VIM-agnostic IPv6 functionality, including infrastructure layer and VNF
-(VM) layer, and its gap analysis with OpenStack Neutron in Pike Official Release.
+(VM) layer, and its gap analysis with OpenStack Neutron in Queens Official Release.
 
 Please **NOTE** that in terms of IPv6 support in OpenStack Neutron, there is no difference
-between **Pike** release and **Ocata** release.
+between **Queens** release and prior, e.g. **Pike** and **Ocata**, release.
 
 .. table::
   :class: longtable
 
   +-----------------------------------------------------------+-------------------+--------------------------------------------------------------------+
-  |Use Case / Requirement                                     |Supported in Pike  |Notes                                                               |
+  |Use Case / Requirement                                     |Supported in Queens|Notes                                                               |
   +===========================================================+===================+====================================================================+
   |All topologies work in a multi-tenant environment          |Yes                |The IPv6 design is following the Neutron tenant networks model;     |
   |                                                           |                   |dnsmasq is being used inside DHCP network namespaces, while radvd   |
@@ -125,9 +125,9 @@ between **Pike** release and **Ocata** release.
   +-----------------------------------------------------------+-------------------+--------------------------------------------------------------------+
   |IPv6 Support in "Allowed Address Pairs" Extension          |Yes                |                                                                    |
   +-----------------------------------------------------------+-------------------+--------------------------------------------------------------------+
-  |Support for IPv6 Prefix Delegation.                        |Yes                |Partial support in Pike                                             |
+  |Support for IPv6 Prefix Delegation.                        |Yes                |Partial support in Queens                                           |
   +-----------------------------------------------------------+-------------------+--------------------------------------------------------------------+
-  |Distributed Virtual Routing (DVR) support for IPv6         |**No**             |In Pike DVR implementation, IPv6 works. But all the IPv6 ingress/   |
+  |Distributed Virtual Routing (DVR) support for IPv6         |**No**             |In Queens DVR implementation, IPv6 works. But all the IPv6 ingress/ |
   |                                                           |                   |egress traffic is routed via the centralized controller node, i.e.  |
   |                                                           |                   |similar to SNAT traffic.                                            |
   |                                                           |                   |A fully distributed IPv6 router is not yet supported in Neutron.    |
@@ -149,18 +149,18 @@ between **Pike** release and **Ocata** release.
   |(keepalived+VRRP).                                         |                   |                                                                    |
   +-----------------------------------------------------------+-------------------+--------------------------------------------------------------------+
 
-*********************************************
-IPv6 Gap Analysis with Open Daylight Nitrogen
-*********************************************
+*******************************************
+IPv6 Gap Analysis with Open Daylight Oxygen
+*******************************************
 
 This section provides users with IPv6 gap analysis regarding feature requirement with
-Open Daylight Nitrogen Official Release. The following table lists the use cases / feature
+Open Daylight Oxygen Official Release. The following table lists the use cases / feature
 requirements of VIM-agnostic IPv6 functionality, including infrastructure layer and VNF
-(VM) layer, and its gap analysis with Open Daylight Nitrogen Official Release.
+(VM) layer, and its gap analysis with Open Daylight Oxygen Official Release.
 
-**Open Daylight Nitrogen Status**
+**Open Daylight Oxygen Status**
 
-In Open Daylight Nitrogen official release, the legacy ``Old Netvirt`` identified by feature
+In Open Daylight Oxygen official release, the legacy ``Old Netvirt`` identified by feature
 ``odl-ovsdb-openstack`` is deprecated and no longer supported. The ``New Netvirt``
 identified by feature ``odl-netvirt-openstack`` is used.
 
@@ -168,7 +168,7 @@ identified by feature ``odl-netvirt-openstack`` is used.
   :class: longtable
 
   +--------------------------------------------------+-------------------------+--------------------------------------------------------------+
-  |Use Case / Requirement                            |Supported in ODL Nitrogen|Notes                                                         |
+  |Use Case / Requirement                            |Supported in ODL Oxygen  |Notes                                                         |
   +==================================================+=========================+==============================================================+
   |REST API support for IPv6 subnet creation in ODL  |Yes                      |Yes, it is possible to create IPv6 subnets in ODL using       |
   |                                                  |                         |Neutron REST API.                                             |
@@ -190,11 +190,11 @@ identified by feature ``odl-netvirt-openstack`` is used.
   |   (east-west)                                    |                         |                                                              |
   +--------------------------------------------------+-------------------------+--------------------------------------------------------------+
   |IPv6 Router support in ODL:                       |**NO**                   |This feature is targeted for Flourine Release.                |
-  |                                                  |                         |In ODL Nitrogen Release, RFE "IPv6 Inter-DC L3 North-South    |
+  |                                                  |                         |In ODL Oxygen Release, RFE "IPv6 Inter-DC L3 North-South      |
   |3. External routing (north-south)                 |                         |Connectivity Using L3VPN Provider Network Types" Spec [3]_ is |
   |                                                  |                         |merged. But the code patch has not been merged yet.           |
   |                                                  |                         |On the other hand, "IPv6 Cluster Support" is available in     |
-  |                                                  |                         |Nitrogen Release [4]_. Basically, existing IPv6 features were |
+  |                                                  |                         |Oxygen Release [4]_. Basically, existing IPv6 features were   |
   |                                                  |                         |enhanced to work in a three node ODL Clustered Setup.         |
   +--------------------------------------------------+-------------------------+--------------------------------------------------------------+
   |IPAM: Support for IPv6 Address assignment modes.  |Yes                      |ODL IPv6 Router supports all the IPv6 Address assignment      |
@@ -224,7 +224,7 @@ identified by feature ``odl-netvirt-openstack`` is used.
 
 References
 
-.. [1] Neutron IPv6 Documentation for Pike Release: http://docs.openstack.org/neutron/pike/admin/config-ipv6.html
+.. [1] Neutron IPv6 Documentation for Queens Release: http://docs.openstack.org/neutron/queens/admin/config-ipv6.html
 
 .. [2] How to Use Config-Drive for Metadata with IPv6 Network: http://superuser.openstack.org/articles/deploying-ipv6-only-tenants-with-openstack/
 

@@ -26,13 +26,13 @@ The IPv6 Setup in Container Networking serves as feature specific user guides
 and references when as a user you may want to explore IPv6 in Docker container
 environment.
 
-For more information, please find `Neutron's IPv6 document for Pike Release
-<http://docs.openstack.org/neutron/pike/admin/config-ipv6.html>`_.
+For more information, please find `Neutron's IPv6 document for Queens Release
+<http://docs.openstack.org/neutron/queens/admin/config-ipv6.html>`_.
 
 .. toctree::
    :numbered:
    :maxdepth: 4
 
-   ./gap-os-pike.rst
-   ./gap-odl-nitrogen.rst
+   ./gap-os-queens.rst
+   ./gap-odl-oxygen.rst
    ./ipv6-in-container-networking.rst
