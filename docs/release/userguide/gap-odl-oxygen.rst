@@ -17,6 +17,11 @@ In Open Daylight Oxygen official release, the legacy ``Old Netvirt`` identified 
 ``odl-ovsdb-openstack`` is deprecated and no longer supported. The ``New Netvirt``
 identified by feature ``odl-netvirt-openstack`` is used.
 
+Two new features are supported in Open Daylight Oxygen official release:
+
+* "IPv6 L3VPN Dual Stack with Single router" [3]_
+* "IPv6 Inter Data Center using L3VPNs" [4]_
+
 .. table::
   :class: longtable
 
@@ -67,13 +72,20 @@ identified by feature ``odl-netvirt-openstack`` is used.
   +--------------------------------------------------+-------------------------+--------------------------------------------------------------+
   |Shared Networks support                           |Yes                      |                                                              |
   +--------------------------------------------------+-------------------------+--------------------------------------------------------------+
-  |IPv6 external L2 VLAN directly attached to a VM.  |**ToDo**                 |                                                              |
+  |IPv6 external L2 VLAN directly attached to a VM.  |Yes                      |Targeted for Flourine Release                                 |
   +--------------------------------------------------+-------------------------+--------------------------------------------------------------+
-  |ODL on an IPv6 only Infrastructure.               |**Work in Progress**     |Deploying OpenStack with ODL on an IPv6 only infrastructure   |
+  |ODL on an IPv6 only Infrastructure.               |Yes                      |Deploying OpenStack with ODL on an IPv6 only infrastructure   |
   |                                                  |                         |where the API endpoints are all IPv6 addresses.               |
   +--------------------------------------------------+-------------------------+--------------------------------------------------------------+
   |VxLAN Tunnels with IPv6 Endpoints                 |Yes                      |                                                              |
   +--------------------------------------------------+-------------------------+--------------------------------------------------------------+
+  |IPv6 L3VPN Dual Stack with Single router          |Yes                      |Refer to "Dual Stack VM support in OpenDaylight" Spec [3]_.   |
+  +--------------------------------------------------+-------------------------+--------------------------------------------------------------+
+  |IPv6 Inter Data Center using L3VPNs               |Yes                      |Refer to "IPv6 Inter-DC L3 North-South connectivity using     |
+  |                                                  |                         |L3VPN provider network types" Spec [4]_.                      |
+  +--------------------------------------------------+-------------------------+--------------------------------------------------------------+
 
 .. [1] https://docs.opendaylight.org/projects/netvirt/en/stable-fluorine/specs/oxygen/ipv6-interdc-l3vpn.html
 .. [2] http://git.opendaylight.org/gerrit/#/c/66707/
+.. [3] https://docs.opendaylight.org/projects/netvirt/en/stable-oxygen/specs/l3vpn-dual-stack-vms.html
+.. [4] https://docs.opendaylight.org/projects/netvirt/en/stable-oxygen/specs/ipv6-interdc-l3vpn.html
