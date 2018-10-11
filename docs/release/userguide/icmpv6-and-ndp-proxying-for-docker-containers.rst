@@ -16,12 +16,11 @@ To communicate on its directly-connected network, a host must implement the
 communication protocol used to interface to that network. We call this a link
 layer or media-access layer protocol.
 
-ICMPv6 is used instead of ARP as in IPv4, with following Neighbor Discovery
-Protocol (NDP) options.
-
-NDP defines five ICMPv6 packet types for the purpose of router solicitation,
-router advertisement, neighbor solicitation, neighbor advertisement, and
-network redirects. Refer RFC 122 & 3122.
+IPv4 uses ARP for link and MAC address discovery. In contrast IPv6 uses ICMPv6
+though Neighbor Discovery Protocol (NDP). NDP defines five ICMPv6 packet types
+for the purpose of router solicitation, router advertisement, neighbor
+solicitation, neighbor advertisement, and network redirects.
+Refer RFC 122 & 3122.
 
 Contrasting with ARP, NDP includes Neighbor Unreachability Detection (NUD),
 thus, improving robustness of packet delivery in the presence of failing
