@@ -26,8 +26,9 @@ some IPv6 related operations.
 
 The IPv6 Setup in Container Networking serves as feature specific user guides
 and references when as a user you may want to explore IPv6 in Docker container
-environment. The use of NDP Proxying is also explored to connect IPv6-only
-containers to external network.
+environment. The use of NDP Proxying is explored to connect IPv6-only
+containers to external network. The Docker IPv6 simple cluster topology is
+studied with two Hosts, each with 2 Docker containers.
 
 For more information, please find `Neutron's IPv6 document for Queens Release
 <http://docs.openstack.org/neutron/queens/admin/config-ipv6.html>`_.
@@ -40,3 +41,4 @@ For more information, please find `Neutron's IPv6 document for Queens Release
    ./gap-odl-oxygen.rst
    ./ipv6-in-container-networking.rst
    ./icmpv6-and-ndp-proxying-for-docker-containers.rst
+   ./docker-ipv6-simple-cluster-topology.rst
