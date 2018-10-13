@@ -9,7 +9,7 @@ Docker IPv6 Simple Cluster Topology
 Using external switches or routers allows you to enable IPv6 communication
 between containers on different hosts. We have two physical hosts: Host1 &
 Host2, and we will study here two scenarios: one with Switch and the other
-one with router on the top of hierarchy connecting those 2 hosts. Both hosts
+one with router on the top of hierarchy, connecting those 2 hosts. Both hosts
 host a pair of containers in a cluster. The contents are borrowed from
 article [1]_ below, which can be used on any Linux distro (CentOS, Ubuntu,
 OpenSUSE etc) with latest kernel. A sample testing is pointed in the blog
