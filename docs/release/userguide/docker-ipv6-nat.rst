@@ -15,7 +15,7 @@ result, there are still several unresolved issues as to how IPv6 should be used
 in a containerized world.
 
 Currently, you can let Docker give each container an IPv6 address from your
-(public) pool, but this has disadvantages (Refer  to [1]_):
+(public) pool, but this has disadvantages (Refer to [1]_):
 
 * Giving each container a publicly routable address means all ports (even
   unexposed / unpublished ports) are suddenly reachable by everyone, if no
@@ -27,6 +27,7 @@ Currently, you can let Docker give each container an IPv6 address from your
   enabled (which, for now, is enabled by default in Docker)
 * The userland proxy, however, seems to be on its way out and has various
   issues, such as:
+
   * It can use a lot of RAM.
   * Source IP addresses are rewritten, making it completely unusable for many
     purposes, e.g. mail servers.
