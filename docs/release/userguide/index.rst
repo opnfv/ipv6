@@ -19,6 +19,8 @@ This section provides the users with:
 * IPv6 Setup in Container Networking
 * Use of Neighbor Discovery (ND) Proxy to connect IPv6-only container to
   external network
+* Docker IPv6 Simple Cluster Topology
+* Study and recommendation regarding Docker IPv6 NAT
 
 The gap analysis serves as feature specific user guides and references when
 as a user you may leverage the IPv6 feature in the platform and need to perform
