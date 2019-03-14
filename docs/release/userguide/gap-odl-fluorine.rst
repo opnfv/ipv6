@@ -2,31 +2,31 @@
 .. http://creativecommons.org/licenses/by/4.0
 .. (c) Bin Hu (AT&T) and Sridhar Gaddam (RedHat)
 
-===========================================
-IPv6 Gap Analysis with Open Daylight Oxygen
-===========================================
+=============================================
+IPv6 Gap Analysis with Open Daylight Fluorine
+=============================================
 
 This section provides users with IPv6 gap analysis regarding feature requirement with
-Open Daylight Oxygen Official Release. The following table lists the use cases / feature
+Open Daylight Fluorine Official Release. The following table lists the use cases / feature
 requirements of VIM-agnostic IPv6 functionality, including infrastructure layer and VNF
-(VM) layer, and its gap analysis with Open Daylight Oxygen Official Release.
+(VM) layer, and its gap analysis with Open Daylight Fluorine Official Release.
 
-**Open Daylight Oxygen Status**
+**Open Daylight Fluorine Status**
 
-In Open Daylight Oxygen official release, the legacy ``Old Netvirt`` identified by feature
+In Open Daylight Fluorine official release, the legacy ``Old Netvirt`` identified by feature
 ``odl-ovsdb-openstack`` is deprecated and no longer supported. The ``New Netvirt``
 identified by feature ``odl-netvirt-openstack`` is used.
 
-Two new features are supported in Open Daylight Oxygen official release:
+Two new features are supported in Open Daylight Fluorine official release:
 
-* "IPv6 L3VPN Dual Stack with Single router" [3]_
-* "IPv6 Inter Data Center using L3VPNs" [4]_
+* Support for advertising MTU info in IPv6 RAs
+* IPv6 external connectivity for FLAT/VLAN based provider networks
 
 .. table::
   :class: longtable
 
   +--------------------------------------------------+-------------------------+--------------------------------------------------------------+
-  |Use Case / Requirement                            |Supported in ODL Oxygen  |Notes                                                         |
+  |Use Case / Requirement                            |Supported in ODL Fluorine|Notes                                                         |
   +==================================================+=========================+==============================================================+
   |REST API support for IPv6 subnet creation in ODL  |Yes                      |Yes, it is possible to create IPv6 subnets in ODL using       |
   |                                                  |                         |Neutron REST API.                                             |
@@ -48,11 +48,11 @@ Two new features are supported in Open Daylight Oxygen official release:
   |   (east-west)                                    |                         |                                                              |
   +--------------------------------------------------+-------------------------+--------------------------------------------------------------+
   |IPv6 Router support in ODL:                       |**NO**                   |This feature is targeted for Flourine Release.                |
-  |                                                  |                         |In ODL Oxygen Release, RFE "IPv6 Inter-DC L3 North-South      |
+  |                                                  |                         |In ODL Fluorine Release, RFE "IPv6 Inter-DC L3 North-South    |
   |3. External routing (north-south)                 |                         |Connectivity Using L3VPN Provider Network Types" Spec [1]_ is |
   |                                                  |                         |merged. But the code patch has not been merged yet.           |
   |                                                  |                         |On the other hand, "IPv6 Cluster Support" is available in     |
-  |                                                  |                         |Oxygen Release [2]_. Basically, existing IPv6 features were   |
+  |                                                  |                         |Fluorine Release [2]_. Basically, existing IPv6 features were |
   |                                                  |                         |enhanced to work in a three node ODL Clustered Setup.         |
   +--------------------------------------------------+-------------------------+--------------------------------------------------------------+
   |IPAM: Support for IPv6 Address assignment modes.  |Yes                      |ODL IPv6 Router supports all the IPv6 Address assignment      |
@@ -82,10 +82,14 @@ Two new features are supported in Open Daylight Oxygen official release:
   |IPv6 L3VPN Dual Stack with Single router          |Yes                      |Refer to "Dual Stack VM support in OpenDaylight" Spec [3]_.   |
   +--------------------------------------------------+-------------------------+--------------------------------------------------------------+
   |IPv6 Inter Data Center using L3VPNs               |Yes                      |Refer to "IPv6 Inter-DC L3 North-South connectivity using     |
-  |                                                  |                         |L3VPN provider network types" Spec [4]_.                      |
+  |                                                  |                         |L3VPN provider network types" Spec [1]_.                      |
+  +--------------------------------------------------+-------------------------+--------------------------------------------------------------+
+  |Support for advertising MTU info in IPv6 RAs      |Yes                      |                                                              |
+  +--------------------------------------------------+-------------------------+--------------------------------------------------------------+
+  |IPv6 external connectivity for FLAT/VLAN based    |Yes                      |                                                              |
+  |provider networks                                 |                         |                                                              |
   +--------------------------------------------------+-------------------------+--------------------------------------------------------------+
 
 .. [1] https://docs.opendaylight.org/projects/netvirt/en/stable-fluorine/specs/oxygen/ipv6-interdc-l3vpn.html
 .. [2] http://git.opendaylight.org/gerrit/#/c/66707/
-.. [3] https://docs.opendaylight.org/projects/netvirt/en/stable-oxygen/specs/l3vpn-dual-stack-vms.html
-.. [4] https://docs.opendaylight.org/projects/netvirt/en/stable-oxygen/specs/ipv6-interdc-l3vpn.html
+.. [3] https://docs.opendaylight.org/projects/netvirt/en/stable-fluorine/specs/oxygen/l3vpn-dual-stack-vms.html

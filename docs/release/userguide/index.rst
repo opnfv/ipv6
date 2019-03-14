@@ -5,16 +5,16 @@
 .. (c) Bin Hu (AT&T) and Sridhar Gaddam (RedHat)
 
 ====================================
-Using IPv6 Feature of Gambia Release
+Using IPv6 Feature of Hunter Release
 ====================================
 
 :Abstract:
 
 This section provides the users with:
 
-* Gap Analysis regarding IPv6 feature requirements with OpenStack Queens
+* Gap Analysis regarding IPv6 feature requirements with OpenStack Rocky
   Official Release
-* Gap Analysis regarding IPv6 feature requirements with Open Daylight Oxygen
+* Gap Analysis regarding IPv6 feature requirements with Open Daylight Fluorine
   Official Release
 * IPv6 Setup in Container Networking
 * Use of Neighbor Discovery (ND) Proxy to connect IPv6-only container to
@@ -33,15 +33,15 @@ containers to external network. The Docker IPv6 simple cluster topology is
 studied with two Hosts, each with 2 Docker containers. Docker IPv6 NAT topic
 is also explored.
 
-For more information, please find `Neutron's IPv6 document for Queens Release
-<http://docs.openstack.org/neutron/queens/admin/config-ipv6.html>`_.
+For more information, please find `Neutron's IPv6 document for Rocky Release
+<http://docs.openstack.org/neutron/rocky/admin/config-ipv6.html>`_.
 
 .. toctree::
    :numbered:
    :maxdepth: 4
 
-   ./gap-os-queens.rst
-   ./gap-odl-oxygen.rst
+   ./gap-os-rocky.rst
+   ./gap-odl-fluorine.rst
    ./ipv6-in-container-networking.rst
    ./icmpv6-and-ndp-proxying-for-docker-containers.rst
    ./docker-ipv6-simple-cluster-topology.rst

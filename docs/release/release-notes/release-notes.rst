@@ -6,7 +6,7 @@
 OPNFV IPv6 Project Release Notes
 ================================
 
-This document provides the release notes for Gambia of IPv6 Project.
+This document provides the release notes for Hunter of IPv6 Project.
 
 .. contents::
    :depth: 3
@@ -20,13 +20,7 @@ Version History
 | **Date**           | **Version**        | **Author**         | **Comment**          |
 |                    |                    |                    |                      |
 +--------------------+--------------------+--------------------+----------------------+
-| 2018-09-06         | 0.1.0              | Bin Hu             | Initial draft        |
-+--------------------+--------------------+--------------------+----------------------+
-| 2018-10-18         | 1.0.0              | Bin Hu             | Release ready        |
-+--------------------+--------------------+--------------------+----------------------+
-| 2018-12-12         | 1.1.0              | Bin Hu             | SR1 Release ready    |
-+--------------------+--------------------+--------------------+----------------------+
-| 2019-01-22         | 1.2.0              | Bin Hu             | SR2 Release ready    |
+| 2019-03-14         | 0.1.0              | Bin Hu             | Initial draft        |
 +--------------------+--------------------+--------------------+----------------------+
 
 Release Data
@@ -35,13 +29,13 @@ Release Data
 +--------------------------------------+--------------------------------------+
 | **Project**                          | IPv6                                 |
 +--------------------------------------+--------------------------------------+
-| **Repo/tag**                         | opnfv-7.2.0                          |
+| **Repo/tag**                         | opnfv-8.0.0                          |
 +--------------------------------------+--------------------------------------+
-| **Release designation**              | Gambia 7.2                           |
+| **Release designation**              | Hunter 8.0                           |
 +--------------------------------------+--------------------------------------+
-| **Release date**                     | January 25, 2019                     |
+| **Release date**                     | May 10, 2019                     |
 +--------------------------------------+--------------------------------------+
-| **Purpose of the delivery**          | OPNFV Gambia 7.2 Release             |
+| **Purpose of the delivery**          | OPNFV Hunter 8.0 Release             |
 +--------------------------------------+--------------------------------------+
 
 Important Notes
@@ -62,14 +56,14 @@ For details, please refer to our `User Guide <../userguide/index.html>`_.
 Summary
 -------
 
-This is the Gambia release of the IPv6 feature as part of OPNFV, including:
+This is the Hunter release of the IPv6 feature as part of OPNFV, including:
 
 * Installation of OPNFV on IPv6-Only Infrastructure by Apex Installer
 * Configuration of setting up a Service VM as an IPv6 vRouter in OpenStack-Only
   environment
 * User Guide, which includes:
 
-  * gap analysis of IPv6 support in OpenStack Pike and OpenDaylight Nitrogen
+  * gap analysis of IPv6 support in OpenStack Rocky and OpenDaylight Fluorine
   * exploration of IPv6 in container networking
 
 Please refer to our:
@@ -104,7 +98,7 @@ Please refer to `Testing Methodology <../installation/index.html#testing-methodo
 References
 ----------
 
-For more information on the OPNFV Gambia release, please see:
+For more information on the OPNFV Hunter release, please see:
 
 http://www.opnfv.org/software
 

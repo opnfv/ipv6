@@ -6,7 +6,7 @@
 IPv6 Configuration - Setting Up a Service VM as an IPv6 vRouter
 ===============================================================
 
-This section provides instructions to set up a service VM as an IPv6 vRouter using OPNFV Gambia Release
+This section provides instructions to set up a service VM as an IPv6 vRouter using OPNFV Hunter Release
 installers. Because Open Daylight no longer supports L2-only option, and there is only limited support of
 IPv6 in L3 option of Open Daylight, setup of service VM as an IPv6 vRouter is only available under
 pure/native OpenStack environment. The deployment model may be HA or non-HA. The infrastructure may be
@@ -28,7 +28,7 @@ Setup Manual in OpenStack-Only Environment
 ******************************************
 
 If you intend to set up a service VM as an IPv6 vRouter in OpenStack-only environment of
-OPNFV Gambia Release, please **NOTE** that:
+OPNFV Hunter Release, please **NOTE** that:
 
 * Because the anti-spoofing rules of Security Group feature in OpenStack prevents
   a VM from forwarding packets, we need to disable Security Group feature in the
@@ -42,7 +42,7 @@ OPNFV Gambia Release, please **NOTE** that:
 Install OPNFV and Preparation
 -----------------------------
 
-**OPNFV-NATIVE-INSTALL-1**: To install OpenStack-only environment of OPNFV Gambia Release:
+**OPNFV-NATIVE-INSTALL-1**: To install OpenStack-only environment of OPNFV Hunter Release:
 
 **Apex Installer**:
 

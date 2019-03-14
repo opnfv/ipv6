@@ -2,23 +2,23 @@
 .. http://creativecommons.org/licenses/by/4.0
 .. (c) Bin Hu (AT&T) and Sridhar Gaddam (RedHat)
 
-=======================================
-IPv6 Gap Analysis with OpenStack Queens
-=======================================
+======================================
+IPv6 Gap Analysis with OpenStack Rocky
+======================================
 
 This section provides users with IPv6 gap analysis regarding feature requirement with
-OpenStack Neutron in Queens Official Release. The following table lists the use cases / feature
+OpenStack Neutron in Rocky Official Release. The following table lists the use cases / feature
 requirements of VIM-agnostic IPv6 functionality, including infrastructure layer and VNF
-(VM) layer, and its gap analysis with OpenStack Neutron in Queens Official Release.
+(VM) layer, and its gap analysis with OpenStack Neutron in Rocky Official Release.
 
 Please **NOTE** that in terms of IPv6 support in OpenStack Neutron, there is no difference
-between **Queens** release and prior, e.g. **Pike** and **Ocata**, releases.
+between **Rocky** release and prior, e.g. **Queens**, **Pike** and **Ocata**, releases.
 
 .. table::
   :class: longtable
 
   +-----------------------------------------------------------+-------------------+--------------------------------------------------------------------+
-  |Use Case / Requirement                                     |Supported in Queens|Notes                                                               |
+  |Use Case / Requirement                                     |Supported in Rocky |Notes                                                               |
   +===========================================================+===================+====================================================================+
   |All topologies work in a multi-tenant environment          |Yes                |The IPv6 design is following the Neutron tenant networks model;     |
   |                                                           |                   |dnsmasq is being used inside DHCP network namespaces, while radvd   |
@@ -116,9 +116,9 @@ between **Queens** release and prior, e.g. **Pike** and **Ocata**, releases.
   +-----------------------------------------------------------+-------------------+--------------------------------------------------------------------+
   |IPv6 Support in "Allowed Address Pairs" Extension          |Yes                |                                                                    |
   +-----------------------------------------------------------+-------------------+--------------------------------------------------------------------+
-  |Support for IPv6 Prefix Delegation.                        |Yes                |Partial support in Queens                                           |
+  |Support for IPv6 Prefix Delegation.                        |Yes                |Partial support in Rocky                                            |
   +-----------------------------------------------------------+-------------------+--------------------------------------------------------------------+
-  |Distributed Virtual Routing (DVR) support for IPv6         |**No**             |In Queens DVR implementation, IPv6 works. But all the IPv6 ingress/ |
+  |Distributed Virtual Routing (DVR) support for IPv6         |**No**             |In Rocky DVR implementation, IPv6 works. But all the IPv6 ingress/  |
   |                                                           |                   |egress traffic is routed via the centralized controller node, i.e.  |
   |                                                           |                   |similar to SNAT traffic.                                            |
   |                                                           |                   |A fully distributed IPv6 router is not yet supported in Neutron.    |
