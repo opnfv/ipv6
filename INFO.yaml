@@ -1,0 +1,42 @@
+---
+project: 'IPv6-enabled OPNFV Project (ipv6)'
+project_creation_date: 'November 25, 2014'
+project_category: 'Integration & Testing'
+lifecycle_state: 'Mature'
+project_lead: &opnfv_ipv6_ptl
+    name: 'Bin Hu'
+    email: 'bh526r@att.com'
+    id: 'bh526r'
+    company: 'att.com'
+    timezone: 'UTC-08:00'
+primary_contact: *opnfv_ipv6_ptl
+issue_tracking:
+    type: 'jira'
+    url: 'https://jira.opnfv.org/projects/IPVSIX'
+    key: 'IPVSIX'
+mailing_list:
+    type: 'mailman2'
+    url: 'opnfv-tech-discuss@lists.opnfv.org'
+    tag: '[ipv6]'
+realtime_discussion:
+    type: irc
+    server: 'freenode.net'
+    channel: '#opnfv-ipv6'
+meetings:
+    - type: 'zoom+irc'
+      agenda:  'https://wiki.opnfv.org/display/meetings/Ipv6'
+      url:  'https://zoom.us/j/2362828999'
+      server: 'freenode.net'
+      channel: '#opnfv-meeting'
+      repeats: 'biweekly'
+      time:  '16:00 UTC'
+repositories:
+    - 'ipv6'
+committers:
+    - <<: *opnfv_ipv6_ptl
+
+tsc:
+    # yamllint disable rule:line-length
+    approval: ''
+    # yamllint enable rule:line-length
+
